@@ -1,0 +1,7 @@
+site_name: sanlt python知识文档
+pages:
+    - Home: index.md
+    - About: about.md
+    - MySQL: mysqldump_desc.md
+theme:
+  name: 'material'
