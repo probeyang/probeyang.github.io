@@ -269,6 +269,26 @@
     解决办法：
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keygen" title="在命令行执行keygen重置命令：" class="md-nav__link">
+    在命令行执行keygen重置命令：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="再重新执行登录" class="md-nav__link">
+    再重新执行登录
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -638,6 +658,26 @@
     解决办法：
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keygen" title="在命令行执行keygen重置命令：" class="md-nav__link">
+    在命令行执行keygen重置命令：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="再重新执行登录" class="md-nav__link">
+    再重新执行登录
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -679,9 +719,8 @@ Host key verification failed.
 <h2 id="_2">先说一下问题产生的原因：</h2>
 <p>之前登录了这台服务器，然后保存了跟服务器之间的通信秘钥。过了一段时间这台机器进行了一系列的维护重启，对其中的一些服务做了重新部署。我怀疑是这里出了问题。</p>
 <h2 id="_3">解决办法：</h2>
-<ol>
-<li>查了一下网上的资料，其实有比较简单的解决方式，在命令行执行：</li>
-</ol>
+<p>查了一下网上的资料，其实有比较简单的解决方式，</p>
+<h3 id="keygen">在命令行执行keygen重置命令：</h3>
 <pre><code>ssh-keygen -R 126.123.123.119
 </code></pre>
 
@@ -693,9 +732,7 @@ Original contents retained as /Users/ddddd/.ssh/known_hosts.old
 </code></pre>
 
 <p>这个命令就是重置本地客户端的秘钥。</p>
-<ol>
-<li>再执行</li>
-</ol>
+<h3 id="_4">再重新执行登录</h3>
 <pre><code>ssh root@126.123.123.119
 </code></pre>
 
