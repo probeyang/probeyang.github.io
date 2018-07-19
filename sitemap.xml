@@ -6,6 +6,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/aliyun_ressh/</loc>
+     <lastmod>2018-07-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/mysqldump_desc/</loc>
      <lastmod>2018-07-19</lastmod>
      <changefreq>daily</changefreq>
