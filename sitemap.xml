@@ -2,62 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/aliyun_ressh/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/阿里云报REMOTE_HOST_HAS_CHANGE解决/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/celery版本问题处理/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/mysqldump命令参数详解/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/mysqldump_desc/</loc>
-     <lastmod>2018-07-19</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/about/</loc>
-     <lastmod>2018-07-19</lastmod>
+     <loc>/关于我/</loc>
+     <lastmod>2018-07-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
