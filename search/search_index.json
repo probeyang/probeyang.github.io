@@ -77,7 +77,7 @@
         },
         {
             "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/",
-            "text": "\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20\n\n\n\u6211\u6709\u4e2a\u5143\u7956\u7c7b\u4f3c\uff1a[('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)],\u6211\u73b0\u5728\u60f3\u901a\u8fc7\u540e\u9762\u7684\u6570\u503c\u5bf9\u5143\u7956\u8fdb\u884c\u6392\u5e8f\u540e\uff0c\u53ea\u53d6\u7701\u7684\u540d\u79f0\u4f5c\u4e3a\u4e00\u4e2alist\u5217\u8868\u3002\n\n\n\u600e\u4e48\u89e3\u51b3\u5462\uff1f\n\n\n\u65b9\u6cd5\u4e00\uff1a\n\n\nitem_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x[0] for x in item_data]\n\n\n\n\n\u65b9\u6cd5\u4e8c\uff1a\n\n\nitem_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x for x,_ in item_data]\n\n\n\n\n\u53c2\u8003\u6587\u732e\uff1a\n\n\n\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20",
+            "text": "\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20\n\n\n\u95ee\u9898\uff1a\n\n\n\u6211\u6709\u4e2a\u5143\u7956\u7c7b\u4f3c\uff1a[('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)],\u6211\u73b0\u5728\u60f3\u901a\u8fc7\u540e\u9762\u7684\u6570\u503c\u5bf9\u5143\u7956\u8fdb\u884c\u6392\u5e8f\u540e\uff0c\u53ea\u53d6\u7701\u7684\u540d\u79f0\u4f5c\u4e3a\u4e00\u4e2alist\u5217\u8868\u3002\n\u600e\u4e48\u89e3\u51b3\u5462\uff1f\n\n\n\u65b9\u6cd5\u4e00\uff1a\n\n\nitem_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x[0] for x in item_data]\n\n\n\n\n\u65b9\u6cd5\u4e8c\uff1a\n\n\nitem_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x for x,_ in item_data]\n\n\n\n\n\u53c2\u8003\u6587\u732e\uff1a\n\n\n\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20",
             "title": "\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20"
         },
         {
@@ -86,22 +86,22 @@
             "title": "\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20"
         },
         {
-            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#4-1-8-3list",
-            "text": "\u600e\u4e48\u89e3\u51b3\u5462\uff1f",
-            "title": "\u6211\u6709\u4e2a\u5143\u7956\u7c7b\u4f3c\uff1a[('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)],\u6211\u73b0\u5728\u60f3\u901a\u8fc7\u540e\u9762\u7684\u6570\u503c\u5bf9\u5143\u7956\u8fdb\u884c\u6392\u5e8f\u540e\uff0c\u53ea\u53d6\u7701\u7684\u540d\u79f0\u4f5c\u4e3a\u4e00\u4e2alist\u5217\u8868\u3002"
+            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_1",
+            "text": "\u6211\u6709\u4e2a\u5143\u7956\u7c7b\u4f3c\uff1a[('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)],\u6211\u73b0\u5728\u60f3\u901a\u8fc7\u540e\u9762\u7684\u6570\u503c\u5bf9\u5143\u7956\u8fdb\u884c\u6392\u5e8f\u540e\uff0c\u53ea\u53d6\u7701\u7684\u540d\u79f0\u4f5c\u4e3a\u4e00\u4e2alist\u5217\u8868\u3002\n\u600e\u4e48\u89e3\u51b3\u5462\uff1f",
+            "title": "\u95ee\u9898\uff1a"
         },
         {
-            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_1",
+            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_2",
             "text": "item_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x[0] for x in item_data]",
             "title": "\u65b9\u6cd5\u4e00\uff1a"
         },
         {
-            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_2",
+            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_3",
             "text": "item_data = [('\u5e7f\u4e1c',4),('\u5317\u4eac', 1), ('\u798f\u5efa', 8), ('\u56db\u5ddd', 3)]\nitem_data = sorted(item_data.items(), key=lambda item:item[1])\nsorted_item = [x for x,_ in item_data]",
             "title": "\u65b9\u6cd5\u4e8c\uff1a"
         },
         {
-            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_3",
+            "location": "/python\u83b7\u53d6\u6bcf\u4e2a\u5143\u7956\u7684\u7b2c\u4e00\u4e2a\u503c/#_4",
             "text": "\u83b7\u53d6Python\u4e2d\u6bcf\u4e2a\u5143\u7ec4\u7684\u7b2c\u4e00\u4e2a\u5143\u7d20",
             "title": "\u53c2\u8003\u6587\u732e\uff1a"
         },
