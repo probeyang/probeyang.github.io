@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/阿里云报REMOTE_HOST_HAS_CHANGE解决/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/HeadlessChrome入门/</loc>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/celery版本问题处理/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/python获取每个元祖的第一个值/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/mysqldump命令参数详解/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/关于我/</loc>
-     <lastmod>2018-07-28</lastmod>
+     <lastmod>2018-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
