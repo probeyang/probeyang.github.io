@@ -488,26 +488,25 @@
 <h2 id="_2">使用方法</h2>
 <p>开启无需显示headless模式最简单的方法是从命令行打开 Chrome 二进制文件。如果你已经安装了 Chrome 59 以上的版本，请使用 --headless 标志启动 Chrome：</p>
 <p>chrome \
---headless \                   # Runs Chrome in headless mode.
---disable-gpu \                # Temporarily needed for now.
+--headless                    # Runs Chrome in headless mode.
+--disable-gpu                 # Temporarily needed for now.
 --remote-debugging-port=9222 \
- https://www.sanlt.com   # URL to open. Defaults to about:blank.</p>
+ <a href="https://www.sanlt.com">https://www.sanlt.com</a>   # URL to open. Defaults to about:blank.</p>
 <p>解释：
 1. --headless 就是开启 headless 模式。
 2. --remote-debugging-port=9222 这是开启 Chrome 的端口是 9222，这样子 Chrome 就类似于微服务一样啦。
 3. --disable-gpu 不使用 gpu，既然是在后端运行的 Chrome 当然不需要 gpu 啦。
-最后的网址写自己需要调试的地址即可，我这里是我的博客地址：https://www.sanlt.com。
-随意打开一个浏览器，输入 http://localhost:9222 可以得到如下的效果。</p>
+最后的网址写自己需要调试的地址即可，我这里是我的博客地址：<a href="https://www.sanlt.com">https://www.sanlt.com</a>。
+随意打开一个浏览器，输入 <a href="http://localhost:9222">http://localhost:9222</a> 可以得到如下的效果。</p>
 <blockquote>
 <p>注意：目前你仍然需要使用 --disable-gpu 标志。但它最终会不需要的。
 chrome 二进制文件应该指向你安装 Chrome 的位置。确切的位置会因平台差异而不同。当前我在 Mac 上操作，所以我为安装的每个版本的 Chrome 都创建了方便使用的别名。</p>
 </blockquote>
-<p>如果您使用 Chrome 的稳定版，并且无法获得测试版，我建议您使用 chrome-canary 版本：</p>
-<pre><code>alias chrome=&quot;/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome&quot;
+<p>如果您使用 Chrome 的稳定版，并且无法获得测试版，我建议您使用 chrome-canary 版本：
+<div class="highlight"><pre><span></span>alias chrome=&quot;/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome&quot;
 alias chrome-canary=&quot;/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary&quot;
 alias chromium=&quot;/Applications/Chromium.app/Contents/MacOS/Chromium&quot;
-</code></pre>
-
+</pre></div></p>
 <p>更多内容参考文献：
 <a href="https://zhuanlan.zhihu.com/p/26526871">Headless Chrome 踩坑之旅</a>
 <a href="https://zhuanlan.zhihu.com/p/29207391">Headless Chrome 入门</a></p>

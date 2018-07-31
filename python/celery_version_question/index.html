@@ -474,7 +474,7 @@
                   <h1>celery版本问题处理</h1>
                 
                 <h2 id="celery">Celery启动的时候报这样的错误：</h2>
-<pre><code>Traceback (most recent call last):
+<div class="highlight"><pre><span></span>Traceback (most recent call last):
 File &quot;/usr/local/bin/celery&quot;, line 11, in 
 sys.exit(main())
 File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main
@@ -504,19 +504,18 @@ self._conninfo.transport.implements.async and
 File &quot;/usr/local/lib/python3.5/site-packages/kombu/transport/base.py&quot;, line 125, in getattr
 raise AttributeError(key)
 AttributeError: async
-</code></pre>
+</pre></div>
 
 <h2 id="celery410requirementtxtcelery">查了资料说是因为Celery版本4.1.0的问题，默认情况下我们只在项目的requirement.txt文件中设置了Celery的版本：</h2>
-<pre><code>celery==4.1.0
-</code></pre>
+<div class="highlight"><pre><span></span>celery==4.1.0
+</pre></div>
 
 <p>而没有设置Celery的依赖包的版本：
  kombu
-所以pip会自动获取kombu的最新版本 kombu 4.2.0。然而这个版本和Celery的4.1.0有兼容问题，就要报上面的错误，所以我们需要按照网上文献中说的讲kombu的版本：</p>
-<pre><code>kombu 4.1.0
-</code></pre>
-
-<p>这样问题就解决了。
+所以pip会自动获取kombu的最新版本 kombu 4.2.0。然而这个版本和Celery的4.1.0有兼容问题，就要报上面的错误，所以我们需要按照网上文献中说的讲kombu的版本：
+<div class="highlight"><pre><span></span>kombu 4.1.0
+</pre></div>
+这样问题就解决了。
 另外，一般Celery的key不存在的问题只需要重启Celery就可以解决的。</p>
 <h2 id="_1">文中所说的参考的文献是：</h2>
 <p><a href="https://github.com/celery/celery/issues/4321">Celery 问题</a></p>
