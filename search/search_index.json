@@ -132,7 +132,7 @@
         },
         {
             "location": "/python/list_uniqio_and_sort/",
-            "text": "list\u4e2d\u6570\u636e\u53bb\u91cd\u5e76\u4fdd\u7559\u987a\u5e8f\n\n\nlist\u53bb\u91cd\u6700\u7b80\u5355\u7684\u65b9\u5f0f\u662f\u4f7f\u7528set\u65b9\u6cd5\u518d\u7528list\u65b9\u6cd5\u8fd4\u56de\n\n\ndata_list = list(set(data_list))\n\n\n\n\nlist\u53bb\u91cd\u8fd8\u4fdd\u7559\u987a\u5e8f\u7684\u505a\u6cd5\n\n\ndef get_uniqio_list_data(value_list):\n    data_list = list(set(value_list))\n    data_list.sort(key=value_list.index)\n    return data_list",
+            "text": "list\u4e2d\u6570\u636e\u53bb\u91cd\u5e76\u4fdd\u7559\u987a\u5e8f\n\n\nlist\u53bb\u91cd\u6700\u7b80\u5355\u7684\u65b9\u5f0f\u662f\u4f7f\u7528set\u65b9\u6cd5\u518d\u7528list\u65b9\u6cd5\u8fd4\u56de\n\n\ndata_list\n \n=\n \nlist\n(\nset\n(\ndata_list\n))\n\n\n\n\n\nlist\u53bb\u91cd\u8fd8\u4fdd\u7559\u987a\u5e8f\u7684\u505a\u6cd5\n\n\ndef\n \nget_uniqio_list_data\n(\nvalue_list\n):\n\n    \ndata_list\n \n=\n \nlist\n(\nset\n(\nvalue_list\n))\n\n    \ndata_list\n.\nsort\n(\nkey\n=\nvalue_list\n.\nindex\n)\n\n    \nreturn\n \ndata_list",
             "title": "list\u53bb\u91cd\u5e76\u4fdd\u7559\u539f\u987a\u5e8f"
         },
         {
@@ -142,12 +142,12 @@
         },
         {
             "location": "/python/list_uniqio_and_sort/#listsetlist",
-            "text": "data_list = list(set(data_list))",
+            "text": "data_list   =   list ( set ( data_list ))",
             "title": "list\u53bb\u91cd\u6700\u7b80\u5355\u7684\u65b9\u5f0f\u662f\u4f7f\u7528set\u65b9\u6cd5\u518d\u7528list\u65b9\u6cd5\u8fd4\u56de"
         },
         {
             "location": "/python/list_uniqio_and_sort/#list_1",
-            "text": "def get_uniqio_list_data(value_list):\n    data_list = list(set(value_list))\n    data_list.sort(key=value_list.index)\n    return data_list",
+            "text": "def   get_uniqio_list_data ( value_list ): \n     data_list   =   list ( set ( value_list )) \n     data_list . sort ( key = value_list . index ) \n     return   data_list",
             "title": "list\u53bb\u91cd\u8fd8\u4fdd\u7559\u987a\u5e8f\u7684\u505a\u6cd5"
         },
         {
