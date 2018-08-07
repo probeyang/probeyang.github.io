@@ -31,6 +31,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/python/ordereddict_use_notice/</loc>
+     <lastmod>2018-08-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/mysql/mysqldump_usage/</loc>
      <lastmod>2018-08-07</lastmod>
      <changefreq>daily</changefreq>
