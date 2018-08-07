@@ -552,28 +552,34 @@
 </div>
 <h3 id="_2">问题描述</h3>
 <p>但是千万不可使用下面的方式，否则你会发现很诡异的排序失败问题,这段代码执行多次返回的结果是不确定的：</p>
-<p>```Python tab1=
-import collections</p>
-<p>dim_value_dict = collections.OrderedDict({
-    'col2': [
-        '上海市',
-        '上海市',
-        '四川省',
-        '广东省',
-    ],
-    'col3': [
-        '上海市',
-        '上海市',
-        '成都市',
-        '深圳市',
-    ]
-})
-<div class="highlight"><pre><span></span>```Python tab1=
-/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5 /Users/probeyang/study/python/test/test6.py
-OrderedDict([(&#39;col2&#39;, [&#39;上海市&#39;, &#39;上海市&#39;, &#39;四川省&#39;, &#39;广东省&#39;]), (&#39;col3&#39;, [&#39;上海市&#39;, &#39;上海市&#39;, &#39;成都市&#39;, &#39;深圳市&#39;])])
-/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5 /Users/probeyang/study/python/test/test6.py
-OrderedDict([(&#39;col3&#39;, [&#39;上海市&#39;, &#39;上海市&#39;, &#39;成都市&#39;, &#39;深圳市&#39;]), (&#39;col2&#39;, [&#39;上海市&#39;, &#39;上海市&#39;, &#39;四川省&#39;, &#39;广东省&#39;])])
-</pre></div></p>
+<div class="superfences-tabs">
+<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
+<label for="__tab_2_0">Python</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">dim_value_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">({</span>
+    <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;上海市&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;上海市&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;四川省&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;广东省&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;上海市&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;上海市&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;成都市&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;深圳市&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+</pre></div></div>
+<input name="__tabs_2" type="radio" id="__tab_2_1" />
+<label for="__tab_2_1">Python</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.5</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">probeyang</span><span class="o">/</span><span class="n">study</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test6</span><span class="o">.</span><span class="n">py</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;col2&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;四川省&#39;</span><span class="p">,</span> <span class="s1">&#39;广东省&#39;</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;col3&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;成都市&#39;</span><span class="p">,</span> <span class="s1">&#39;深圳市&#39;</span><span class="p">])])</span>
+<span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.5</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">probeyang</span><span class="o">/</span><span class="n">study</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">test6</span><span class="o">.</span><span class="n">py</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;col3&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;成都市&#39;</span><span class="p">,</span> <span class="s1">&#39;深圳市&#39;</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;col2&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;上海市&#39;</span><span class="p">,</span> <span class="s1">&#39;四川省&#39;</span><span class="p">,</span> <span class="s1">&#39;广东省&#39;</span><span class="p">])])</span>
+</pre></div></div>
+</div>
 <p>所以特别注意，一定不能使用声明和赋值同时进行的方式对OrderedDict进行实例化，正因为OrderedDict在这样的实例化时不报错所以很容易误导开发者以为声明的是OrderedDict的有序dict，其实它还是个无序的，并不是有序dict。</p>
 <h3 id="_3">问题延伸</h3>
 <details class="note" open="open"><summary>python3.6自身dict已经是有序dict</summary></details><p>在python3.6开始python的dict就已经是有序的了，上面的问题也就不再困扰大家。但python开发的过程中问题多坑多的情况还是比较多的，像字符编码，版本问题，扩展的版本问题，扩展依赖之间版本的兼容问题等等都是python开发者心头的隐隐的痛。</p>
