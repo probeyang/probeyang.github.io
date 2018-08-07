@@ -498,46 +498,46 @@
                   <h1>celery版本问题处理</h1>
                 
                 <h2 id="celery">Celery启动的时候报这样的错误：</h2>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-File &quot;/usr/local/bin/celery&quot;, line 11, in 
-sys.exit(main())
-File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main
-_main()
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 322, in main
-cmd.execute_from_commandline(argv)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 484, in execute_from_commandline
-super(CeleryCommand, self).execute_from_commandline(argv)))
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 275, in execute_from_commandline
-return self.handle_argv(self.prog_name, argv[1:])
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 476, in handle_argv
-return self.execute(command, argv)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 408, in execute
-).run_from_argv(self.prog_name, argv[1:], command=argv[0])
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;, line 223, in run_from_argv
-return self(*args, **options)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 238, in call
-ret = self.run(*args, **kwargs)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;, line 257, in run
-**kwargs)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 101, in init
-self.setup_instance(**self.prepare_args(**kwargs))
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 124, in setup_instance
-self.should_use_eventloop() if use_eventloop is None
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 243, in should_use_eventloop
+<div class="highlight"><pre><span></span>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+File <span class="s2">&quot;/usr/local/bin/celery&quot;</span>, line <span class="m">11</span>, in 
+sys.exit<span class="o">(</span>main<span class="o">())</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;</span>, line <span class="m">16</span>, in main
+_main<span class="o">()</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;</span>, line <span class="m">322</span>, in main
+cmd.execute_from_commandline<span class="o">(</span>argv<span class="o">)</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;</span>, line <span class="m">484</span>, in execute_from_commandline
+super<span class="o">(</span>CeleryCommand, self<span class="o">)</span>.execute_from_commandline<span class="o">(</span>argv<span class="o">)))</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;</span>, line <span class="m">275</span>, in execute_from_commandline
+<span class="k">return</span> self.handle_argv<span class="o">(</span>self.prog_name, argv<span class="o">[</span><span class="m">1</span>:<span class="o">])</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;</span>, line <span class="m">476</span>, in handle_argv
+<span class="k">return</span> self.execute<span class="o">(</span>command, argv<span class="o">)</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;</span>, line <span class="m">408</span>, in execute
+<span class="o">)</span>.run_from_argv<span class="o">(</span>self.prog_name, argv<span class="o">[</span><span class="m">1</span>:<span class="o">]</span>, <span class="nv">command</span><span class="o">=</span>argv<span class="o">[</span><span class="m">0</span><span class="o">])</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;</span>, line <span class="m">223</span>, in run_from_argv
+<span class="k">return</span> self<span class="o">(</span>*args, **options<span class="o">)</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;</span>, line <span class="m">238</span>, in call
+<span class="nv">ret</span> <span class="o">=</span> self.run<span class="o">(</span>*args, **kwargs<span class="o">)</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;</span>, line <span class="m">257</span>, in run
+**kwargs<span class="o">)</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;</span>, line <span class="m">101</span>, in init
+self.setup_instance<span class="o">(</span>**self.prepare_args<span class="o">(</span>**kwargs<span class="o">))</span>
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;</span>, line <span class="m">124</span>, in setup_instance
+self.should_use_eventloop<span class="o">()</span> <span class="k">if</span> use_eventloop is None
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;</span>, line <span class="m">243</span>, in should_use_eventloop
 self._conninfo.transport.implements.async and
-File &quot;/usr/local/lib/python3.5/site-packages/kombu/transport/base.py&quot;, line 125, in getattr
-raise AttributeError(key)
+File <span class="s2">&quot;/usr/local/lib/python3.5/site-packages/kombu/transport/base.py&quot;</span>, line <span class="m">125</span>, in getattr
+raise AttributeError<span class="o">(</span>key<span class="o">)</span>
 AttributeError: async
 </pre></div>
 
 <h2 id="celery410requirementtxtcelery">查了资料说是因为Celery版本4.1.0的问题，默认情况下我们只在项目的requirement.txt文件中设置了Celery的版本：</h2>
-<div class="highlight"><pre><span></span>celery==4.1.0
+<div class="highlight"><pre><span></span><span class="nv">celery</span><span class="o">==</span><span class="m">4</span>.1.0
 </pre></div>
 
 <p>而没有设置Celery的依赖包的版本：
  kombu
 所以pip会自动获取kombu的最新版本 kombu 4.2.0。然而这个版本和Celery的4.1.0有兼容问题，就要报上面的错误，所以我们需要按照网上文献中说的讲kombu的版本：
-<div class="highlight"><pre><span></span>kombu 4.1.0
+<div class="highlight"><pre><span></span>kombu <span class="m">4</span>.1.0
 </pre></div>
 这样问题就解决了。
 另外，一般Celery的key不存在的问题只需要重启Celery就可以解决的。</p>

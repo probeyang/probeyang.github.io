@@ -520,15 +520,15 @@
 <p>我有个元祖类似：[('广东',4),('北京', 1), ('福建', 8), ('四川', 3)],我现在想通过后面的数值对元祖进行排序后，只取省的名称作为一个list列表。
 怎么解决呢？</p>
 <h2 id="_2">方法一：</h2>
-<div class="highlight"><pre><span></span>item_data = [(&#39;广东&#39;,4),(&#39;北京&#39;, 1), (&#39;福建&#39;, 8), (&#39;四川&#39;, 3)]
-item_data = sorted(item_data.items(), key=lambda item:item[1])
-sorted_item = [x[0] for x in item_data]
+<div class="highlight"><pre><span></span><span class="n">item_data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;广东&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;福建&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;四川&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">item_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">item_data</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sorted_item</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">item_data</span><span class="p">]</span>
 </pre></div>
 
 <h2 id="_3">方法二：</h2>
-<div class="highlight"><pre><span></span>item_data = [(&#39;广东&#39;,4),(&#39;北京&#39;, 1), (&#39;福建&#39;, 8), (&#39;四川&#39;, 3)]
-item_data = sorted(item_data.items(), key=lambda item:item[1])
-sorted_item = [x for x,_ in item_data]
+<div class="highlight"><pre><span></span><span class="n">item_data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;广东&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;福建&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;四川&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">item_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">item_data</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sorted_item</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">item_data</span><span class="p">]</span>
 </pre></div>
 
 <h2 id="_4">参考文献：</h2>
