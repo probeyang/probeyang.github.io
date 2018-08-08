@@ -710,7 +710,7 @@ virtualbox（虛擬集群中節點時需要）
 boot2docker v1.8.0（在虛擬節點中起docker環境時需要）</p>
 <h2 id="_3">環境搭建</h2>
 <p>節點規劃如下：</p>
-<p>![节点示意图](quiver-image-url/DD73DDA7CE250B87F722B6D815BBC197.jpg =617x381)</p>
+<p>![节点示意图](../img/DD73DDA7CE250B87F722B6D815BBC197.jpg =617x381)</p>
 <p>我們需要4個節點（1個master + 3個slave），由於沒有真實地4臺物理機，所以下文中是靠docker-machine、virtualbox以及boot2docker來虛擬出4個獨立IP地址的帶docker環境的節點，大家註意！</p>
 <h2 id="_4">環境安裝：</h2>
 <h3 id="docker">Docker環境安裝：</h3>
@@ -839,13 +839,13 @@ slave3           -        virtualbox   Running   tcp://192.168.99.103:2376      
 <span class="s2">Docker version 17.07.0-ce, build 8784753</span>
 <span class="s2">docker@master:~</span>$<span class="s2"> exit</span>
 </pre></div>
-![IMAGE](quiver-image-url/F83F435A0603C92B335A9057F7A4493C.jpg =671x272)</p>
+![IMAGE](../img/F83F435A0603C92B335A9057F7A4493C.jpg =671x272)</p>
 <h3 id="masterdocker-swarm">在master上初始化一個docker swarm集群</h3>
 <p>執行命令：
 <div class="highlight"><pre><span></span>docker swarm init --advertise-addr <span class="m">192</span>.168.99.100
 </pre></div>
 效果如下：
-![IMAGE](quiver-image-url/1DCA4A58864A0DF813238538066E0FD8.jpg =996x536)</p>
+![IMAGE](../img/1DCA4A58864A0DF813238538066E0FD8.jpg =996x536)</p>
 <p>上述命令執行成功後，提示中會告知用戶在slave節點上執行命令 docker swarm join --token SWMTKN-1-1uzft9zcrd5cl7eva4gr4ptgrs1gc252483ey19xfphcuxc8ta-evsmmj7b7kleh7yoezjutzuu2 192.168.99.100:2377
 可以加入到該集群中，把命令都告訴你了，你說智不智能！</p>
 <h3 id="3slave">將3個slave節點加入集群</h3>
@@ -854,7 +854,7 @@ slave3           -        virtualbox   Running   tcp://192.168.99.103:2376      
 </pre></div>
 
 <p>執行效果如下：
-![IMAGE](quiver-image-url/ADA2D3BCB56873CF7F94F6D9F18F18F3.jpg =1405x831)</p>
+![IMAGE](../img/ADA2D3BCB56873CF7F94F6D9F18F18F3.jpg =1405x831)</p>
 <p><code>註意：如果忘了docker swarm join 命令中的token命令的話，可以使用命令docker swarm join-token worker來get之</code></p>
 <p>好，到此為止應該說docker swarm集群的搭建工作已經完成了，那下面在這個集群上做點實際的任務吧！</p>
 <h1 id="docker-swarm_2">第二部分 docker swarm集群服务创建</h1>
@@ -867,23 +867,23 @@ slave3           -        virtualbox   Running   tcp://192.168.99.103:2376      
 <div class="highlight"><pre><span></span>docker service ls
 docker service ps mynginx
 </pre></div></p>
-<p>![IMAGE](quiver-image-url/7C3F2F493EDEB2EBCDC3AE4208788CEB.jpg =1086x145)</p>
+<p>![IMAGE](../img/7C3F2F493EDEB2EBCDC3AE4208788CEB.jpg =1086x145)</p>
 <p>此处有两点需要注意：</p>
 <ol>
 <li>我们使用了registry.docker-cn.com/library/nginx作为加速镜像，不然可能在slave上pull镜像的时候timeout</li>
 <li>此处创建了service之后并不是nginx容器立马都在slave上起起来了，是需要等一段时间的（如，我等了近6分钟），因为在slave上还要去pull nginx镜像，再启动nginx容器等，没有那么快
 等待若干分钟以后，我们再看效果，发现此时任务顺利地分发到slave1和slave2上了：</li>
 </ol>
-<p>![IMAGE](quiver-image-url/B43BEF4B860B183557C1413698ED543A.jpg =1317x235)</p>
+<p>![IMAGE](../img/B43BEF4B860B183557C1413698ED543A.jpg =1317x235)</p>
 <p>分别用浏览器访问：
 <a href="http://192.168.99.101:8080和http://192.168.99.102:8080">http://192.168.99.101:8080和http://192.168.99.102:8080</a> ，会得到如下结果：
-![IMAGE](quiver-image-url/378CE78A6FBA115E4BB2D1A4E06C4947.jpg =1052x315)
-![IMAGE](quiver-image-url/071EBCEE80639E84A2A02CDAE8F3A664.jpg =819x316)</p>
+![IMAGE](../img/378CE78A6FBA115E4BB2D1A4E06C4947.jpg =1052x315)
+![IMAGE](../img/071EBCEE80639E84A2A02CDAE8F3A664.jpg =819x316)</p>
 <p>成功访问到了slave节点中起起来的nginx服务！
 此时分别去slave1 和slave2 上查看容器运行情况，结果如下：
-![IMAGE](quiver-image-url/043D72541BBA7580A897D6A61F3E4CD2.jpg =1334x67)
-![IMAGE](quiver-image-url/95DC9BFDC227534B0CCD851487BA3412.jpg =1317x54)
-![IMAGE](quiver-image-url/D96BA56034A4FA206A7171C590912258.jpg =992x54)</p>
+![IMAGE](../img/043D72541BBA7580A897D6A61F3E4CD2.jpg =1334x67)
+![IMAGE](../img/95DC9BFDC227534B0CCD851487BA3412.jpg =1317x54)
+![IMAGE](../img/D96BA56034A4FA206A7171C590912258.jpg =992x54)</p>
 <h1 id="service">第三部分 扩容service任务</h1>
 <p>我们想将nginx容器平滑地扩容到3份，在master上执行：
 <div class="highlight"><pre><span></span>docker service scale <span class="nv">mynginx</span><span class="o">=</span><span class="m">3</span>
@@ -895,27 +895,27 @@ Since --detach<span class="o">=</span><span class="nb">false</span> was not spec
 In a future release, --detach<span class="o">=</span><span class="nb">false</span> will become the default.
 </pre></div>
 
-<p>![IMAGE](quiver-image-url/6449F345B146E0A0B569CDAD0C98170E.jpg =1298x215)</p>
+<p>![IMAGE](../img/6449F345B146E0A0B569CDAD0C98170E.jpg =1298x215)</p>
 <p>等若干分钟后在master上再次查看service，发现slave3上的nginx容器任务成功启动了：</p>
-<p>![IMAGE](quiver-image-url/F3A7E3A804709DC94CBA4912B0441DBF.jpg =1336x217)</p>
+<p>![IMAGE](../img/F3A7E3A804709DC94CBA4912B0441DBF.jpg =1336x217)</p>
 <p>去slave3节点上docker ps看一下，发现容器确实启动了：
-![IMAGE](quiver-image-url/4640FC1400D98BD1412F32D9569EEAEA.jpg =1335x55)</p>
+![IMAGE](../img/4640FC1400D98BD1412F32D9569EEAEA.jpg =1335x55)</p>
 <h1 id="service_1">第四部分 集群中service高可用</h1>
 <p>目前有3个运行的nginx容器保证服务的可用性，如果其中一个容器意外关闭将会是什么情况？接下来就来模拟。
 我们关闭slave1上此时正在运行着的nginx容器，看服务有什么变化：
-![IMAGE](quiver-image-url/5790D9CD2D132E8C4CB7BB4DD0929808.jpg =1323x89)</p>
+![IMAGE](../img/5790D9CD2D132E8C4CB7BB4DD0929808.jpg =1323x89)</p>
 <p>我们可以去master节点上查看信息发现，被关掉的nginx这次还在slave1上重启了一个新的service（id不一样）了：
-![IMAGE](quiver-image-url/AC6AF4A9B8CC44E74A359B5532893023.jpg =1313x56)
-![IMAGE](quiver-image-url/63C6D5219162975594A019097A6332DF.jpg =1311x157)</p>
+![IMAGE](../img/AC6AF4A9B8CC44E74A359B5532893023.jpg =1313x56)
+![IMAGE](../img/63C6D5219162975594A019097A6332DF.jpg =1311x157)</p>
 <p>接下来我们来将slave3宕机（宕机和前文的关闭nginx容器不同，此处模仿的是物理宕机），我们在控制台中使用docker-machine stop来模拟宕机动作：
 新开一个terminal，然后执行命令：
 <div class="highlight"><pre><span></span><span class="o">[</span>proeyang@bogon flask_gunicorn_demo <span class="o">]</span>$ docker-machine stop slave3
 Stopping <span class="s2">&quot;slave3&quot;</span>...
 Machine <span class="s2">&quot;slave3&quot;</span> was stopped.
 </pre></div></p>
-<p>![IMAGE](quiver-image-url/57FF5FC20525077D6FFF119B37B7AF62.jpg =528x53)</p>
+<p>![IMAGE](../img/57FF5FC20525077D6FFF119B37B7AF62.jpg =528x53)</p>
 <p>此时去master上查看service信息发现slave3宕机以后，nginx任务又重启与slave2上来保持高可用：
-![IMAGE](quiver-image-url/9CB1664D39C7D61F11764B3A292206CD.jpg =1315x144)</p>
+![IMAGE](../img/9CB1664D39C7D61F11764B3A292206CD.jpg =1315x144)</p>
 <p>最后来把狠的，我们将slave1，slave2，slave3全部从集群中断开：
 <div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon flask_gunicorn_demo <span class="o">]</span>$ docker-machine stop slave2
 Stopping <span class="s2">&quot;slave2&quot;</span>...
@@ -924,14 +924,14 @@ Machine <span class="s2">&quot;slave2&quot;</span> was stopped.
 Stopping <span class="s2">&quot;slave1&quot;</span>...
 Machine <span class="s2">&quot;slave1&quot;</span> was stopped.
 </pre></div></p>
-<p>![IMAGE](quiver-image-url/040A9C1EECCF3D496D1FC13A74654420.jpg =1472x173)</p>
+<p>![IMAGE](../img/040A9C1EECCF3D496D1FC13A74654420.jpg =1472x173)</p>
 <p>结果去master上查看service信息，发现3个容器副本全部迁移到master之上了：
 此时在master上执行docker ps查看容器信息如下：运行着3个nginx容器：
-![IMAGE](quiver-image-url/15B62D9E13FA1F044D053E7C30BFE85C.jpg =1345x93)
+![IMAGE](../img/15B62D9E13FA1F044D053E7C30BFE85C.jpg =1345x93)
 可见，master上面启动了三个nginx的容器副本。
 总而言之，无论怎么操作集群都能保持制定数量的容器副本来实现高可用！
 下面是master上面的操作截图：
-![IMAGE](quiver-image-url/899B217CC1E4210BF4380744B186F424.jpg =1365x892)</p>
+![IMAGE](../img/899B217CC1E4210BF4380744B186F424.jpg =1365x892)</p>
 <p>参考文献：
 <a href="http://www.itread01.com/content/1519793891.html">Docker Swarm集群初探</a></p>
                 
