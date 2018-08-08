@@ -546,9 +546,7 @@
                 
                 
                 <h1 id="docker-swarm">第二部分 docker swarm集群服务创建</h1>
-<details class="note" open="open"><summary>docker swarm 基础系列文章</summary><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo/">系列之一：集群搭建</a>
-<a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo1/">系列之二：服务创建与扩容</a>
-<a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo2/">系列之三：集群服务高可用</a></p></details><h2 id="master">開始在master節點上創建服務</h2>
+<details class="note" open="open"><summary>docker swarm 基础系列文章</summary><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo/">系列之一：集群搭建</a></p><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo1/">系列之二：服务创建与扩容</a></p><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo2/">系列之三：集群服务高可用</a></p></details><h2 id="master">開始在master節點上創建服務</h2>
 <p>我們計劃在該docker集群上部署高可用的nginx容器任務來作為演示：
 在master節點上執行如下命令來創建名為mynginx的service，讓其有2份nginx容器副本分配到集群中去，起在8080端口：</p>
 <div class="highlight"><pre><span></span>docker service create --replicas <span class="m">2</span> -d -p <span class="m">8080</span>:80 --name mynginx registry.docker-cn.com/library/nginx

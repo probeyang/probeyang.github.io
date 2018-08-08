@@ -501,9 +501,7 @@
                 
                 
                 <h1 id="service">第四部分 集群中service高可用</h1>
-<details class="note" open="open"><summary>docker swarm 基础系列文章</summary><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo/">系列之一：集群搭建</a>
-<a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo1/">系列之二：服务创建与扩容</a>
-<a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo2/">系列之三：集群服务高可用</a></p></details><p>目前有3个运行的nginx容器保证服务的可用性，如果其中一个容器意外关闭将会是什么情况？接下来就来模拟。
+<details class="note" open="open"><summary>docker swarm 基础系列文章</summary><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo/">系列之一：集群搭建</a></p><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo1/">系列之二：服务创建与扩容</a></p><p><a href="https://www.sanlt.com/docker/docker_swarm_cluster_demo2/">系列之三：集群服务高可用</a></p></details><p>目前有3个运行的nginx容器保证服务的可用性，如果其中一个容器意外关闭将会是什么情况？接下来就来模拟。
 我们关闭slave1上此时正在运行着的nginx容器，看服务有什么变化：</p>
 <p><img alt="IMAGE" src="../../img/5790D9CD2D132E8C4CB7BB4DD0929808.jpg" title="演示图" /></p>
 <p>我们可以去master节点上查看信息发现，被关掉的nginx这次还在slave1上重启了一个新的service（id不一样）了：</p>
