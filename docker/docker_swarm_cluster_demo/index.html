@@ -1,0 +1,1042 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Python,PHP,MySQL,Docker,软件工程,人工智能,机器学习,深度学习,TensorFlow等知识">
+      
+      
+      
+        <meta name="author" content="probe">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="en, jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.4, mkdocs-material-2.9.1">
+    
+    
+      
+        <title>docker-swarm集群服务试玩 - Sanlt,就是加了N多盐的地方</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.ba0fd1a6.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#docker-swarm" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Sanlt,就是加了N多盐的地方" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Sanlt,就是加了N多盐的地方
+              </span>
+              <span class="md-header-nav__topic">
+                docker-swarm集群服务试玩
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Sanlt,就是加了N多盐的地方
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/aliyun_REMOTE_HOST_HAS_CHANGE_deal/" title="阿里云REMOTE_HOST_HAS_CHANGE" class="md-nav__link">
+      阿里云REMOTE_HOST_HAS_CHANGE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/headless_chrome_desc/" title="HeadlessChrome入门" class="md-nav__link">
+      HeadlessChrome入门
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/celery_version_question/" title="celery版本问题处理" class="md-nav__link">
+      celery版本问题处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/dict_first_item/" title="python获取每个元祖的第一个值" class="md-nav__link">
+      python获取每个元祖的第一个值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/list_uniqio_and_sort/" title="list去重并保留原顺序" class="md-nav__link">
+      list去重并保留原顺序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python/ordereddict_use_notice/" title="OrderDict使用问题" class="md-nav__link">
+      OrderDict使用问题
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      MySQL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        MySQL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mysql/mysqldump_usage/" title="mysqldump命令参数详解" class="md-nav__link">
+      mysqldump命令参数详解
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Docker
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Docker
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        docker-swarm集群服务试玩
+      </label>
+    
+    <a href="./" title="docker-swarm集群服务试玩" class="md-nav__link md-nav__link--active">
+      docker-swarm集群服务试玩
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="前言" class="md-nav__link">
+    前言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="環境準備" class="md-nav__link">
+    環境準備
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="環境搭建" class="md-nav__link">
+    環境搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="環境安裝：" class="md-nav__link">
+    環境安裝：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" title="Docker環境安裝：" class="md-nav__link">
+    Docker環境安裝：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" title="virtualbox安裝" class="md-nav__link">
+    virtualbox安裝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot2docker" title="boot2docker安裝" class="md-nav__link">
+    boot2docker安裝
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-swarm_1" title="Docker Swarm集群實驗" class="md-nav__link">
+    Docker Swarm集群實驗
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41master-3slave" title="先創建4個虛擬節點（1個master + 3個slave）" class="md-nav__link">
+    先創建4個虛擬節點（1個master + 3個slave）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" title="ssh接入到虚拟节点" class="md-nav__link">
+    ssh接入到虚拟节点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masterdocker-swarm" title="在master上初始化一個docker swarm集群" class="md-nav__link">
+    在master上初始化一個docker swarm集群
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3slave" title="將3個slave節點加入集群" class="md-nav__link">
+    將3個slave節點加入集群
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      关于
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        关于
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/me/" title="关于我" class="md-nav__link">
+      关于我
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/normal_style/" title="常见样式选择" class="md-nav__link">
+      常见样式选择
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="前言" class="md-nav__link">
+    前言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="環境準備" class="md-nav__link">
+    環境準備
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="環境搭建" class="md-nav__link">
+    環境搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="環境安裝：" class="md-nav__link">
+    環境安裝：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" title="Docker環境安裝：" class="md-nav__link">
+    Docker環境安裝：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" title="virtualbox安裝" class="md-nav__link">
+    virtualbox安裝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot2docker" title="boot2docker安裝" class="md-nav__link">
+    boot2docker安裝
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-swarm_1" title="Docker Swarm集群實驗" class="md-nav__link">
+    Docker Swarm集群實驗
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41master-3slave" title="先創建4個虛擬節點（1個master + 3個slave）" class="md-nav__link">
+    先創建4個虛擬節點（1個master + 3個slave）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" title="ssh接入到虚拟节点" class="md-nav__link">
+    ssh接入到虚拟节点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masterdocker-swarm" title="在master上初始化一個docker swarm集群" class="md-nav__link">
+    在master上初始化一個docker swarm集群
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3slave" title="將3個slave節點加入集群" class="md-nav__link">
+    將3個slave節點加入集群
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="docker-swarm">第一部分 docker swarm集群搭建</h1>
+<h2 id="_1">前言</h2>
+<p>相信Docker技術大家都有所了解，單個Docker能發揮的作用畢竟有限，也不便於管理，所以Docker得組集群來使用才能發揮強大的技術優勢。既然要組集群那就涉及諸如Docker的資源調度、管理等等一系列問題。目前涉及Docker集群的三個主要的技術無外乎Swarm、Kubernetes、Mesos三種。從本文開始作者將會一一實踐這幾種主要的Docker集群技術，話不多說，現在開始。</p>
+<p>註意：作者的kubernetes相關實踐在此</p>
+<h2 id="_2">環境準備</h2>
+<p>Mac OS X 10.13.2
+Docker 17.09.1-ce-mac42 (21090)
+virtualbox（虛擬集群中節點時需要）
+boot2docker v1.8.0（在虛擬節點中起docker環境時需要）</p>
+<h2 id="_3">環境搭建</h2>
+<p>節點規劃如下：</p>
+<p>![节点示意图](quiver-image-url/DD73DDA7CE250B87F722B6D815BBC197.jpg =617x381)</p>
+<p>我們需要4個節點（1個master + 3個slave），由於沒有真實地4臺物理機，所以下文中是靠docker-machine、virtualbox以及boot2docker來虛擬出4個獨立IP地址的帶docker環境的節點，大家註意！</p>
+<h2 id="_4">環境安裝：</h2>
+<h3 id="docker">Docker環境安裝：</h3>
+<p><code>Tips： 以前Mac上一般是使用boot2docker這個專門為OS X上運行 Docker 而開發的一個輕量級的虛擬主機管理工具來安裝docker，現在boot2docker這種安裝方式官方已經deprecated 了（當然下文中還是需要boot2docker.iso的鏡像來幫助我們在虛擬的節點上起docker環境），可以直接下載docker的dmg安裝包雙擊進行安裝即可</code>
+下载的boot2docker.iso文件放到~/.docker/machine/cache目录下面（拷贝）：
+<div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon ~ <span class="o">]</span>$ <span class="nb">cd</span>  ~/.docker/machine/cache
+<span class="o">[</span>probeyang@bogon cache <span class="o">]</span>$ ls
+boot2docker.iso
+</pre></div></p>
+<p>我們選擇docker CE版安裝即可，下載鏈接如下：
+<a href="https://store.docker.com/search?type=edition&amp;offering=community">https://store.docker.com/search?type=edition&amp;offering=community</a></p>
+<p><code>註意：選擇官方docker dmg包安裝完成以後，docker-machine已經天然地集成於其中了，該工具在下文中創建虛擬節點時需要，它是一個可以在虛擬主機節點上安裝docker engine的工具</code></p>
+<h3 id="virtualbox">virtualbox安裝</h3>
+<p><code>由於我們搭建集群需要具備多個不同IP地址的節點，然而我們手上僅一臺電腦，所以需要借助virtualbox來虛擬出多個不同IP地址的節點供我們使用需要</code></p>
+<p>去官方下載virtualbox的dmg安裝包，雙擊安裝即可：
+<a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
+<h3 id="boot2docker">boot2docker安裝</h3>
+<p>Boot2Docker是一個專為Docker而設計的輕量級Linux發型包，解決Windows或者OS X用戶不能安裝Docker的問題。Boot2Docker完全運行於內存中，體積小，啟動快。Boot2Docker需要運行在VirtualBox中。
+我使用的是brew這個mac上的包管理器安裝的，非常方便，只需一行命令：
+<div class="highlight"><pre><span></span>brew install boot2docker
+</pre></div></p>
+<p>除此之外我們還需要下載boot2docker.iso鏡像在後文中進行使用：
+<a href="https://github.com/boot2docker/boot2docker/releases/tag/v17.07.0-ce">https://github.com/boot2docker/boot2docker/releases/tag/v17.07.0-ce</a>
+我們先把boot2docker.iso下好後面備用</p>
+<h2 id="docker-swarm_1">Docker Swarm集群實驗</h2>
+<h3 id="41master-3slave">先創建4個虛擬節點（1個master + 3個slave）</h3>
+<p>首先要將之前下載的boot2docker.iso放到/Users/你的用戶名/.docker/machine/cache/目錄下，然後執行如下命令：
+<div class="highlight"><pre><span></span>docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso master
+docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso slave1
+docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso slave2
+docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso slave3
+</pre></div></p>
+<p>docker-machine create命令运行结果类似如下：
+<div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon swarm <span class="o">]</span>$ docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso master
+Running pre-create checks...
+<span class="o">(</span>master<span class="o">)</span> Boot2Docker URL was explicitly <span class="nb">set</span> to <span class="s2">&quot;/Users/probeyang/.docker/machine/cache/boot2docker.iso&quot;</span> at create time, so Docker Machine cannot upgrade this machine to the latest version.
+Creating machine...
+<span class="o">(</span>master<span class="o">)</span> Boot2Docker URL was explicitly <span class="nb">set</span> to <span class="s2">&quot;/Users/probeyang/.docker/machine/cache/boot2docker.iso&quot;</span> at create time, so Docker Machine cannot upgrade this machine to the latest version.
+<span class="o">(</span>master<span class="o">)</span> Downloading /Users/probeyang/.docker/machine/cache/boot2docker.iso from /Users/probeyang/.docker/machine/cache/boot2docker.iso...
+<span class="o">(</span>master<span class="o">)</span> Creating VirtualBox VM...
+<span class="o">(</span>master<span class="o">)</span> Creating SSH key...
+<span class="o">(</span>master<span class="o">)</span> Starting the VM...
+<span class="o">(</span>master<span class="o">)</span> Check network to re-create <span class="k">if</span> needed...
+<span class="o">(</span>master<span class="o">)</span> Waiting <span class="k">for</span> an IP...
+Waiting <span class="k">for</span> machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting <span class="k">for</span> SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the <span class="nb">local</span> machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env master
+<span class="o">[</span>probeyang@bogon swarm <span class="o">]</span>$ docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso slave1
+Running pre-create checks...
+<span class="o">(</span>slave1<span class="o">)</span> Boot2Docker URL was explicitly <span class="nb">set</span> to <span class="s2">&quot;/Users/probeyang/.docker/machine/cache/boot2docker.iso&quot;</span> at create time, so Docker Machine cannot upgrade this machine to the latest version.
+Creating machine...
+<span class="o">(</span>slave1<span class="o">)</span> Boot2Docker URL was explicitly <span class="nb">set</span> to <span class="s2">&quot;/Users/probeyang/.docker/machine/cache/boot2docker.iso&quot;</span> at create time, so Docker Machine cannot upgrade this machine to the latest version.
+<span class="o">(</span>slave1<span class="o">)</span> Downloading /Users/probeyang/.docker/machine/cache/boot2docker.iso from /Users/probeyang/.docker/machine/cache/boot2docker.iso...
+<span class="o">(</span>slave1<span class="o">)</span> Creating VirtualBox VM...
+<span class="o">(</span>slave1<span class="o">)</span> Creating SSH key...
+<span class="o">(</span>slave1<span class="o">)</span> Starting the VM...
+<span class="o">(</span>slave1<span class="o">)</span> Check network to re-create <span class="k">if</span> needed...
+<span class="o">(</span>slave1<span class="o">)</span> Waiting <span class="k">for</span> an IP...
+Waiting <span class="k">for</span> machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting <span class="k">for</span> SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the <span class="nb">local</span> machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env slave1
+</pre></div></p>
+<p><code>註意：上面若不指定boot2docker的路徑：--virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso，直接執行docker-machine create master創建節點時，可能會報No default Boot2Docker ISO found locally, downloading the latest release...這種錯誤！所以最好自己指定boot2docker.iso鏡像路徑</code></p>
+<p>創建完4個節點以後，可以用docker-machine ls命令查看一下各個節點的情況，可以看到自動為其分配了獨立的IP地址：
+<div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon swarm <span class="o">]</span>$ docker-machine ls
+NAME             ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+consul-machine   -        virtualbox   Stopped                                       Unknown
+master           -        virtualbox   Running   tcp://192.168.99.100:2376           v17.07.0-ce
+slave1           -        virtualbox   Running   tcp://192.168.99.101:2376           v17.07.0-ce
+slave2           -        virtualbox   Running   tcp://192.168.99.102:2376           v17.07.0-ce
+slave3           -        virtualbox   Running   tcp://192.168.99.103:2376           v17.07.0-ce
+</pre></div>
+可以看到，我们创建了1个master，3个slave的虚拟机，docker为其各自分配了不同的IP地址。</p>
+<h3 id="ssh">ssh接入到虚拟节点</h3>
+<p>分别开启4个独立的terminal终端，分别执行：</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Bash</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>docker-machine ssh master
+</pre></div></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">Bash</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>docker-machine ssh slave1
+</pre></div></div>
+<input name="__tabs_1" type="radio" id="__tab_1_2" />
+<label for="__tab_1_2">Bash</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>docker-machine ssh slave2
+</pre></div></div>
+<input name="__tabs_1" type="radio" id="__tab_1_3" />
+<label for="__tab_1_3">Bash</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>docker-machine ssh slave3
+</pre></div></div>
+</div>
+<p>执行效果如下：</p>
+<p><div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon swarm <span class="o">]</span>$ docker-machine ssh master
+                        <span class="c1">##         .</span>
+                  <span class="c1">## ## ##        ==</span>
+               <span class="c1">## ## ## ## ##    ===</span>
+           /<span class="s2">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;\___/ ===</span>
+<span class="s2">      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~</span>
+<span class="s2">           \______ o           __/</span>
+<span class="s2">             \    \         __/</span>
+<span class="s2">              \____\_______/</span>
+<span class="s2"> _                 _   ____     _            _</span>
+<span class="s2">| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __</span>
+<span class="s2">| &#39;_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ &#39;__|</span>
+<span class="s2">| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   &lt;  __/ |</span>
+<span class="s2">|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|</span>
+<span class="s2">Boot2Docker version 17.07.0-ce, build HEAD : 24e9d2f - Wed Aug 30 00:04:56 UTC 2017</span>
+<span class="s2">Docker version 17.07.0-ce, build 8784753</span>
+<span class="s2">docker@master:~</span>$<span class="s2"> exit</span>
+</pre></div>
+![IMAGE](quiver-image-url/F83F435A0603C92B335A9057F7A4493C.jpg =671x272)</p>
+<h3 id="masterdocker-swarm">在master上初始化一個docker swarm集群</h3>
+<p>執行命令：
+<div class="highlight"><pre><span></span>docker swarm init --advertise-addr <span class="m">192</span>.168.99.100
+</pre></div>
+效果如下：
+![IMAGE](quiver-image-url/1DCA4A58864A0DF813238538066E0FD8.jpg =996x536)</p>
+<p>上述命令執行成功後，提示中會告知用戶在slave節點上執行命令 docker swarm join --token SWMTKN-1-1uzft9zcrd5cl7eva4gr4ptgrs1gc252483ey19xfphcuxc8ta-evsmmj7b7kleh7yoezjutzuu2 192.168.99.100:2377
+可以加入到該集群中，把命令都告訴你了，你說智不智能！</p>
+<h3 id="3slave">將3個slave節點加入集群</h3>
+<p>分別去三個slave上，輸入上面提示中的命令：</p>
+<div class="highlight"><pre><span></span>docker swarm join --token SWMTKN-1-1uzft9zcrd5cl7eva4gr4ptgrs1gc252483ey19xfphcuxc8ta-evsmmj7b7kleh7yoezjutzuu2 <span class="m">192</span>.168.99.100:2377
+</pre></div>
+
+<p>執行效果如下：
+![IMAGE](quiver-image-url/ADA2D3BCB56873CF7F94F6D9F18F18F3.jpg =1405x831)</p>
+<p><code>註意：如果忘了docker swarm join 命令中的token命令的話，可以使用命令docker swarm join-token worker來get之</code></p>
+<p>好，到此為止應該說docker swarm集群的搭建工作已經完成了，那下面在這個集群上做點實際的任務吧！</p>
+<h1 id="docker-swarm_2">第二部分 docker swarm集群服务创建</h1>
+<h2 id="master">開始在master節點上創建服務</h2>
+<p>我們計劃在該docker集群上部署高可用的nginx容器任務來作為演示：
+在master節點上執行如下命令來創建名為mynginx的service，讓其有2份nginx容器副本分配到集群中去，起在8080端口：
+<div class="highlight"><pre><span></span>docker service create --replicas <span class="m">2</span> -d -p <span class="m">8080</span>:80 --name mynginx registry.docker-cn.com/library/nginx
+</pre></div></p>
+<p>然後使用如下兩條命令查看效果：
+<div class="highlight"><pre><span></span>docker service ls
+docker service ps mynginx
+</pre></div></p>
+<p>![IMAGE](quiver-image-url/7C3F2F493EDEB2EBCDC3AE4208788CEB.jpg =1086x145)</p>
+<p>此处有两点需要注意：</p>
+<ol>
+<li>我们使用了registry.docker-cn.com/library/nginx作为加速镜像，不然可能在slave上pull镜像的时候timeout</li>
+<li>此处创建了service之后并不是nginx容器立马都在slave上起起来了，是需要等一段时间的（如，我等了近6分钟），因为在slave上还要去pull nginx镜像，再启动nginx容器等，没有那么快
+等待若干分钟以后，我们再看效果，发现此时任务顺利地分发到slave1和slave2上了：</li>
+</ol>
+<p>![IMAGE](quiver-image-url/B43BEF4B860B183557C1413698ED543A.jpg =1317x235)</p>
+<p>分别用浏览器访问：
+<a href="http://192.168.99.101:8080和http://192.168.99.102:8080">http://192.168.99.101:8080和http://192.168.99.102:8080</a> ，会得到如下结果：
+![IMAGE](quiver-image-url/378CE78A6FBA115E4BB2D1A4E06C4947.jpg =1052x315)
+![IMAGE](quiver-image-url/071EBCEE80639E84A2A02CDAE8F3A664.jpg =819x316)</p>
+<p>成功访问到了slave节点中起起来的nginx服务！
+此时分别去slave1 和slave2 上查看容器运行情况，结果如下：
+![IMAGE](quiver-image-url/043D72541BBA7580A897D6A61F3E4CD2.jpg =1334x67)
+![IMAGE](quiver-image-url/95DC9BFDC227534B0CCD851487BA3412.jpg =1317x54)
+![IMAGE](quiver-image-url/D96BA56034A4FA206A7171C590912258.jpg =992x54)</p>
+<h1 id="service">第三部分 扩容service任务</h1>
+<p>我们想将nginx容器平滑地扩容到3份，在master上执行：
+<div class="highlight"><pre><span></span>docker service scale <span class="nv">mynginx</span><span class="o">=</span><span class="m">3</span>
+</pre></div></p>
+<p>然后在master上查看service，发现新增的一个容器任务分配到slave3上了，当然此时slave3上正在preparing：</p>
+<div class="highlight"><pre><span></span>docker@master:~$ docker service scale <span class="nv">mynginx</span><span class="o">=</span><span class="m">3</span>
+mynginx scaled to <span class="m">3</span>
+Since --detach<span class="o">=</span><span class="nb">false</span> was not specified, tasks will be scaled in the background.
+In a future release, --detach<span class="o">=</span><span class="nb">false</span> will become the default.
+</pre></div>
+
+<p>![IMAGE](quiver-image-url/6449F345B146E0A0B569CDAD0C98170E.jpg =1298x215)</p>
+<p>等若干分钟后在master上再次查看service，发现slave3上的nginx容器任务成功启动了：</p>
+<p>![IMAGE](quiver-image-url/F3A7E3A804709DC94CBA4912B0441DBF.jpg =1336x217)</p>
+<p>去slave3节点上docker ps看一下，发现容器确实启动了：
+![IMAGE](quiver-image-url/4640FC1400D98BD1412F32D9569EEAEA.jpg =1335x55)</p>
+<h1 id="service_1">第四部分 集群中service高可用</h1>
+<p>目前有3个运行的nginx容器保证服务的可用性，如果其中一个容器意外关闭将会是什么情况？接下来就来模拟。
+我们关闭slave1上此时正在运行着的nginx容器，看服务有什么变化：
+![IMAGE](quiver-image-url/5790D9CD2D132E8C4CB7BB4DD0929808.jpg =1323x89)</p>
+<p>我们可以去master节点上查看信息发现，被关掉的nginx这次还在slave1上重启了一个新的service（id不一样）了：
+![IMAGE](quiver-image-url/AC6AF4A9B8CC44E74A359B5532893023.jpg =1313x56)
+![IMAGE](quiver-image-url/63C6D5219162975594A019097A6332DF.jpg =1311x157)</p>
+<p>接下来我们来将slave3宕机（宕机和前文的关闭nginx容器不同，此处模仿的是物理宕机），我们在控制台中使用docker-machine stop来模拟宕机动作：
+新开一个terminal，然后执行命令：
+<div class="highlight"><pre><span></span><span class="o">[</span>proeyang@bogon flask_gunicorn_demo <span class="o">]</span>$ docker-machine stop slave3
+Stopping <span class="s2">&quot;slave3&quot;</span>...
+Machine <span class="s2">&quot;slave3&quot;</span> was stopped.
+</pre></div></p>
+<p>![IMAGE](quiver-image-url/57FF5FC20525077D6FFF119B37B7AF62.jpg =528x53)</p>
+<p>此时去master上查看service信息发现slave3宕机以后，nginx任务又重启与slave2上来保持高可用：
+![IMAGE](quiver-image-url/9CB1664D39C7D61F11764B3A292206CD.jpg =1315x144)</p>
+<p>最后来把狠的，我们将slave1，slave2，slave3全部从集群中断开：
+<div class="highlight"><pre><span></span><span class="o">[</span>probeyang@bogon flask_gunicorn_demo <span class="o">]</span>$ docker-machine stop slave2
+Stopping <span class="s2">&quot;slave2&quot;</span>...
+Machine <span class="s2">&quot;slave2&quot;</span> was stopped.
+<span class="o">[</span>probeyang@bogon flask_gunicorn_demo <span class="o">]</span>$ docker-machine stop slave1
+Stopping <span class="s2">&quot;slave1&quot;</span>...
+Machine <span class="s2">&quot;slave1&quot;</span> was stopped.
+</pre></div></p>
+<p>![IMAGE](quiver-image-url/040A9C1EECCF3D496D1FC13A74654420.jpg =1472x173)</p>
+<p>结果去master上查看service信息，发现3个容器副本全部迁移到master之上了：
+此时在master上执行docker ps查看容器信息如下：运行着3个nginx容器：
+![IMAGE](quiver-image-url/15B62D9E13FA1F044D053E7C30BFE85C.jpg =1345x93)
+可见，master上面启动了三个nginx的容器副本。
+总而言之，无论怎么操作集群都能保持制定数量的容器副本来实现高可用！
+下面是master上面的操作截图：
+![IMAGE](quiver-image-url/899B217CC1E4210BF4380744B186F424.jpg =1365x892)</p>
+<p>参考文献：
+<a href="http://www.itread01.com/content/1519793891.html">Docker Swarm集群初探</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../mysql/mysqldump_usage/" title="mysqldump命令参数详解" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                mysqldump命令参数详解
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../about/me/" title="关于我" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                关于我
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; <a href="https://www.sanlt.com/">sanlt.com</a> All Rights Reserved.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.a59e2a89.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+            <script src="../../assets/javascripts/lunr/lunr.multi.js"></script>
+          
+        
+      
+      <script>app.initialize({version:"0.17.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
