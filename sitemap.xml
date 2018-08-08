@@ -46,6 +46,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/docker/docker_swarm_cluster_demo1/</loc>
+     <lastmod>2018-08-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/docker/docker_swarm_cluster_demo2/</loc>
+     <lastmod>2018-08-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/about/me/</loc>
      <lastmod>2018-08-08</lastmod>
      <changefreq>daily</changefreq>
