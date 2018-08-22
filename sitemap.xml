@@ -71,6 +71,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/tool/vscode_plantuml_usage/</loc>
+     <lastmod>2018-08-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/about/me/</loc>
      <lastmod>2018-08-22</lastmod>
      <changefreq>daily</changefreq>
