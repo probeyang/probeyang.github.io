@@ -40,7 +40,7 @@
     
     
       
-        <title>简单工厂模式 - Sanlt,就是加了N多盐的地方</title>
+        <title>三种工厂模式详解 - Sanlt,就是加了N多盐的地方</title>
       
     
     
@@ -120,7 +120,7 @@
                 Sanlt,就是加了N多盐的地方
               </span>
               <span class="md-header-nav__topic">
-                简单工厂模式
+                三种工厂模式详解
               </span>
             
           
@@ -386,11 +386,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        简单工厂模式
+        三种工厂模式详解
       </label>
     
-    <a href="./" title="简单工厂模式" class="md-nav__link md-nav__link--active">
-      简单工厂模式
+    <a href="./" title="三种工厂模式详解" class="md-nav__link md-nav__link--active">
+      三种工厂模式详解
     </a>
     
       
@@ -404,8 +404,77 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" title="简单工厂模式" class="md-nav__link">
+  <a href="#_2" title="工厂模式三种类型" class="md-nav__link">
+    工厂模式三种类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="简单工厂模式" class="md-nav__link">
     简单工厂模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="工厂方法" class="md-nav__link">
+    工厂方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="抽象工厂" class="md-nav__link">
+    抽象工厂
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="小结" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="区别：" class="md-nav__link">
+    区别：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="简单工厂模式" class="md-nav__link">
+    简单工厂模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="工厂方法模式" class="md-nav__link">
+    工厂方法模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="抽象工厂模式" class="md-nav__link">
+    抽象工厂模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="参考文献：" class="md-nav__link">
+    参考文献：
   </a>
   
 </li>
@@ -656,8 +725,77 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" title="简单工厂模式" class="md-nav__link">
+  <a href="#_2" title="工厂模式三种类型" class="md-nav__link">
+    工厂模式三种类型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="简单工厂模式" class="md-nav__link">
     简单工厂模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="工厂方法" class="md-nav__link">
+    工厂方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="抽象工厂" class="md-nav__link">
+    抽象工厂
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="小结" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="区别：" class="md-nav__link">
+    区别：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="简单工厂模式" class="md-nav__link">
+    简单工厂模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="工厂方法模式" class="md-nav__link">
+    工厂方法模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="抽象工厂模式" class="md-nav__link">
+    抽象工厂模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="参考文献：" class="md-nav__link">
+    参考文献：
   </a>
   
 </li>
@@ -680,7 +818,63 @@
                 
                 
                 <h1 id="_1">工厂模式</h1>
-<h2 id="_2">简单工厂模式</h2>
+<h2 id="_2">工厂模式三种类型</h2>
+<h3 id="_3">简单工厂模式</h3>
+<p>简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。
+不修改代码的话，是无法扩展的。</p>
+<p><img alt="图例" src="../../img/9F3C11005474BAB5B1D10433753D31C0.jpg" title="图例" /></p>
+<p>上面的图入口处画的我感觉有问题，还是看《head first设计模式》书中的图：</p>
+<p><img alt="图例" src="../../img/43BF168D737907F189739E5B089D590B.jpg" title="图例" /></p>
+<h3 id="_4">工厂方法</h3>
+<p>工厂方法使用继承，把对象的创建委托给子类，子类通过实现工厂方法来创建对象。
+工厂方法是针对每一种产品提供一个工厂类。通过不同的工厂实例来创建不同的产品实例。
+在同一等级结构中，支持增加任意产品。</p>
+<p><img alt="图例" src="../../img/6C649096D48A34AF12BC3838D5A7106C.jpg" title="图例" /></p>
+<p>《head first设计模式》书中的图：</p>
+<p><img alt="图例" src="../../img/E0FA8A53F17286BC63F296EDC03369D7.jpg" title="图例" /></p>
+<p><strong>其实工厂方法模式只不过是通过子类来创建对象而已。</strong></p>
+<h3 id="_5">抽象工厂</h3>
+<p>抽象工厂使用对象组合，对象的创建被实现在工厂接口所暴露出来的方法中。
+抽象工厂是应对产品族概念的。比如说，每个汽车公司可能要同时生产轿车，货车，客车，那么每一个工厂都要有创建轿车，货车和客车的方法。
+应对产品族概念而生，增加新的产品线很容易，但是无法增加新的产品。<em>抽象工厂的另一个优点是可以把一群**有关系**的产品组合起来</em>。</p>
+<p><img alt="图例" src="../../img/8467268AA440CA7352562A897D204CD4.jpg" title="图例" /></p>
+<h3 id="_6">小结</h3>
+<p>★工厂模式中，重要的是工厂类，而不是产品类。产品类可以是多种形式，多层继承或者是单个类都是可以的。但要明确的，工厂模式的接口只会返回一种类型的实例，这是在设计产品类的时候需要注意的，最好是有父类或者共同实现的接口。
+★使用工厂模式，返回的实例一定是工厂创建的，而不是从其他对象中获取的。
+★工厂模式返回的实例可以不是新创建的，返回由工厂创建好的实例也是可以的。</p>
+<h3 id="_7">区别：</h3>
+<ul>
+<li>
+<p>简单工厂和工厂方法的区别
+<strong>工厂方法就是比简单工厂模式多了一层对工厂类的继承，通过在工厂类的父类中将真正实例化类的方法做成抽象方法（不实现业务逻辑），假设重新方法名（创建产品实例的方法）为createProduct()，然后在工厂类的子类中实现此抽象方法createProduct().差别就在这里。这样的工厂方法比简单工厂灵活在工厂方法可以有多个子类来继承并实现这个工厂方法，像《head first设计模式》中举例的一样，一个披萨店开了纽约披萨加盟店和加州披萨加盟店，纽约的披萨需要纽约的风味，加州的要加州的风味，如果是这样的话简单工厂其实很难满足需求，而工厂方法可以在提供纽约工厂类和加州工厂类（都继承自工厂父类），这样就能在纽约工厂类中实现createProduct（）时去实例化纽约风味的披萨类，加州的工厂类实现createProduct（）时实例化加州风味的披萨类。</strong></p>
+</li>
+<li>
+<p>工厂方法与抽象工厂的区别</p>
+</li>
+<li>
+<p>工厂方法通过继承来负责创建对象，而抽象工厂通过组合创建对象。</p>
+</li>
+<li>
+<p>抽象工程关键在于产品之间的抽象关系，所以至少要两个产品；工厂方法在于生成产品，不关注产品间的关系，所以可以只生成一个产品。</p>
+</li>
+<li>
+<p>抽象工厂中客户端把产品的抽象关系理清楚，在最终使用的时候，一般使用客户端（和其接口），产品之间的关系是被封装固定的；而工厂方法是在最终使用的时候，使用产品本身（和其接口）。</p>
+</li>
+<li>
+<p>抽象工厂的工厂是类；工厂方法的工厂是方法。</p>
+</li>
+</ul>
+<p>抽象工厂的工厂类就做一件事情生产产品。生产的产品给客户端使用，绝不给自己用。
+工厂方法生产产品，可以给系统用，可以给客户端用，也可以自己这个类使用。自己这个类除了这个工厂方法外，还能有其他功能性的方法</p>
+<ul>
+<li>简单工厂 用来生产同一等级结构中的任意产品。（对于增加新的产品，无能为力）</li>
+<li>工厂方法 用来生产同一等级结构中的固定产品。（支持增加任意产品）   </li>
+<li>抽象工厂 用来生产不同产品族的全部产品。（对于增加新的产品，无能为力；支持增加产品族） </li>
+</ul>
+<p>其中抽象工厂比较难理解，它和工厂方法的区别也比较难理解，下面的图或许能起到作用：</p>
+<p><img alt="图例" src="../../img/3E812558508E84B5C2378DA7481FF143.jpg" title="图例" /></p>
+<p>这个图来自《head first设计模式》，然而这个图其实也没有画的太好，我感觉应该在抽象工厂中加上pizza的那块工厂方法可能理解更好。</p>
+<h2 id="_8">简单工厂模式</h2>
 <p>简单工厂模式其实可以按照《head first设计模式》中讲的，将其理解为一个函数，然后这个函数里面需要使用if判断出具体实例化类，继而将if判断抽离出来做成一个工厂类中的一个方法，这样能做到工厂类可被复用。按照书中所说，简单工厂严格讲不属于设计模式，只是一种代码规范。
 演进过程如下, 最开始未使用设计模式时是这样的：</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CheesePizza</span><span class="p">():</span>
@@ -793,6 +987,8 @@
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;lily ordered a &quot;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
+<h2 id="_9">工厂方法模式</h2>
+<p>相比简单工厂，此工厂模式更灵活，通过将简单工厂中的工厂类做成抽象类，然后重点把实例化产品的工厂方法做成抽象的方法，再加入多个工厂子类来实现实例化产品的的工厂方法，这样能灵活应对多种不同需求的实例化类需求。</p>
 <p>示例代码如下：</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
@@ -932,6 +1128,209 @@
     <span class="n">pizza</span> <span class="o">=</span> <span class="n">ny_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;clam&#39;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;lily ordered a &#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; pizza&#39;</span><span class="p">)</span>
 </pre></div>
+
+<h2 id="_10">抽象工厂模式</h2>
+<p>抽象工厂模式提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</p>
+<p><img alt="图例" src="../../img/FA6306C018847FF87FB509D1EFABA5CE.jpg" title="图例" /></p>
+<p><img alt="图例" src="../../img/7692570A4CF19086B246B3119A256759.jpg" title="图例" /></p>
+<p>抽象工厂的任务是创建一个负责创建一组产品的接口。这个接口内的每个方法都负责创建一个具体的产品。</p>
+<p>示例代码：
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FreshClams</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Fresh Clams&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">MarinaraSauce</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Marinara Sauce&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">ThickCrustDough</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Thick Crust Dough&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">ReggianoCheese</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Reggiano Cheese&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">SlicedPepperoni</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Sliced Pepperoni&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Garlic</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Garlic&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Onion</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Onion&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">RedPepper</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Red Pepper&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">PizzaIngredientFactory</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    定义原料工厂</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">NYPizzaIngredientFactory</span><span class="p">(</span><span class="n">PizzaIngredientFactory</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Tossing </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ThickCrustDough</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ThickCrustDough</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">MarinaraSauce</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">MarinaraSauce</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">ReggianoCheese</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ReggianoCheese</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">SlicedPepperoni</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">SlicedPepperoni</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">FreshClams</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">FreshClams</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">veggies</span> <span class="o">=</span> <span class="p">[</span><span class="n">Garlic</span><span class="p">(),</span> <span class="n">Onion</span><span class="p">(),</span> <span class="n">RedPepper</span><span class="p">()]</span>
+        <span class="k">for</span> <span class="n">veggie</span> <span class="ow">in</span> <span class="n">veggies</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;  </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">veggie</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">veggies</span>
+
+
+<span class="k">class</span> <span class="nc">Pizza</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    pizza 工厂</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">dough</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">sauce</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">cheese</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">veggies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pepperoni</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">clam</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ingredient_factory</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span> <span class="o">=</span> <span class="n">ingredient_factory</span>
+
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">bake</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Bake for 25 minutes at 350&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Cutting the pizza into diagonal slices&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Place pizza in official PizzaStore box&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+
+<span class="k">class</span> <span class="nc">NYStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">()</span>
+        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">()</span>
+        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">()</span>
+        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">()</span>
+        <span class="n">veggies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_veggies</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">NYStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">()</span>
+        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">()</span>
+        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">()</span>
+        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">PizzaStore</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    pizza 店工厂</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">ingredient_factory</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
+        <span class="c1"># 每个需要子类实现的方法都会抛出NotImplementedError</span>
+        <span class="c1"># 我们也可以把 PizzaStore 的 metaclass 设置成 abc.ABCMeta</span>
+        <span class="c1"># 这样的话，这个类就是真正的抽象基类</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>  <span class="c1"># 现在把 pizza 的类型传入 order_pizza()</span>
+
+        <span class="n">pizza</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pizza</span><span class="p">(</span><span class="n">pizza_type</span><span class="p">)</span>
+
+        <span class="c1">#  一旦我们有了一个 pizza，需要做一些准备（擀面皮、加佐料），然后烘烤、切片、装盒</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">bake</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">box</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pizza</span>
+
+        <span class="c1"># 下边是其他可能用到的方法</span>
+
+
+<span class="k">class</span> <span class="nc">NYStylePizzStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">):</span>
+    <span class="n">ingredient_factory</span> <span class="o">=</span> <span class="n">NYPizzaIngredientFactory</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
+        <span class="c1"># 根据 pizza 类型，我们实例化正确的具体类，然后将其赋值给 pizza 实例变量</span>
+        <span class="k">if</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s1">&#39;cheese&#39;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleCheesePizza</span><span class="p">(</span><span class="s1">&#39;NY Style Sauce and Cheese Pizza&#39;</span><span class="p">,</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s1">&#39;clam&#39;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleClamPizza</span><span class="p">(</span><span class="s1">&#39;NY Style Clam Pizza&#39;</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pizza</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">nystore</span> <span class="o">=</span> <span class="n">NYStylePizzStore</span><span class="p">()</span>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">nystore</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;goodspeed ordered a </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pizza</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div></p>
+<h2 id="_11">参考文献：</h2>
+<p><a href="http://ichennan.com/2016/08/09/DesignPattern.html">三种工厂模式</a></p>
+<p><a href="https://www.zhihu.com/question/20367734">抽象工厂模式和工厂模式的区别</a></p>
                 
                   
                 
