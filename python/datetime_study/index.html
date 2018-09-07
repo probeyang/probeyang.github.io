@@ -970,29 +970,50 @@
 
 <h2 id="_6">获取当前时间戳</h2>
 <h3 id="_7">当前时间戳</h3>
-<p>```Python tab2=
-import time</p>
-<p>d = time.time()</p>
-<p>print(d)
-<div class="highlight"><pre><span></span>```输出结果 tab2=
-1536330821.832002
-</pre></div></p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Python</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">输出结果</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>1536330821.832002
+</pre></div></div>
+</div>
 <h3 id="10">当前时间戳10位</h3>
-<p>```Python tab3=
-import time</p>
-<p>d = int(time.time())</p>
-<p>print(d)
-<div class="highlight"><pre><span></span>```输出结果 tab3=
-1536330821
-</pre></div></p>
+<div class="superfences-tabs">
+<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
+<label for="__tab_2_0">Python</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div></div>
+<input name="__tabs_2" type="radio" id="__tab_2_1" />
+<label for="__tab_2_1">输出结果</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>1536330821
+</pre></div></div>
+</div>
 <h3 id="13">当前时间戳13位</h3>
-<p>```Python tab4=
-import time</p>
-<p>d = int(round(time. time() * 1000))</p>
-<p>print(d)
-<div class="highlight"><pre><span></span>```输出结果 tab4=
-1536331274726
-</pre></div></p>
+<div class="superfences-tabs">
+<input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
+<label for="__tab_3_0">Python</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span> <span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div></div>
+<input name="__tabs_3" type="radio" id="__tab_3_1" />
+<label for="__tab_3_1">输出结果</label>
+<div class="superfences-content"><div class="highlight"><pre><span></span>1536331274726
+</pre></div></div>
+</div>
 <h3 id="_8">参考文献</h3>
 <p><a href="https://blog.csdn.net/xuezhangjun0121/article/details/78083717">python - 获取时间戳（10位和13位）</a></p>
 <p><a href="http://liyangliang.me/posts/2012/10/python-timestamp-to-timestr/">Python 时间戳和日期相互转换</a></p>
