@@ -56,6 +56,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/python/datetime_study/</loc>
+     <lastmod>2018-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/pattern_design/simple_factory/</loc>
      <lastmod>2018-09-07</lastmod>
      <changefreq>daily</changefreq>
