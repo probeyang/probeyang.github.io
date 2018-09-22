@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/post/</link>
+    <description>Recent content in Posts on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Celery版本错误问题探知</title>
+      <link>https://www.sanlt.com/post/python/celery_version_question/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/celery_version_question/</guid>
+      <description>Celery启动的时候报这样的错误： Traceback (most recent call last): File &amp;quot;/usr/local/bin/celery&amp;quot;, line 11, in sys.exit(main()) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/main.py&amp;quot;, line 16, in main _main() File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 322, in main cmd.execute_from_commandline(argv) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&amp;quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 476, in handle_argv return self.execute(command, argv) File</description>
+    </item>
+    
+    <item>
+      <title>OrderedDict学习探知</title>
+      <link>https://www.sanlt.com/post/python/ordereddict_user_notice/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/ordereddict_user_notice/</guid>
+      <description>正常使用 在使用python的collections中一个OrderedDict来做有序dict处理的时候，我们常使用下面的方式，代码执行多次</description>
+    </item>
+    
+    <item>
+      <title>Python函数加括号与不加括号问题研究</title>
+      <link>https://www.sanlt.com/post/python/func_add_bracket/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/func_add_bracket/</guid>
+      <description>理解函数带括号和不带括号分别代表什么意思: 如果只写一个函数名称myfunc而没有带括号，那么此时的myfunc仅代表一个函数对象；而当你写的</description>
+    </item>
+    
+    <item>
+      <title>UML时序图使用说明</title>
+      <link>https://www.sanlt.com/post/tool/uml_shixu_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/tool/uml_shixu_study/</guid>
+      <description>边界类 边界对象的抽象，通常是用来完成参与者（用户、外部系统）与系统之间交互的对象，例如：From、对话框、菜单、接口等。 图例： 边界类用于描述</description>
+    </item>
+    
+    <item>
+      <title>UML类图使用说明</title>
+      <link>https://www.sanlt.com/post/tool/uml_class_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/tool/uml_class_study/</guid>
+      <description>在UML 2.0的13种图形中，类图是使用频率最高的UML图之一。Martin Fowler在其著作《UML Distilled: A Brief Guide to the Standard Object Modeling Language, Third Edition</description>
+    </item>
+    
+    <item>
+      <title>VS Code添加UML图扩展工具PlantUML说明文档</title>
+      <link>https://www.sanlt.com/post/tool/vscode_plantuml_usage/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/tool/vscode_plantuml_usage/</guid>
+      <description>PlantUml 是什么 PlantUml是一个支持快速绘制的开源项目.它定义了一套完整的语言用于实现UML关系图的描述，并使用强大的graphviz(htt</description>
+    </item>
+    
+    <item>
+      <title>YII2.0中POST请求时返回Bad Request (#400)的解决方法</title>
+      <link>https://www.sanlt.com/post/php/yii_post_400/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/php/yii_post_400/</guid>
+      <description>问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正常</description>
+    </item>
+    
+    <item>
+      <title>list中数据去重并保留顺序</title>
+      <link>https://www.sanlt.com/post/python/list_uniqio_and_sort/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/list_uniqio_and_sort/</guid>
+      <description>list去重最简单的方式是使用set方法再用list方法返回 data_list = list(set(data_list)) list去重还保留顺序的做法 def get_uniqio_list_data(value_list): data_list = list(set(value_list)) data_list.sort(key=value_list.index) return data_list</description>
+    </item>
+    
+    <item>
+      <title>mysqldump命令参数介绍</title>
+      <link>https://www.sanlt.com/post/mysql/mysqldump_usage/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/mysqldump_usage/</guid>
+      <description>使用 注意：mysqldump不用在mysql命令行模式下执行，它是个单独的命令，直接在windows或者linux的命令行模式下执行即可。 &amp;ldquo;&amp;lsquo;mysqldump</description>
+    </item>
+    
+    <item>
+      <title>nonlocal学习探知</title>
+      <link>https://www.sanlt.com/post/python/nonlocal_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/nonlocal_study/</guid>
+      <description>什么是nonlocal（非局部语句） nonlocal是Python 3.x中新引入的特性，可以让你给外层但非全局作用域中的变量赋值。官方文档中</description>
+    </item>
+    
+    <item>
+      <title>pycharm安装black格式化工具</title>
+      <link>https://www.sanlt.com/post/python/black_code_format_tool/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/black_code_format_tool/</guid>
+      <description>注意：black对python3支持的效果不好，现在必须在python3.6以上版本才可以使用black。也正是因为支持效果不好，才有此说明</description>
+    </item>
+    
+    <item>
+      <title>三种工厂模式详解</title>
+      <link>https://www.sanlt.com/post/pattern_design/simple_factory/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/simple_factory/</guid>
+      <description>工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。</description>
+    </item>
+    
+    <item>
+      <title>使用math中的fsum进行数据求和汇总</title>
+      <link>https://www.sanlt.com/post/python/fsum_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/fsum_study/</guid>
+      <description>fsum这个方法可以用于进行可迭代数据的求和或者汇总。避免了还需要些循环语句。但通常情况下在不知道可迭代数据中的每个元素都是int或者flo</description>
+    </item>
+    
+    <item>
+      <title>使用mysqlbinlog查看日志</title>
+      <link>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</guid>
+      <description>mysqlbinlog说明 binlog日志是mysql的所有操作的日志记录，它是一种二进制数据。通过它可以对数据库的误删除、表误更新、数据误</description>
+    </item>
+    
+    <item>
+      <title>日期时间类操作详解</title>
+      <link>https://www.sanlt.com/post/python/datetime_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/datetime_study/</guid>
+      <description>python的日期时间操作相当混杂，一会time库，一会datetime库，网上资料又是杂乱到极点，糟糕的甚，于是我这里整理了一些常用的时间</description>
+    </item>
+    
+    <item>
+      <title>获取Python中每个元组的第一个元素</title>
+      <link>https://www.sanlt.com/post/python/dict_first_item/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/dict_first_item/</guid>
+      <description>问题： 我有个元祖类似：[(&amp;lsquo;广东&amp;rsquo;,4),(&amp;lsquo;北京&amp;rsquo;, 1), (&amp;lsquo;福建&amp;rsquo;,</description>
+    </item>
+    
+    <item>
+      <title>设计模式之单例模式</title>
+      <link>https://www.sanlt.com/post/pattern_design/singleton/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/singleton/</guid>
+      <description>单例模式有两种 延迟方式 急切方式 下面我们详细介绍两种方式。 延迟方式 利用私有的构造器，只有单例类内部才可以调用构造器。 延迟方式的问题在于每次实例</description>
+    </item>
+    
+    <item>
+      <title>设计模式之模板方法模式</title>
+      <link>https://www.sanlt.com/post/pattern_design/template_method/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/template_method/</guid>
+      <description>定义 模板方法模式在一个方法中定义了一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某</description>
+    </item>
+    
+    <item>
+      <title>设计模式之状态模式</title>
+      <link>https://www.sanlt.com/post/pattern_design/state_pattern/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/state_pattern/</guid>
+      <description>定义 状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for Sta</description>
+    </item>
+    
+    <item>
+      <title>设计模式之策略模式</title>
+      <link>https://www.sanlt.com/post/pattern_design/strategy_pattern/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/strategy_pattern/</guid>
+      <description>定义 策略（Strategy）模式定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。 示例 我们用一个实</description>
+    </item>
+    
+    <item>
+      <title>HeadlessChrome说明文档</title>
+      <link>https://www.sanlt.com/post/linux/headless_chrome_desc/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/linux/headless_chrome_desc/</guid>
+      <description>Headless Chrome是什么？ 它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink</description>
+    </item>
+    
+    <item>
+      <title>docker swarm集群搭建系列之一</title>
+      <link>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo/</guid>
+      <description>第一部分 docker swarm集群搭建 ???+ note &amp;ldquo;docker swarm 基础系列文章&amp;rdquo; 系列之一：集群搭建 [系列之二：服务创建与扩容](https://www.san</description>
+    </item>
+    
+    <item>
+      <title>docker swarm集群搭建系列之三</title>
+      <link>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo2/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo2/</guid>
+      <description>第四部分 集群中service高可用 ???+ note &amp;ldquo;docker swarm 基础系列文章&amp;rdquo; 系列之一：集群搭建 [系列之二：服务创建与扩容](https://www.</description>
+    </item>
+    
+    <item>
+      <title>docker swarm集群搭建系列之二</title>
+      <link>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo1/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo1/</guid>
+      <description>第二部分 docker swarm集群服务创建 ???+ note &amp;ldquo;docker swarm 基础系列文章&amp;rdquo; 系列之一：集群搭建 [系列之二：服务创建与扩容](https://www.s</description>
+    </item>
+    
+    <item>
+      <title>阿里云服务器报REMOTE HOST IDENTIFICATION HAS CHANGED错的处理方法</title>
+      <link>https://www.sanlt.com/post/linux/aliyun_remote_host_has_change_deal/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/linux/aliyun_remote_host_has_change_deal/</guid>
+      <description>阿里云服务器登录的时候报类似下面的错误： [ddddd@prdesedeMacBook-Pro ~ ]$ ssh root@126.123.123.119 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the</description>
+    </item>
+    
+  </channel>
+</rss>

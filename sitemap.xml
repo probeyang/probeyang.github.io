@@ -1,143 +1,480 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="https://www.sanlt.com/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-     <loc>/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/linux/aliyun_REMOTE_HOST_HAS_CHANGE_deal/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/linux/headless_chrome_desc/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/php/yii_post_400/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/celery_version_question/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/dict_first_item/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/list_uniqio_and_sort/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/ordereddict_use_notice/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/nonlocal_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/fsum_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/func_add_bracket/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/black_code_format_tool/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/python/datetime_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/pattern_design/strategy_pattern/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/pattern_design/simple_factory/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/pattern_design/singleton/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/pattern_design/template_method/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/pattern_design/state_pattern/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/mysql/mysqldump_usage/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/mysql/mysqlbinlog_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/docker/docker_swarm_cluster_demo/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/docker/docker_swarm_cluster_demo1/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/docker/docker_swarm_cluster_demo2/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/tool/uml_class_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/tool/uml_shixu_study/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/tool/vscode_plantuml_usage/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/about/me/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/about/normal_style/</loc>
-     <lastmod>2018-09-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/about/</loc>
+    <lastmod>2018-09-21T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/celery_version_question/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/ordereddict_user_notice/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/func_add_bracket/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/tool/uml_shixu_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/tool/uml_class_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/tool/vscode_plantuml_usage/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/php/yii_post_400/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/list_uniqio_and_sort/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/mysql/mysqldump_usage/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/nonlocal_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/black_code_format_tool/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/pattern_design/simple_factory/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/fsum_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/datetime_study/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/python/dict_first_item/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/pattern_design/singleton/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/pattern_design/template_method/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/pattern_design/state_pattern/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/pattern_design/strategy_pattern/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/linux/headless_chrome_desc/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo2/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/docker/docker_swarm_cluster_demo1/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/linux/aliyun_remote_host_has_change_deal/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/aliyun/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/black/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/celery/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/chrome/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/datetime/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/dict/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/docker/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/docker/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/fsum/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/headless-chrome/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/linux/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/list/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/math/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/mysql/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/mysql/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/mysqlbinlog/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/mysqldump/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/nonlocal/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/ordereddict/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/php/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/php/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/pattern-design/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/pattern-design/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/pycharm/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/python/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/python/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/</loc>
+    <lastmod>2018-09-21T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/ssh/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/swarm/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/</loc>
+    <lastmod>2018-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/uml/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/vscode/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/yii/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
 </urlset>

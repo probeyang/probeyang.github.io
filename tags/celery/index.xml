@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Celery on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/celery/</link>
+    <description>Recent content in Celery on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/celery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Celery版本错误问题探知</title>
+      <link>https://www.sanlt.com/post/python/celery_version_question/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/celery_version_question/</guid>
+      <description>Celery启动的时候报这样的错误： Traceback (most recent call last): File &amp;quot;/usr/local/bin/celery&amp;quot;, line 11, in sys.exit(main()) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/main.py&amp;quot;, line 16, in main _main() File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 322, in main cmd.execute_from_commandline(argv) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&amp;quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 476, in handle_argv return self.execute(command, argv) File</description>
+    </item>
+    
+  </channel>
+</rss>

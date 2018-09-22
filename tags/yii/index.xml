@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yii on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/yii/</link>
+    <description>Recent content in Yii on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/yii/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>YII2.0中POST请求时返回Bad Request (#400)的解决方法</title>
+      <link>https://www.sanlt.com/post/php/yii_post_400/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/php/yii_post_400/</guid>
+      <description>问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正常</description>
+    </item>
+    
+  </channel>
+</rss>

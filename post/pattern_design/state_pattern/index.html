@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>设计模式之状态模式 - Sanlt,就是加了N多盐的地方</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="probeyang" />
+  <meta name="description" content="定义 状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for Sta" />
+
+  <meta name="keywords" content="python, php, linux, docker, 服务器, WEB站点" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://www.sanlt.com/post/pattern_design/state_pattern/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="设计模式之状态模式" />
+<meta property="og:description" content="定义 状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for Sta" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/pattern_design/state_pattern/" /><meta property="article:published_time" content="2018-09-22T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-22T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="设计模式之状态模式">
+<meta itemprop="description" content="定义 状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for Sta">
+
+
+<meta itemprop="datePublished" content="2018-09-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2861">
+
+
+
+<meta itemprop="keywords" content="pattern design,架构,状态模式," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="设计模式之状态模式"/>
+<meta name="twitter:description" content="定义 状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for Sta"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Sanlt,就是加了N多盐的地方</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Sanlt,就是加了N多盐的地方</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">设计模式之状态模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-22 </span>
+        <div class="post-category">
+            
+              <a href="/categories/pattern-design/"> pattern design </a>
+            
+          </div>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#定义">定义</a>
+<ul>
+<li><a href="#状态模式类图">状态模式类图</a></li>
+<li><a href="#状态模式与策略模式区别">状态模式与策略模式区别</a></li>
+</ul></li>
+<li><a href="#使用方式">使用方式</a></li>
+<li><a href="#状态模式注意点">状态模式注意点</a></li>
+<li><a href="#代码示例">代码示例</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="定义">定义</h2>
+
+<p>状态模式(State Pattern) ：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for States)，状态模式是一种对象行为型模式。</p>
+
+<p>这个模式将状态封装成独立的类，并将动作委托到代表当前状态的对象，这就是说行为会随着内部状态而改变。“看起来好像修改了它的类”是什么意思呢？从客户的视角来看：如果说你使用的对象能够完全改变它的行为，那么你会觉得，这个对象实际上是从别的类实例化而来的。然而实际上，你知道我们是在使用组合通过简单引用不同的状态对象来造成类改变的假象。</p>
+
+<p>每个状态的行为都放在各自的类中。</p>
+
+<h3 id="状态模式类图">状态模式类图</h3>
+
+<p><img src="/img/FCD694E9F03D1F6925744F995A6B0645.jpg" alt="图例" title="图例" /></p>
+
+<h3 id="状态模式与策略模式区别">状态模式与策略模式区别</h3>
+
+<p>状态模式类图与策略模式是一模一样的。区别就在于他们的意图。</p>
+
+<p>状态模式中，我们将一群行为封装在状态对象中，context的行为随时可以委托到那些状态对象中的一个。随着时间的流逝，当前状态在状态对象集合中游走改变，以反映出context内部的状态，因此，context的行为也会跟着改变。但是context的客户对于状态对象了解不多，甚至根本是浑然不觉。</p>
+
+<p>而在策略模式中，客户通常主动指定Context所要组合的策略对象时哪一个。策略模式让我们具有弹性，能够在运行时改变策略，但对于某个context对象来说，通常都只有一个最适当的策略对象。</p>
+
+<p>策略模式是围绕可以互换的算法来创建成功业务的，而状态模式通过改变对象内部的状态来帮助对象控制自己的行为。</p>
+
+<p>一般来说，我们把策略模式想成是除了继承之外的一种弹性替代方案。如果你使用继承定义了一个类的行为，你将被这个行为困住，甚至要修改它都很难。有了策略模式，你可以通过组合不同的对象来改变行为。</p>
+
+<p>我们把状态模式想成是不用在context中放置许多条件判断的替代方案。通过将行为包装进状态对象中，你可以通过在context内简单地改变状态对象来改变context的行为。</p>
+
+<p><img src="/img/B892CCFC48B6B9FD7AEA406BEF1AF6E7.jpg" alt="图例" title="图例" /></p>
+
+<h2 id="使用方式">使用方式</h2>
+
+<p><strong>状态模式使用中，比较重要的一点是要先找出当前业务中的所有状态，然后对每个状态编写类，并对每个状态中的每个操作设置方法。</strong></p>
+
+<p>可以通过画图方式将状态轮转图画出来，也就是状态图：</p>
+
+<p><img src="/img/77160B60D5284F339F1FB53C94434B34.jpg" alt="图例" title="图例" /></p>
+
+<ol>
+<li><p>首先，我们定义一个State接口，在这个接口内，糖果机的每个动作都有一个对应的方法。</p></li>
+
+<li><p>然后为机器中的每个状态实现状态类，这些类将负责在对应的状态下进行机器的行为。</p></li>
+
+<li><p>最后，我们要摆脱旧的条件代码，取而代之的方法是，将动作委托到状态类。现在我们要把一个状态的所有行为放在一个类中，这么一来我们将行为局部化了，并使得事情更容易改变和理解。</p></li>
+</ol>
+
+<p><img src="/img/C59C2D72C3AC961FC6271529D95A5DBF.jpg" alt="图例" title="图例" /></p>
+
+<p>和程序状态机（PSM）不同，状态模式用类代表状态。</p>
+
+<h2 id="状态模式注意点">状态模式注意点</h2>
+
+<ol>
+<li><p>当状态转换是固定的时候，适合放在Context中。当状态动态的时候，通常放在状态类中。放在状态类中的缺点是：状态类之间产生了依赖。</p></li>
+
+<li><p>状态类会产生很多类出来，但是这不重要，真正重要的是你暴露给客户的类数目。</p></li>
+
+<li><p>一个类，一个责任。</p></li>
+</ol>
+
+<h2 id="代码示例">代码示例</h2>
+
+<p>state.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from abc import ABCMeta, abstractmethod
+
+class State(object):
+    metaclass = ABCMeta
+    def __init__(self, gumballMachine):&quot;&quot;&quot;糖果机的引用，将他记录在实例变量中&quot;&quot;&quot;self.gumballMachine = gumballMachine
+    @abstractmethod
+    def insertQuarter(self):&quot;&quot;&quot;投入25分钱的动作&quot;&quot;&quot;pass
+    @abstractmethod
+    def ejectQuarter(self):&quot;&quot;&quot;退回25分钱的动作&quot;&quot;&quot;pass
+    @abstractmethod
+    def turnCrank(self):&quot;&quot;&quot;转动曲柄&quot;&quot;&quot;pass
+    @abstractmethod
+    def dispense(self):&quot;&quot;&quot;发放糖果&quot;&quot;&quot;pass
+</code></pre>
+
+<p>no_quarter_state.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from State import State
+
+class NoQuarterState(State):
+    &quot;&quot;&quot;state: 没有25分钱&quot;&quot;&quot;
+    def __init__(self, gumballMachine):State.__init__(self, gumballMachine)
+    def insertQuarter(self):print &quot;You inserted a quarter&quot;# 投入钱后，状态切换到有钱状态self.gumballMachine.setState(self.gumballMachine.getHasQuarterState())
+    def ejectQuarter(self):
+       print &quot;You haven't inserted a quarter&quot;
+    def turnCrank(self):
+       print &quot;You turned, but there is no quarter&quot;
+    def dispense(self):print &quot;You need to paly first&quot;
+</code></pre>
+
+<p>has_quarter_state.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from State import State
+
+class HasQuarterState(State):
+    &quot;&quot;&quot;state: 有25分钱&quot;&quot;&quot;
+    def __init__(self, gumballMachine):State.__init__(self, gumballMachine)
+    # 这是此状态一个不恰当的动作
+    def insertQuarter(self):print &quot;You can't insert another quarter&quot;
+    def ejectQuarter(self):print &quot;Quarter returned&quot;# 退出钱后，将状态切换到NoQuarterState状态self.gumballMachine.setState(self.gumballMachine.getNoQuarterState())
+    def turnCrank(self):print &quot;You turned....&quot;# 转动后，切换状态为售出糖果状态。self.gumballMachine.setState(self.gumballMachine.getSoldState())
+    # 另一个不恰当的动作
+    def dispense(self):print &quot;No gumball dispense&quot;
+</code></pre>
+
+<p>sold_state.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from State import State
+
+class SoldState(State):
+    &quot;&quot;&quot;state:售出糖果&quot;&quot;&quot;
+
+    def __init__(self, gumballMachine):
+        State.__init__(self, gumballMachine)
+
+    # 对于此状态来说，以下三种动作都是不恰当的。
+    def insertQuarter(self):
+        print(&quot;Please wait, we're already giving you a gumball!&quot;)
+
+    def ejectQuarter(self):
+        print(&quot;Sorry, you already turned the crank!&quot;)
+
+    def turnCrank(self):
+        print(&quot;Turning twice doesn't get you another gumball!&quot;)
+
+    # 根据工作流程图，此动作才是此状态真正的动作。
+    def dispense(self):
+        # 现在是SoldState状态，顾客已经付过钱，发放糖果。
+        self.gumballMachine.releaseBall()
+        # 检查糖果机的剩余数目，切换到不同的状态
+        if self.gumballMachine.getCount() &gt; 0:
+            self.gumballMachine.setState(self.gumballMachine.getNoQuarterState())
+        else:
+            print(&quot;Oops, out of gumballs&quot;)
+            self.gumballMachine.setState(self.gumballMachine.getSoldOutState())
+</code></pre>
+
+<p>sold_out_state.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from State import State
+
+class SoldOutState(State):
+    &quot;&quot;&quot;state: 糖果告罄&quot;&quot;&quot;
+    def __init__(self, gumballMachine):State.__init__(self, gumballMachine)
+    def insertQuarter(self):print &quot;the machine is sold out&quot;
+    def ejectQuarter(self):print &quot;the machine is sold out&quot;
+    def turnCrank(self):print &quot;the machine is sold out&quot;
+    def dispense(self):print &quot;the machine is sold out&quot;
+</code></pre>
+
+<p>gumball_machine.py:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from HasQuarterState import HasQuarterState
+from NoQuarterState import NoQuarterState
+from SoldState import SoldState
+from SoldOutState import SoldOutState
+
+class GumballMachine(object):
+    &quot;&quot;&quot;糖果机&quot;&quot;&quot;
+    def __init__(self, numberGumballs):  # 初始糖果数目# 每一种状态都创造一个状态实例self.soldOutState = SoldOutState(self)self.noQuarterState = NoQuarterState(self)self.hasQuarterState = HasQuarterState(self)self.soldState = SoldState(self)self.count = numberGumballsif self.count &gt; 0:   # 如果糖果数目 &gt; 0，就把状态设为NoQuarterState    self.state = self.noQuarterStateelse:    # 初始状态为SoldOutState    self.state = self.soldOutState
+    def insertQuarter(self):self.state.insertQuarter()
+    def ejectQuarter(self):self.state.ejectQuarter()
+    def turnCrank(self):self.state.turnCrank()# 他是一个内部动作，用户不允许直接要求机器发糖果，所以不用在此类中去实现它self.state.dispense()
+    def setState(self, state):self.state = state
+    def getHasQuarterState(self):&quot;&quot;&quot;返回HasQuarterState的状态，供具体状态类调用进行状态转换&quot;&quot;&quot;return self.hasQuarterState
+    def getNoQuarterState(self):return self.noQuarterState
+    def getSoldState(self):return self.soldState
+    def getSoldOutState(self):return self.soldOutState
+    def releaseBall(self):&quot;&quot;&quot;这个机器提供了一个releaseBall()的辅助函数来释放糖果，并将count减1&quot;&quot;&quot;print &quot;A gumball comes rolling out the slot&quot;if self.count != 0:    self.count -= 1
+    def getCount(self):return self.count
+</code></pre>
+
+<p>测试代码:</p>
+
+<pre><code class="language-Python"># coding=utf-8
+from GumballMachine import GumballMachine
+
+if __name__ == '__main__':
+    # 初始化糖果机糖果数目为5
+    gumball_machine = GumballMachine(5)
+    # 打印出机器的初始状态
+    print gumball_machine.state
+    # 投入一枚25分钱硬币，转动曲柄，拿到糖果
+    gumball_machine.insertQuarter()
+    gumball_machine.turnCrank()
+    # 再次打印出机器的状态
+    print gumball_machine.state
+    # 投入一枚25分钱，要求机器退钱，转动曲柄
+    gumball_machine.insertQuarter()
+    gumball_machine.ejectQuarter()
+    gumball_machine.turnCrank()
+    # 再次打印出机器的状态
+    print gumball_machine.state
+    gumball_machine.insertQuarter()
+    gumball_machine.turnCrank()
+    gumball_machine.insertQuarter()
+    gumball_machine.turnCrank()
+    # 取出糖果后，要求机器退钱
+    gumball_machine.ejectQuarter()
+    # 再次打印出机器的状态
+    print gumball_machine.state
+    # 压力测试
+    gumball_machine.insertQuarter()
+    gumball_machine.insertQuarter()
+    gumball_machine.turnCrank()
+    gumball_machine.insertQuarter()
+    gumball_machine.turnCrank()
+    gumball_machine.ejectQuarter()
+    # 再次打印出机器的状态
+    print gumball_machine.state
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">probeyang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-22</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/pattern-design/">pattern design</a>
+          
+          <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+          
+          <a href="/tags/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">状态模式</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/pattern_design/template_method/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">设计模式之模板方法模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/pattern_design/strategy_pattern/">
+            <span class="next-text nav-default">设计模式之策略模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="SOHUCS"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:iprobeyang@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://www.sanlt.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">probeyang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

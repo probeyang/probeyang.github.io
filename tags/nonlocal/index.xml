@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nonlocal on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/nonlocal/</link>
+    <description>Recent content in Nonlocal on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/nonlocal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nonlocal学习探知</title>
+      <link>https://www.sanlt.com/post/python/nonlocal_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/nonlocal_study/</guid>
+      <description>什么是nonlocal（非局部语句） nonlocal是Python 3.x中新引入的特性，可以让你给外层但非全局作用域中的变量赋值。官方文档中</description>
+    </item>
+    
+  </channel>
+</rss>

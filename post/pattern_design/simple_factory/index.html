@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>三种工厂模式详解 - Sanlt,就是加了N多盐的地方</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="probeyang" />
+  <meta name="description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。" />
+
+  <meta name="keywords" content="python, php, linux, docker, 服务器, WEB站点" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://www.sanlt.com/post/pattern_design/simple_factory/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="三种工厂模式详解" />
+<meta property="og:description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/pattern_design/simple_factory/" /><meta property="article:published_time" content="2018-09-22T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-22T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="三种工厂模式详解">
+<meta itemprop="description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。">
+
+
+<meta itemprop="datePublished" content="2018-09-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3067">
+
+
+
+<meta itemprop="keywords" content="pattern design,架构,工厂模式," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="三种工厂模式详解"/>
+<meta name="twitter:description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Sanlt,就是加了N多盐的地方</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Sanlt,就是加了N多盐的地方</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">三种工厂模式详解</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-22 </span>
+        <div class="post-category">
+            
+              <a href="/categories/pattern-design/"> pattern design </a>
+            
+          </div>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#工厂模式三种类型">工厂模式三种类型</a>
+<ul>
+<li><a href="#简单工厂模式">简单工厂模式</a></li>
+<li><a href="#工厂方法">工厂方法</a></li>
+<li><a href="#抽象工厂">抽象工厂</a></li>
+<li><a href="#小结">小结</a></li>
+<li><a href="#区别">区别：</a>
+<ul>
+<li><a href="#简单工厂和工厂方法的区别">简单工厂和工厂方法的区别</a></li>
+<li><a href="#工厂方法与抽象工厂的区别">工厂方法与抽象工厂的区别</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#简单工厂模式-1">简单工厂模式</a></li>
+<li><a href="#工厂方法模式">工厂方法模式</a></li>
+<li><a href="#抽象工厂模式">抽象工厂模式</a></li>
+<li><a href="#参考文献">参考文献：</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="工厂模式三种类型">工厂模式三种类型</h2>
+
+<h3 id="简单工厂模式">简单工厂模式</h3>
+
+<p>简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。
+不修改代码的话，是无法扩展的。</p>
+
+<p><img src="/img/9F3C11005474BAB5B1D10433753D31C0.jpg" alt="图例" title="图例" /></p>
+
+<p>上面的图入口处画的我感觉有问题，还是看《head first设计模式》书中的图：</p>
+
+<p><img src="/img/43BF168D737907F189739E5B089D590B.jpg" alt="图例" title="图例" /></p>
+
+<h3 id="工厂方法">工厂方法</h3>
+
+<p>工厂方法使用继承，把对象的创建委托给子类，子类通过实现工厂方法来创建对象。
+工厂方法是针对每一种产品提供一个工厂类。通过不同的工厂实例来创建不同的产品实例。
+在同一等级结构中，支持增加任意产品。</p>
+
+<p><img src="/img/6C649096D48A34AF12BC3838D5A7106C.jpg" alt="图例" title="图例" /></p>
+
+<p>《head first设计模式》书中的图：</p>
+
+<p><img src="/img/E0FA8A53F17286BC63F296EDC03369D7.jpg" alt="图例" title="图例" /></p>
+
+<p><strong>其实工厂方法模式只不过是通过子类来创建对象而已。</strong></p>
+
+<h3 id="抽象工厂">抽象工厂</h3>
+
+<p>抽象工厂使用对象组合，对象的创建被实现在工厂接口所暴露出来的方法中。
+抽象工厂是应对产品族概念的。比如说，每个汽车公司可能要同时生产轿车，货车，客车，那么每一个工厂都要有创建轿车，货车和客车的方法。
+应对产品族概念而生，增加新的产品线很容易，但是无法增加新的产品。_抽象工厂的另一个优点是可以把一群<strong>有关系</strong>的产品组合起来_。</p>
+
+<p><img src="/img/8467268AA440CA7352562A897D204CD4.jpg" alt="图例" title="图例" /></p>
+
+<h3 id="小结">小结</h3>
+
+<p>★工厂模式中，重要的是工厂类，而不是产品类。产品类可以是多种形式，多层继承或者是单个类都是可以的。但要明确的，工厂模式的接口只会返回一种类型的实例，这是在设计产品类的时候需要注意的，最好是有父类或者共同实现的接口。</p>
+
+<p>★使用工厂模式，返回的实例一定是工厂创建的，而不是从其他对象中获取的。</p>
+
+<p>★工厂模式返回的实例可以不是新创建的，返回由工厂创建好的实例也是可以的。</p>
+
+<h3 id="区别">区别：</h3>
+
+<h4 id="简单工厂和工厂方法的区别">简单工厂和工厂方法的区别</h4>
+
+<p><strong>工厂方法就是比简单工厂模式多了一层对工厂类的继承，通过在工厂类的父类中将真正实例化类的方法做成抽象方法（不实现业务逻辑），假设重新方法名（创建产品实例的方法）为createProduct()，然后在工厂类的子类中实现此抽象方法createProduct().差别就在这里。这样的工厂方法比简单工厂灵活在工厂方法可以有多个子类来继承并实现这个工厂方法，像《head first设计模式》中举例的一样，一个披萨店开了纽约披萨加盟店和加州披萨加盟店，纽约的披萨需要纽约的风味，加州的要加州的风味，如果是这样的话简单工厂其实很难满足需求，而工厂方法可以在提供纽约工厂类和加州工厂类（都继承自工厂父类），这样就能在纽约工厂类中实现createProduct（）时去实例化纽约风味的披萨类，加州的工厂类实现createProduct（）时实例化加州风味的披萨类。</strong></p>
+
+<h4 id="工厂方法与抽象工厂的区别">工厂方法与抽象工厂的区别</h4>
+
+<ol>
+<li><p>工厂方法通过继承来负责创建对象，而抽象工厂通过组合创建对象。</p></li>
+
+<li><p>抽象工程关键在于产品之间的抽象关系，所以至少要两个产品；工厂方法在于生成产品，不关注产品间的关系，所以可以只生成一个产品。</p></li>
+
+<li><p>抽象工厂中客户端把产品的抽象关系理清楚，在最终使用的时候，一般使用客户端（和其接口），产品之间的关系是被封装固定的；而工厂方法是在最终使用的时候，使用产品本身（和其接口）。</p></li>
+
+<li><p>抽象工厂的工厂是类；工厂方法的工厂是方法。</p></li>
+</ol>
+
+<p>抽象工厂的工厂类就做一件事情生产产品。生产的产品给客户端使用，绝不给自己用。
+工厂方法生产产品，可以给系统用，可以给客户端用，也可以自己这个类使用。自己这个类除了这个工厂方法外，还能有其他功能性的方法</p>
+
+<ul>
+<li>简单工厂 用来生产同一等级结构中的任意产品。（对于增加新的产品，无能为力）</li>
+<li>工厂方法 用来生产同一等级结构中的固定产品。（支持增加任意产品）<br /></li>
+<li>抽象工厂 用来生产不同产品族的全部产品。（对于增加新的产品，无能为力；支持增加产品族）</li>
+</ul>
+
+<p>其中抽象工厂比较难理解，它和工厂方法的区别也比较难理解，下面的图或许能起到作用：</p>
+
+<p><img src="/img/3E812558508E84B5C2378DA7481FF143.jpg" alt="图例" title="图例" /></p>
+
+<p>这个图来自《head first设计模式》，然而这个图其实也没有画的太好，我感觉应该在抽象工厂中加上pizza的那块工厂方法可能理解更好。</p>
+
+<h2 id="简单工厂模式-1">简单工厂模式</h2>
+
+<p>简单工厂模式其实可以按照《head first设计模式》中讲的，将其理解为一个函数，然后这个函数里面需要使用if判断出具体实例化类，继而将if判断抽离出来做成一个工厂类中的一个方法，这样能做到工厂类可被复用。按照书中所说，简单工厂严格讲不属于设计模式，只是一种代码规范。
+演进过程如下, 最开始未使用设计模式时是这样的：</p>
+
+<pre><code class="language-Python">class CheesePizza():
+    def __init__(self):
+        super(CheesePizza, self).__init__()
+        self._name = &quot;Cheese Pizza&quot;
+
+    def get_name(self):
+        return self._name
+
+    def prepare(self):
+        print(&quot;Preparing &quot; + self._name)
+        print(self._name + &quot; is OK.&quot;)
+
+
+class ClamPizza():
+    def __init__(self):
+        super(ClamPizza, self).__init__()
+        self._name = &quot;Clam Pizza&quot;
+
+    def get_name(self):
+        return self._name
+
+    def prepare(self):
+        print(&quot;Preparing &quot; + self._name)
+        print(self._name + &quot; is OK.&quot;)
+
+
+def order_pizza(type):
+    pizza = None
+    if type == 'cheese':
+        pizza = CheesePizza()
+    elif type == 'clam':
+        pizza = ClamPizza()
+
+    pizza.prepare()
+    return pizza
+
+##test code##
+pizza = order_pizza(&quot;cheese&quot;)
+print(&quot;jack ordered a &quot; + pizza.get_name() + &quot;\n&quot;)
+
+pizza = order_pizza(&quot;clam&quot;)
+print(&quot;lily ordered a &quot; + pizza.get_name() + &quot;\n&quot;)
+</code></pre>
+
+<p>可以看到，如果pizza类太多的话，我们要不停的修改order_pizza函数的if模块判断内容，新加类或者删除类都需要不停修改。所以我们将这段代码放到单独的函数中，再将其用类包裹起来，这样就能做到这个类就只负责实例化pizza对象，以后修改就只在这个类中修改即可。
+演变后代码如下：</p>
+
+<pre><code class="language-Python">from abc import ABCMeta, abstractmethod
+
+######factory class######
+
+class PizzaStore:
+    def __init__(self, factory):
+        self._factory = factory
+
+    def order_pizza(self, pizza_type):
+        pizza = self._factory.create_pizza(pizza_type)
+        pizza.prepare()
+        return pizza
+
+
+class SimplePizzaFactory:
+    def create_pizza(self, pizza_type):
+        pizza = None
+        if pizza_type == &quot;cheese&quot;:
+            pizza = CheesePizza()
+        elif pizza_type == &quot;clam&quot;:
+            pizza = ClamPizza()
+        return pizza
+
+#######pizza class########
+
+class Pizza:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    def get_name(self):
+        return self._name
+
+    def prepare(self):
+        print(&quot;Preparing &quot; + self._name)
+        print(self._name + &quot; is OK.&quot;)
+
+
+class CheesePizza(Pizza):
+    def __init__(self):
+        super(CheesePizza, self).__init__()
+        self._name = &quot;Cheese Pizza&quot;
+
+
+class ClamPizza(Pizza):
+    def __init__(self):
+        super(ClamPizza, self).__init__()
+        self._name = &quot;Clam Pizza&quot;
+
+
+######test code######
+
+if __name__ == '__main__':
+    store = PizzaStore(SimplePizzaFactory())
+
+    pizza = store.order_pizza(&quot;cheese&quot;)
+    print(&quot;jack ordered a &quot; + pizza.get_name() + &quot;\n&quot;)
+
+    pizza = store.order_pizza(&quot;clam&quot;)
+    print(&quot;lily ordered a &quot; + pizza.get_name() + &quot;\n&quot;)
+</code></pre>
+
+<h2 id="工厂方法模式">工厂方法模式</h2>
+
+<p>相比简单工厂，此工厂模式更灵活，通过将简单工厂中的工厂类做成抽象类，然后重点把实例化产品的工厂方法做成抽象的方法，再加入多个工厂子类来实现实例化产品的的工厂方法，这样能灵活应对多种不同需求的实例化类需求。</p>
+
+<p>示例代码如下：</p>
+
+<pre><code class="language-Python">from abc import ABCMeta, abstractmethod
+
+#######pizza class#######
+
+class Pizza:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def __init__(self):
+        self._name = None
+
+    def prepare(self):
+        print(&quot;Preparing &quot; + self._name)
+
+    def bake(self):
+        print(&quot;Bake for 25 minutes at 350&quot;)
+
+    def cut(self):
+        print(&quot;Cutting the pizza into diagonal slices&quot;)
+
+    def box(self):
+        print(&quot;Place pizza in official PizzaStore box&quot;)
+
+    def get_name(self):
+        return self._name
+
+
+class NYStyleCheesePizza(Pizza):
+    def __init__(self):
+        super(NYStyleCheesePizza, self).__init__()
+        self._name = &quot;NY Style Sauce and Cheese Pizza&quot;
+
+
+class NYStylePepperoniPizza(Pizza):
+    def __init__(self):
+        super(NYStylePepperoniPizza, self).__init__()
+        self._name = &quot;NY Style Pepperoni Pizza&quot;
+
+
+class NYStyleClamPizza(Pizza):
+    def __init__(self):
+        super(NYStyleClamPizza, self).__init__()
+        self._name = &quot;NY Style Clam Pizza&quot;
+
+
+class NYStyleVeggiePizza(Pizza):
+    def __init__(self):
+        super(NYStyleVeggiePizza, self).__init__()
+        self._name = &quot;NY Style Veggie Pizza&quot;
+
+
+class ChicagoStyleCheesePizza(Pizza):
+    def __init__(self):
+        super(ChicagoStyleCheesePizza, self).__init__()
+        self._name = &quot;Chicago Style Deep Dish Cheese Pizza&quot;
+
+    def cut(self):
+        print(&quot;Cutting the pizza into square slices&quot;)
+
+
+class ChicagoStylePepperoniPizza(Pizza):
+    def __init__(self):
+        super(ChicagoStylePepperoniPizza, self).__init__()
+        self._name = &quot;Chicago Style Pepperoni Pizza&quot;
+
+    def cut(self):
+        print(&quot;Cutting the pizza into square slices&quot;)
+
+
+class ChicagoStyleClamPizza(Pizza):
+    def __init__(self):
+        super(ChicagoStyleClamPizza, self).__init__()
+        self._name = &quot;Chicago Style Clam Pizza&quot;
+
+    def cut(self):
+        print(&quot;Cutting the pizza into square slices&quot;)
+
+
+class ChicagoStyleVeggiePizza(Pizza):
+    def __init__(self):
+        super(ChicagoStyleVeggiePizza, self).__init__()
+        self._name = &quot;Chicago Deep Dish Veggie Pizza&quot;
+
+    def cut(self):
+        print(&quot;Cutting the pizza into square slices&quot;)
+
+########factory store code#######
+
+class PizzaStore:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def create_pizza(self, type):
+        pass
+
+    def order_pizza(self, pizza_type):
+        pizza = self.create_pizza(pizza_type)
+        print(&quot;--- Making a &quot; + pizza.get_name() + &quot; ---&quot;)
+
+        pizza.prepare()
+        pizza.bake()
+        pizza.cut()
+        pizza.box()
+
+        return pizza
+
+
+class NYPizzaStore(PizzaStore):
+    def create_pizza(self, type):
+        style_pizza_dict = dict(cheese=NYStyleCheesePizza, veggie=NYStyleVeggiePizza, clam=NYStyleClamPizza,
+                                pepperoni=NYStylePepperoniPizza)
+        return style_pizza_dict[type]()
+
+
+class ChicagoPizzaStore(PizzaStore):
+    def create_pizza(self, type):
+        style_pizza_dict = dict(cheese=ChicagoStyleCheesePizza, veggie=ChicagoStyleVeggiePizza,
+                                clam=ChicagoStyleClamPizza,
+                                pepperoni=ChicagoStylePepperoniPizza)
+        return style_pizza_dict[type]()
+
+
+######test code######
+
+if __name__ == '__main__':
+
+    ny_store = NYPizzaStore()
+    chicago_store = ChicagoPizzaStore()
+
+    pizza = ny_store.order_pizza('cheese')
+    print('jack ordered a ' + pizza.get_name() + ' pizza')
+
+    pizza = chicago_store.order_pizza('veggie')
+    print('lucy ordered a ' + pizza.get_name() + ' pizza')
+
+    pizza = ny_store.order_pizza('clam')
+    print('lily ordered a ' + pizza.get_name() + ' pizza')
+</code></pre>
+
+<h2 id="抽象工厂模式">抽象工厂模式</h2>
+
+<p>抽象工厂模式提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</p>
+
+<p><img src="/img/FA6306C018847FF87FB509D1EFABA5CE.jpg" alt="图例" title="图例" /></p>
+
+<p><img src="/img/7692570A4CF19086B246B3119A256759.jpg" alt="图例" title="图例" /></p>
+
+<p>抽象工厂的任务是创建一个负责创建一组产品的接口。这个接口内的每个方法都负责创建一个具体的产品。</p>
+
+<p>示例代码：</p>
+
+<pre><code class="language-Python">class FreshClams:
+    def __str__(self):
+        return 'Fresh Clams'
+
+
+class MarinaraSauce:
+    def __str__(self):
+        return &quot;Marinara Sauce&quot;
+
+
+class ThickCrustDough:
+    def __str__(self):
+        return &quot;Thick Crust Dough&quot;
+
+
+class ReggianoCheese:
+    def __str__(self):
+        return &quot;Reggiano Cheese&quot;
+
+
+class SlicedPepperoni:
+    def __str__(self):
+        return &quot;Sliced Pepperoni&quot;
+
+
+class Garlic:
+    def __str__(self):
+        return &quot;Garlic&quot;
+
+
+class Onion:
+    def __str__(self):
+        return &quot;Onion&quot;
+
+
+class RedPepper:
+    def __str__(self):
+        return &quot;Red Pepper&quot;
+
+
+class PizzaIngredientFactory:
+    '''
+    定义原料工厂
+    '''
+
+    def create_dough(self):
+        raise NotImplementedError()
+
+    def create_sauce(self):
+        raise NotImplementedError()
+
+    def create_cheese(self):
+        raise NotImplementedError()
+
+    def create_pepperoni(self):
+        raise NotImplementedError()
+
+    def create_clam(self):
+        raise NotImplementedError()
+
+    def create_veggies(self):
+        raise NotImplementedError()
+
+
+class NYPizzaIngredientFactory(PizzaIngredientFactory):
+    def create_dough(self):
+        print(&quot;Tossing %s&quot; % ThickCrustDough())
+        return ThickCrustDough()
+
+    def create_sauce(self):
+        print(&quot;Adding %s...&quot; % MarinaraSauce())
+        return MarinaraSauce()
+
+    def create_cheese(self):
+        print(&quot;Adding %s...&quot; % ReggianoCheese())
+        return ReggianoCheese()
+
+    def create_pepperoni(self):
+        print(&quot;Adding %s...&quot; % SlicedPepperoni())
+        return SlicedPepperoni()
+
+    def create_clam(self):
+        print(&quot;Adding %s...&quot; % FreshClams())
+        return FreshClams()
+
+    def create_veggies(self):
+        veggies = [Garlic(), Onion(), RedPepper()]
+        for veggie in veggies:
+            print(&quot;  %s&quot; % veggie)
+        return veggies
+
+
+class Pizza:
+    '''
+    pizza 工厂
+    '''
+
+    dough = None
+    sauce = None
+    cheese = None
+    veggies = []
+    pepperoni = None
+    clam = None
+
+    def __init__(self, name, ingredient_factory):
+        self.name = name
+        self.ingredient_factory = ingredient_factory
+
+    def prepare(self):
+        raise NotImplementedError()
+
+    def bake(self):
+        print(&quot;Bake for 25 minutes at 350&quot;)
+
+    def cut(self):
+        print(&quot;Cutting the pizza into diagonal slices&quot;)
+
+    def box(self):
+        print(&quot;Place pizza in official PizzaStore box&quot;)
+
+    def __str__(self):
+        return self.name
+
+
+class NYStyleCheesePizza(Pizza):
+    def prepare(self):
+        dough = self.ingredient_factory.create_dough()
+        sauce = self.ingredient_factory.create_sauce()
+        cheese = self.ingredient_factory.create_cheese()
+        clam = self.ingredient_factory.create_clam()
+        veggies = self.ingredient_factory.create_veggies()
+
+
+class NYStyleClamPizza(Pizza):
+    def prepare(self):
+        dough = self.ingredient_factory.create_dough()
+        sauce = self.ingredient_factory.create_sauce()
+        cheese = self.ingredient_factory.create_cheese()
+        clam = self.ingredient_factory.create_clam()
+
+
+class PizzaStore:
+    '''
+    pizza 店工厂
+    '''
+
+    ingredient_factory = None
+
+    def create_pizza(self, pizza_type):
+        # 每个需要子类实现的方法都会抛出NotImplementedError
+        # 我们也可以把 PizzaStore 的 metaclass 设置成 abc.ABCMeta
+        # 这样的话，这个类就是真正的抽象基类
+        raise NotImplementedError()
+
+    def order_pizza(self, pizza_type):  # 现在把 pizza 的类型传入 order_pizza()
+
+        pizza = self.create_pizza(pizza_type)
+
+        #  一旦我们有了一个 pizza，需要做一些准备（擀面皮、加佐料），然后烘烤、切片、装盒
+        pizza.prepare()
+        pizza.bake()
+        pizza.cut()
+        pizza.box()
+        return pizza
+
+        # 下边是其他可能用到的方法
+
+
+class NYStylePizzStore(PizzaStore):
+    ingredient_factory = NYPizzaIngredientFactory()
+
+    def create_pizza(self, pizza_type):
+        # 根据 pizza 类型，我们实例化正确的具体类，然后将其赋值给 pizza 实例变量
+        if pizza_type == 'cheese':
+            pizza = NYStyleCheesePizza('NY Style Sauce and Cheese Pizza',
+                                       self.ingredient_factory)
+        elif pizza_type == 'clam':
+            pizza = NYStyleClamPizza('NY Style Clam Pizza',
+                                     self.ingredient_factory)
+        return pizza
+
+
+def main():
+    nystore = NYStylePizzStore()
+    pizza = nystore.order_pizza('cheese')
+    print('*' * 10)
+    print(&quot;goodspeed ordered a %s&quot; % pizza)
+    print('*' * 10)
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<h2 id="参考文献">参考文献：</h2>
+
+<p><a href="http://ichennan.com/2016/08/09/DesignPattern.html">三种工厂模式</a></p>
+
+<p><a href="https://www.zhihu.com/question/20367734">抽象工厂模式和工厂模式的区别</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">probeyang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-22</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/path/to/your/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/pattern-design/">pattern design</a>
+          
+          <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+          
+          <a href="/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">工厂模式</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/python/black_code_format_tool/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">pycharm安装black格式化工具</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/python/fsum_study/">
+            <span class="next-text nav-default">使用math中的fsum进行数据求和汇总</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="SOHUCS"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:iprobeyang@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://www.sanlt.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">probeyang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

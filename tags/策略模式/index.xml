@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>策略模式 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 策略模式 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>设计模式之策略模式</title>
+      <link>https://www.sanlt.com/post/pattern_design/strategy_pattern/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/pattern_design/strategy_pattern/</guid>
+      <description>定义 策略（Strategy）模式定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。 示例 我们用一个实</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysqlbinlog on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/mysqlbinlog/</link>
+    <description>Recent content in Mysqlbinlog on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/mysqlbinlog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用mysqlbinlog查看日志</title>
+      <link>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</guid>
+      <description>mysqlbinlog说明 binlog日志是mysql的所有操作的日志记录，它是一种二进制数据。通过它可以对数据库的误删除、表误更新、数据误</description>
+    </item>
+    
+  </channel>
+</rss>

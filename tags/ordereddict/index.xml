@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OrderedDict on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/ordereddict/</link>
+    <description>Recent content in OrderedDict on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/ordereddict/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OrderedDict学习探知</title>
+      <link>https://www.sanlt.com/post/python/ordereddict_user_notice/</link>
+      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/ordereddict_user_notice/</guid>
+      <description>正常使用 在使用python的collections中一个OrderedDict来做有序dict处理的时候，我们常使用下面的方式，代码执行多次</description>
+    </item>
+    
+  </channel>
+</rss>
