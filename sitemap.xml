@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/post/tool/hugo_github_pages_create/</loc>
+    <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/post/python/celery_version_question/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -233,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/docker/</loc>
+    <loc>https://www.sanlt.com/tags/docker/</loc>
     <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/docker/</loc>
+    <loc>https://www.sanlt.com/categories/docker/</loc>
     <lastmod>2018-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -282,14 +289,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/mysql/</loc>
+    <loc>https://www.sanlt.com/tags/mysql/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/mysql/</loc>
+    <loc>https://www.sanlt.com/categories/mysql/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -324,13 +331,6 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/php/</loc>
-    <lastmod>2018-09-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/tags/php/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -338,7 +338,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/pattern-design/</loc>
+    <loc>https://www.sanlt.com/categories/php/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -352,8 +352,15 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/post/</loc>
+    <loc>https://www.sanlt.com/categories/pattern-design/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/</loc>
+    <lastmod>2018-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -366,14 +373,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/python/</loc>
+    <loc>https://www.sanlt.com/tags/python/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/python/</loc>
+    <loc>https://www.sanlt.com/categories/python/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -422,8 +429,29 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/tags/web/</loc>
+    <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/web/</loc>
+    <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/tags/yii/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9/</loc>
+    <lastmod>2018-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -443,14 +471,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/%E6%9E%B6%E6%9E%84/</loc>
+    <loc>https://www.sanlt.com/tags/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E6%9E%B6%E6%9E%84/</loc>
+    <loc>https://www.sanlt.com/categories/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

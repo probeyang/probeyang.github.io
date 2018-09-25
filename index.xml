@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>使用hugo大家github pages站点</title>
+      <link>https://www.sanlt.com/post/tool/hugo_github_pages_create/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/tool/hugo_github_pages_create/</guid>
+      <description>本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。 环境介绍 Mac OSX 10.11.1 项目根路径 ~/study/page_github 搭建步</description>
+    </item>
+    
+    <item>
       <title>Celery版本错误问题探知</title>
       <link>https://www.sanlt.com/post/python/celery_version_question/</link>
       <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>

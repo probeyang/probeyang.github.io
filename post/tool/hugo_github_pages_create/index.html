@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Celery版本错误问题探知 - Sanlt,就是加了N多盐的地方</title>
+  <title>使用hugo大家github pages站点 - Sanlt,就是加了N多盐的地方</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="probeyang" />
-  <meta name="description" content="Celery启动的时候报这样的错误： Traceback (most recent call last): File &amp;quot;/usr/local/bin/celery&amp;quot;, line 11, in sys.exit(main()) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/main.py&amp;quot;, line 16, in main _main() File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 322, in main cmd.execute_from_commandline(argv) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&amp;quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &amp;quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&amp;quot;, line 476, in handle_argv return self.execute(command, argv) File" />
+  <meta name="description" content="本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。 环境介绍 Mac OSX 10.11.1 项目根路径 ~/study/page_github 搭建步" />
 
   <meta name="keywords" content="python, php, linux, docker, 服务器, WEB站点" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://www.sanlt.com/post/python/celery_version_question/" />
+<link rel="canonical" href="https://www.sanlt.com/post/tool/hugo_github_pages_create/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,25 +49,25 @@
 
 
 
-<meta property="og:title" content="Celery版本错误问题探知" />
-<meta property="og:description" content="Celery启动的时候报这样的错误： Traceback (most recent call last): File &quot;/usr/local/bin/celery&quot;, line 11, in sys.exit(main()) File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main _main() File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 322, in main cmd.execute_from_commandline(argv) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 476, in handle_argv return self.execute(command, argv) File" />
+<meta property="og:title" content="使用hugo大家github pages站点" />
+<meta property="og:description" content="本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。 环境介绍 Mac OSX 10.11.1 项目根路径 ~/study/page_github 搭建步" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/python/celery_version_question/" /><meta property="article:published_time" content="2018-09-22T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-09-22T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="Celery版本错误问题探知">
-<meta itemprop="description" content="Celery启动的时候报这样的错误： Traceback (most recent call last): File &quot;/usr/local/bin/celery&quot;, line 11, in sys.exit(main()) File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main _main() File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 322, in main cmd.execute_from_commandline(argv) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 476, in handle_argv return self.execute(command, argv) File">
+<meta property="og:url" content="https://www.sanlt.com/post/tool/hugo_github_pages_create/" /><meta property="article:published_time" content="2018-09-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-24T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="使用hugo大家github pages站点">
+<meta itemprop="description" content="本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。 环境介绍 Mac OSX 10.11.1 项目根路径 ~/study/page_github 搭建步">
 
 
-<meta itemprop="datePublished" content="2018-09-22T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-09-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="380">
+<meta itemprop="datePublished" content="2018-09-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="819">
 
 
 
-<meta itemprop="keywords" content="Python,Celery," />
+<meta itemprop="keywords" content="web,个人站点," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Celery版本错误问题探知"/>
-<meta name="twitter:description" content="Celery启动的时候报这样的错误： Traceback (most recent call last): File &quot;/usr/local/bin/celery&quot;, line 11, in sys.exit(main()) File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main _main() File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 322, in main cmd.execute_from_commandline(argv) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 484, in execute_from_commandline super(CeleryCommand, self).execute_from_commandline(argv))) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 275, in execute_from_commandline return self.handle_argv(self.prog_name, argv[1:]) File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 476, in handle_argv return self.execute(command, argv) File"/>
+<meta name="twitter:title" content="使用hugo大家github pages站点"/>
+<meta name="twitter:description" content="本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。 环境介绍 Mac OSX 10.11.1 项目根路径 ~/study/page_github 搭建步"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -134,13 +134,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Celery版本错误问题探知</h1>
+      <h1 class="post-title">使用hugo大家github pages站点</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-09-22 </span>
+        <span class="post-time"> 2018-09-24 </span>
         <div class="post-category">
             
-              <a href="/categories/python/"> Python </a>
+              <a href="/categories/web/"> web </a>
             
           </div>
         
@@ -158,9 +158,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#celery启动的时候报这样的错误">Celery启动的时候报这样的错误：</a></li>
-<li><a href="#查了资料说是因为celery版本4-1-0的问题-默认情况下我们只在项目的requirement-txt文件中设置了celery的版本">查了资料说是因为Celery版本4.1.0的问题，默认情况下我们只在项目的requirement.txt文件中设置了Celery的版本：</a></li>
-<li><a href="#文中所说的参考的文献是">文中所说的参考的文献是：</a></li>
+<li><a href="#环境介绍">环境介绍</a></li>
+<li><a href="#搭建步骤">搭建步骤</a></li>
+<li><a href="#在content文件夹下新建post文件夹-在post中创建-md文件即可-但是要注意的是文件要包含一下特殊的内容-如下所示">在content文件夹下新建post文件夹，在post中创建.md文件即可，但是要注意的是文件要包含一下特殊的内容，如下所示</a></li>
+<li><a href="#mathjax-true">mathjax: true</a></li>
+<li><a href="#参考文献">参考文献</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -174,58 +176,119 @@
     <div class="post-content">
       
 
-<h2 id="celery启动的时候报这样的错误">Celery启动的时候报这样的错误：</h2>
+<p>本文主要介绍如何使用Hugo在Github pages搭建免费的个人博客，关于Hugo可在其官网上进一步了解。</p>
 
-<pre><code class="language-Bash">Traceback (most recent call last):
-File &quot;/usr/local/bin/celery&quot;, line 11, in 
-sys.exit(main())
-File &quot;/usr/local/lib/python3.5/site-packages/celery/main.py&quot;, line 16, in main
-_main()
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 322, in main
-cmd.execute_from_commandline(argv)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 484, in execute_from_commandline
-super(CeleryCommand, self).execute_from_commandline(argv)))
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 275, in execute_from_commandline
-return self.handle_argv(self.prog_name, argv[1:])
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 476, in handle_argv
-return self.execute(command, argv)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/celery.py&quot;, line 408, in execute
-).run_from_argv(self.prog_name, argv[1:], command=argv[0])
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;, line 223, in run_from_argv
-return self(*args, **options)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/base.py&quot;, line 238, in call
-ret = self.run(*args, **kwargs)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/bin/worker.py&quot;, line 257, in run
-**kwargs)
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 101, in init
-self.setup_instance(**self.prepare_args(**kwargs))
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 124, in setup_instance
-self.should_use_eventloop() if use_eventloop is None
-File &quot;/usr/local/lib/python3.5/site-packages/celery/worker/worker.py&quot;, line 243, in should_use_eventloop
-self._conninfo.transport.implements.async and
-File &quot;/usr/local/lib/python3.5/site-packages/kombu/transport/base.py&quot;, line 125, in getattr
-raise AttributeError(key)
-AttributeError: async
+<h2 id="环境介绍">环境介绍</h2>
+
+<p>Mac OSX 10.11.1
+项目根路径 ~/study/page_github</p>
+
+<h2 id="搭建步骤">搭建步骤</h2>
+
+<ol>
+<li><p>在Github创建github pages仓库，这里不做赘述</p></li>
+
+<li><p>安装Hugo</p></li>
+</ol>
+
+<pre><code class="language-Bash">brew install hugo
 </code></pre>
 
-<h2 id="查了资料说是因为celery版本4-1-0的问题-默认情况下我们只在项目的requirement-txt文件中设置了celery的版本">查了资料说是因为Celery版本4.1.0的问题，默认情况下我们只在项目的requirement.txt文件中设置了Celery的版本：</h2>
+<ol>
+<li>使用hugo创建站点</li>
+</ol>
 
-<pre><code class="language-Bash">celery==4.1.0
+<pre><code class="language-Bash">cd /study/page_github
+hugo new site hugo.sanlt.com
+cd hugo.sanlt.com
 </code></pre>
 
-<p>而没有设置Celery的依赖包的版本：
- kombu
-所以pip会自动获取kombu的最新版本 kombu 4.2.0。然而这个版本和Celery的4.1.0有兼容问题，就要报上面的错误，所以我们需要按照网上文献中说的讲kombu的版本：</p>
+<ol>
+<li>使用主题</li>
+</ol>
 
-<pre><code class="language-Bash">kombu 4.1.0
+<p>主题比较多，这里使用对中文支持比较好且git上star比较多的一个主题even：（确保当前目录在hugo.sanlt.com这里）</p>
+
+<pre><code class="language-Bash">git clone --recursive git@github.com:olOwOlo/hugo-theme-even.git themes/even
 </code></pre>
 
-<p>这样问题就解决了。
-另外，一般Celery的key不存在的问题只需要重启Celery就可以解决的。</p>
+<p>上面命令的意思是在themes文件夹下面拉取并生成一个even的主题。</p>
 
-<h2 id="文中所说的参考的文献是">文中所说的参考的文献是：</h2>
+<ol>
+<li>新建md文章</li>
+</ol>
 
-<p><a href="https://github.com/celery/celery/issues/4321">Celery 问题</a></p>
+<pre><code class="language-Bash">hugo new about.md
+</code></pre>
+
+<p><em>注意，这里写文章需要注意每个文章开头需要添加一段以下内容的东西</em></p>
+
+<blockquote>
+<h2 id="在content文件夹下新建post文件夹-在post中创建-md文件即可-但是要注意的是文件要包含一下特殊的内容-如下所示">在content文件夹下新建post文件夹，在post中创建.md文件即可，但是要注意的是文件要包含一下特殊的内容，如下所示</h2>
+
+<p>title: 新文章
+slug: &ldquo;hello&rdquo;
+date: &ldquo;2018-02-01&rdquo;
+tags: [&ldquo;web&rdquo;,&ldquo;python&rdquo;]
+categories: [&ldquo;python&rdquo;]</p>
+
+<h2 id="mathjax-true">mathjax: true</h2>
+
+<p>在文件中加入这些内容即可，事实上，这些就是这篇文章的基本信息：标题、url、日期、标签和分类。内容可以没有上面这么多，具体参数含义可以参考网络上文献。</p>
+</blockquote>
+
+<p><em>更注意：图片地址默认在static文件夹下面，我一般习惯在static文件夹下新建一个img文件夹放所有博客内容图片，路径写法如下：</em></p>
+
+<blockquote>
+<p>/img/sdfisre44efdg43wet345.jpg</p>
+</blockquote>
+
+<ol>
+<li>启动服务</li>
+</ol>
+
+<pre><code class="language-Bash"> hugo server -t even --buildDrafts
+</code></pre>
+
+<ol>
+<li>访问服务</li>
+</ol>
+
+<p>浏览器访问 <a href="http://localhost:1313/">http://localhost:1313/</a>
+看到如下图页面，说明本地搭建博客已经没问题了。</p>
+
+<p><img src="/img/3B7A954624314777F70FBD1A873CD8AF.jpg" alt="图例" title="图例" /></p>
+
+<p>我这里是加了不少页面内容了的。</p>
+
+<p>接下来讲解怎么将网站内容放到github pages。</p>
+
+<ol>
+<li>生成public文件</li>
+</ol>
+
+<p>这一步网上资料说的比较含糊，一笔带过，这里我明确一下，是需要在根目录运行一个命令的，而这个命令就是：hugo</p>
+
+<pre><code class="language-Bash">hugo
+</code></pre>
+
+<p>这时会在根目录生成一个public文件夹，将public文件夹放到github pages对应的github地址并提交到远端即可。</p>
+
+<ol>
+<li>插件安装</li>
+</ol>
+
+<p>有很多插件需要安装：评论、网站阅读量等等。这个主题自带了busuanzi的阅读量服务，只需要修改配置即可。</p>
+
+<h2 id="参考文献">参考文献</h2>
+
+<p><a href="https://blog.olowolo.com/post/hugo-quick-start/">Hugo 从入门到会用</a></p>
+
+<p><a href="https://hgt312.github.io/post/other_note2/">Hugo建站踩坑记</a></p>
+
+<p><a href="http://chungwei.github.io/2016/04/25/blog-hugo-github/">使用 Hugo Github 搭建博客</a></p>
+
+<p><a href="https://jimmysong.io/posts/building-github-pages-with-hugo/">零基础使用Hugo和GitHub Pages创建自己的博客</a></p>
 
     </div>
 
@@ -237,7 +300,7 @@ AttributeError: async
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-22</span>
+    <span class="item-content">2018-09-24</span>
   </p>
   
   
@@ -266,23 +329,18 @@ AttributeError: async
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/python/">Python</a>
+          <a href="/tags/web/">web</a>
           
-          <a href="/tags/celery/">Celery</a>
+          <a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9/">个人站点</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/tool/hugo_github_pages_create/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">使用hugo大家github pages站点</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/python/ordereddict_user_notice/">
-            <span class="next-text nav-default">OrderedDict学习探知</span>
+          <a class="next" href="/post/python/celery_version_question/">
+            <span class="next-text nav-default">Celery版本错误问题探知</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
