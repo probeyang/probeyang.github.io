@@ -60,7 +60,7 @@
 
 <meta itemprop="datePublished" content="2018-09-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="819">
+<meta itemprop="wordCount" content="821">
 
 
 
@@ -160,8 +160,6 @@
 <ul>
 <li><a href="#环境介绍">环境介绍</a></li>
 <li><a href="#搭建步骤">搭建步骤</a></li>
-<li><a href="#在content文件夹下新建post文件夹-在post中创建-md文件即可-但是要注意的是文件要包含一下特殊的内容-如下所示">在content文件夹下新建post文件夹，在post中创建.md文件即可，但是要注意的是文件要包含一下特殊的内容，如下所示</a></li>
-<li><a href="#mathjax-true">mathjax: true</a></li>
 <li><a href="#参考文献">参考文献</a></li>
 </ul></li>
 </ul>
@@ -185,27 +183,26 @@
 
 <h2 id="搭建步骤">搭建步骤</h2>
 
-<ol>
-<li><p>在Github创建github pages仓库，这里不做赘述</p></li>
-
-<li><p>安装Hugo</p></li>
-</ol>
+<ul>
+<li>在Github创建github pages仓库，这里不做赘述</li>
+<li>安装Hugo</li>
+</ul>
 
 <pre><code class="language-Bash">brew install hugo
 </code></pre>
 
-<ol>
+<ul>
 <li>使用hugo创建站点</li>
-</ol>
+</ul>
 
 <pre><code class="language-Bash">cd /study/page_github
 hugo new site hugo.sanlt.com
 cd hugo.sanlt.com
 </code></pre>
 
-<ol>
+<ul>
 <li>使用主题</li>
-</ol>
+</ul>
 
 <p>主题比较多，这里使用对中文支持比较好且git上star比较多的一个主题even：（确保当前目录在hugo.sanlt.com这里）</p>
 
@@ -214,9 +211,9 @@ cd hugo.sanlt.com
 
 <p>上面命令的意思是在themes文件夹下面拉取并生成一个even的主题。</p>
 
-<ol>
+<ul>
 <li>新建md文章</li>
-</ol>
+</ul>
 
 <pre><code class="language-Bash">hugo new about.md
 </code></pre>
@@ -224,18 +221,20 @@ cd hugo.sanlt.com
 <p><em>注意，这里写文章需要注意每个文章开头需要添加一段以下内容的东西</em></p>
 
 <blockquote>
-<h2 id="在content文件夹下新建post文件夹-在post中创建-md文件即可-但是要注意的是文件要包含一下特殊的内容-如下所示">在content文件夹下新建post文件夹，在post中创建.md文件即可，但是要注意的是文件要包含一下特殊的内容，如下所示</h2>
+<p>在content文件夹下新建post文件夹，在post中创建.md文件即可，但是要注意的是文件要包含一下特殊的内容，如下所示</p>
+</blockquote>
 
-<p>title: 新文章
-slug: &ldquo;hello&rdquo;
-date: &ldquo;2018-02-01&rdquo;
-tags: [&ldquo;web&rdquo;,&ldquo;python&rdquo;]
-categories: [&ldquo;python&rdquo;]</p>
-
-<h2 id="mathjax-true">mathjax: true</h2>
+<pre><code class="language-Python">---
+title: 新文章
+slug: &quot;hello&quot;
+date: &quot;2018-02-01&quot;
+tags: [&quot;web&quot;,&quot;python&quot;]
+categories: [&quot;python&quot;]
+mathjax: true
+---
+</code></pre>
 
 <p>在文件中加入这些内容即可，事实上，这些就是这篇文章的基本信息：标题、url、日期、标签和分类。内容可以没有上面这么多，具体参数含义可以参考网络上文献。</p>
-</blockquote>
 
 <p><em>更注意：图片地址默认在static文件夹下面，我一般习惯在static文件夹下新建一个img文件夹放所有博客内容图片，路径写法如下：</em></p>
 
@@ -243,16 +242,16 @@ categories: [&ldquo;python&rdquo;]</p>
 <p>/img/sdfisre44efdg43wet345.jpg</p>
 </blockquote>
 
-<ol>
+<ul>
 <li>启动服务</li>
-</ol>
+</ul>
 
 <pre><code class="language-Bash"> hugo server -t even --buildDrafts
 </code></pre>
 
-<ol>
+<ul>
 <li>访问服务</li>
-</ol>
+</ul>
 
 <p>浏览器访问 <a href="http://localhost:1313/">http://localhost:1313/</a>
 看到如下图页面，说明本地搭建博客已经没问题了。</p>
@@ -263,9 +262,9 @@ categories: [&ldquo;python&rdquo;]</p>
 
 <p>接下来讲解怎么将网站内容放到github pages。</p>
 
-<ol>
+<ul>
 <li>生成public文件</li>
-</ol>
+</ul>
 
 <p>这一步网上资料说的比较含糊，一笔带过，这里我明确一下，是需要在根目录运行一个命令的，而这个命令就是：hugo</p>
 
@@ -274,9 +273,9 @@ categories: [&ldquo;python&rdquo;]</p>
 
 <p>这时会在根目录生成一个public文件夹，将public文件夹放到github pages对应的github地址并提交到远端即可。</p>
 
-<ol>
+<ul>
 <li>插件安装</li>
-</ol>
+</ul>
 
 <p>有很多插件需要安装：评论、网站阅读量等等。这个主题自带了busuanzi的阅读量服务，只需要修改配置即可。</p>
 
