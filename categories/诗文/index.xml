@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>诗文 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/categories/%E8%AF%97%E6%96%87/</link>
+    <description>Recent content in 诗文 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 27 Sep 2018 19:16:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/categories/%E8%AF%97%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>战士吟</title>
+      <link>https://www.sanlt.com/post/life/zhan_shi_yin/</link>
+      <pubDate>Thu, 27 Sep 2018 19:16:56 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/life/zhan_shi_yin/</guid>
+      <description>夜海复归静， 仗剑酒一杯。 男儿志千里， 洛阳加急催。</description>
+    </item>
+    
+    <item>
+      <title>看花回</title>
+      <link>https://www.sanlt.com/post/life/kan_hua_hui/</link>
+      <pubDate>Thu, 27 Sep 2018 19:10:56 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/life/kan_hua_hui/</guid>
+      <description>月满星稀云自凄，倦看两回。 功名利禄逡巡过， 惹红尘， 多少是非。 少年贪风流， 绣阁凤帷。 眼自高来手自低， 徒自增悲。 乾坤自有乾坤定， 红颜老， 孰人何罪</description>
+    </item>
+    
+  </channel>
+</rss>
