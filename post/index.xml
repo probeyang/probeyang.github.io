@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>《高性能网站建设指南》读书笔记</title>
+      <link>https://www.sanlt.com/post/architect/web_station_guide/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/architect/web_station_guide/</guid>
+      <description>规则1 减少HTTP请求 规则2 使用内容发布网络 无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。 依赖CD</description>
+    </item>
+    
+    <item>
       <title>曾鸣商业20讲笔记</title>
       <link>https://www.sanlt.com/post/life/zengming_business/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
