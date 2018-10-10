@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>HeadlessChrome说明文档 - Sanlt,就是加了N多盐的地方</title>
+  <title>MySQL报错：Illegal mix of collations for operation解决 - Sanlt,就是加了N多盐的地方</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="probeyang" />
-  <meta name="description" content="Headless Chrome是什么？ 它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink" />
+  <meta name="description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio" />
 
   <meta name="keywords" content="python, php, linux, docker, 服务器, WEB站点" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://www.sanlt.com/post/linux/headless_chrome_desc/" />
+<link rel="canonical" href="https://www.sanlt.com/post/mysql/illegal_mix_error/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,25 +49,25 @@
 
 
 
-<meta property="og:title" content="HeadlessChrome说明文档" />
-<meta property="og:description" content="Headless Chrome是什么？ 它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink" />
+<meta property="og:title" content="MySQL报错：Illegal mix of collations for operation解决" />
+<meta property="og:description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/linux/headless_chrome_desc/" /><meta property="article:published_time" content="2018-09-01T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-09-01T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="HeadlessChrome说明文档">
-<meta itemprop="description" content="Headless Chrome是什么？ 它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink">
+<meta property="og:url" content="https://www.sanlt.com/post/mysql/illegal_mix_error/" /><meta property="article:published_time" content="2018-10-10T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-10-10T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="MySQL报错：Illegal mix of collations for operation解决">
+<meta itemprop="description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio">
 
 
-<meta itemprop="datePublished" content="2018-09-01T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-09-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="659">
+<meta itemprop="datePublished" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="391">
 
 
 
-<meta itemprop="keywords" content="headless chrome,chrome," />
+<meta itemprop="keywords" content="MySQL,ERROR," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="HeadlessChrome说明文档"/>
-<meta name="twitter:description" content="Headless Chrome是什么？ 它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink"/>
+<meta name="twitter:title" content="MySQL报错：Illegal mix of collations for operation解决"/>
+<meta name="twitter:description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -134,13 +134,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">HeadlessChrome说明文档</h1>
+      <h1 class="post-title">MySQL报错：Illegal mix of collations for operation解决</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-09-01 </span>
+        <span class="post-time"> 2018-10-10 </span>
         <div class="post-category">
             
-              <a href="/categories/linux/"> linux </a>
+              <a href="/categories/mysql/"> MySQL </a>
             
           </div>
         
@@ -158,9 +158,10 @@
 <ul>
 <li>
 <ul>
-<li><a href="#headless-chrome是什么">Headless Chrome是什么？</a></li>
-<li><a href="#它有什么用">它有什么用？</a></li>
-<li><a href="#使用方法">使用方法</a></li>
+<li><a href="#问题描述">问题描述</a></li>
+<li><a href="#问题解决">问题解决</a></li>
+<li><a href="#问题总结">问题总结</a></li>
+<li><a href="#参考文献">参考文献</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -169,68 +170,68 @@
 
     
     
-  <div class="post-outdated">
-    <div class="hint">
-      <p>【注意】最后更新于 <span class="timeago" datetime="2018-09-01T00:00:00" title="September 1, 2018">September 1, 2018</span>，文中内容可能已过时，请谨慎使用。</p>
-    </div>
-  </div>
 
     
     <div class="post-content">
       
 
-<h2 id="headless-chrome是什么">Headless Chrome是什么？</h2>
+<h2 id="问题描述">问题描述</h2>
 
-<p>它是一种在无需显示headless的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink 渲染引擎提供的所有现代 Web 平台的功能都带入了命令行。</p>
+<p>今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operation，而使用英文的时候却没有问题。</p>
 
-<h2 id="它有什么用">它有什么用？</h2>
-
-<p>无需显示headless的浏览器对于自动化测试和不需要可视化 UI 界面的服务器环境是一个很好的工具。例如，你可能需要对真实的网页运行一些测试，创建一个 PDF，或者只是检查浏览器如何呈现 URL。</p>
-
-<blockquote>
-<p>注意： Mac 和 Linux 上的 Chrome 59 都可以运行无需显示模式。对 Windows 的支持将在 Chrome 60 中提供。要检查你使用的 Chrome 版本，请在浏览器中打开 chrome://version。</p>
-</blockquote>
-
-<h2 id="使用方法">使用方法</h2>
-
-<p>开启无需显示headless模式最简单的方法是从命令行打开 Chrome 二进制文件。如果你已经安装了 Chrome 59 以上的版本，请使用 &ndash;headless 标志启动 Chrome：</p>
-
-<p>chrome <br />
-&ndash;headless \                   # Runs Chrome in headless mode.
-&ndash;disable-gpu \                # Temporarily needed for now.
-&ndash;remote-debugging-port=9222 <br />
- <a href="https://www.sanlt.com">https://www.sanlt.com</a>   # URL to open. Defaults to about:blank.</p>
-
-<p>解释：</p>
-
-<ol>
-<li><p>&ndash;headless 就是开启 headless 模式。</p></li>
-
-<li><p>&ndash;remote-debugging-port=9222 这是开启 Chrome 的端口是 9222，这样子 Chrome 就类似于微服务一样啦。</p></li>
-
-<li><p>&ndash;disable-gpu 不使用 gpu，既然是在后端运行的 Chrome 当然不需要 gpu 啦。</p></li>
-</ol>
-
-<p>最后的网址写自己需要调试的地址即可，我这里是我的博客地址：<a href="https://www.sanlt.com。">https://www.sanlt.com。</a>
-随意打开一个浏览器，输入 <a href="http://localhost:9222">http://localhost:9222</a> 可以得到如下的效果。</p>
-
-<blockquote>
-<p>注意：目前你仍然需要使用 &ndash;disable-gpu 标志。但它最终会不需要的。
-chrome 二进制文件应该指向你安装 Chrome 的位置。确切的位置会因平台差异而不同。当前我在 Mac 上操作，所以我为安装的每个版本的 Chrome 都创建了方便使用的别名。</p>
-</blockquote>
-
-<p>如果您使用 Chrome 的稳定版，并且无法获得测试版，我建议您使用 chrome-canary 版本：</p>
-
-<pre><code>alias chrome=&quot;/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome&quot;
-alias chrome-canary=&quot;/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary&quot;
-alias chromium=&quot;/Applications/Chromium.app/Contents/MacOS/Chromium&quot;
+<pre><code>SELECT
+	sum(`col6` + 0) AS `sum_col6` ,
+	date_format(`col2` , '%Y-%m') AS `month_col2`
+FROM
+	dataset_94f37d70ce87c691
+WHERE
+        col2 =  '盘龙'
+GROUP BY
+	date_format(`col2` , '%Y-%m')
+LIMIT 20 OFFSET 0
 </code></pre>
 
-<p>更多内容参考文献：</p>
+<p>以上SQL会报错，而下面的SQL却能正常运行：</p>
 
-<p><a href="https://zhuanlan.zhihu.com/p/26526871">Headless Chrome 踩坑之旅</a></p>
+<pre><code>SELECT
+	sum(`col6` + 0) AS `sum_col6` ,
+	date_format(`col2` , '%Y-%m') AS `month_col2`
+FROM
+	dataset_94f37d70ce87c691
+WHERE
+        col2 =  'hello'
+GROUP BY
+	date_format(`col2` , '%Y-%m')
+LIMIT 20 OFFSET 0
+</code></pre>
 
-<p><a href="https://zhuanlan.zhihu.com/p/29207391">Headless Chrome 入门</a></p>
+<h2 id="问题解决">问题解决</h2>
+
+<p>查询资料发现，原来是MySQL版本的问题：
+在 MySQL 5.5 以上, 若字段类型是time,date,datetime其中一种，则在查询时如果使用 = ‘汉字中文’ 会出现 Illegal mix of collations for operation ‘=’。解决办法是需要在5.5版本之后的SQL语句中添加binary关键字。</p>
+
+<pre><code>SELECT
+	sum(`col6` + 0) AS `sum_col6` ,
+	date_format(`col2` , '%Y-%m') AS `month_col2`
+FROM
+	dataset_94f37d70ce87c691
+WHERE
+        col2 = binary '盘龙'
+GROUP BY
+	date_format(`col2` , '%Y-%m')
+LIMIT 20 OFFSET 0
+</code></pre>
+
+<h2 id="问题总结">问题总结</h2>
+
+<ol>
+<li>MYSQL5.5以前旧版没有问题。</li>
+<li>MySQL 5.5 以上, 必需改成 = binary ‘%中文%’ 即可避免出现错误.</li>
+</ol>
+
+<h2 id="参考文献">参考文献</h2>
+
+<p><a href="https://blog.csdn.net/qq_26245325/article/details/79157918">MySQL报错：MySQL Illegal mix of collations for operation &lsquo;like&rsquo;</a></p>
 
     </div>
 
@@ -242,7 +243,7 @@ alias chromium=&quot;/Applications/Chromium.app/Contents/MacOS/Chromium&quot;
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-01</span>
+    <span class="item-content">2018-10-10</span>
   </p>
   
   
@@ -271,23 +272,18 @@ alias chromium=&quot;/Applications/Chromium.app/Contents/MacOS/Chromium&quot;
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/headless-chrome/">headless chrome</a>
+          <a href="/tags/mysql/">MySQL</a>
           
-          <a href="/tags/chrome/">chrome</a>
+          <a href="/tags/error/">ERROR</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/pattern_design/strategy_pattern/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">设计模式之策略模式</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/docker/docker_swarm_cluster_demo/">
-            <span class="next-text nav-default">docker swarm集群搭建系列之一</span>
+          <a class="next" href="/post/life/chang_heng_ge/">
+            <span class="next-text nav-default">长恨歌</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>MySQL报错：Illegal mix of collations for operation解决</title>
+      <link>https://www.sanlt.com/post/mysql/illegal_mix_error/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/illegal_mix_error/</guid>
+      <description>问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio</description>
+    </item>
+    
+    <item>
       <title>长恨歌</title>
       <link>https://www.sanlt.com/post/life/chang_heng_ge/</link>
       <pubDate>Sat, 29 Sep 2018 16:10:56 +0800</pubDate>
