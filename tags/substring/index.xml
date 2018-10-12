@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Substring on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/substring/</link>
+    <description>Recent content in Substring on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 12 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/substring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL Substring return empty value问题研究</title>
+      <link>https://www.sanlt.com/post/mysql/substr_return_empty/</link>
+      <pubDate>Fri, 12 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/substr_return_empty/</guid>
+      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结</description>
+    </item>
+    
+  </channel>
+</rss>
