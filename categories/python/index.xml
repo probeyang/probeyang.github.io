@@ -6,10 +6,19 @@
     <description>Recent content in Python on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用SQLAlchemy报错ImportError&#34;No module named &#39;mysql&#39;&#34;问题解决</title>
+      <link>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</link>
+      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</guid>
+      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： create_engine(&#39;mysql+mysqlconnector://</description>
+    </item>
     
     <item>
       <title>Celery版本错误问题探知</title>
