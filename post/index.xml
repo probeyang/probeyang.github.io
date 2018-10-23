@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>算法之前缀、中缀、后缀表达式转换研究</title>
+      <link>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</guid>
+      <description>定义 我们日常生活中见到的表达式是中缀表达式，如：1+((2+3)*4)-5，对于人们来说中缀表达式，感觉直观，计算方便。但对于计算机来说并不</description>
+    </item>
     
     <item>
       <title>Python解析json之ValueError&#34;Expecting property name enclosed in double quotes&#39;line 1 column 2 (char 1)&#39;&#34;解决</title>

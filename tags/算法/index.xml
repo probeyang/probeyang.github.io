@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>算法之前缀、中缀、后缀表达式转换研究</title>
+      <link>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</guid>
+      <description>定义 我们日常生活中见到的表达式是中缀表达式，如：1+((2+3)*4)-5，对于人们来说中缀表达式，感觉直观，计算方便。但对于计算机来说并不</description>
+    </item>
+    
+  </channel>
+</rss>
