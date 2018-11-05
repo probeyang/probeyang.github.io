@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>macos上安装mysqlclient详解</title>
+      <link>https://www.sanlt.com/post/python/install_mysqlclient_on_mac/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/install_mysqlclient_on_mac/</guid>
+      <description>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程</description>
+    </item>
     
     <item>
       <title>算法之前缀、中缀、后缀表达式转换研究</title>

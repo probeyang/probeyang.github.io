@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/post/python/install_mysqlclient_on_mac/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -388,6 +395,13 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/tags/macos/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/tags/math/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -425,6 +439,13 @@
   <url>
     <loc>https://www.sanlt.com/tags/mysqlbinlog/</loc>
     <lastmod>2018-09-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/mysqlclient/</loc>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -480,7 +501,7 @@
   
   <url>
     <loc>https://www.sanlt.com/post/</loc>
-    <lastmod>2018-10-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -494,6 +515,20 @@
   
   <url>
     <loc>https://www.sanlt.com/tags/python/</loc>
+    <lastmod>2018-10-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/python/</loc>
+    <lastmod>2018-10-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/python/</loc>
     <lastmod>2018-10-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

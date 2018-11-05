@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mysql on Sanlt,就是加了N多盐的地方</title>
+    <title>MySQL on Sanlt,就是加了N多盐的地方</title>
     <link>https://www.sanlt.com/tags/mysql/</link>
-    <description>Recent content in Mysql on Sanlt,就是加了N多盐的地方</description>
+    <description>Recent content in MySQL on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 22 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>mysqldump命令参数介绍</title>
-      <link>https://www.sanlt.com/post/mysql/mysqldump_usage/</link>
-      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      <title>使用SQLAlchemy报错ImportError&#34;No module named &#39;mysql&#39;&#34;问题解决</title>
+      <link>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</link>
+      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.sanlt.com/post/mysql/mysqldump_usage/</guid>
-      <description>使用 注意：mysqldump不用在mysql命令行模式下执行，它是个单独的命令，直接在windows或者linux的命令行模式下执行即可。 &amp;ldquo;&amp;lsquo;mysqldump</description>
+      <guid>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</guid>
+      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： create_engine(&#39;mysql+mysqlconnector://</description>
     </item>
     
     <item>
-      <title>使用mysqlbinlog查看日志</title>
-      <link>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</link>
-      <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
+      <title>MySQL Substring return empty value问题研究</title>
+      <link>https://www.sanlt.com/post/mysql/substr_return_empty/</link>
+      <pubDate>Fri, 12 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.sanlt.com/post/mysql/mysqlbinlog_study/</guid>
-      <description>mysqlbinlog说明 binlog日志是mysql的所有操作的日志记录，它是一种二进制数据。通过它可以对数据库的误删除、表误更新、数据误</description>
+      <guid>https://www.sanlt.com/post/mysql/substr_return_empty/</guid>
+      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结</description>
+    </item>
+    
+    <item>
+      <title>MySQL报错：Illegal mix of collations for operation解决</title>
+      <link>https://www.sanlt.com/post/mysql/illegal_mix_error/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/mysql/illegal_mix_error/</guid>
+      <description>问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio</description>
     </item>
     
   </channel>

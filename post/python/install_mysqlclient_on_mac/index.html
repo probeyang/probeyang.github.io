@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《高性能网站建设指南》读书笔记 - Sanlt,就是加了N多盐的地方</title>
+  <title>macos上安装mysqlclient详解 - Sanlt,就是加了N多盐的地方</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="probeyang" />
-  <meta name="description" content="规则1 减少HTTP请求 规则2 使用内容发布网络 无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。 依赖CD" />
+  <meta name="description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程" />
 
   <meta name="keywords" content="python, php, linux, docker, 服务器, WEB站点" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.48" />
 
 
-<link rel="canonical" href="https://www.sanlt.com/post/architect/web_station_guide/" />
+<link rel="canonical" href="https://www.sanlt.com/post/python/install_mysqlclient_on_mac/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,25 +49,25 @@
 
 
 
-<meta property="og:title" content="《高性能网站建设指南》读书笔记" />
-<meta property="og:description" content="规则1 减少HTTP请求 规则2 使用内容发布网络 无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。 依赖CD" />
+<meta property="og:title" content="macos上安装mysqlclient详解" />
+<meta property="og:description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/architect/web_station_guide/" /><meta property="article:published_time" content="2018-09-27T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-09-27T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="《高性能网站建设指南》读书笔记">
-<meta itemprop="description" content="规则1 减少HTTP请求 规则2 使用内容发布网络 无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。 依赖CD">
+<meta property="og:url" content="https://www.sanlt.com/post/python/install_mysqlclient_on_mac/" /><meta property="article:published_time" content="2018-11-05T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-11-05T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="macos上安装mysqlclient详解">
+<meta itemprop="description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程">
 
 
-<meta itemprop="datePublished" content="2018-09-27T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-09-27T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1433">
+<meta itemprop="datePublished" content="2018-11-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-11-05T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="374">
 
 
 
-<meta itemprop="keywords" content="PHP,web,高性能," />
+<meta itemprop="keywords" content="python,mysqlclient,macos," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《高性能网站建设指南》读书笔记"/>
-<meta name="twitter:description" content="规则1 减少HTTP请求 规则2 使用内容发布网络 无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。 依赖CD"/>
+<meta name="twitter:title" content="macos上安装mysqlclient详解"/>
+<meta name="twitter:description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -134,13 +134,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">《高性能网站建设指南》读书笔记</h1>
+      <h1 class="post-title">macos上安装mysqlclient详解</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-09-27 </span>
+        <span class="post-time"> 2018-11-05 </span>
         <div class="post-category">
             
-              <a href="/categories/php/"> PHP </a>
+              <a href="/categories/python/"> python </a>
             
           </div>
         
@@ -158,35 +158,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#规则1-减少http请求">规则1 减少HTTP请求</a></li>
-<li><a href="#规则2-使用内容发布网络">规则2 使用内容发布网络</a>
+<li><a href="#安装">安装</a>
 <ul>
-<li>
-<ul>
-<li><a href="#代理缓存">代理缓存</a></li>
+<li><a href="#第一步-修改mysql配置文件">第一步: 修改mysql配置文件</a></li>
+<li><a href="#第二步-添加环境变量">第二步：添加环境变量</a></li>
+<li><a href="#第三步-安装mysqlclient">第三步：安装mysqlclient</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#规则3-添加expires头">规则3 添加Expires头</a></li>
-<li><a href="#规则4-压缩组件">规则4 压缩组件</a></li>
-<li><a href="#规则5-将样式表放在顶部">规则5 将样式表放在顶部</a></li>
-<li><a href="#规则6-将脚本放在底部">规则6 将脚本放在底部</a></li>
-<li><a href="#规则7-避免css表达式">规则7 避免CSS表达式</a></li>
-<li><a href="#规则8-使用外部javascript和css">规则8 使用外部Javascript和CSS</a>
-<ul>
-<li><a href="#纯粹而言-内联快一些">纯粹而言，内联快一些</a></li>
-</ul></li>
-<li><a href="#规则9-减少dns查找">规则9 减少DNS查找</a></li>
-<li><a href="#规则10-精简javascript">规则10 精简javascript</a></li>
-<li><a href="#规则11-避免重定向">规则11 避免重定向</a>
-<ul>
-<li><a href="#缺少结尾的斜线">缺少结尾的斜线</a></li>
-</ul></li>
-<li><a href="#规则12-删除重复脚本">规则12 删除重复脚本</a></li>
-<li><a href="#规则13-配置etag">规则13 配置ETag</a></li>
-<li><a href="#规则14-使用ajax可缓存">规则14 使用Ajax可缓存</a>
-<ul>
-<li><a href="#优化ajax请求">优化ajax请求</a></li>
-</ul></li>
+<li><a href="#参考文献">参考文献：</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -195,91 +173,71 @@
 
     
     
-  <div class="post-outdated">
-    <div class="hint">
-      <p>【注意】最后更新于 <span class="timeago" datetime="2018-09-27T00:00:00" title="September 27, 2018">September 27, 2018</span>，文中内容可能已过时，请谨慎使用。</p>
-    </div>
-  </div>
 
     
     <div class="post-content">
       
 
-<h2 id="规则1-减少http请求">规则1 减少HTTP请求</h2>
+<p>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程。</p>
 
-<h2 id="规则2-使用内容发布网络">规则2 使用内容发布网络</h2>
+<h2 id="安装">安装</h2>
 
-<p>无论如何也不要使用HTTP重定向来将用户指向到本地服务器，这会使web页面反应速度变慢。</p>
+<h3 id="第一步-修改mysql配置文件">第一步: 修改mysql配置文件</h3>
 
-<p>依赖CDN的一个缺点是你的响应时间可能会受到其他网站&ndash;甚至很可能是你的竞争对手的流量的影响。另一个缺点是无法直接控制组件服务器所带来的特殊麻烦。最后，如果CDN的服务性能下降，你的工作质量也随之下降。</p>
+<p>第一步就玩的很大，但是别担心，按着下面说的做不会出问题：
+文件地址：/usr/local/bin/mysql_config
+原来为：</p>
 
-<h4 id="代理缓存">代理缓存</h4>
+<pre><code># Create options 
+libs=&quot;-L$pkglibdir&quot; 
+libs=&quot;$libs -l &quot;
+</code></pre>
 
-<p>浏览器会基于响应中的HTTP头里面的Expires和Cache-Control来缓存响应。</p>
+<p>修改为：</p>
 
-<h2 id="规则3-添加expires头">规则3 添加Expires头</h2>
+<pre><code># Create options
+libs=&quot;-L$pkglibdir&quot; 
+libs=&quot;$libs -lmysqlclient -lssl -lcrypto&quot;
+</code></pre>
 
-<h2 id="规则4-压缩组件">规则4 压缩组件</h2>
+<p>修改完保存退出即可.</p>
 
-<h2 id="规则5-将样式表放在顶部">规则5 将样式表放在顶部</h2>
+<h3 id="第二步-添加环境变量">第二步：添加环境变量</h3>
 
-<h2 id="规则6-将脚本放在底部">规则6 将脚本放在底部</h2>
+<p>如果下面的变量地址不一致，可以使用brew info openssl查看OpenSSL安装地址。</p>
 
-<p>使用脚本时，对于所有位于脚本以下的内容，逐步呈现都被阻塞了。将脚本放在页面越靠下的地方，意味着越多的内容能够逐步地呈现。</p>
+<pre><code>export LDFLAGS=&quot;-L/usr/local/opt/openssl/lib&quot;
+export CPPFLAGS=&quot;-I/usr/local/opt/openssl/include&quot;
+</code></pre>
 
-<p>HTTP1.1规范建议浏览器从每个主机名并行的下载两个组件。
-HTTP1.0建议并行下载4个组件。</p>
+<p>示例：
+<img src="/img/26B94E516174AFDCA00AB143A0708751.jpg" alt="IMAGE" title="演示图" /></p>
 
-<p>如果一个页面平均地将其组件分别放在两个主机名下，整体响应时间将可以减少大约一半。
-每个主机名并行下载两个组件的限制只是一个建议。
-把脚本放在页面底部不会阻止页面内容的呈现，而且页面中的可视组件可以尽早下载。
-经常出现的另外一种建议是使用延迟脚本。DEFER属性表明脚本不包含document.write。浏览器得到这一线索就可继续进行呈现。</p>
+<h3 id="第三步-安装mysqlclient">第三步：安装mysqlclient</h3>
 
-<h2 id="规则7-避免css表达式">规则7 避免CSS表达式</h2>
+<p>如果看到下面的错误：</p>
 
-<p>expression方法被其他浏览器简单的忽略了。但是在ie中是个有用的工具。</p>
+<pre><code>ld: library not found for -lssl
+    clang: error: linker command failed with exit code 1 (use -v to see invocation)
+    error: command '/usr/bin/clang' failed with exit status 1
+</code></pre>
 
-<h2 id="规则8-使用外部javascript和css">规则8 使用外部Javascript和CSS</h2>
+<p>直接使用命令安装PyMySQL, 没错，没有看错也没有写错，安装它是为了解决错误：</p>
 
-<h3 id="纯粹而言-内联快一些">纯粹而言，内联快一些</h3>
+<pre><code>pip3 install PyMySQL
+</code></pre>
 
-<p>一个HTTP请求与5个HTTP请求之间的差距导致内联更快一些。</p>
+<p>之后再安装mysqlclient：</p>
 
-<p>外部文件所带来的收益-JavaScript和css文件有机会被浏览器缓存起来。</p>
+<pre><code>pip3 install mysqlclient
+</code></pre>
 
-<p>如果你的网站中的每个页面都使用了相同的JavaScript和CSS，使用外部文件可以提高这些组件的重用率。</p>
+<p>即可。
+<img src="/img/B88EADE090225A8D81E9C8FA699069F6.jpg" alt="IMAGE" title="演示图" /></p>
 
-<h2 id="规则9-减少dns查找">规则9 减少DNS查找</h2>
+<h2 id="参考文献">参考文献：</h2>
 
-<h2 id="规则10-精简javascript">规则10 精简javascript</h2>
-
-<h2 id="规则11-避免重定向">规则11 避免重定向</h2>
-
-<h3 id="缺少结尾的斜线">缺少结尾的斜线</h3>
-
-<p>有一种重定向最为浪费、发生得也很频繁，但web开发人员通常都没有意识到它。它发生在URL的结尾必须出现斜线（/）而没有出现时。</p>
-
-<h2 id="规则12-删除重复脚本">规则12 删除重复脚本</h2>
-
-<h2 id="规则13-配置etag">规则13 配置ETag</h2>
-
-<h2 id="规则14-使用ajax可缓存">规则14 使用Ajax可缓存</h2>
-
-<h3 id="优化ajax请求">优化ajax请求</h3>
-
-<p>改善主动ajax请求最重要的方式就是使响应可缓存。</p>
-
-<p>处理数据隐私性的另外一个更好的方法是使用安全通信协议如安全套接字层（SSL）。ssl响应是可缓存的（在firefox只能用于当前浏览器会话），因此它提供了一种妥协&ndash;在确保数据隐私的同时在当前会话中缓存响应以改善用户体验。</p>
-
-<p>使用IFrame提供广告的方法值得探讨。IFrame实现了广告与实际页面的彻底分离，使得两者的团队和系统能够互不依赖。缺点是每个IFrame都带来一个额外的HTTP请求，通常他是不可缓存的。</p>
-
-<p>使用IFrame来提供广告是合理的，因为广告通常包含自己的JavaScript代码。如果广告内容来自第三方并且包含JavaScript，将其放到IFrame中也就把JavaScript放到了沙箱中，可以带来极高的安全性（第三方的JavaScript代码无法访问web页面的命名空间）。</p>
-
-<p>每个IFrame的SRC属性都被设置为about：blank,这样的话不会产生任何HTTP流量。</p>
-
-<p>JavaScript的DEFFER属性告诉浏览器继续呈现内容，稍后再执行JavaScript，避免了可能的呈现延迟。但我们从来没见过有谁将其用于内联脚本中。</p>
-
-<p>PNG格式比GIF通常是更好的选择。因为它体积更小，并且具有更高的颜色深度和透明度。</p>
+<p><a href="https://github.com/PyMySQL/mysqlclient-python/issues/169">pip3 install mysqlclient fails on macOS #169</a></p>
 
     </div>
 
@@ -291,7 +249,7 @@ HTTP1.0建议并行下载4个组件。</p>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-27</span>
+    <span class="item-content">2018-11-05</span>
   </p>
   
   
@@ -320,25 +278,20 @@ HTTP1.0建议并行下载4个组件。</p>
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/php/">PHP</a>
+          <a href="/tags/python/">python</a>
           
-          <a href="/tags/web/">web</a>
+          <a href="/tags/mysqlclient/">mysqlclient</a>
           
-          <a href="/tags/%E9%AB%98%E6%80%A7%E8%83%BD/">高性能</a>
+          <a href="/tags/macos/">macos</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/life/kan_hua_hui/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">看花回</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/life/zengming_business/">
-            <span class="next-text nav-default">曾鸣商业20讲笔记</span>
+          <a class="next" href="/post/architect/qianzhui_houzhui_zhongzhui/">
+            <span class="next-text nav-default">算法之前缀、中缀、后缀表达式转换研究</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

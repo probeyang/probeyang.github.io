@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>macos上安装mysqlclient详解</title>
+      <link>https://www.sanlt.com/post/python/install_mysqlclient_on_mac/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sanlt.com/post/python/install_mysqlclient_on_mac/</guid>
+      <description>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程</description>
+    </item>
+    
+    <item>
       <title>算法之前缀、中缀、后缀表达式转换研究</title>
       <link>https://www.sanlt.com/post/architect/qianzhui_houzhui_zhongzhui/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
