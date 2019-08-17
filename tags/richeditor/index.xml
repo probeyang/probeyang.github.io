@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>richeditor on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/richeditor/</link>
+    <description>Recent content in richeditor on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Aug 2019 19:56:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/richeditor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>laravel中使用富文本wysiwyg扩展summernote</title>
+      <link>https://www.sanlt.com/post/program/php/summernote_laravel_guide/</link>
+      <pubDate>Sat, 17 Aug 2019 19:56:26 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/summernote_laravel_guide/</guid>
+      <description>简介 富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟la</description>
+    </item>
+    
+  </channel>
+</rss>

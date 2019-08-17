@@ -6,10 +6,19 @@
     <description>Recent content on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Aug 2019 15:23:53 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2019 19:56:26 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>laravel中使用富文本wysiwyg扩展summernote</title>
+      <link>https://www.sanlt.com/post/program/php/summernote_laravel_guide/</link>
+      <pubDate>Sat, 17 Aug 2019 19:56:26 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/summernote_laravel_guide/</guid>
+      <description>简介 富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟la</description>
+    </item>
     
     <item>
       <title>Laravel中使用breadcrumbs功能指南</title>
@@ -81,6 +90,24 @@
       
       <guid>https://www.sanlt.com/post/life/chang_heng_ge/</guid>
       <description>北望长安离乱秋， 偷身塞外凛冬后。 少年不解千古恨， 独坐江头泛扁舟。</description>
+    </item>
+    
+    <item>
+      <title>YII2.0中POST请求时返回Bad Request (#400)的解决方法</title>
+      <link>https://www.sanlt.com/post/program/php/yii_post_400/</link>
+      <pubDate>Sat, 22 Sep 2018 20:27:32 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/yii_post_400/</guid>
+      <description>问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： 1 Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正</description>
+    </item>
+    
+    <item>
+      <title>三种工厂模式详解</title>
+      <link>https://www.sanlt.com/post/software/architect/simple_factory/</link>
+      <pubDate>Mon, 10 Sep 2018 20:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/architect/simple_factory/</guid>
+      <description>工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。</description>
     </item>
     
     <item>

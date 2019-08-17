@@ -9,15 +9,50 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/php/</loc>
-    <lastmod>2019-08-16T10:39:01+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/laravel/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/python/</loc>
+    <loc>https://www.sanlt.com/post/program/php/summernote_laravel_guide/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/php/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/</loc>
     <lastmod>2019-10-17T11:49:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/richeditor/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/</loc>
+    <lastmod>2019-10-17T11:49:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/summernote/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -30,7 +65,21 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/tags/wysiwyg/</loc>
+    <lastmod>2019-08-17T19:56:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
+    <lastmod>2019-10-17T11:49:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/python/</loc>
     <lastmod>2019-10-17T11:49:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -44,29 +93,8 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/laravel/</loc>
-    <lastmod>2019-08-10T19:10:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</loc>
     <lastmod>2019-08-10T19:10:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/post/</loc>
-    <lastmod>2019-10-17T11:49:27+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/</loc>
-    <lastmod>2019-10-17T11:49:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -100,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/algorithm/</loc>
+    <loc>https://www.sanlt.com/tags/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/algorithm/</loc>
+    <loc>https://www.sanlt.com/categories/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -249,6 +277,62 @@
   <url>
     <loc>https://www.sanlt.com/post/life/chang_heng_ge/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/csrf/</loc>
+    <lastmod>2018-09-22T20:27:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/yii/</loc>
+    <lastmod>2018-09-22T20:27:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/yii2/</loc>
+    <lastmod>2018-09-22T20:27:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/program/php/yii_post_400/</loc>
+    <lastmod>2018-09-22T20:27:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/factory/</loc>
+    <lastmod>2018-09-10T20:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/software/architect/simple_factory/</loc>
+    <lastmod>2018-09-10T20:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-10T20:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-09-10T20:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
