@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SQLAlchemy on Sanlt,就是加了N多盐的地方</title>
+    <title>sqlalchemy on Sanlt,就是加了N多盐的地方</title>
     <link>https://www.sanlt.com/tags/sqlalchemy/</link>
-    <description>Recent content in SQLAlchemy on Sanlt,就是加了N多盐的地方</description>
+    <description>Recent content in sqlalchemy on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Oct 2018 11:54:13 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/sqlalchemy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>使用SQLAlchemy报错ImportError&#34;No module named &#39;mysql&#39;&#34;问题解决</title>
-      <link>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</link>
-      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+      <title>SQLAlchemy报错ImportError No module named &#39;mysql&#39;解决</title>
+      <link>https://www.sanlt.com/post/program/python/sqlalchemy_no_mysql/</link>
+      <pubDate>Sat, 13 Oct 2018 11:54:13 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</guid>
-      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： create_engine(&#39;mysql+mysqlconnector://</description>
+      <guid>https://www.sanlt.com/post/program/python/sqlalchemy_no_mysql/</guid>
+      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： 1 create_engine(&amp;#39;mysql+mysqlconnect</description>
     </item>
     
   </channel>

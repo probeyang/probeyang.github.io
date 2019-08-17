@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程语言 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</link>
+    <description>Recent content in 编程语言 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Aug 2019 10:39:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link></link>
+      <pubDate>Fri, 16 Aug 2019 10:39:01 +0800</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Laravel中使用breadcrumbs功能指南</title>
+      <link>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</link>
+      <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</guid>
+      <description>开始之前 声明版本：laravel版本为5.8 需要安装的面包屑laravel扩展版本为：5.2.1 需要安装的扩展为davejamesmille</description>
+    </item>
+    
+    <item>
+      <title>PHPStorm配置创建文件时自动添加文件头注释方法</title>
+      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
+      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
+      <description>配置入口 MAC版 PhpStorm -&amp;gt; Preferences&amp;hellip; -&amp;gt; Editor -&amp;gt; File and Code Templates -&amp;gt; includes -&amp;gt; PHP File Header 打开PhpStorm-&amp;gt;首选项-&amp;gt;编辑器-&amp;gt;文件和代码模板-&amp;gt;包括-</description>
+    </item>
+    
+    <item>
+      <title>Python解析json之ValueError Expecting property name enclosed in double quotes解决</title>
+      <link>https://www.sanlt.com/post/program/python/json_loads_error/</link>
+      <pubDate>Tue, 16 Oct 2018 11:49:27 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/json_loads_error/</guid>
+      <description>问题描述 python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在 1 filter_config_data = json.loads(filter_config) 出了错误， 问题解</description>
+    </item>
+    
+    <item>
+      <title>SQLAlchemy报错ImportError No module named &#39;mysql&#39;解决</title>
+      <link>https://www.sanlt.com/post/program/python/sqlalchemy_no_mysql/</link>
+      <pubDate>Sat, 13 Oct 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/sqlalchemy_no_mysql/</guid>
+      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： 1 create_engine(&amp;#39;mysql+mysqlconnect</description>
+    </item>
+    
+    <item>
+      <title>macos上安装mysqlclient详解</title>
+      <link>https://www.sanlt.com/post/program/python/mysqlclient_macos_install/</link>
+      <pubDate>Fri, 17 Aug 2018 11:17:42 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/mysqlclient_macos_install/</guid>
+      <description>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程</description>
+    </item>
+    
+  </channel>
+</rss>

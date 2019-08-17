@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MySQL on Sanlt,就是加了N多盐的地方</title>
+    <title>mysql on Sanlt,就是加了N多盐的地方</title>
     <link>https://www.sanlt.com/tags/mysql/</link>
-    <description>Recent content in MySQL on Sanlt,就是加了N多盐的地方</description>
+    <description>Recent content in mysql on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>使用SQLAlchemy报错ImportError&#34;No module named &#39;mysql&#39;&#34;问题解决</title>
-      <link>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</link>
-      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sanlt.com/post/python/sqlalchemy_no_mysql/</guid>
-      <description>问题描述 在使用SQLAlchemy的使用，实例化数据库引擎语句： create_engine(&#39;mysql+mysqlconnector://</description>
-    </item>
-    
-    <item>
       <title>MySQL Substring return empty value问题研究</title>
-      <link>https://www.sanlt.com/post/mysql/substr_return_empty/</link>
-      <pubDate>Fri, 12 Oct 2018 00:00:00 +0000</pubDate>
+      <link>https://www.sanlt.com/post/software/mysql/substr_return_empty/</link>
+      <pubDate>Fri, 12 Oct 2018 12:03:44 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/mysql/substr_return_empty/</guid>
-      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结</description>
+      <guid>https://www.sanlt.com/post/software/mysql/substr_return_empty/</guid>
+      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： 1 SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，</description>
     </item>
     
     <item>
       <title>MySQL报错：Illegal mix of collations for operation解决</title>
-      <link>https://www.sanlt.com/post/mysql/illegal_mix_error/</link>
-      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      <link>https://www.sanlt.com/post/software/mysql/illegal_mix_error/</link>
+      <pubDate>Wed, 10 Oct 2018 12:08:22 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/mysql/illegal_mix_error/</guid>
+      <guid>https://www.sanlt.com/post/software/mysql/illegal_mix_error/</guid>
       <description>问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio</description>
+    </item>
+    
+    <item>
+      <title>macos上安装mysqlclient详解</title>
+      <link>https://www.sanlt.com/post/program/python/mysqlclient_macos_install/</link>
+      <pubDate>Fri, 17 Aug 2018 11:17:42 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/mysqlclient_macos_install/</guid>
+      <description>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程</description>
     </item>
     
   </channel>

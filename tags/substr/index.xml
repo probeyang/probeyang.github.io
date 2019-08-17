@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Substr on Sanlt,就是加了N多盐的地方</title>
+    <title>substr on Sanlt,就是加了N多盐的地方</title>
     <link>https://www.sanlt.com/tags/substr/</link>
-    <description>Recent content in Substr on Sanlt,就是加了N多盐的地方</description>
+    <description>Recent content in substr on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/substr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MySQL Substring return empty value问题研究</title>
-      <link>https://www.sanlt.com/post/mysql/substr_return_empty/</link>
-      <pubDate>Fri, 12 Oct 2018 00:00:00 +0000</pubDate>
+      <link>https://www.sanlt.com/post/software/mysql/substr_return_empty/</link>
+      <pubDate>Fri, 12 Oct 2018 12:03:44 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/mysql/substr_return_empty/</guid>
-      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结</description>
+      <guid>https://www.sanlt.com/post/software/mysql/substr_return_empty/</guid>
+      <description>问题描述 今天发现一个substring函数的问题，当使用下面的SQL： 1 SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，</description>
     </item>
     
   </channel>

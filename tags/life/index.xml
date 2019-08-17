@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/life/</link>
+    <description>Recent content in life on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 29 Sep 2018 12:12:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>长恨歌</title>
+      <link>https://www.sanlt.com/post/life/chang_heng_ge/</link>
+      <pubDate>Sat, 29 Sep 2018 12:12:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/life/chang_heng_ge/</guid>
+      <description>北望长安离乱秋， 偷身塞外凛冬后。 少年不解千古恨， 独坐江头泛扁舟。</description>
+    </item>
+    
+  </channel>
+</rss>
