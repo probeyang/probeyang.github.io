@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 17 Aug 2019 19:56:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2019 22:08:38 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>laravel</title>
       <link>https://www.sanlt.com/tags/laravel/</link>
-      <pubDate>Sat, 17 Aug 2019 19:56:26 +0800</pubDate>
+      <pubDate>Tue, 20 Aug 2019 22:08:38 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/laravel/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>php</title>
       <link>https://www.sanlt.com/tags/php/</link>
-      <pubDate>Sat, 17 Aug 2019 19:56:26 +0800</pubDate>
+      <pubDate>Tue, 20 Aug 2019 22:08:38 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/php/</guid>
       <description></description>
@@ -98,6 +98,15 @@
       <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/%E6%B3%A8%E9%87%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php-cs-fixer</title>
+      <link>https://www.sanlt.com/tags/php-cs-fixer/</link>
+      <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/php-cs-fixer/</guid>
       <description></description>
     </item>
     

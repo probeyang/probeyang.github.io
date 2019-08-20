@@ -6,10 +6,19 @@
     <description>Recent content in 编程语言 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 17 Aug 2019 19:56:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2019 22:08:38 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>laravel视图打开报错Please provide a valid cache path解决</title>
+      <link>https://www.sanlt.com/post/program/php/valid_cache_path_error/</link>
+      <pubDate>Tue, 20 Aug 2019 22:08:38 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/valid_cache_path_error/</guid>
+      <description>问题描述 lumen中新增的view视图打开报错： 1 Please provide a valid cache path 问题解决 问题出现的原因是storage文件夹下面没有一系列缓存文件夹，我们新建</description>
+    </item>
     
     <item>
       <title>laravel中使用富文本wysiwyg扩展summernote</title>
@@ -45,6 +54,15 @@
       
       <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
       <description>配置入口 MAC版 PhpStorm -&amp;gt; Preferences&amp;hellip; -&amp;gt; Editor -&amp;gt; File and Code Templates -&amp;gt; includes -&amp;gt; PHP File Header 打开PhpStorm-&amp;gt;首选项-&amp;gt;编辑器-&amp;gt;文件和代码模板-&amp;gt;包括-</description>
+    </item>
+    
+    <item>
+      <title>代码格式化工具php-cs-fixer安装教程</title>
+      <link>https://www.sanlt.com/post/program/php/php_cs_fixer_guide/</link>
+      <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/php_cs_fixer_guide/</guid>
+      <description>简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别</description>
     </item>
     
     <item>
