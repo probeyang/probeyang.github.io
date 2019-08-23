@@ -6,10 +6,19 @@
     <description>Recent content in laravel on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 20 Aug 2019 22:08:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2019 01:09:52 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用亚马逊广告API登录LoginWithAmazon指南</title>
+      <link>https://www.sanlt.com/post/program/php/aws_advertising_api_guide/</link>
+      <pubDate>Sat, 24 Aug 2019 01:09:52 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/aws_advertising_api_guide/</guid>
+      <description>环境 PHP 7.2+ laravel 5.8+ 概述 亚马逊广告api（Amazon Advertising API），可让您以编程方式管理广告运营。在使用前，需要在第三方网站进行授权。这里需要用到Lo</description>
+    </item>
     
     <item>
       <title>laravel视图打开报错Please provide a valid cache path解决</title>
