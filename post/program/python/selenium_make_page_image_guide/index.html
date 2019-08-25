@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用selenium自动化工具截取页面为图片 - Sanlt,就是加了N多盐的地方</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="probeyang" /><meta name="description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium" /><meta name="keywords" content="python, selenium, chrome, make page to image" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用selenium自动化工具截取页面为图片" />
+<meta property="og:description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" />
+<meta property="article:published_time" content="2019-08-26T00:34:49+08:00" />
+<meta property="article:modified_time" content="2019-08-26T00:34:49+08:00" />
+<meta itemprop="name" content="使用selenium自动化工具截取页面为图片">
+<meta itemprop="description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium">
+
+
+<meta itemprop="datePublished" content="2019-08-26T00:34:49&#43;08:00" />
+<meta itemprop="dateModified" content="2019-08-26T00:34:49&#43;08:00" />
+<meta itemprop="wordCount" content="895">
+
+
+
+<meta itemprop="keywords" content="python,selenium,chrome," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用selenium自动化工具截取页面为图片"/>
+<meta name="twitter:description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Sanlt</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Sanlt</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用selenium自动化工具截取页面为图片</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
+            </div>
+          <span class="more-meta"> 约 895 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#使用">使用</a>
+<ul>
+<li><a href="#首先-下载selenium">首先，下载selenium：</a></li>
+<li><a href="#再次-写代码test-sele-py">再次，写代码test_sele.py：</a></li>
+<li><a href="#然后执行-python3-test-sele-py">然后执行：python3 test_sele.py</a></li>
+</ul></li>
+<li><a href="#参考文献">参考文献：</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="简介">简介</h2>
+
+<p>此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。</p>
+
+<h2 id="使用">使用</h2>
+
+<h3 id="首先-下载selenium">首先，下载selenium：</h3>
+
+<p>pip  install selenium</p>
+
+<h3 id="再次-写代码test-sele-py">再次，写代码test_sele.py：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="然后执行-python3-test-sele-py">然后执行：python3 test_sele.py</h3>
+
+<p>运行结果会报错，一般为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>pb@MacBook-Pro <span class="nb">test</span> <span class="o">]</span>$ python3 test_selenium.py
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line <span class="m">76</span>, in start
+    <span class="nv">stdin</span><span class="o">=</span>PIPE<span class="o">)</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line <span class="m">947</span>, in __init__
+    restore_signals, start_new_session<span class="o">)</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line <span class="m">1551</span>, in _execute_child
+    raise child_exception_type<span class="o">(</span>errno_num, err_msg<span class="o">)</span>
+FileNotFoundError: <span class="o">[</span>Errno <span class="m">2</span><span class="o">]</span> No such file or directory: <span class="s1">&#39;geckodriver&#39;</span>
+
+During handling of the above exception, another exception occurred:
+
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&#34;test_selenium.py&#34;</span>, line <span class="m">10</span>, in &lt;module&gt;
+    <span class="nv">brower</span> <span class="o">=</span> webdriver.Firefox<span class="o">()</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py&#34;</span>, line <span class="m">152</span>, in __init__
+    self.service.start<span class="o">()</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line <span class="m">83</span>, in start
+    os.path.basename<span class="o">(</span>self.path<span class="o">)</span>, self.start_error_message<span class="o">)</span>
+selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;geckodriver&#39;</span> executable needs to be in PATH.</code></pre></td></tr></table>
+</div>
+</div>
+<p>这个错误是因为没有geckodriver程序，需要下载并解压后放到/usr/bin或者/usr/local/bin目录下面。下载地址：<a href="https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst">https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst</a>
+或者：
+<a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a>
+我在mac上安装好后还是会报错，应该是我没有安装Firefox的原因。所以还需要安装Firefox到电脑上。</p>
+
+<p>下面直接给其他代码：
+先给出chrome浏览器的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="c1"># brower = webdriver.Firefox()</span>
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="s1">&#39;/Users/yang/study/python/test/driver/chromedriver&#39;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>注意，这里Chrome()里面一定要放能使用的chromedriver，这个不是chrome程序，而是需要单独下载的driver程序。
+下载地址在：<a href="https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：">https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：</a>
+<a href="https://sites.google.com/a/chromium.org/chromedriver/downloads下载然后放到你自己能找到的地方，并在代码中指明，我就下载在/Users/yang/study/python/test/driver/chromedriver。下载后需要解压，解压出来才是此文件。">https://sites.google.com/a/chromium.org/chromedriver/downloads下载然后放到你自己能找到的地方，并在代码中指明，我就下载在/Users/yang/study/python/test/driver/chromedriver。下载后需要解压，解压出来才是此文件。</a>
+提醒一下，使用Chrome方法必须指定chromedirver的地址。</p>
+
+<p>下面给出Firefox的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>至此，讲解完毕。</p>
+
+<h2 id="参考文献">参考文献：</h2>
+
+<p><a href="https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac">https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac</a></p>
+
+<p><a href="https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst">https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst</a></p>
+
+<p><a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></p>
+
+<p><a href="https://stackoverflow.com/questions/47023188/unable-to-get-selenium-geckodriver-to-work-on-python-mac-osx-high-sierra">https://stackoverflow.com/questions/47023188/unable-to-get-selenium-geckodriver-to-work-on-python-mac-osx-high-sierra</a></p>
+
+<p><a href="http://blog.csdn.net/huinsysu/article/details/63687653">http://blog.csdn.net/huinsysu/article/details/63687653</a></p>
+
+<p><a href="https://www.jianshu.com/p/6b633109b9a1">https://www.jianshu.com/p/6b633109b9a1</a></p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/selenium/">selenium</a>
+          <a href="/tags/chrome/">chrome</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/program/php/aws_advertising_api_guide/">
+            <span class="next-text nav-default">使用亚马逊广告API登录LoginWithAmazon指南</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="SOHUCS" sid="/post/program/python/selenium_make_page_image_guide/"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://www.sanlt.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+      备案号（粤ICP备17140117号-1）
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">probeyang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

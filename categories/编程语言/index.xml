@@ -6,10 +6,19 @@
     <description>Recent content in 编程语言 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 Aug 2019 01:09:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 00:34:49 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用selenium自动化工具截取页面为图片</title>
+      <link>https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/</link>
+      <pubDate>Mon, 26 Aug 2019 00:34:49 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/</guid>
+      <description>简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium</description>
+    </item>
     
     <item>
       <title>使用亚马逊广告API登录LoginWithAmazon指南</title>
