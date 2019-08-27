@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 26 Aug 2019 00:34:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2019 22:01:29 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>pipenv</title>
+      <link>https://www.sanlt.com/tags/pipenv/</link>
+      <pubDate>Tue, 27 Aug 2019 22:01:29 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/pipenv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.sanlt.com/tags/python/</link>
+      <pubDate>Tue, 27 Aug 2019 22:01:29 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualenv</title>
+      <link>https://www.sanlt.com/tags/virtualenv/</link>
+      <pubDate>Tue, 27 Aug 2019 22:01:29 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/virtualenv/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>chrome</title>
@@ -17,15 +44,6 @@
       <pubDate>Mon, 26 Aug 2019 00:34:49 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/chrome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.sanlt.com/tags/python/</link>
-      <pubDate>Mon, 26 Aug 2019 00:34:49 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/python/</guid>
       <description></description>
     </item>
     

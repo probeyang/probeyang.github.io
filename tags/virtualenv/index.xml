@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtualenv on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/virtualenv/</link>
+    <description>Recent content in virtualenv on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 27 Aug 2019 22:01:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/virtualenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pipenv_virtualenv_guide</title>
+      <link>https://www.sanlt.com/post/program/python/pipenv_virtualenv_guide/</link>
+      <pubDate>Tue, 27 Aug 2019 22:01:29 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/pipenv_virtualenv_guide/</guid>
+      <description>使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>归档 - Sanlt,就是加了N多盐的地方</title>
+  <title>Pipenv_virtualenv_guide - Sanlt,就是加了N多盐的地方</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="probeyang" /><meta name="description" content="Sanlt,就是加了N多盐的地方." /><meta name="keywords" content="python, php, mysql, 数据库, go, 软件开发, 架构, 设计模式" />
+<meta name="author" content="probeyang" /><meta name="description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后" /><meta name="keywords" content="python, pipenv, virtualenv" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://www.sanlt.com/post/" />
-  <link href="https://www.sanlt.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Sanlt,就是加了N多盐的地方" />
-  <link href="https://www.sanlt.com/post/index.xml" rel="feed" type="application/rss+xml" title="Sanlt,就是加了N多盐的地方" />
+<link rel="canonical" href="https://www.sanlt.com/post/program/python/pipenv_virtualenv_guide/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,18 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="Sanlt,就是加了N多盐的地方." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.sanlt.com/post/" />
+<meta property="og:title" content="Pipenv_virtualenv_guide" />
+<meta property="og:description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/pipenv_virtualenv_guide/" />
+<meta property="article:published_time" content="2019-08-27T22:01:29+08:00" />
+<meta property="article:modified_time" content="2019-08-27T22:01:29+08:00" />
+<meta itemprop="name" content="Pipenv_virtualenv_guide">
+<meta itemprop="description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后">
 
-<meta property="og:updated_time" content="2019-08-27T22:01:29+08:00" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="Sanlt,就是加了N多盐的地方.">
 
+<meta itemprop="datePublished" content="2019-08-27T22:01:29&#43;08:00" />
+<meta itemprop="dateModified" content="2019-08-27T22:01:29&#43;08:00" />
+<meta itemprop="wordCount" content="199">
+
+
+
+<meta itemprop="keywords" content="python,pipenv,virtualenv," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Sanlt,就是加了N多盐的地方."/>
+<meta name="twitter:title" content="Pipenv_virtualenv_guide"/>
+<meta name="twitter:description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -115,134 +121,75 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          
-<section id="archive" class="archive">
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Pipenv_virtualenv_guide</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-27 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
+            </div>
+          <span class="more-meta"> 约 199 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-27
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/python/pipenv_virtualenv_guide/" class="archive-post-link">
-          Pipenv_virtualenv_guide
-        </a>
-      </span>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。
+<img src="/img/program/python/pipenv_virtual0.png" alt="图例" title="图例" /></p>
+
+<p>上面的命令可以看到它会生成虚拟环境的目录，然后我们在pycharm中找到这个目录进行虚拟环境的关联即可：
+<img src="/img/program/python/pipenv_virtual1.png" alt="图例" title="图例" /></p>
+
+<p><img src="/img/program/python/pipenv_virtual2.png" alt="图例" title="图例" /></p>
+
+<p>这样，后面的命令我们使用pipenv install去安装扩展，不要在pycharm中安装（没试过，不知道安装到哪里去了）
+注意：这个项目里面不要有VENV文件夹，否则项目也会去找这个目录下的虚拟环境的。</p>
+
     </div>
 
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-26
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/python/selenium_make_page_image_guide/" class="archive-post-link">
-          使用selenium自动化工具截取页面为图片
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-24
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/aws_advertising_api_guide/" class="archive-post-link">
-          使用亚马逊广告API登录LoginWithAmazon指南
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-20
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/valid_cache_path_error/" class="archive-post-link">
-          laravel视图打开报错Please provide a valid cache path解决
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-17
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/summernote_laravel_guide/" class="archive-post-link">
-          laravel中使用富文本wysiwyg扩展summernote
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-10
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/laravel-breadcrumbs-guide/" class="archive-post-link">
-          Laravel中使用breadcrumbs功能指南
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-09
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/phpstorm_docs_guide/" class="archive-post-link">
-          PHPStorm配置创建文件时自动添加文件头注释方法
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        08-02
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/php/php_cs_fixer_guide/" class="archive-post-link">
-          代码格式化工具php-cs-fixer安装教程
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2018</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        10-23
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/algorithm/qianzhui_houzhui_zhongzhui/" class="archive-post-link">
-          算法之前缀、中缀、后缀表达式转换研究
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        10-16
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/python/json_loads_error/" class="archive-post-link">
-          Python解析json之ValueError Expecting property name enclosed in double quotes解决
-        </a>
-      </span>
-    </div></section>
-
-<nav class="pagination">
-  
-  <a class="next" href="/post/page/2/">
-      <span class="next-text">下一页</span>
-      <i class="iconfont icon-right"></i>
-    </a>
-</nav>
-        </div>
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/pipenv/">pipenv</a>
+          <a href="/tags/virtualenv/">virtualenv</a>
+          </div>
+      <nav class="post-nav">
         
+        <a class="next" href="/post/program/python/selenium_make_page_image_guide/">
+            <span class="next-text nav-default">使用selenium自动化工具截取页面为图片</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="SOHUCS" sid="/post/program/python/pipenv_virtualenv_guide/"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+  
+  
+
+  
 
       </div>
     </main>
