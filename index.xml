@@ -66,6 +66,15 @@
     </item>
     
     <item>
+      <title>关于我</title>
+      <link>https://www.sanlt.com/about/</link>
+      <pubDate>Fri, 16 Aug 2019 10:39:01 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Laravel中使用breadcrumbs功能指南</title>
       <link>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</link>
       <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
