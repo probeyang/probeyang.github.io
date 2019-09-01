@@ -6,10 +6,73 @@
     <description>Recent content in Tags on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Sep 2019 21:07:42 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Sep 2019 22:07:09 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>aws</title>
+      <link>https://www.sanlt.com/tags/aws/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boto3</title>
+      <link>https://www.sanlt.com/tags/boto3/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/boto3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cvm</title>
+      <link>https://www.sanlt.com/tags/cvm/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/cvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flask</title>
+      <link>https://www.sanlt.com/tags/flask/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/flask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iot</title>
+      <link>https://www.sanlt.com/tags/iot/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.sanlt.com/tags/python/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transcribe</title>
+      <link>https://www.sanlt.com/tags/transcribe/</link>
+      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/transcribe/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>django</title>
@@ -26,15 +89,6 @@
       <pubDate>Sun, 01 Sep 2019 21:07:42 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/framework/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.sanlt.com/tags/python/</link>
-      <pubDate>Sun, 01 Sep 2019 21:07:42 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/python/</guid>
       <description></description>
     </item>
     
