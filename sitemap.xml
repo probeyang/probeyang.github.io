@@ -2,20 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.sanlt.com/tags/aws/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/boto3/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/categories/</loc>
     <lastmod>2019-10-17T11:49:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -23,29 +9,15 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/cvm/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/django/</loc>
+    <lastmod>2019-09-11T22:09:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/flask/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/post/program/python/flask_iot_cvm_guide/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/iot/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <loc>https://www.sanlt.com/post/program/python/django_set_timezone_solve/</loc>
+    <lastmod>2019-09-11T22:09:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -79,8 +51,8 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/transcribe/</loc>
-    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/timezone/</loc>
+    <lastmod>2019-09-11T22:09:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -93,8 +65,50 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/django/</loc>
-    <lastmod>2019-09-01T21:07:42+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/aws/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/boto3/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/cvm/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/flask/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/program/python/flask_iot_cvm_guide/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/iot/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/transcribe/</loc>
+    <lastmod>2019-09-01T22:07:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -303,14 +317,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/algorithm/</loc>
+    <loc>https://www.sanlt.com/categories/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/algorithm/</loc>
+    <loc>https://www.sanlt.com/tags/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -380,14 +394,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/mysql/</loc>
+    <loc>https://www.sanlt.com/tags/mysql/</loc>
     <lastmod>2018-10-12T12:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/mysql/</loc>
+    <loc>https://www.sanlt.com/categories/mysql/</loc>
     <lastmod>2018-10-12T12:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -422,14 +436,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/life/</loc>
+    <loc>https://www.sanlt.com/tags/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/life/</loc>
+    <loc>https://www.sanlt.com/categories/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

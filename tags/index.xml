@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Sep 2019 22:07:09 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 22:09:28 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>django</title>
+      <link>https://www.sanlt.com/tags/django/</link>
+      <pubDate>Wed, 11 Sep 2019 22:09:28 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.sanlt.com/tags/python/</link>
+      <pubDate>Wed, 11 Sep 2019 22:09:28 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>timezone</title>
+      <link>https://www.sanlt.com/tags/timezone/</link>
+      <pubDate>Wed, 11 Sep 2019 22:09:28 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/timezone/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>aws</title>
@@ -57,29 +84,11 @@
     </item>
     
     <item>
-      <title>python</title>
-      <link>https://www.sanlt.com/tags/python/</link>
-      <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>transcribe</title>
       <link>https://www.sanlt.com/tags/transcribe/</link>
       <pubDate>Sun, 01 Sep 2019 22:07:09 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/transcribe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>django</title>
-      <link>https://www.sanlt.com/tags/django/</link>
-      <pubDate>Sun, 01 Sep 2019 21:07:42 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/django/</guid>
       <description></description>
     </item>
     
