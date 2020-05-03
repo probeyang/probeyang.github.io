@@ -6,10 +6,19 @@
     <description>Recent content on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 11 Sep 2019 22:09:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 17:46:14 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go语言学习笔记之1</title>
+      <link>https://www.sanlt.com/post/program/go/go_study_1/</link>
+      <pubDate>Sun, 03 May 2020 17:46:14 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/go/go_study_1/</guid>
+      <description>go语言学习笔记 1 基础知识 1.0 hello world 代码 1 2 3 4 5 6 7 package main import &amp;#34;fmt&amp;#34;//实现格式化的I/O /* Print something */ func main() { fmt.Printf(&amp;#34;Hello, world ; or  ϵ</description>
+    </item>
     
     <item>
       <title>Django设置时区教程</title>
