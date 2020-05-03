@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/flask_iot_cvm_guide/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-09-01T22:07:09+08:00" />
 <meta itemprop="name" content="flask&#43;gunicorn&#43;NGINX的方式部署flask项目教程">
 <meta itemprop="description" content="下面以我没事时整的一个IoT项目的配置为例讲述配置方式 flask配置 flask代码 项目代码在此目录下面： /home/Lang_dev/iot_cvm_server/iot_cvm_server 虚拟目录 虚拟目录在venv文件夹下">
-
-
 <meta itemprop="datePublished" content="2019-09-01T22:07:09&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T22:07:09&#43;08:00" />
-<meta itemprop="wordCount" content="650">
+<meta itemprop="wordCount" content="622">
 
 
 
-<meta itemprop="keywords" content="python,flask,iot,cvm,aws,transcribe,boto3," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="python,flask,iot,cvm,aws,transcribe,boto3," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="flask&#43;gunicorn&#43;NGINX的方式部署flask项目教程"/>
 <meta name="twitter:description" content="下面以我没事时整的一个IoT项目的配置为例讲述配置方式 flask配置 flask代码 项目代码在此目录下面： /home/Lang_dev/iot_cvm_server/iot_cvm_server 虚拟目录 虚拟目录在venv文件夹下"/>
 
@@ -131,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 650 字 </span>
+          <span class="more-meta"> 约 622 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,108 +139,65 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#flask配置">flask配置</a>
-<ul>
-<li><a href="#flask代码">flask代码</a></li>
-<li><a href="#虚拟目录">虚拟目录</a></li>
-<li><a href="#安装扩展">安装扩展</a></li>
-</ul></li>
-<li><a href="#gunicron配置">gunicron配置</a>
-<ul>
-<li><a href="#gunicorn配置文件">gunicorn配置文件</a></li>
-<li><a href="#配置文件内容">配置文件内容</a></li>
-</ul></li>
-<li><a href="#nginx配置">nginx配置</a></li>
-<li><a href="#nginx配置-1">NGINX配置：</a></li>
-<li><a href="#uwsgi配置">uwsgi配置、</a>
-<ul>
-<li><a href="#config-ini文件内容">config.ini文件内容：</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#flask">flask配置</a>
+      <ul>
+        <li><a href="#flask-1">flask代码</a></li>
+        <li><a href="#heading">虚拟目录</a></li>
+        <li><a href="#heading-1">安装扩展</a></li>
+      </ul>
+    </li>
+    <li><a href="#gunicron">gunicron配置</a>
+      <ul>
+        <li><a href="#gunicorn">gunicorn配置文件</a></li>
+        <li><a href="#heading-2">配置文件内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx">nginx配置</a></li>
+    <li><a href="#nginx-1">NGINX配置：</a></li>
+    <li><a href="#uwsgi">uwsgi配置、</a>
+      <ul>
+        <li><a href="#configini">config.ini文件内容：</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<p>下面以我没事时整的一个IoT项目的配置为例讲述配置方式</p>
-
-<h2 id="flask配置">flask配置</h2>
-
-<h3 id="flask代码">flask代码</h3>
-
+      <p>下面以我没事时整的一个IoT项目的配置为例讲述配置方式</p>
+<h2 id="flask">flask配置</h2>
+<h3 id="flask-1">flask代码</h3>
 <p>项目代码在此目录下面：
 /home/Lang_dev/iot_cvm_server/iot_cvm_server</p>
-
-<h3 id="虚拟目录">虚拟目录</h3>
-
+<h3 id="heading">虚拟目录</h3>
 <p>虚拟目录在venv文件夹下，启动虚拟目录使用: source venv/bin/activate
 关闭虚拟目录使用命令：deactivate</p>
-
-<h3 id="安装扩展">安装扩展</h3>
-
+<h3 id="heading-1">安装扩展</h3>
 <p>启动虚拟目录后，运行：pip install -r requirements.txt</p>
-
-<h2 id="gunicron配置">gunicron配置</h2>
-
-<h3 id="gunicorn配置文件">gunicorn配置文件</h3>
-
+<h2 id="gunicron">gunicron配置</h2>
+<h3 id="gunicorn">gunicorn配置文件</h3>
 <p>配置文件地址在/home/Lang_dev/iot_cvm_server/iot_cvm_server/config.ini</p>
-
-<h3 id="配置文件内容">配置文件内容</h3>
-
+<h3 id="heading-2">配置文件内容</h3>
 <p>具体内容为：
 [uwsgi]
 module = app</p>
-
 <p>master = true
 processes = 5</p>
-
 <p>callable = app</p>
-
 <p>socket = /tmp/iot_cvm_server.sock
 chmod-socket = 777
 vacuum = true</p>
-
 <p>说明：
-module配置的入口文件名称，如果是run.py则配置为module=run;<br />
+module配置的入口文件名称，如果是run.py则配置为module=run;<br>
 callable这里配置的是入口文件中flask的变量名称，如果为app则必须配置此参数，因为如果不配置此参数，会默认找application这个变量。</p>
-
 <p>gunicorn &ndash;workers=3 app:app -b 127.0.0.1:8061
 后台运行命令: gunicorn &ndash;workers=3 app:app -b 127.0.0.1:8061 -D</p>
-
-<h2 id="nginx配置">nginx配置</h2>
-
+<h2 id="nginx">nginx配置</h2>
 <p>NGINX文件，在/usr/local/nginx/conf/vhost/80iot_cvm_server.conf 具体内容为：
 server {
-    listen      80; # 监听80端口</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">root        /home/Lang_dev/iot_cvm_server/iot_cvm_server; 
+listen      80; # 监听80端口</p>
+<pre><code>root        /home/Lang_dev/iot_cvm_server/iot_cvm_server; 
 server_name 192.168.1.116; # 配置域名
 
 access_log  /var/log/www/dev.iot_cvm_server.lang.access.log;
@@ -259,35 +214,16 @@ location /cvm {
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}</pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
 <p>}</p>
-
 <p>重启NGINX：sudo service nginx restart</p>
-
 <p>另一种使用socket的方式：</p>
-
-<h2 id="nginx配置-1">NGINX配置：</h2>
-
+<h2 id="nginx-1">NGINX配置：</h2>
 <p>server {
-    listen 8765;
-    server_name 192.168.1.116;</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">access_log  /var/log/www/dev.test_iot_server.lang.access.log;
+listen 8765;
+server_name 192.168.1.116;</p>
+<pre><code>access_log  /var/log/www/dev.test_iot_server.lang.access.log;
 error_log  /var/log/www/dev.test_iot_server.lang.error.log;
 
 location /python-cvm {
@@ -296,15 +232,11 @@ location /python-cvm {
     uwsgi_param UWSGI_PYHOME /home/Lang_dev/iot_cvm_server/iot_cvm_server/venv;
     uwsgi_param UWSGI_CHDIR  /home/Lang_dev/iot_cvm_server/iot_cvm_server;
     uwsgi_param UWSGI_SCRIPT app:app;
-}</pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
 <p>}</p>
-
-<h2 id="uwsgi配置">uwsgi配置、</h2>
-
-<h3 id="config-ini文件内容">config.ini文件内容：</h3>
-
+<h2 id="uwsgi">uwsgi配置、</h2>
+<h3 id="configini">config.ini文件内容：</h3>
 <p>uwsgi &ndash;ini config.ini</p>
 
     </div>
@@ -342,11 +274,11 @@ location /python-cvm {
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -361,7 +293,12 @@ location /python-cvm {
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -390,7 +327,10 @@ location /python-cvm {
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

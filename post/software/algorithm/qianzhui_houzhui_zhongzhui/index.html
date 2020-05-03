@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/algorithm/qianzhui_houzhui_zhongzhui/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2018-10-23T11:29:37+08:00" />
 <meta itemprop="name" content="算法之前缀、中缀、后缀表达式转换研究">
 <meta itemprop="description" content="定义 我们日常生活中见到的表达式是中缀表达式，如：1&#43;((2&#43;3)4)-5，对于人们来说中缀表达式，感觉直观，计算方便。但对于计算机来说并不是">
-
-
 <meta itemprop="datePublished" content="2018-10-23T11:29:37&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-23T11:29:37&#43;08:00" />
 <meta itemprop="wordCount" content="1847">
 
 
 
-<meta itemprop="keywords" content="algorithm,前缀表达式,中缀表达式,后缀表达式,python," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="algorithm,前缀表达式,中缀表达式,后缀表达式,python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="算法之前缀、中缀、后缀表达式转换研究"/>
 <meta name="twitter:description" content="定义 我们日常生活中见到的表达式是中缀表达式，如：1&#43;((2&#43;3)4)-5，对于人们来说中缀表达式，感觉直观，计算方便。但对于计算机来说并不是"/>
 
@@ -142,133 +140,90 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#定义">定义</a></li>
-<li><a href="#将中缀表达式转换为前缀表达式">将中缀表达式转换为前缀表达式：</a>
-<ul>
-<li><a href="#示例">示例</a></li>
-</ul></li>
-<li><a href="#由前缀表达式求解表达式值得步骤">由前缀表达式求解表达式值得步骤：</a></li>
-<li><a href="#将中缀表达式转换为后缀表达式">将中缀表达式转换为后缀表达式：</a>
-<ul>
-<li><a href="#示例-1">示例</a></li>
-</ul></li>
-<li><a href="#由后缀表达式求解表达式值得步骤">由后缀表达式求解表达式值得步骤：</a></li>
-<li><a href="#参考文献">参考文献</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">定义</a></li>
+    <li><a href="#heading-1">将中缀表达式转换为前缀表达式：</a>
+      <ul>
+        <li><a href="#heading-2">示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">由前缀表达式求解表达式值得步骤：</a></li>
+    <li><a href="#heading-4">将中缀表达式转换为后缀表达式：</a>
+      <ul>
+        <li><a href="#heading-5">示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">由后缀表达式求解表达式值得步骤：</a></li>
+    <li><a href="#heading-7">参考文献</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<h2 id="定义">定义</h2>
-
+      <h2 id="heading">定义</h2>
 <p>我们日常生活中见到的表达式是中缀表达式，如：1+((2+3)<em>4)-5，对于人们来说中缀表达式，感觉直观，计算方便。但对于计算机来说并不是这样，因此为了方便计算机的计算，就出现了前缀表达式，如：-+1</em>+234和后缀表达式：123+4*+5-。它们都是对表达式的记法，它们之间的区别在于运算符相对于操作数的位置不同：前缀表达式的运算符位于与其相关的操作数之前；中缀和后缀同理。</p>
-
-<h2 id="将中缀表达式转换为前缀表达式">将中缀表达式转换为前缀表达式：</h2>
-
+<h2 id="heading-1">将中缀表达式转换为前缀表达式：</h2>
 <p>遵循以下步骤：</p>
-
 <p>(1) 初始化两个栈：运算符栈S1和储存中间结果的栈S2；</p>
-
 <p>(2) 从右至左扫描中缀表达式；</p>
-
 <p>(3) 遇到操作数时，将其压入S2；</p>
-
 <p>(4) 遇到运算符时，比较其与S1栈顶运算符的优先级：</p>
-
 <p>(4-1) 如果S1为空，或栈顶运算符为右括号“)”，则直接将此运算符入栈；</p>
-
 <p>(4-2) 否则，若优先级比栈顶运算符的较高或相等，也将运算符压入S1；</p>
-
 <p>(4-3) 否则，将S1栈顶的运算符弹出并压入到S2中，再次转到(4-1)与S1中新的栈顶运算符相比较；</p>
-
 <p>(5) 遇到括号时：</p>
-
 <p>(5-1) 如果是右括号“)”，则直接压入S1；</p>
-
 <p>(5-2) 如果是左括号“(”，则依次弹出S1栈顶的运算符，并压入S2，直到遇到右括号为止，此时将这一对括号丢弃；</p>
-
 <p>(6) 重复步骤(2)至(5)，直到表达式的最左边；</p>
-
 <p>(7) 将S1中剩余的运算符依次弹出并压入S2；</p>
-
 <p>(8) 依次弹出S2中的元素并输出，结果即为中缀表达式对应的前缀表达式。</p>
-
-<h3 id="示例">示例</h3>
-
+<h3 id="heading-2">示例</h3>
 <p>例如，将中缀表达式“1+((2+3)×4)-5”转换为前缀表达式的过程如下：</p>
-
-<p><img src="/img/software/algorithm/5E94FE240275C47CBB5FD38DCF1D2DB1.jpg" alt="展示效果" title="展示效果" /></p>
-
+<p><img src="/img/software/algorithm/5E94FE240275C47CBB5FD38DCF1D2DB1.jpg" alt="展示效果" title="展示效果"></p>
 <p>因此结果为“- + 1 × + 2 3 4 5”。</p>
-
-<h2 id="由前缀表达式求解表达式值得步骤">由前缀表达式求解表达式值得步骤：</h2>
+<h2 id="heading-3">由前缀表达式求解表达式值得步骤：</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">从右至左扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算(栈顶元素op次顶元素)并将结果入栈；重复上述过程直到表达式最左端，最后运算得出的值即为表达式的结果。
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">从右至左扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算(栈顶元素op次顶元素)并将结果入栈；重复上述过程直到表达式最左端，最后运算得出的值即为表达式的结果。
 例如前缀表达式“- × + 3 4 5 6”：
 (1) 从右至左扫描，将6、5、4、3压入堆栈；
 (2) 遇到+运算符，因此弹出3和4（3为栈顶元素，4为次顶元素，注意与后缀表达式做比较），计算出3+4的值，得7，再将7入栈；
 (3) 接下来是×运算符，因此弹出7和5，计算出7×5=35，将35入栈；
-(4) 最后是-运算符，计算出35-6的值，即29，由此得出最终结果。</pre></td></tr></table>
+(4) 最后是-运算符，计算出35-6的值，即29，由此得出最终结果。
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>可以看出，用计算机计算前缀表达式的值是很容易的。</p>
-
-<h2 id="将中缀表达式转换为后缀表达式">将中缀表达式转换为后缀表达式：</h2>
-
-<p>与转换为前缀表达式相似，遵循以下步骤：
+</div><p>可以看出，用计算机计算前缀表达式的值是很容易的。</p>
+<h2 id="heading-4">将中缀表达式转换为后缀表达式：</h2>
+<p>与转换为前缀表达式相似，遵循以下步骤： 
 (1) 初始化两个栈：运算符栈S1和储存中间结果的栈S2；</p>
-
 <p>(2) 从左至右扫描中缀表达式；</p>
-
 <p>(3) 遇到操作数时，将其压入S2；</p>
-
 <p>(4) 遇到运算符时，比较其与S1栈顶运算符的优先级：</p>
-
 <p>(4-1) 如果S1为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈；</p>
-
 <p>(4-2) 否则，若优先级比栈顶运算符的高，也将运算符压入S1（注意转换为前缀表达式时是优先级较高或相同，而这里则不包括相同的情况）；</p>
-
 <p>(4-3) 否则，将S1栈顶的运算符弹出并压入到S2中，再次转到(4-1)与S1中新的栈顶运算符相比较；</p>
-
 <p>(5) 遇到括号时：</p>
-
 <p>(5-1) 如果是左括号“(”，则直接压入S1；</p>
-
 <p>(5-2) 如果是右括号“)”，则依次弹出S1栈顶的运算符，并压入S2，直到遇到左括号为止，此时将这一对括号丢弃；</p>
-
 <p>(6) 重复步骤(2)至(5)，直到表达式的最右边；</p>
-
 <p>(7) 将S1中剩余的运算符依次弹出并压入S2；</p>
-
 <p>(8) 依次弹出S2中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式（转换为前缀表达式时不用逆序）。</p>
-
-<h3 id="示例-1">示例</h3>
-
+<h3 id="heading-5">示例</h3>
 <p>例如，将中缀表达式“1+((2+3)×4)-5”转换为后缀表达式的过程如下：</p>
-
-<p><img src="/img/software/algorithm/362AE526022BFED60A712E476F8C04AA.jpg" alt="展示效果" title="展示效果" /></p>
-
+<p><img src="/img/software/algorithm/362AE526022BFED60A712E476F8C04AA.jpg" alt="展示效果" title="展示效果"></p>
 <p>因此结果为“1 2 3 + 4 × + 5 -”（注意需要逆序输出）。</p>
-
-<h2 id="由后缀表达式求解表达式值得步骤">由后缀表达式求解表达式值得步骤：</h2>
+<h2 id="heading-6">由后缀表达式求解表达式值得步骤：</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -278,9 +233,9 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">与前缀表达式类似，只是顺序是从左至右：
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">与前缀表达式类似，只是顺序是从左至右：
 从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算
 （次顶元素 op 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果。
 例如后缀表达式“3 4 + 5 × 6 -”：
@@ -289,23 +244,16 @@
 (3) 将5入栈；
 (4) 接下来是×运算符，因此弹出5和7，计算出7×5=35，将35入栈；
 (5) 将6入栈；
-(6) 最后是-运算符，计算出35-6的值，即29，由此得出最终结果。</pre></td></tr></table>
+(6) 最后是-运算符，计算出35-6的值，即29，由此得出最终结果。
+</code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="参考文献">参考文献</h2>
-
+</div><h2 id="heading-7">参考文献</h2>
 <p><a href="https://blog.csdn.net/wo_aisilebiancheng/article/details/50207651">前缀，中缀，后缀表达式的转换，表达式的求值</a></p>
-
 <p><a href="https://blog.csdn.net/walkerkalr/article/details/22798365">前缀、中缀、后缀表达式转换详解</a></p>
-
 <p><a href="https://blog.csdn.net/foreverling/article/details/47149507">前缀中缀后缀表达式</a></p>
-
 <p><a href="https://blog.csdn.net/monkey_d_feilong/article/details/52745930">中缀表达式转前缀和后缀表达式</a></p>
-
 <p><a href="https://blog.csdn.net/Antineutrino/article/details/6763722">前缀、中缀、后缀表达式</a></p>
-
 <p><a href="https://blog.csdn.net/m0_37324740/article/details/78885702">栈实例（3）：前缀、中缀、后缀转换</a></p>
-
 <p><a href="https://blog.csdn.net/BeerBread134/article/details/69227538">python前缀表达式的运算</a></p>
 
     </div>
@@ -320,7 +268,7 @@
           <a href="/tags/python/">python</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/program/php/php_cs_fixer_guide/">
+        <a class="prev" href="/post/program/php/phpstorm_docs_guide/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">代码格式化工具php-cs-fixer安装教程</span>
             <span class="prev-text nav-mobile">上一篇</span>
@@ -341,11 +289,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -360,7 +308,12 @@
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -389,7 +342,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

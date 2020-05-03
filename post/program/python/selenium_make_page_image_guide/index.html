@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-08-26T00:34:49+08:00" />
 <meta itemprop="name" content="使用selenium自动化工具截取页面为图片">
 <meta itemprop="description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium">
-
-
 <meta itemprop="datePublished" content="2019-08-26T00:34:49&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-26T00:34:49&#43;08:00" />
 <meta itemprop="wordCount" content="895">
 
 
 
-<meta itemprop="keywords" content="python,selenium,chrome," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="python,selenium,chrome," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用selenium自动化工具截取页面为图片"/>
 <meta name="twitter:description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium"/>
 
@@ -141,39 +139,30 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#使用">使用</a>
-<ul>
-<li><a href="#首先-下载selenium">首先，下载selenium：</a></li>
-<li><a href="#再次-写代码test-sele-py">再次，写代码test_sele.py：</a></li>
-<li><a href="#然后执行-python3-test-sele-py">然后执行：python3 test_sele.py</a></li>
-</ul></li>
-<li><a href="#参考文献">参考文献：</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">简介</a></li>
+    <li><a href="#heading-1">使用</a>
+      <ul>
+        <li><a href="#selenium">首先，下载selenium：</a></li>
+        <li><a href="#test-selepy">再次，写代码test_sele.py：</a></li>
+        <li><a href="#python3-test-selepy">然后执行：python3 test_sele.py</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">参考文献：</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<h2 id="简介">简介</h2>
-
+      <h2 id="heading">简介</h2>
 <p>此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。</p>
-
-<h2 id="使用">使用</h2>
-
-<h3 id="首先-下载selenium">首先，下载selenium：</h3>
-
+<h2 id="heading-1">使用</h2>
+<h3 id="selenium">首先，下载selenium：</h3>
 <p>pip  install selenium</p>
-
-<h3 id="再次-写代码test-sele-py">再次，写代码test_sele.py：</h3>
+<h3 id="test-selepy">再次，写代码test_sele.py：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -186,21 +175,20 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="然后执行-python3-test-sele-py">然后执行：python3 test_sele.py</h3>
-
+</div><h3 id="python3-test-selepy">然后执行：python3 test_sele.py</h3>
 <p>运行结果会报错，一般为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -224,36 +212,35 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>pb@MacBook-Pro <span class="nb">test</span> <span class="o">]</span>$ python3 test_selenium.py
 Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line <span class="m">76</span>, in start
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 76, in start
     <span class="nv">stdin</span><span class="o">=</span>PIPE<span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line <span class="m">947</span>, in __init__
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 947, in __init__
     restore_signals, start_new_session<span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line <span class="m">1551</span>, in _execute_child
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 1551, in _execute_child
     raise child_exception_type<span class="o">(</span>errno_num, err_msg<span class="o">)</span>
-FileNotFoundError: <span class="o">[</span>Errno <span class="m">2</span><span class="o">]</span> No such file or directory: <span class="s1">&#39;geckodriver&#39;</span>
+FileNotFoundError: <span class="o">[</span>Errno 2<span class="o">]</span> No such file or directory: <span class="s1">&#39;geckodriver&#39;</span>
 
 During handling of the above exception, another exception occurred:
 
 Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&#34;test_selenium.py&#34;</span>, line <span class="m">10</span>, in &lt;module&gt;
-    <span class="nv">brower</span> <span class="o">=</span> webdriver.Firefox<span class="o">()</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py&#34;</span>, line <span class="m">152</span>, in __init__
-    self.service.start<span class="o">()</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line <span class="m">83</span>, in start
+  File <span class="s2">&#34;test_selenium.py&#34;</span>, line 10, in &lt;module&gt;
+    <span class="nv">brower</span> <span class="o">=</span> webdriver.Firefox<span class="o">(</span><span class="o">)</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py&#34;</span>, line 152, in __init__
+    self.service.start<span class="o">(</span><span class="o">)</span>
+  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 83, in start
     os.path.basename<span class="o">(</span>self.path<span class="o">)</span>, self.start_error_message<span class="o">)</span>
-selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;geckodriver&#39;</span> executable needs to be in PATH.</code></pre></td></tr></table>
+selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;geckodriver&#39;</span> executable needs to be in PATH.
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>这个错误是因为没有geckodriver程序，需要下载并解压后放到/usr/bin或者/usr/local/bin目录下面。下载地址：<a href="https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst">https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst</a>
+</div><p>这个错误是因为没有geckodriver程序，需要下载并解压后放到/usr/bin或者/usr/local/bin目录下面。下载地址：https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst
 或者：
 <a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a>
 我在mac上安装好后还是会报错，应该是我没有安装Firefox的原因。所以还需要安装Firefox到电脑上。</p>
-
 <p>下面直接给其他代码：
 先给出chrome浏览器的代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -267,25 +254,24 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 
-<span class="c1"># brower = webdriver.Firefox()</span>
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="s1">&#39;/Users/yang/study/python/test/driver/chromedriver&#39;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="c1"># brower = webdriver.Firefox()</span>
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">/Users/yang/study/python/test/driver/chromedriver</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>注意，这里Chrome()里面一定要放能使用的chromedriver，这个不是chrome程序，而是需要单独下载的driver程序。
-下载地址在：<a href="https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：">https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：</a>
-<a href="https://sites.google.com/a/chromium.org/chromedriver/downloads下载然后放到你自己能找到的地方，并在代码中指明，我就下载在/Users/yang/study/python/test/driver/chromedriver。下载后需要解压，解压出来才是此文件。">https://sites.google.com/a/chromium.org/chromedriver/downloads下载然后放到你自己能找到的地方，并在代码中指明，我就下载在/Users/yang/study/python/test/driver/chromedriver。下载后需要解压，解压出来才是此文件。</a>
+</div><p>注意，这里Chrome()里面一定要放能使用的chromedriver，这个不是chrome程序，而是需要单独下载的driver程序。
+下载地址在：https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：
+<a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">https://sites.google.com/a/chromium.org/chromedriver/downloads</a>下载然后放到你自己能找到的地方，并在代码中指明，我就下载在/Users/yang/study/python/test/driver/chromedriver。下载后需要解压，解压出来才是此文件。
 提醒一下，使用Chrome方法必须指定chromedirver的地址。</p>
-
 <p>下面给出Firefox的代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -298,29 +284,22 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
 <span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></td></tr></table>
+<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>至此，讲解完毕。</p>
-
-<h2 id="参考文献">参考文献：</h2>
-
+</div><p>至此，讲解完毕。</p>
+<h2 id="heading-2">参考文献：</h2>
 <p><a href="https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac">https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac</a></p>
-
 <p><a href="https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst">https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst</a></p>
-
 <p><a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></p>
-
 <p><a href="https://stackoverflow.com/questions/47023188/unable-to-get-selenium-geckodriver-to-work-on-python-mac-osx-high-sierra">https://stackoverflow.com/questions/47023188/unable-to-get-selenium-geckodriver-to-work-on-python-mac-osx-high-sierra</a></p>
-
 <p><a href="http://blog.csdn.net/huinsysu/article/details/63687653">http://blog.csdn.net/huinsysu/article/details/63687653</a></p>
-
 <p><a href="https://www.jianshu.com/p/6b633109b9a1">https://www.jianshu.com/p/6b633109b9a1</a></p>
 
     </div>
@@ -354,11 +333,11 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -373,7 +352,12 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -402,7 +386,10 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/django_set_timezone_solve/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-09-11T22:09:28+08:00" />
 <meta itemprop="name" content="Django设置时区教程">
 <meta itemprop="description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，">
-
-
 <meta itemprop="datePublished" content="2019-09-11T22:09:28&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-11T22:09:28&#43;08:00" />
-<meta itemprop="wordCount" content="566">
+<meta itemprop="wordCount" content="558">
 
 
 
-<meta itemprop="keywords" content="python,django,timezone," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="python,django,timezone," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django设置时区教程"/>
 <meta name="twitter:description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，"/>
 
@@ -131,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 566 字 </span>
+          <span class="more-meta"> 约 558 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,41 +139,33 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#问题描述">问题描述</a></li>
-<li><a href="#问题解决">问题解决</a></li>
-<li><a href="#问题延伸">问题延伸</a></li>
-<li><a href="#参考文献">参考文献</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">问题描述</a></li>
+    <li><a href="#heading-1">问题解决</a></li>
+    <li><a href="#heading-2">问题延伸</a></li>
+    <li><a href="#heading-3">参考文献</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<h2 id="问题描述">问题描述</h2>
-
-<p>用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，django的配置文件在settings里面，找到它，搜索，确实有一个TIME_ZONE 配置，而且也确实是TIME_ZONE =&lsquo;UTC&rsquo;，那么就简单了，修改之：</p>
+      <h2 id="heading">问题描述</h2>
+<p>用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，django的配置文件在settings里面，找到它，搜索，确实有一个TIME_ZONE 配置，而且也确实是TIME_ZONE ='UTC&rsquo;，那么就简单了，修改之：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">Asia/Shanghai</span><span class="s1">&#39;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>然后再次执行，发现数据库中数据记录还是少了8小时。怎么回事？
+</div><p>然后再次执行，发现数据库中数据记录还是少了8小时。怎么回事？
 重启python虚拟环境，再次执行，还是一样少了8小时。</p>
-
-<h2 id="问题解决">问题解决</h2>
-
+<h2 id="heading-1">问题解决</h2>
 <p>查了资料，再加上看了一点django的代码，发现源代码中有一句：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -183,36 +173,30 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-            <span class="s2">&#34;ALTER SESSION SET NLS_DATE_FORMAT = &#39;YYYY-MM-DD HH24:MI:SS&#39;&#34;</span>
-            <span class="s2">&#34; NLS_TIMESTAMP_FORMAT = &#39;YYYY-MM-DD HH24:MI:SS.FF&#39;&#34;</span> <span class="o">+</span>
-            <span class="p">(</span><span class="s2">&#34; TIME_ZONE = &#39;UTC&#39;&#34;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">USE_TZ</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="p">)</span></code></pre></td></tr></table>
+            <span class="sa"></span><span class="s2">&#34;</span><span class="s2">ALTER SESSION SET NLS_DATE_FORMAT = </span><span class="s2">&#39;</span><span class="s2">YYYY-MM-DD HH24:MI:SS</span><span class="s2">&#39;</span><span class="s2">&#34;</span>
+            <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> NLS_TIMESTAMP_FORMAT = </span><span class="s2">&#39;</span><span class="s2">YYYY-MM-DD HH24:MI:SS.FF</span><span class="s2">&#39;</span><span class="s2">&#34;</span> <span class="o">+</span>
+            <span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2"> TIME_ZONE = </span><span class="s2">&#39;</span><span class="s2">UTC</span><span class="s2">&#39;</span><span class="s2">&#34;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">USE_TZ</span> <span class="k">else</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p><img src="/img/program/python/django_set_timezone.png" alt="图例" title="图例" /></p>
-
+</div><p><img src="/img/program/python/django_set_timezone.png" alt="图例" title="图例"></p>
 <p>它对一个配置做了判断：TIME_ZONE，What the F&hellip;。我想问这个框架作者一个时区需要两个配置一起修改才生效不觉得自己脑子有问题么？</p>
-
 <p>知道问题了，那么我们修改它：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
-<span class="c1"># USE_TZ = True</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">Asia/Shanghai</span><span class="s1">&#39;</span>
+<span class="c1"># USE_TZ = True</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>再次执行，时间OK了。</p>
-
-<h2 id="问题延伸">问题延伸</h2>
-
+</div><p>再次执行，时间OK了。</p>
+<h2 id="heading-2">问题延伸</h2>
 <p>django框架虽然名气很大，但是坑也还是很多，例如我目前遇到的最大的坑就是log日志模块的配置，折腾了快一天才配置好，真的是想问候框架作者的家人。
 另外，从框架的设计思想看，跟laravel这种成熟的框架差别还是很大的，虽然django比laravel出来的早，但是更让我觉得认同的还是laravel的框架整体架构和思想。</p>
-
-<h2 id="参考文献">参考文献</h2>
-
+<h2 id="heading-3">参考文献</h2>
 <p><a href="https://blog.csdn.net/weixin_37773766/article/details/80604932">https://blog.csdn.net/weixin_37773766/article/details/80604932</a></p>
 
     </div>
@@ -227,7 +211,7 @@
       <nav class="post-nav">
         <a class="prev" href="/post/program/go/go_study_1/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">go语言学习笔记之1</span>
+            <span class="prev-text nav-default">go语言学习笔记之一</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/program/python/flask_iot_cvm_guide/">
@@ -246,11 +230,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -265,7 +249,12 @@
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -294,7 +283,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

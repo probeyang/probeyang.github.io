@@ -282,7 +282,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</loc>
+    <loc>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</loc>
     <lastmod>2019-08-10T19:10:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -291,27 +291,6 @@
   <url>
     <loc>https://www.sanlt.com/tags/%E9%9D%A2%E5%8C%85%E5%B1%91/</loc>
     <lastmod>2019-08-10T19:10:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/phpstorm/</loc>
-    <lastmod>2019-08-09T19:10:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</loc>
-    <lastmod>2019-08-09T19:10:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/%E6%B3%A8%E9%87%8A/</loc>
-    <lastmod>2019-08-09T19:10:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -331,14 +310,21 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/algorithm/</loc>
-    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
+    <loc>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</loc>
+    <lastmod>2019-08-02T23:10:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.sanlt.com/categories/algorithm/</loc>
+    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

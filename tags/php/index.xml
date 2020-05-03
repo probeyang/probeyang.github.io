@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on Sanlt,就是加了N多盐的地方</title>
@@ -40,20 +40,11 @@
     
     <item>
       <title>Laravel中使用breadcrumbs功能指南</title>
-      <link>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</link>
+      <link>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</link>
       <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</guid>
+      <guid>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</guid>
       <description>开始之前 声明版本：laravel版本为5.8 需要安装的面包屑laravel扩展版本为：5.2.1 需要安装的扩展为davejamesmille</description>
-    </item>
-    
-    <item>
-      <title>PHPStorm配置创建文件时自动添加文件头注释方法</title>
-      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
-      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
-      <description>配置入口 MAC版 PhpStorm -&amp;gt; Preferences&amp;hellip; -&amp;gt; Editor -&amp;gt; File and Code Templates -&amp;gt; includes -&amp;gt; PHP File Header 打开PhpStorm-&amp;gt;首选项-&amp;gt;编辑器-&amp;gt;文件和代码模板-&amp;gt;包括-</description>
     </item>
     
     <item>
@@ -62,6 +53,15 @@
       <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
       
       <guid>https://www.sanlt.com/post/program/php/php_cs_fixer_guide/</guid>
+      <description>简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别</description>
+    </item>
+    
+    <item>
+      <title>代码格式化工具php-cs-fixer安装教程</title>
+      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
+      <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
       <description>简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别</description>
     </item>
     

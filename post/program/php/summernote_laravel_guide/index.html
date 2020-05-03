@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/php/summernote_laravel_guide/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-08-17T19:56:26+08:00" />
 <meta itemprop="name" content="laravel中使用富文本wysiwyg扩展summernote">
 <meta itemprop="description" content="简介 富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟la">
-
-
 <meta itemprop="datePublished" content="2019-08-17T19:56:26&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-17T19:56:26&#43;08:00" />
-<meta itemprop="wordCount" content="2562">
+<meta itemprop="wordCount" content="2548">
 
 
 
-<meta itemprop="keywords" content="php,laravel,summernote,wysiwyg,richeditor," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="php,laravel,summernote,wysiwyg,richeditor," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="laravel中使用富文本wysiwyg扩展summernote"/>
 <meta name="twitter:description" content="简介 富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟la"/>
 
@@ -131,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 2562 字 </span>
+          <span class="more-meta"> 约 2548 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,106 +139,92 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#安装">安装</a></li>
-<li><a href="#配置">配置</a></li>
-<li><a href="#使用">使用</a>
-<ul>
-<li><a href="#新增界面">新增界面</a></li>
-<li><a href="#编辑界面">编辑界面</a></li>
-</ul></li>
-<li><a href="#参考文献">参考文献：</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">简介</a></li>
+    <li><a href="#heading-1">安装</a></li>
+    <li><a href="#heading-2">配置</a></li>
+    <li><a href="#heading-3">使用</a>
+      <ul>
+        <li><a href="#heading-4">新增界面</a></li>
+        <li><a href="#heading-5">编辑界面</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">参考文献：</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<h2 id="简介">简介</h2>
-
-<p>富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟laravel兼容效果也好。其他老牌的CKeditor，Ueditor等就不介绍了。如果要对中文支持好一些的话，可以选择百度的UEditor。我觉得summernote够用，且没有太要求中文的东西，所以选择它进行开发。github地址：<a href="https://github.com/summernote/summernote">https://github.com/summernote/summernote</a></p>
-
-<h2 id="安装">安装</h2>
-
+      <h2 id="heading">简介</h2>
+<p>富文本框扩展，国外比较专业的叫法是WYSIWYG editor。也就是所见即所得编辑器。现在比较不错的是summernote，而且它跟laravel兼容效果也好。其他老牌的CKeditor，Ueditor等就不介绍了。如果要对中文支持好一些的话，可以选择百度的UEditor。我觉得summernote够用，且没有太要求中文的东西，所以选择它进行开发。github地址：https://github.com/summernote/summernote</p>
+<h2 id="heading-1">安装</h2>
 <p>你完全可以按照github中的说明文档进行安装配置使用。这里我们还是稍微赘述一下。</p>
-
 <ol>
-<li><p>新建一个html文件，然后将下面的内容放到head标签中：</p>
+<li>新建一个html文件，然后将下面的内容放到head标签中：</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/vendor/jquery.ui.widget.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.iframe-transport.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.fileupload.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/vendor/jquery.ui.widget.min.js&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.iframe-transport.min.js&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.fileupload.min.js&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<blockquote>
+</div><blockquote>
 <p>注意：这里GitHub中的说明文档有问题，它提供的include方式有个前提：必须自己先将它的文件下载下来，而且font等文件都是按照下载下来的文件夹结构放置的，否则会有导航栏图标不显示的问题以及不显示summernote的问题。</p>
-</blockquote></li>
-
-<li><p>html中声明div标签
-在html文件的body中添加下面的代码：</p>
+</blockquote>
+<ol start="2">
+<li>html中声明div标签
+在html文件的body中添加下面的代码：</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div></li>
-
-<li><p>html中的script中实例化summernote
+</div><ol start="3">
+<li>html中的script中实例化summernote
 接下来就是实例化summernote了，这里需要在html中添加script脚本，内容为：
 $(document).ready(function() {
-$(&lsquo;#summernote&rsquo;).summernote();
-});</p></li>
+$('#summernote&rsquo;).summernote();
+});</li>
 </ol>
-
 <p>是不是很简单，这样刷新页面即可看到summernote编辑器了。而且图片等等功能都齐全。</p>
-
-<h2 id="配置">配置</h2>
-
+<h2 id="heading-2">配置</h2>
 <p>它基本上没有什么配置。注意两点即可：
 一， 按照上面说的将js，css文件引入，如果想将js，css下载到本地进行本地引入，那么注意这里必须将font文件夹也下载下来，这里所有资料都没有讲，但这是必须的。
 二， html中添加一个summernote的定位div。这样summernote才能实例化后找到位置显示。
 如果想更多配置，可以参考它的官网等资料：
 <a href="https://summernote.org/plugins">https://summernote.org/plugins</a></p>
-
-<h2 id="使用">使用</h2>
-
+<h2 id="heading-3">使用</h2>
 <p>使用其实很简单，就是一句js：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">();</span>
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div>
-<p>如果想更复杂的配置和设置，可以搜索网上资料，我在以下的使用示例中，会有比较多的配置参数，可以参考。
+</div><p>如果想更复杂的配置和设置，可以搜索网上资料，我在以下的使用示例中，会有比较多的配置参数，可以参考。
 另外中文里面有个比较不错的文档也可以参考：
 <a href="https://laravelacademy.org/post/9476.html">https://laravelacademy.org/post/9476.html</a></p>
-
-<h3 id="新增界面">新增界面</h3>
-
+<h3 id="heading-4">新增界面</h3>
 <p>新增界面很简单，按照上面的方式即可显示，完整代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -307,73 +291,72 @@ $(&lsquo;#summernote&rsquo;).summernote();
 <pre class="chroma"><code class="language-php" data-lang="php">@extends(&#39;layouts.richeditor&#39;)
 
 @section(&#39;content&#39;)
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;POST&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;{{ route(&#39;tutorial.save&#39;) }}&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;POST&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;{{ route(&#39;tutorial.save&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
             {{ csrf_field() }}
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;usr&#34;</span><span class="p">&gt;</span>教程标题:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;请输入标题&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p">&gt;</span>教程内容：<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12 text-center&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;save_tutorial&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span><span class="p">&gt;</span>保存<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">({</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p"></span><span class="p">&gt;</span>*<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;usr&#34;</span><span class="p"></span><span class="p">&gt;</span>教程标题:<span class="p">&lt;</span><span class="p">/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;请输入标题&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p"></span><span class="p">&gt;</span>*<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p"></span><span class="p">&gt;</span>教程内容：<span class="p">&lt;</span><span class="p">/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12 text-center&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;save_tutorial&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span><span class="p"></span><span class="p">&gt;</span>保存<span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="p">{</span>
             <span class="nx">placeholder</span><span class="o">:</span> <span class="s1">&#39;请输入教程内容&#39;</span><span class="p">,</span>
             <span class="nx">tabsize</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="nx">height</span><span class="o">:</span> <span class="mi">500</span>
-        <span class="p">});</span>
+        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
 
-        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#save_tutorial&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#title&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#save_tutorial&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#title&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">title</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程标题！&#34;</span><span class="p">);</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程标题！&#34;</span><span class="p">)</span><span class="p">;</span>
                 <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">html</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程内容！&#34;</span><span class="p">);</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程内容！&#34;</span><span class="p">)</span><span class="p">;</span>
                 <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
             <span class="p">}</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="p">{</span>
                 <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;X-CSRF-TOKEN&#39;</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[name=&#34;csrf-token&#34;]&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span>
-                <span class="p">},</span>
+                    <span class="s1">&#39;X-CSRF-TOKEN&#39;</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[name=&#34;csrf-token&#34;]&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span>
+                <span class="p">}</span><span class="p">,</span>
                 <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
                 <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;{{ route(&#39;tutorial.add&#39;) }}&#34;</span><span class="p">,</span>
                 <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
-                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">html</span><span class="o">:</span> <span class="nx">html</span><span class="p">},</span>
+                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">html</span><span class="o">:</span> <span class="nx">html</span><span class="p">}</span><span class="p">,</span>
                 <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+                        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                        <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+                        <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">)</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
-            <span class="p">});</span>
-        <span class="p">});</span>
-    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-@endsection</code></pre></td></tr></table>
+            <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+@endsection
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="编辑界面">编辑界面</h3>
-
+</div><h3 id="heading-5">编辑界面</h3>
 <p>接下来说编辑界面的设置。因为编辑界面需要先加载数据到summernote中并且显示为渲染后的样式，所以这里很麻烦。我找了网上很多资料，都说设置code值即可，但我怎么设置code值都不能正常显示，以下是我的多种尝试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -389,23 +372,17 @@ $(&lsquo;#summernote&rsquo;).summernote();
         {{--$(&#34;#summernote&#34;).summernote(&#34;code&#34;, <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$tutorial</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">;</span> <span class="cp">?&gt;</span>);--}}
 </code></pre></td></tr></table>
 </div>
-</div>
-<p>试了上面的写法都不行，最后的方法是在页面隐藏一个div，然后把内容先放到这个div中，然后再将此内容获取然后赋值给summernote，注意这里必须使用：
-$(&ldquo;#summernote_hide&rdquo;).text()</p>
-
+</div><p>试了上面的写法都不行，最后的方法是在页面隐藏一个div，然后把内容先放到这个div中，然后再将此内容获取然后赋值给summernote，注意这里必须使用：
+$(&quot;#summernote_hide&rdquo;).text()</p>
 <p>显示效果：</p>
-
-<p><img src="/img/program/php/clipboard11.png" alt="配置代码" title="配置代码" /></p>
-
-<p>不能使用$(&ldquo;#summernote_hide&rdquo;).html()，否则照样显示不好，效果如图：</p>
-
-<p><img src="/img/program/php/clipboard12.png" alt="配置代码" title="配置代码" /></p>
-
+<p><img src="/img/program/php/clipboard11.png" alt="配置代码" title="配置代码"></p>
+<p>不能使用$(&quot;#summernote_hide&rdquo;).html()，否则照样显示不好，效果如图：</p>
+<p><img src="/img/program/php/clipboard12.png" alt="配置代码" title="配置代码"></p>
 <p>最后可以删除隐藏div的内容也可以不删除。
 完整编辑页面代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">  1
+<pre class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -512,111 +489,111 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
 <pre class="chroma"><code class="language-php" data-lang="php">@extends(&#39;layouts.richeditor&#39;)
 
 @section(&#39;content&#39;)
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;POST&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;{{ route(&#39;tutorial.save&#39;) }}&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;POST&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;{{ route(&#39;tutorial.save&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
             {{ csrf_field() }}
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;usr&#34;</span><span class="p">&gt;</span>教程标题:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p"></span><span class="p">&gt;</span>*<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;usr&#34;</span><span class="p"></span><span class="p">&gt;</span>教程标题:<span class="p">&lt;</span><span class="p">/</span><span class="nt">label</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;请输入标题&#34;</span>
-                               <span class="na">value</span><span class="o">=</span><span class="s">&#34;{{ $tutorial-&gt;title }}&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p">&gt;</span>教程内容：<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote_hide&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;display:none;&#34;</span><span class="p">&gt;</span>{{ $tutorial-&gt;content }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12 text-center&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;id&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;id&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;{{ $tutorial-&gt;id }}&#34;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;save_tutorial&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span><span class="p">&gt;</span>保存<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">({</span>
+                               <span class="na">value</span><span class="o">=</span><span class="s">&#34;{{ $tutorial-&gt;title }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;required&#34;</span><span class="p"></span><span class="p">&gt;</span>*<span class="p">&lt;</span><span class="p">/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p"></span><span class="p">&gt;</span>教程内容：<span class="p">&lt;</span><span class="p">/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote_hide&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;display:none;&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ $tutorial-&gt;content }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;summernote&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;col-xs-12 col-sm-12 col-md-12 text-center&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;id&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;id&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;{{ $tutorial-&gt;id }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;save_tutorial&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span><span class="p"></span><span class="p">&gt;</span>保存<span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="p">/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="p">{</span>
             <span class="nx">focus</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
             <span class="nx">toolbar</span><span class="o">:</span> <span class="p">[</span>
                 <span class="c1">// [&#39;style&#39;, [&#39;bold&#39;, &#39;italic&#39;, &#39;underline&#39;, &#39;clear&#39;]],
-</span><span class="c1"></span>                <span class="p">[</span><span class="s1">&#39;fontsize&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fontsize&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;para&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="s1">&#39;ol&#39;</span><span class="p">,</span> <span class="s1">&#39;paragraph&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;misc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;undo&#39;</span><span class="p">,</span> <span class="s1">&#39;redo&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;fontname&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fontname&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;picture&#39;</span><span class="p">,</span> <span class="s1">&#39;video&#39;</span><span class="p">]],</span>
-                <span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;codeview&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">]],</span>
-            <span class="p">],</span>
+</span><span class="c1"></span>                <span class="p">[</span><span class="s1">&#39;fontsize&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fontsize&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;para&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="s1">&#39;ol&#39;</span><span class="p">,</span> <span class="s1">&#39;paragraph&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;misc&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;undo&#39;</span><span class="p">,</span> <span class="s1">&#39;redo&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;fontname&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fontname&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;picture&#39;</span><span class="p">,</span> <span class="s1">&#39;video&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;codeview&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+            <span class="p">]</span><span class="p">,</span>
             <span class="nx">popover</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">image</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;resizeFull&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeHalf&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeQuarter&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeNone&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;floatLeft&#39;</span><span class="p">,</span> <span class="s1">&#39;floatRight&#39;</span><span class="p">,</span> <span class="s1">&#39;floatNone&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;removeMedia&#39;</span><span class="p">]]</span>
-                <span class="p">],</span>
+                    <span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;resizeFull&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeHalf&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeQuarter&#39;</span><span class="p">,</span> <span class="s1">&#39;resizeNone&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;floatLeft&#39;</span><span class="p">,</span> <span class="s1">&#39;floatRight&#39;</span><span class="p">,</span> <span class="s1">&#39;floatNone&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;removeMedia&#39;</span><span class="p">]</span><span class="p">]</span>
+                <span class="p">]</span><span class="p">,</span>
                 <span class="nx">link</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;linkDialogShow&#39;</span><span class="p">,</span> <span class="s1">&#39;unlink&#39;</span><span class="p">]]</span>
-                <span class="p">],</span>
+                    <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;linkDialogShow&#39;</span><span class="p">,</span> <span class="s1">&#39;unlink&#39;</span><span class="p">]</span><span class="p">]</span>
+                <span class="p">]</span><span class="p">,</span>
                 <span class="nx">table</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;addRowDown&#39;</span><span class="p">,</span> <span class="s1">&#39;addRowUp&#39;</span><span class="p">,</span> <span class="s1">&#39;addColLeft&#39;</span><span class="p">,</span> <span class="s1">&#39;addColRight&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;deleteRow&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteCol&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteTable&#39;</span><span class="p">]],</span>
-                <span class="p">],</span>
+                    <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;addRowDown&#39;</span><span class="p">,</span> <span class="s1">&#39;addRowUp&#39;</span><span class="p">,</span> <span class="s1">&#39;addColLeft&#39;</span><span class="p">,</span> <span class="s1">&#39;addColRight&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;deleteRow&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteCol&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteTable&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                <span class="p">]</span><span class="p">,</span>
                 <span class="nx">air</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;para&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="s1">&#39;paragraph&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;picture&#39;</span><span class="p">]]</span>
+                    <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;para&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ul&#39;</span><span class="p">,</span> <span class="s1">&#39;paragraph&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">]</span><span class="p">]</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;picture&#39;</span><span class="p">]</span><span class="p">]</span>
                 <span class="p">]</span>
-            <span class="p">},</span>
+            <span class="p">}</span><span class="p">,</span>
             <span class="nx">placeholder</span><span class="o">:</span> <span class="s1">&#39;请输入教程内容&#39;</span><span class="p">,</span>
             <span class="nx">tabsize</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="nx">height</span><span class="o">:</span> <span class="mi">500</span>
-        <span class="p">});</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#summernote&#34;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">(</span><span class="s2">&#34;code&#34;</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#summernote_hide&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">());</span>
+        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#summernote&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="s2">&#34;code&#34;</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#summernote_hide&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
 
-        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#save_tutorial&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#id&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-            <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#title&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">).</span><span class="nx">summernote</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#save_tutorial&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#id&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#title&#34;</span><span class="p">)</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#summernote&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">summernote</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">title</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程标题！&#34;</span><span class="p">);</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程标题！&#34;</span><span class="p">)</span><span class="p">;</span>
                 <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">html</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程内容！&#34;</span><span class="p">);</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;请输入教程内容！&#34;</span><span class="p">)</span><span class="p">;</span>
                 <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
             <span class="p">}</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="p">{</span>
                 <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;X-CSRF-TOKEN&#39;</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[name=&#34;csrf-token&#34;]&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span>
-                <span class="p">},</span>
+                    <span class="s1">&#39;X-CSRF-TOKEN&#39;</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[name=&#34;csrf-token&#34;]&#39;</span><span class="p">)</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span>
+                <span class="p">}</span><span class="p">,</span>
                 <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
                 <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;{{ route(&#39;tutorial.save&#39;) }}&#34;</span><span class="p">,</span>
                 <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&#34;json&#34;</span><span class="p">,</span>
-                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="nx">html</span><span class="p">,</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">},</span>
+                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="nx">html</span><span class="p">,</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">}</span><span class="p">,</span>
                 <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+                        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                        <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+                        <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">)</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
-            <span class="p">});</span>
-        <span class="p">});</span>
-    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-@endsection</code></pre></td></tr></table>
+            <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+        <span class="p">}</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+@endsection
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>里面涉及到的richeditor的layout文件内容：</p>
+</div><p>里面涉及到的richeditor的layout文件内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -686,84 +663,80 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;{{ str_replace(&#39;_&#39;, &#39;-&#39;, app()-&gt;getLocale()) }}&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=UTF-8&#34;</span><span class="p">&gt;</span>
-    <span class="c">&lt;!-- Meta, title, CSS, favicons, etc. --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=edge&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;{{ str_replace(&#39;_&#39;, &#39;-&#39;, app()-&gt;getLocale()) }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=UTF-8&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> Meta, title, CSS, favicons, etc. </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=edge&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1&#34;</span><span class="p"></span><span class="p">&gt;</span>
 
-    <span class="c">&lt;!-- CSRF Token --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;csrf-token&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;{{ csrf_token() }}&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> CSRF Token </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;csrf-token&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;{{ csrf_token() }}&#34;</span><span class="p"></span><span class="p">&gt;</span>
 
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ config(&#39;app.name&#39;, &#39;麦多分CMS系统&#39;) }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>{{ config(&#39;app.name&#39;, &#39;麦多分CMS系统&#39;) }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
 
-    <span class="c">&lt;!-- Bootstrap --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/bootstrap/dist/css/bootstrap.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="c">&lt;!-- Font Awesome --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/font-awesome/css/font-awesome.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/nprogress/nprogress.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fullcalendar/dist/fullcalendar.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;build/css/custom.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/jquery/dist/jquery.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> Bootstrap </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/bootstrap/dist/css/bootstrap.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> Font Awesome </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/font-awesome/css/font-awesome.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/nprogress/nprogress.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fullcalendar/dist/fullcalendar.min.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;build/css/custom.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/jquery/dist/jquery.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;css/summernote-lite.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.ui.widget.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.iframe-transport.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.fileupload.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/summernote-lite.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;css/summernote-lite.css&#39;) }}&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.ui.widget.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.iframe-transport.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/jquery.fileupload.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;js/summernote-lite.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-md&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container body&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;main_container&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav-md&#34;</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container body&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;main_container&#34;</span><span class="p"></span><span class="p">&gt;</span>
         @include(&#39;layouts.nav&#39;)
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    <span class="c">&lt;!-- top navigation --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;top_nav&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> top navigation </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;top_nav&#34;</span><span class="p"></span><span class="p">&gt;</span>
         @include(&#39;layouts.header&#39;, [&#39;user&#39;=&gt; Illuminate\Support\Facades\Auth::user()])
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="c">&lt;!-- /top navigation --&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> /top navigation </span><span class="c">--&gt;</span>
 
-    <span class="c">&lt;!-- page content --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right_col&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
-        <span class="c">&lt;!-- top tiles --&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> page content </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;right_col&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> top tiles </span><span class="c">--&gt;</span>
         @yield(&#39;content&#39;)
-        <span class="c">&lt;!-- /top tiles --&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="c">&lt;!-- /page content --&gt;</span>
+        <span class="c">&lt;!--</span><span class="c"> /top tiles </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> /page content </span><span class="c">--&gt;</span>
 
-    <span class="c">&lt;!-- footer content --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> footer content </span><span class="c">--&gt;</span>
+    <span class="p">&lt;</span><span class="nt">footer</span><span class="p"></span><span class="p">&gt;</span>
         @include(&#39;layouts.footer&#39;)
-    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
-    <span class="c">&lt;!-- /footer content --&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--</span><span class="c"> /footer content </span><span class="c">--&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="c">&lt;!-- jQuery --&gt;</span>
+<span class="c">&lt;!--</span><span class="c"> jQuery </span><span class="c">--&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/bootstrap/dist/js/bootstrap.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fastclick/lib/fastclick.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/nprogress/nprogress.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/moment/min/moment.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fullcalendar/dist/fullcalendar.min.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;build/js/custom.js&#39;) }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/bootstrap/dist/js/bootstrap.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fastclick/lib/fastclick.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/nprogress/nprogress.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/moment/min/moment.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;vendors/fullcalendar/dist/fullcalendar.min.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ asset(&#39;build/js/custom.js&#39;) }}&#34;</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<blockquote>
+</div><blockquote>
 <p>这里要注意一点：如果使用本地css，因为css文件中对字体文件进行了相对路径的设置，所以你必须将字体的那几个文件（3个）下载下来并且放到它在找的目录里面。</p>
 </blockquote>
-
-<h2 id="参考文献">参考文献：</h2>
-
+<h2 id="heading-6">参考文献：</h2>
 <p><a href="https://github.com/summernote/summernote">https://github.com/summernote/summernote</a></p>
-
 <p><a href="https://laravelacademy.org/post/9476.html">https://laravelacademy.org/post/9476.html</a></p>
-
 <p><a href="https://summernote.org/examples/">https://summernote.org/examples/</a></p>
 
     </div>
@@ -783,7 +756,7 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
             <span class="prev-text nav-default">laravel视图打开报错Please provide a valid cache path解决</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/program/php/laravel-breadcrumbs-guide/">
+        <a class="next" href="/post/program/php/laravel_breadcrumbs_guide/">
             <span class="next-text nav-default">Laravel中使用breadcrumbs功能指南</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
@@ -799,11 +772,11 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -818,7 +791,12 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -847,7 +825,10 @@ $(&ldquo;#summernote_hide&rdquo;).text()</p>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 
