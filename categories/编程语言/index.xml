@@ -6,10 +6,19 @@
     <description>Recent content in 编程语言 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 May 2020 17:46:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 17:46:14 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ImportError No module named问题解决</title>
+      <link>https://www.sanlt.com/post/program/python/no_module_named_solve/</link>
+      <pubDate>Fri, 08 May 2020 17:46:14 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/python/no_module_named_solve/</guid>
+      <description>问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方</description>
+    </item>
     
     <item>
       <title>go语言学习笔记之一</title>
