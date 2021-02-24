@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大数据 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
+    <description>Recent content in 大数据 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 Dec 2020 20:42:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>redis详细教程</title>
+      <link>https://www.sanlt.com/post/software/redis/redis_course/</link>
+      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/redis/redis_course/</guid>
+      <description>Redis教程 一、Redis是什么 Redis(Remote Dictionary Server) 是一个使用 C 语言编写的，开源的（BSD许可）高性能非关系型（NoSQL）的键值对数据库。 Redis 可以存储键</description>
+    </item>
+    
+  </channel>
+</rss>
