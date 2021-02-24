@@ -184,7 +184,7 @@
 </div>
     <div class="post-content">
       <h1 id="redis">Redis教程</h1>
-<p><img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1608019302873-a50b96e8-8131-42a6-95fc-cfa43461a147.png#align=left&amp;display=inline&amp;height=3050&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=6100&amp;originWidth=3280&amp;size=1426602&amp;status=done&amp;style=none&amp;width=1640" alt="image.png"></p>
+<p><img src="/img/software/redis/image1.png" alt="图例" title="图例"></p>
 <h2 id="redis-1">一、Redis是什么</h2>
 <p>Redis(Remote Dictionary Server) 是一个使用 C 语言编写的，开源的（BSD许可）高性能非关系型（NoSQL）的键值对数据库。</p>
 <p>Redis 可以存储键和五种不同类型的值之间的映射。键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。</p>
@@ -266,22 +266,22 @@ eg：setex redis 10 good
 <p>psetex key second value
 eg：psetex redis 10 good
 注意：过期时间以毫秒为单位
-<img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1607065681654-a8e3eb6f-bebd-4a3e-a72d-b3bf3ab8b008.png#align=left&amp;display=inline&amp;height=152&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=304&amp;originWidth=536&amp;size=38340&amp;status=done&amp;style=none&amp;width=268" alt="image.png"></p>
+<img src="/img/software/redis/image2.png" alt="图例" title="图例"></p>
 <h4 id="key-2">一次设置多个key的值：</h4>
 <p>mset key1 value1 key2 value2 &hellip;
-<img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1607065309944-4c15ad51-cad5-4329-b62f-4a881b8a9988.png#align=left&amp;display=inline&amp;height=104&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=208&amp;originWidth=608&amp;size=31061&amp;status=done&amp;style=none&amp;width=304" alt="image.png"></p>
+<img src="/img/software/redis/image3.png" alt="图例" title="图例"></p>
 <h4 id="key-3">一次获取多个key的值：</h4>
 <p>mget key1 key2 &hellip;
 eg：mget redis php</p>
 <h4 id="keykey">key不存在时设置key的值：</h4>
 <p>setnx key value
-<img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1607065134336-66caaf63-ba96-4b99-b734-78e78c0da34b.png#align=left&amp;display=inline&amp;height=273&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=546&amp;originWidth=484&amp;size=60458&amp;status=done&amp;style=none&amp;width=242" alt="image.png"></p>
+<img src="/img/software/redis/image4.png" alt="图例" title="图例"></p>
 <h4 id="key-4">获取key存储的字符串值的长度</h4>
 <p>setlen key
-<img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1607065403367-b5022b3d-4ac6-459e-bd5a-2739d555425c.png#align=left&amp;display=inline&amp;height=58&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=116&amp;originWidth=430&amp;size=19388&amp;status=done&amp;style=none&amp;width=215" alt="image.png"></p>
+<img src="/img/software/redis/image5.png" alt="图例" title="图例"></p>
 <h4 id="key-5">将key中存储的数字值加一</h4>
 <p>incr python
-<img src="https://cdn.nlark.com/yuque/0/2020/png/602565/1607065763150-2c089c1c-8933-4e3a-9ce5-acb43f36a05a.png#align=left&amp;display=inline&amp;height=154&amp;margin=%5Bobject%20Object%5D&amp;name=image.png&amp;originHeight=308&amp;originWidth=370&amp;size=34846&amp;status=done&amp;style=none&amp;width=185" alt="image.png"></p>
+<img src="/img/software/redis/image.png" alt="图例" title="图例"></p>
 <h4 id="key-6">将key存储的值加上给定的增量值</h4>
 <p>incrby key increment</p>
 <div class="highlight"><div class="chroma">
