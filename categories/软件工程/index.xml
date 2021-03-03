@@ -6,10 +6,19 @@
     <description>Recent content in 软件工程 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Feb 2021 16:42:10 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Mar 2021 16:42:10 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一致性hash算法详解</title>
+      <link>https://www.sanlt.com/post/software/algorithm/consistence_hash/</link>
+      <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/algorithm/consistence_hash/</guid>
+      <description>一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和</description>
+    </item>
     
     <item>
       <title>base64详细教程</title>
