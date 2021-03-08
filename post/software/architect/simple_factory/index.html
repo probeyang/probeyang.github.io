@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/architect/simple_factory/" />
@@ -34,8 +34,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,13 +46,16 @@
 <meta property="article:modified_time" content="2018-09-10T20:42:10+08:00" />
 <meta itemprop="name" content="三种工厂模式详解">
 <meta itemprop="description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。">
+
+
 <meta itemprop="datePublished" content="2018-09-10T20:42:10&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-10T20:42:10&#43;08:00" />
-<meta itemprop="wordCount" content="3501">
+<meta itemprop="wordCount" content="3499">
 
 
 
-<meta itemprop="keywords" content="factory,工厂模式,设计模式," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="factory,工厂模式,设计模式," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="三种工厂模式详解"/>
 <meta name="twitter:description" content="工厂模式三种类型 简单工厂模式 简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。"/>
 
@@ -129,7 +131,7 @@
         <div class="post-category">
             <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"> 软件工程 </a>
             </div>
-          <span class="more-meta"> 约 3501 字 </span>
+          <span class="more-meta"> 约 3499 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -139,69 +141,104 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#heading">工厂模式三种类型</a>
-      <ul>
-        <li><a href="#heading-1">简单工厂模式</a></li>
-        <li><a href="#heading-2">工厂方法</a></li>
-        <li><a href="#heading-3">抽象工厂</a></li>
-        <li><a href="#heading-4">小结</a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-5">区别：</a>
-      <ul>
-        <li><a href="#heading-6">简单工厂和工厂方法的区别</a></li>
-        <li><a href="#heading-7">工厂方法与抽象工厂的区别</a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-8">简单工厂模式</a></li>
-    <li><a href="#heading-9">工厂方法模式</a></li>
-    <li><a href="#heading-10">抽象工厂模式</a></li>
-    <li><a href="#heading-11">参考文献：</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#工厂模式三种类型">工厂模式三种类型</a>
+<ul>
+<li><a href="#简单工厂模式">简单工厂模式</a></li>
+<li><a href="#工厂方法">工厂方法</a></li>
+<li><a href="#抽象工厂">抽象工厂</a></li>
+<li><a href="#小结">小结</a></li>
+</ul></li>
+<li><a href="#区别">区别：</a>
+<ul>
+<li><a href="#简单工厂和工厂方法的区别">简单工厂和工厂方法的区别</a></li>
+<li><a href="#工厂方法与抽象工厂的区别">工厂方法与抽象工厂的区别</a></li>
+</ul></li>
+<li><a href="#简单工厂模式-1">简单工厂模式</a></li>
+<li><a href="#工厂方法模式">工厂方法模式</a></li>
+<li><a href="#抽象工厂模式">抽象工厂模式</a></li>
+<li><a href="#参考文献">参考文献：</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">工厂模式三种类型</h2>
-<h3 id="heading-1">简单工厂模式</h3>
+      
+
+<h2 id="工厂模式三种类型">工厂模式三种类型</h2>
+
+<h3 id="简单工厂模式">简单工厂模式</h3>
+
 <p>简单工厂模式的工厂类一般是使用静态方法，通过接收的参数的不同来返回不同的对象实例。 不修改代码的话，是无法扩展的。</p>
-<p><img src="/img/program/php/9F3C11005474BAB5B1D10433753D31C0.jpg" alt="图例" title="图例"></p>
+
+<p><img src="/img/program/php/9F3C11005474BAB5B1D10433753D31C0.jpg" alt="图例" title="图例" /></p>
+
 <p>上面的图入口处画的我感觉有问题，还是看《head first设计模式》书中的图：</p>
-<p><img src="/img/program/php/43BF168D737907F189739E5B089D590B.jpg" alt="图例" title="图例"></p>
-<h3 id="heading-2">工厂方法</h3>
+
+<p><img src="/img/program/php/43BF168D737907F189739E5B089D590B.jpg" alt="图例" title="图例" /></p>
+
+<h3 id="工厂方法">工厂方法</h3>
+
 <p>工厂方法使用继承，把对象的创建委托给子类，子类通过实现工厂方法来创建对象。 工厂方法是针对每一种产品提供一个工厂类。通过不同的工厂实例来创建不同的产品实例。 在同一等级结构中，支持增加任意产品。</p>
-<p><img src="/img/program/php/6C649096D48A34AF12BC3838D5A7106C.jpg" alt="图例" title="图例"></p>
+
+<p><img src="/img/program/php/6C649096D48A34AF12BC3838D5A7106C.jpg" alt="图例" title="图例" /></p>
+
 <p>《head first设计模式》书中的图：</p>
-<p><img src="/img/program/php/E0FA8A53F17286BC63F296EDC03369D7.jpg" alt="图例" title="图例"></p>
+
+<p><img src="/img/program/php/E0FA8A53F17286BC63F296EDC03369D7.jpg" alt="图例" title="图例" /></p>
+
 <p>其实工厂方法模式只不过是通过子类来创建对象而已。</p>
-<h3 id="heading-3">抽象工厂</h3>
-<p>抽象工厂使用对象组合，对象的创建被实现在工厂接口所暴露出来的方法中。 抽象工厂是应对产品族概念的。比如说，每个汽车公司可能要同时生产轿车，货车，客车，那么每一个工厂都要有创建轿车，货车和客车的方法。 应对产品族概念而生，增加新的产品线很容易，但是无法增加新的产品。<em>抽象工厂的另一个优点是可以把一群有关系的产品组合起来</em>。</p>
-<p><img src="/img/program/php/8467268AA440CA7352562A897D204CD4.jpg" alt="图例" title="图例"></p>
-<h3 id="heading-4">小结</h3>
+
+<h3 id="抽象工厂">抽象工厂</h3>
+
+<p>抽象工厂使用对象组合，对象的创建被实现在工厂接口所暴露出来的方法中。 抽象工厂是应对产品族概念的。比如说，每个汽车公司可能要同时生产轿车，货车，客车，那么每一个工厂都要有创建轿车，货车和客车的方法。 应对产品族概念而生，增加新的产品线很容易，但是无法增加新的产品。_抽象工厂的另一个优点是可以把一群有关系的产品组合起来_。</p>
+
+<p><img src="/img/program/php/8467268AA440CA7352562A897D204CD4.jpg" alt="图例" title="图例" /></p>
+
+<h3 id="小结">小结</h3>
+
 <p><em>工厂模式中，重要的是工厂类，而不是产品类。产品类可以是多种形式，多层继承或者是单个类都是可以的。但要明确的，工厂模式的接口只会返回一种类型的实例，这是在设计产品类的时候需要注意的，最好是有父类或者共同实现的接口。</em></p>
+
 <p><em>使用工厂模式，返回的实例一定是工厂创建的，而不是从其他对象中获取的。</em></p>
+
 <p><em>工厂模式返回的实例可以不是新创建的，返回由工厂创建好的实例也是可以的。</em></p>
-<h2 id="heading-5">区别：</h2>
-<h3 id="heading-6">简单工厂和工厂方法的区别</h3>
+
+<h2 id="区别">区别：</h2>
+
+<h3 id="简单工厂和工厂方法的区别">简单工厂和工厂方法的区别</h3>
+
 <p>工厂方法就是比简单工厂模式多了一层对工厂类的继承，通过在工厂类的父类中将真正实例化类的方法做成抽象方法（不实现业务逻辑），假设重新方法名（创建产品实例的方法）为createProduct()，然后在工厂类的子类中实现此抽象方法createProduct().差别就在这里。这样的工厂方法比简单工厂灵活在工厂方法可以有多个子类来继承并实现这个工厂方法，像《head first设计模式》中举例的一样，一个披萨店开了纽约披萨加盟店和加州披萨加盟店，纽约的披萨需要纽约的风味，加州的要加州的风味，如果是这样的话简单工厂其实很难满足需求，而工厂方法可以在提供纽约工厂类和加州工厂类（都继承自工厂父类），这样就能在纽约工厂类中实现createProduct（）时去实例化纽约风味的披萨类，加州的工厂类实现createProduct（）时实例化加州风味的披萨类。</p>
-<h3 id="heading-7">工厂方法与抽象工厂的区别</h3>
+
+<h3 id="工厂方法与抽象工厂的区别">工厂方法与抽象工厂的区别</h3>
+
 <p>工厂方法通过继承来负责创建对象，而抽象工厂通过组合创建对象。</p>
+
 <p>抽象工程关键在于产品之间的抽象关系，所以至少要两个产品；工厂方法在于生成产品，不关注产品间的关系，所以可以只生成一个产品。</p>
+
 <p>抽象工厂中客户端把产品的抽象关系理清楚，在最终使用的时候，一般使用客户端（和其接口），产品之间的关系是被封装固定的；而工厂方法是在最终使用的时候，使用产品本身（和其接口）。</p>
+
 <p>抽象工厂的工厂是类；工厂方法的工厂是方法。</p>
+
 <p>抽象工厂的工厂类就做一件事情生产产品。生产的产品给客户端使用，绝不给自己用。 工厂方法生产产品，可以给系统用，可以给客户端用，也可以自己这个类使用。自己这个类除了这个工厂方法外，还能有其他功能性的方法</p>
+
 <p>简单工厂 用来生产同一等级结构中的任意产品。（对于增加新的产品，无能为力）
 工厂方法 用来生产同一等级结构中的固定产品。（支持增加任意产品）
 抽象工厂 用来生产不同产品族的全部产品。（对于增加新的产品，无能为力；支持增加产品族）
 其中抽象工厂比较难理解，它和工厂方法的区别也比较难理解，下面的图或许能起到作用：</p>
-<p><img src="/img/program/php/3E812558508E84B5C2378DA7481FF143.jpg" alt="图例" title="图例"></p>
+
+<p><img src="/img/program/php/3E812558508E84B5C2378DA7481FF143.jpg" alt="图例" title="图例" /></p>
+
 <p>这个图来自《head first设计模式》，然而这个图其实也没有画的太好，我感觉应该在抽象工厂中加上pizza的那块工厂方法可能理解更好。</p>
-<h2 id="heading-8">简单工厂模式</h2>
+
+<h2 id="简单工厂模式-1">简单工厂模式</h2>
+
 <p>简单工厂模式其实可以按照《head first设计模式》中讲的，将其理解为一个函数，然后这个函数里面需要使用if判断出具体实例化类，继而将if判断抽离出来做成一个工厂类中的一个方法，这样能做到工厂类可被复用。按照书中所说，简单工厂严格讲不属于设计模式，只是一种代码规范。 演进过程如下, 最开始未使用设计模式时是这样的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -309,120 +346,122 @@
 </span><span class="lnt">106
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">CheesePizza</span><span class="p">(</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cheese Pizza</span><span class="s2">&#34;</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">CheesePizza</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Cheese Pizza&#34;</span>
 
-    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Preparing </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> is OK.</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Preparing &#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="s2">&#34; is OK.&#34;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ClamPizza</span><span class="p">(</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Clam Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">ClamPizza</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Clam Pizza&#34;</span>
 
-    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Preparing </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> is OK.</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Preparing &#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="s2">&#34; is OK.&#34;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="n">pizza</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">cheese</span><span class="s1">&#39;</span><span class="p">:</span>
-        <span class="n">pizza</span> <span class="o">=</span> <span class="n">CheesePizza</span><span class="p">(</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">clam</span><span class="s1">&#39;</span><span class="p">:</span>
-        <span class="n">pizza</span> <span class="o">=</span> <span class="n">ClamPizza</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;cheese&#39;</span><span class="p">:</span>
+        <span class="n">pizza</span> <span class="o">=</span> <span class="n">CheesePizza</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;clam&#39;</span><span class="p">:</span>
+        <span class="n">pizza</span> <span class="o">=</span> <span class="n">ClamPizza</span><span class="p">()</span>
 
-    <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">pizza</span>
 
-<span class="c1">##test code##</span>
-<span class="n">pizza</span> <span class="o">=</span> <span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">cheese</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">jack ordered a </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="c1">##test code##</span>
+<span class="n">pizza</span> <span class="o">=</span> <span class="n">order_pizza</span><span class="p">(</span><span class="s2">&#34;cheese&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;jack ordered a &#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 
-<span class="n">pizza</span> <span class="o">=</span> <span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">clam</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">lily ordered a </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="err">可</span><span class="err">以</span><span class="err">看</span><span class="err">到</span><span class="err">，</span><span class="err">如</span><span class="err">果</span><span class="n">pizza类太多的话</span><span class="err">，</span><span class="err">我</span><span class="err">们</span><span class="err">要</span><span class="err">不</span><span class="err">停</span><span class="err">的</span><span class="err">修</span><span class="err">改</span><span class="n">order_pizza函数的if模块判断内容</span><span class="err">，</span><span class="err">新</span><span class="err">加</span><span class="err">类</span><span class="err">或</span><span class="err">者</span><span class="err">删</span><span class="err">除</span><span class="err">类</span><span class="err">都</span><span class="err">需</span><span class="err">要</span><span class="err">不</span><span class="err">停</span><span class="err">修</span><span class="err">改</span><span class="err">。</span><span class="err">所</span><span class="err">以</span><span class="err">我</span><span class="err">们</span><span class="err">将</span><span class="err">这</span><span class="err">段</span><span class="err">代</span><span class="err">码</span><span class="err">放</span><span class="err">到</span><span class="err">单</span><span class="err">独</span><span class="err">的</span><span class="err">函</span><span class="err">数</span><span class="err">中</span><span class="err">，</span><span class="err">再</span><span class="err">将</span><span class="err">其</span><span class="err">用</span><span class="err">类</span><span class="err">包</span><span class="err">裹</span><span class="err">起</span><span class="err">来</span><span class="err">，</span><span class="err">这</span><span class="err">样</span><span class="err">就</span><span class="err">能</span><span class="err">做</span><span class="err">到</span><span class="err">这</span><span class="err">个</span><span class="err">类</span><span class="err">就</span><span class="err">只</span><span class="err">负</span><span class="err">责</span><span class="err">实</span><span class="err">例</span><span class="err">化</span><span class="n">pizza对象</span><span class="err">，</span><span class="err">以</span><span class="err">后</span><span class="err">修</span><span class="err">改</span><span class="err">就</span><span class="err">只</span><span class="err">在</span><span class="err">这</span><span class="err">个</span><span class="err">类</span><span class="err">中</span><span class="err">修</span><span class="err">改</span><span class="err">即</span><span class="err">可</span><span class="err">。</span> <span class="err">演</span><span class="err">变</span><span class="err">后</span><span class="err">代</span><span class="err">码</span><span class="err">如</span><span class="err">下</span><span class="err">：</span>
+<span class="n">pizza</span> <span class="o">=</span> <span class="n">order_pizza</span><span class="p">(</span><span class="s2">&#34;clam&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;lily ordered a &#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="err">可以看到，如果</span><span class="n">pizza类太多的话</span><span class="err">，我们要不停的修改</span><span class="n">order_pizza函数的if模块判断内容</span><span class="err">，新加类或者删除类都需要不停修改。所以我们将这段代码放到单独的函数中，再将其用类包裹起来，这样就能做到这个类就只负责实例化</span><span class="n">pizza对象</span><span class="err">，以后修改就只在这个类中修改即可。</span> <span class="err">演变后代码如下：</span>
 
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="c1">######factory class######</span>
+<span class="c1">######factory class######</span>
 
 <span class="k">class</span> <span class="nc">PizzaStore</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factory</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_factory</span> <span class="o">=</span> <span class="n">factory</span>
 
-    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
         <span class="n">pizza</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_factory</span><span class="o">.</span><span class="n">create_pizza</span><span class="p">(</span><span class="n">pizza_type</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="p">)</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">pizza</span>
 
 
 <span class="k">class</span> <span class="nc">SimplePizzaFactory</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
         <span class="n">pizza</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">cheese</span><span class="s2">&#34;</span><span class="p">:</span>
-            <span class="n">pizza</span> <span class="o">=</span> <span class="n">CheesePizza</span><span class="p">(</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">clam</span><span class="s2">&#34;</span><span class="p">:</span>
-            <span class="n">pizza</span> <span class="o">=</span> <span class="n">ClamPizza</span><span class="p">(</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s2">&#34;cheese&#34;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">CheesePizza</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s2">&#34;clam&#34;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">ClamPizza</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">pizza</span>
 
-<span class="c1">#######pizza class########</span>
+<span class="c1">#######pizza class########</span>
 
 <span class="k">class</span> <span class="nc">Pizza</span><span class="p">:</span>
     <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Preparing </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> is OK.</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Preparing &#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">+</span> <span class="s2">&#34; is OK.&#34;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">CheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cheese Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">CheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Cheese Pizza&#34;</span>
 
 
-<span class="k">class</span> <span class="nc">ClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Clam Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">ClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Clam Pizza&#34;</span>
 
 
-<span class="c1">######test code######</span>
+<span class="c1">######test code######</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">__main__</span><span class="s1">&#39;</span><span class="p">:</span>
-    <span class="n">store</span> <span class="o">=</span> <span class="n">PizzaStore</span><span class="p">(</span><span class="n">SimplePizzaFactory</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="n">PizzaStore</span><span class="p">(</span><span class="n">SimplePizzaFactory</span><span class="p">())</span>
 
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">cheese</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">jack ordered a </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s2">&#34;cheese&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;jack ordered a &#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">clam</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">lily ordered a </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s2">&#34;clam&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;lily ordered a &#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-9">工厂方法模式</h2>
+</div>
+<h2 id="工厂方法模式">工厂方法模式</h2>
+
 <p>相比简单工厂，此工厂模式更灵活，通过将简单工厂中的工厂类做成抽象类，然后重点把实例化产品的工厂方法做成抽象的方法，再加入多个工厂子类来实现实例化产品的的工厂方法，这样能灵活应对多种不同需求的实例化类需求。</p>
+
 <p>示例代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -563,152 +602,157 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="c1">#######pizza class#######</span>
+<span class="c1">#######pizza class#######</span>
 
 <span class="k">class</span> <span class="nc">Pizza</span><span class="p">:</span>
     <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Preparing </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Preparing &#34;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bake</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Bake for 25 minutes at 350</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bake</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Bake for 25 minutes at 350&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into diagonal slices</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into diagonal slices&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Place pizza in official PizzaStore box</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Place pizza in official PizzaStore box&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
 
 
-<span class="k">class</span> <span class="nc">NYStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleCheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">NY Style Sauce and Cheese Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">NYStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleCheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;NY Style Sauce and Cheese Pizza&#34;</span>
 
 
-<span class="k">class</span> <span class="nc">NYStylePepperoniPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NYStylePepperoniPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">NY Style Pepperoni Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">NYStylePepperoniPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NYStylePepperoniPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;NY Style Pepperoni Pizza&#34;</span>
 
 
-<span class="k">class</span> <span class="nc">NYStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">NY Style Clam Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">NYStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;NY Style Clam Pizza&#34;</span>
 
 
-<span class="k">class</span> <span class="nc">NYStyleVeggiePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleVeggiePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">NY Style Veggie Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">NYStyleVeggiePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NYStyleVeggiePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;NY Style Veggie Pizza&#34;</span>
 
 
-<span class="k">class</span> <span class="nc">ChicagoStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleCheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Chicago Style Deep Dish Cheese Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">ChicagoStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleCheesePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Chicago Style Deep Dish Cheese Pizza&#34;</span>
 
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into square slices</span><span class="s2">&#34;</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">ChicagoStylePepperoniPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStylePepperoniPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Chicago Style Pepperoni Pizza</span><span class="s2">&#34;</span>
-
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into square slices</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into square slices&#34;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ChicagoStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Chicago Style Clam Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">ChicagoStylePepperoniPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStylePepperoniPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Chicago Style Pepperoni Pizza&#34;</span>
 
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into square slices</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into square slices&#34;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">ChicagoStyleVeggiePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleVeggiePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Chicago Deep Dish Veggie Pizza</span><span class="s2">&#34;</span>
+<span class="k">class</span> <span class="nc">ChicagoStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleClamPizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Chicago Style Clam Pizza&#34;</span>
 
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into square slices</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into square slices&#34;</span><span class="p">)</span>
 
-<span class="c1">########factory store code#######</span>
+
+<span class="k">class</span> <span class="nc">ChicagoStyleVeggiePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChicagoStyleVeggiePizza</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&#34;Chicago Deep Dish Veggie Pizza&#34;</span>
+
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into square slices&#34;</span><span class="p">)</span>
+
+<span class="c1">########factory store code#######</span>
 
 <span class="k">class</span> <span class="nc">PizzaStore</span><span class="p">:</span>
     <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
         <span class="n">pizza</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pizza</span><span class="p">(</span><span class="n">pizza_type</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">--- Making a </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> ---</span><span class="s2">&#34;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;--- Making a &#34;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34; ---&#34;</span><span class="p">)</span>
 
-        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">bake</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="p">)</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">bake</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">box</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">pizza</span>
 
 
-<span class="k">class</span> <span class="nc">NYPizzaStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">NYPizzaStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">style_pizza_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cheese</span><span class="o">=</span><span class="n">NYStyleCheesePizza</span><span class="p">,</span> <span class="n">veggie</span><span class="o">=</span><span class="n">NYStyleVeggiePizza</span><span class="p">,</span> <span class="n">clam</span><span class="o">=</span><span class="n">NYStyleClamPizza</span><span class="p">,</span>
                                 <span class="n">pepperoni</span><span class="o">=</span><span class="n">NYStylePepperoniPizza</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">style_pizza_dict</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span><span class="p">(</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">style_pizza_dict</span><span class="p">[</span><span class="nb">type</span><span class="p">]()</span>
 
 
-<span class="k">class</span> <span class="nc">ChicagoPizzaStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">ChicagoPizzaStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">style_pizza_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cheese</span><span class="o">=</span><span class="n">ChicagoStyleCheesePizza</span><span class="p">,</span> <span class="n">veggie</span><span class="o">=</span><span class="n">ChicagoStyleVeggiePizza</span><span class="p">,</span>
                                 <span class="n">clam</span><span class="o">=</span><span class="n">ChicagoStyleClamPizza</span><span class="p">,</span>
                                 <span class="n">pepperoni</span><span class="o">=</span><span class="n">ChicagoStylePepperoniPizza</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">style_pizza_dict</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span><span class="p">(</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">style_pizza_dict</span><span class="p">[</span><span class="nb">type</span><span class="p">]()</span>
 
 
-<span class="c1">######test code######</span>
+<span class="c1">######test code######</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">__main__</span><span class="s1">&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
-    <span class="n">ny_store</span> <span class="o">=</span> <span class="n">NYPizzaStore</span><span class="p">(</span><span class="p">)</span>
-    <span class="n">chicago_store</span> <span class="o">=</span> <span class="n">ChicagoPizzaStore</span><span class="p">(</span><span class="p">)</span>
+    <span class="n">ny_store</span> <span class="o">=</span> <span class="n">NYPizzaStore</span><span class="p">()</span>
+    <span class="n">chicago_store</span> <span class="o">=</span> <span class="n">ChicagoPizzaStore</span><span class="p">()</span>
 
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">ny_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">cheese</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">jack ordered a </span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1"> pizza</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">ny_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;jack ordered a &#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; pizza&#39;</span><span class="p">)</span>
 
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">chicago_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">veggie</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">lucy ordered a </span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1"> pizza</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">chicago_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;veggie&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;lucy ordered a &#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; pizza&#39;</span><span class="p">)</span>
 
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">ny_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">clam</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">lily ordered a </span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="p">)</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1"> pizza</span><span class="s1">&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">ny_store</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;clam&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;lily ordered a &#39;</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; pizza&#39;</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-10">抽象工厂模式</h2>
+</div>
+<h2 id="抽象工厂模式">抽象工厂模式</h2>
+
 <p>抽象工厂模式提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</p>
-<p><img src="/img/program/php/FA6306C018847FF87FB509D1EFABA5CE.jpg" alt="图例" title="图例"></p>
-<p><img src="/img/program/php/7692570A4CF19086B246B3119A256759.jpg" alt="图例" title="图例"></p>
+
+<p><img src="/img/program/php/FA6306C018847FF87FB509D1EFABA5CE.jpg" alt="图例" title="图例" /></p>
+
+<p><img src="/img/program/php/7692570A4CF19086B246B3119A256759.jpg" alt="图例" title="图例" /></p>
+
 <p>抽象工厂的任务是创建一个负责创建一组产品的接口。这个接口内的每个方法都负责创建一个具体的产品。</p>
+
 <p>示例代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre class="chroma"><code class="language-Python" data-lang="Python"><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -903,201 +947,203 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">class</span> <span class="nc">FreshClams</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">Fresh Clams</span><span class="s1">&#39;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Fresh Clams&#39;</span>
 
 
 <span class="k">class</span> <span class="nc">MarinaraSauce</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Marinara Sauce</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Marinara Sauce&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">ThickCrustDough</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Thick Crust Dough</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Thick Crust Dough&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">ReggianoCheese</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Reggiano Cheese</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Reggiano Cheese&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">SlicedPepperoni</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Sliced Pepperoni</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Sliced Pepperoni&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">Garlic</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Garlic</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Garlic&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">Onion</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Onion</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Onion&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">RedPepper</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">Red Pepper</span><span class="s2">&#34;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&#34;Red Pepper&#34;</span>
 
 
 <span class="k">class</span> <span class="nc">PizzaIngredientFactory</span><span class="p">:</span>
-    <span class="sa"></span><span class="s1">&#39;&#39;&#39;</span><span class="s1"></span><span class="s1">
-</span><span class="s1"></span><span class="s1">    定义原料工厂</span><span class="s1">
-</span><span class="s1"></span><span class="s1">    </span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    定义原料工厂
+</span><span class="s1">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">NYPizzaIngredientFactory</span><span class="p">(</span><span class="n">PizzaIngredientFactory</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Tossing </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">ThickCrustDough</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ThickCrustDough</span><span class="p">(</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NYPizzaIngredientFactory</span><span class="p">(</span><span class="n">PizzaIngredientFactory</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_dough</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Tossing </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">ThickCrustDough</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ThickCrustDough</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Adding </span><span class="si">%s</span><span class="s2">...</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">MarinaraSauce</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">MarinaraSauce</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_sauce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Adding </span><span class="si">%s</span><span class="s2">...&#34;</span> <span class="o">%</span> <span class="n">MarinaraSauce</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">MarinaraSauce</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Adding </span><span class="si">%s</span><span class="s2">...</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">ReggianoCheese</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ReggianoCheese</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_cheese</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Adding </span><span class="si">%s</span><span class="s2">...&#34;</span> <span class="o">%</span> <span class="n">ReggianoCheese</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">ReggianoCheese</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Adding </span><span class="si">%s</span><span class="s2">...</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">SlicedPepperoni</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">SlicedPepperoni</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_pepperoni</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Adding </span><span class="si">%s</span><span class="s2">...&#34;</span> <span class="o">%</span> <span class="n">SlicedPepperoni</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">SlicedPepperoni</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Adding </span><span class="si">%s</span><span class="s2">...</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">FreshClams</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">FreshClams</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_clam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Adding </span><span class="si">%s</span><span class="s2">...&#34;</span> <span class="o">%</span> <span class="n">FreshClams</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">FreshClams</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="n">veggies</span> <span class="o">=</span> <span class="p">[</span><span class="n">Garlic</span><span class="p">(</span><span class="p">)</span><span class="p">,</span> <span class="n">Onion</span><span class="p">(</span><span class="p">)</span><span class="p">,</span> <span class="n">RedPepper</span><span class="p">(</span><span class="p">)</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">create_veggies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">veggies</span> <span class="o">=</span> <span class="p">[</span><span class="n">Garlic</span><span class="p">(),</span> <span class="n">Onion</span><span class="p">(),</span> <span class="n">RedPepper</span><span class="p">()]</span>
         <span class="k">for</span> <span class="n">veggie</span> <span class="ow">in</span> <span class="n">veggies</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">  </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">veggie</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;  </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">veggie</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">veggies</span>
 
 
 <span class="k">class</span> <span class="nc">Pizza</span><span class="p">:</span>
-    <span class="sa"></span><span class="s1">&#39;&#39;&#39;</span><span class="s1"></span><span class="s1">
-</span><span class="s1"></span><span class="s1">    pizza 工厂</span><span class="s1">
-</span><span class="s1"></span><span class="s1">    </span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    pizza 工厂
+</span><span class="s1">    &#39;&#39;&#39;</span>
 
     <span class="n">dough</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">sauce</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">cheese</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="n">veggies</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span>
+    <span class="n">veggies</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">pepperoni</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">clam</span> <span class="o">=</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ingredient_factory</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ingredient_factory</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span> <span class="o">=</span> <span class="n">ingredient_factory</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">bake</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Bake for 25 minutes at 350</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bake</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Bake for 25 minutes at 350&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Cutting the pizza into diagonal slices</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cutting the pizza into diagonal slices&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Place pizza in official PizzaStore box</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Place pizza in official PizzaStore box&#34;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
 
-<span class="k">class</span> <span class="nc">NYStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">veggies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_veggies</span><span class="p">(</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NYStyleCheesePizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">()</span>
+        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">()</span>
+        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">()</span>
+        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">()</span>
+        <span class="n">veggies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_veggies</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">NYStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">(</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NYStyleClamPizza</span><span class="p">(</span><span class="n">Pizza</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dough</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_dough</span><span class="p">()</span>
+        <span class="n">sauce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_sauce</span><span class="p">()</span>
+        <span class="n">cheese</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_cheese</span><span class="p">()</span>
+        <span class="n">clam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="o">.</span><span class="n">create_clam</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">PizzaStore</span><span class="p">:</span>
-    <span class="sa"></span><span class="s1">&#39;&#39;&#39;</span><span class="s1"></span><span class="s1">
-</span><span class="s1"></span><span class="s1">    pizza 店工厂</span><span class="s1">
-</span><span class="s1"></span><span class="s1">    </span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="s1">&#39;&#39;&#39;
+</span><span class="s1">    pizza 店工厂
+</span><span class="s1">    &#39;&#39;&#39;</span>
 
     <span class="n">ingredient_factory</span> <span class="o">=</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>
-        <span class="c1"># 每个需要子类实现的方法都会抛出NotImplementedError</span>
-        <span class="c1"># 我们也可以把 PizzaStore 的 metaclass 设置成 abc.ABCMeta</span>
-        <span class="c1"># 这样的话，这个类就是真正的抽象基类</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
+        <span class="c1"># 每个需要子类实现的方法都会抛出NotImplementedError</span>
+        <span class="c1"># 我们也可以把 PizzaStore 的 metaclass 设置成 abc.ABCMeta</span>
+        <span class="c1"># 这样的话，这个类就是真正的抽象基类</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>  <span class="c1"># 现在把 pizza 的类型传入 order_pizza()</span>
+    <span class="k">def</span> <span class="nf">order_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>  <span class="c1"># 现在把 pizza 的类型传入 order_pizza()</span>
 
         <span class="n">pizza</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pizza</span><span class="p">(</span><span class="n">pizza_type</span><span class="p">)</span>
 
-        <span class="c1">#  一旦我们有了一个 pizza，需要做一些准备（擀面皮、加佐料），然后烘烤、切片、装盒</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">bake</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="p">)</span>
-        <span class="n">pizza</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="p">)</span>
+        <span class="c1">#  一旦我们有了一个 pizza，需要做一些准备（擀面皮、加佐料），然后烘烤、切片、装盒</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">bake</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">cut</span><span class="p">()</span>
+        <span class="n">pizza</span><span class="o">.</span><span class="n">box</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">pizza</span>
 
-        <span class="c1"># 下边是其他可能用到的方法</span>
+        <span class="c1"># 下边是其他可能用到的方法</span>
 
 
-<span class="k">class</span> <span class="nc">NYStylePizzStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">ingredient_factory</span> <span class="o">=</span> <span class="n">NYPizzaIngredientFactory</span><span class="p">(</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NYStylePizzStore</span><span class="p">(</span><span class="n">PizzaStore</span><span class="p">):</span>
+    <span class="n">ingredient_factory</span> <span class="o">=</span> <span class="n">NYPizzaIngredientFactory</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">)</span><span class="p">:</span>
-        <span class="c1"># 根据 pizza 类型，我们实例化正确的具体类，然后将其赋值给 pizza 实例变量</span>
-        <span class="k">if</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">cheese</span><span class="s1">&#39;</span><span class="p">:</span>
-            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleCheesePizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">NY Style Sauce and Cheese Pizza</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">create_pizza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pizza_type</span><span class="p">):</span>
+        <span class="c1"># 根据 pizza 类型，我们实例化正确的具体类，然后将其赋值给 pizza 实例变量</span>
+        <span class="k">if</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s1">&#39;cheese&#39;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleCheesePizza</span><span class="p">(</span><span class="s1">&#39;NY Style Sauce and Cheese Pizza&#39;</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">clam</span><span class="s1">&#39;</span><span class="p">:</span>
-            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleClamPizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">NY Style Clam Pizza</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="k">elif</span> <span class="n">pizza_type</span> <span class="o">==</span> <span class="s1">&#39;clam&#39;</span><span class="p">:</span>
+            <span class="n">pizza</span> <span class="o">=</span> <span class="n">NYStyleClamPizza</span><span class="p">(</span><span class="s1">&#39;NY Style Clam Pizza&#39;</span><span class="p">,</span>
                                      <span class="bp">self</span><span class="o">.</span><span class="n">ingredient_factory</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pizza</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">nystore</span> <span class="o">=</span> <span class="n">NYStylePizzStore</span><span class="p">(</span><span class="p">)</span>
-    <span class="n">pizza</span> <span class="o">=</span> <span class="n">nystore</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">cheese</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">*</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">goodspeed ordered a </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">pizza</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">*</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">nystore</span> <span class="o">=</span> <span class="n">NYStylePizzStore</span><span class="p">()</span>
+    <span class="n">pizza</span> <span class="o">=</span> <span class="n">nystore</span><span class="o">.</span><span class="n">order_pizza</span><span class="p">(</span><span class="s1">&#39;cheese&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;goodspeed ordered a </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">pizza</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">__main__</span><span class="s1">&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">(</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-11">参考文献：</h2>
+</div>
+<h2 id="参考文献">参考文献：</h2>
+
 <p><a href="http://ichennan.com/2016/08/09/DesignPattern.html">三种工厂模式</a></p>
+
 <p><a href="https://www.zhihu.com/question/20367734">抽象工厂模式和工厂模式的区别</a></p>
 
     </div>
@@ -1131,11 +1177,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth;
+      var width = window.innerWidth || document.documentElement.clientWidth; 
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-
+  
   
 
   
@@ -1150,12 +1196,7 @@
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+      备案号（粤ICP备17140117号-1）
   </span>
 
   <div class="busuanzi-footer">
@@ -1167,7 +1208,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -1184,10 +1225,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-
-
-
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 

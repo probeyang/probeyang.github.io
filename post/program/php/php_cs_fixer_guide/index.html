@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/php/php_cs_fixer_guide/" />
@@ -34,8 +34,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,13 +46,16 @@
 <meta property="article:modified_time" content="2019-08-02T23:10:22+08:00" />
 <meta itemprop="name" content="代码格式化工具php-cs-fixer安装教程">
 <meta itemprop="description" content="简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别">
+
+
 <meta itemprop="datePublished" content="2019-08-02T23:10:22&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-02T23:10:22&#43;08:00" />
 <meta itemprop="wordCount" content="932">
 
 
 
-<meta itemprop="keywords" content="php,php-cs-fixer," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="php,php-cs-fixer," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="代码格式化工具php-cs-fixer安装教程"/>
 <meta name="twitter:description" content="简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别"/>
 
@@ -139,85 +141,94 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#heading">简述</a></li>
-    <li><a href="#heading-1">安装</a></li>
-    <li><a href="#phpstorm">配置phpstorm</a>
-      <ul>
-        <li><a href="#heading-2">尝试试用</a></li>
-        <li><a href="#heading-3">配置快捷键</a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-4">总结</a></li>
-    <li><a href="#heading-5">参考文献</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#简述">简述</a></li>
+<li><a href="#安装">安装</a></li>
+<li><a href="#配置phpstorm">配置phpstorm</a>
+<ul>
+<li><a href="#尝试试用">尝试试用</a></li>
+<li><a href="#配置快捷键">配置快捷键</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">简述</h2>
+      
+
+<h2 id="简述">简述</h2>
+
 <p>php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别的代码规范。目前我们的代码规范也没有太多特殊性，按照行业规范PSR标准即可。参考几个代码格式化工具扩展，php-cs-fixer是比较好的选择。</p>
-<h2 id="heading-1">安装</h2>
+
+<h2 id="安装">安装</h2>
+
 <ol>
-<li>
-<p>从https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/README.rst#installation下载php-cs-fixer.phar 文件，注意使用v2版本，因为目前的PHP版本都是5.6以后的，而v1版本是支持PHP5.6以前版本的。</p>
-</li>
-<li>
-<p>将文件放到PHP的安装目录里面，跟PHP.exe在同一级。</p>
-</li>
-<li>
-<p>可以将php-cs-fixer-v2.phar修改为php-cs-fixer.phar</p>
-</li>
+<li><p>从<a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/README.rst#installation下载php-cs-fixer.phar">https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/README.rst#installation下载php-cs-fixer.phar</a> 文件，注意使用v2版本，因为目前的PHP版本都是5.6以后的，而v1版本是支持PHP5.6以前版本的。</p></li>
+
+<li><p>将文件放到PHP的安装目录里面，跟PHP.exe在同一级。</p></li>
+
+<li><p>可以将php-cs-fixer-v2.phar修改为php-cs-fixer.phar</p></li>
 </ol>
-<h2 id="phpstorm">配置phpstorm</h2>
+
+<h2 id="配置phpstorm">配置phpstorm</h2>
+
 <ol>
-<li>
-<p>file-setting-tools-external tools, 在里面添加外部扩展工具，点击绿色的+号</p>
-</li>
-<li>
-<p>program中选择PHP的目录。</p>
-</li>
-<li>
-<p>arguments输入：php-cs-fixer.phar路径 fix &ndash;rules=@PSR1,@PSR2 &ndash;verbose $FileDir$$FileName$</p>
-</li>
-<li>
-<p>working directory输入：$ProjectFileDir$</p>
-</li>
+<li><p>file-setting-tools-external tools, 在里面添加外部扩展工具，点击绿色的+号</p></li>
+
+<li><p>program中选择PHP的目录。</p></li>
+
+<li><p>arguments输入：php-cs-fixer.phar路径 fix &ndash;rules=@PSR1,@PSR2 &ndash;verbose $FileDir$\$FileName$</p></li>
+
+<li><p>working directory输入：$ProjectFileDir$</p></li>
 </ol>
+
 <p>点击OK，以及apply，完成配置。即可完成php-cs-fixer的配置。具体配置如图：
-<img src="/img/program/php/clipboard20.png" alt="图例" title="图例"></p>
-<h3 id="heading-2">尝试试用</h3>
+<img src="/img/program/php/clipboard20.png" alt="图例" title="图例" /></p>
+
+<h3 id="尝试试用">尝试试用</h3>
+
 <ol>
-<li>
-<p>可以选择顶部tools-external tools-php-cs-fixer即可运行格式化工具
-<img src="/img/program/php/clipboard21.png" alt="图例" title="图例"></p>
-</li>
-<li>
-<p>或者在代码中使用右键找到external tools也可以使用格式化工具
-<img src="/img/program/php/clipboard22.png" alt="图例" title="图例"></p>
-</li>
+<li><p>可以选择顶部tools-external tools-php-cs-fixer即可运行格式化工具
+<img src="/img/program/php/clipboard21.png" alt="图例" title="图例" /></p></li>
+
+<li><p>或者在代码中使用右键找到external tools也可以使用格式化工具
+<img src="/img/program/php/clipboard22.png" alt="图例" title="图例" /></p></li>
 </ol>
+
 <p>输出类似：
-<img src="/img/program/php/clipboard23.png" alt="图例" title="图例"></p>
-<h3 id="heading-3">配置快捷键</h3>
+<img src="/img/program/php/clipboard23.png" alt="图例" title="图例" /></p>
+
+<h3 id="配置快捷键">配置快捷键</h3>
+
 <p>觉得很麻烦？还可以添加快捷键来直接使用格式化功能：</p>
+
 <ol>
-<li>
-<p>file-setting-keymap-external tools找到php-cs-fixer，双击或者右键add keyboard shortcut
-<img src="/img/program/php/clipboard24.png" alt="图例" title="图例"></p>
-</li>
-<li>
-<p>直接输入想要设置的快捷键，注意不要跟其他快捷键冲突即可。</p>
-</li>
+<li><p>file-setting-keymap-external tools找到php-cs-fixer，双击或者右键add keyboard shortcut
+<img src="/img/program/php/clipboard24.png" alt="图例" title="图例" /></p></li>
+
+<li><p>直接输入想要设置的快捷键，注意不要跟其他快捷键冲突即可。</p></li>
 </ol>
-<h2 id="heading-4">总结</h2>
+
+<h2 id="总结">总结</h2>
+
 <p>php-cs-fixer相对比较专业的格式化工具，技术社区也比较成熟，能很好找到各种资料配置。并且它比phpstorm自带的专业的多，更符合代码审核规范，提高代码质量，配置还很简单。用惯了此功能后，再看其他代码将会显得差距大很多。</p>
-<h2 id="heading-5">参考文献</h2>
+
+<h2 id="参考文献">参考文献</h2>
+
 <p><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">https://github.com/FriendsOfPHP/PHP-CS-Fixer</a></p>
+
 <p><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/README.rst#installation">https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/README.rst#installation</a></p>
+
 <p><a href="https://keer.me/phpstorm-configuration-php-cs-fixer/">https://keer.me/phpstorm-configuration-php-cs-fixer/</a></p>
+
 <p><a href="https://www.jianshu.com/p/d147dcf43a04">https://www.jianshu.com/p/d147dcf43a04</a></p>
-<p><a href="https://medium.com/hackernoon/how-to-configure-phpstorm-to-use-php-cs-fixer-1844991e521f">https://medium.com/hackernoon/how-to-configure-phpstorm-to-use-php-cs-fixer-1844991e521f</a>（这篇国外文档的配置貌似有误导）</p>
+
+<p><a href="https://medium.com/hackernoon/how-to-configure-phpstorm-to-use-php-cs-fixer-1844991e521f（这篇国外文档的配置貌似有误导）">https://medium.com/hackernoon/how-to-configure-phpstorm-to-use-php-cs-fixer-1844991e521f（这篇国外文档的配置貌似有误导）</a></p>
 
     </div>
 
@@ -228,13 +239,13 @@
           <a href="/tags/php-cs-fixer/">php-cs-fixer</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/program/php/laravel_breadcrumbs_guide/">
+        <a class="prev" href="/post/program/php/phpstorm_docs_guide/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Laravel中使用breadcrumbs功能指南</span>
+            <span class="prev-text nav-default">PHPStorm配置创建文件时自动添加文件头注释方法</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/program/php/phpstorm_docs_guide/">
-            <span class="next-text nav-default">代码格式化工具php-cs-fixer安装教程</span>
+        <a class="next" href="/post/software/algorithm/qianzhui_houzhui_zhongzhui/">
+            <span class="next-text nav-default">算法之前缀、中缀、后缀表达式转换研究</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -249,11 +260,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth;
+      var width = window.innerWidth || document.documentElement.clientWidth; 
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-
+  
   
 
   
@@ -268,12 +279,7 @@
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+      备案号（粤ICP备17140117号-1）
   </span>
 
   <div class="busuanzi-footer">
@@ -285,7 +291,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -302,10 +308,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-
-
-
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 

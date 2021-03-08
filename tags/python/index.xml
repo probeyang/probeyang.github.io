@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on Sanlt,就是加了N多盐的地方</title>
@@ -6,19 +6,10 @@
     <description>Recent content in python on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 08 May 2020 17:46:14 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 22:09:28 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>ImportError No module named问题解决</title>
-      <link>https://www.sanlt.com/post/program/python/no_module_named_solve/</link>
-      <pubDate>Fri, 08 May 2020 17:46:14 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/program/python/no_module_named_solve/</guid>
-      <description>问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方</description>
-    </item>
     
     <item>
       <title>Django设置时区教程</title>

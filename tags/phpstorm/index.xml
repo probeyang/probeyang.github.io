@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>phpstorm on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/phpstorm/</link>
+    <description>Recent content in phpstorm on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Aug 2019 19:10:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/phpstorm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHPStorm配置创建文件时自动添加文件头注释方法</title>
+      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
+      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
+      <description>配置入口 MAC版 PhpStorm -&amp;gt; Preferences&amp;hellip; -&amp;gt; Editor -&amp;gt; File and Code Templates -&amp;gt; includes -&amp;gt; PHP File Header 打开PhpStorm-&amp;gt;首选项-&amp;gt;编辑器-&amp;gt;文件和代码模板-&amp;gt;包括-</description>
+    </item>
+    
+  </channel>
+</rss>

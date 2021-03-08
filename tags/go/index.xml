@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go on Sanlt,就是加了N多盐的地方</title>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>go语言学习笔记之一</title>
+      <title>go语言学习笔记之1</title>
       <link>https://www.sanlt.com/post/program/go/go_study_1/</link>
       <pubDate>Sun, 03 May 2020 17:46:14 +0800</pubDate>
       

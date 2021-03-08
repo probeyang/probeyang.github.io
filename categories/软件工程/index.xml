@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>软件工程 on Sanlt,就是加了N多盐的地方</title>
@@ -6,37 +6,10 @@
     <description>Recent content in 软件工程 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 03 Mar 2021 16:42:10 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>一致性hash算法详解</title>
-      <link>https://www.sanlt.com/post/software/algorithm/consistence_hash/</link>
-      <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/algorithm/consistence_hash/</guid>
-      <description>一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和</description>
-    </item>
-    
-    <item>
-      <title>base64详细教程</title>
-      <link>https://www.sanlt.com/post/software/base64/base64_course/</link>
-      <pubDate>Thu, 25 Feb 2021 16:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/base64/base64_course/</guid>
-      <description>base64编码详解 概述 所谓Base64，就是说选出64个字符&amp;mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&amp;quot;+</description>
-    </item>
-    
-    <item>
-      <title>redis详细教程</title>
-      <link>https://www.sanlt.com/post/software/redis/redis_course/</link>
-      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/redis/redis_course/</guid>
-      <description>Redis教程 一、Redis是什么 Redis(Remote Dictionary Server) 是一个使用 C 语言编写的，开源的（BSD许可）高性能非关系型（NoSQL）的键值对数据库。 Redis 可以存储键</description>
-    </item>
     
     <item>
       <title>MySQL Substring return empty value问题研究</title>

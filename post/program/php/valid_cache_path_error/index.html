@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/php/valid_cache_path_error/" />
@@ -34,8 +34,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,13 +46,16 @@
 <meta property="article:modified_time" content="2019-08-20T22:08:38+08:00" />
 <meta itemprop="name" content="laravel视图打开报错Please provide a valid cache path解决">
 <meta itemprop="description" content="问题描述 lumen中新增的view视图打开报错： 1 Please provide a valid cache path 问题解决 问题出现的原因是storage文件夹下面没有一系列缓存文件夹，我们新建">
+
+
 <meta itemprop="datePublished" content="2019-08-20T22:08:38&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-20T22:08:38&#43;08:00" />
 <meta itemprop="wordCount" content="135">
 
 
 
-<meta itemprop="keywords" content="php,laravel," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="php,laravel," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="laravel视图打开报错Please provide a valid cache path解决"/>
 <meta name="twitter:description" content="问题描述 lumen中新增的view视图打开报错： 1 Please provide a valid cache path 问题解决 问题出现的原因是storage文件夹下面没有一系列缓存文件夹，我们新建"/>
 
@@ -139,29 +141,38 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">参考文献</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#问题描述">问题描述</a></li>
+<li><a href="#问题解决">问题解决</a></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      
+
+<h2 id="问题描述">问题描述</h2>
+
 <p>lumen中新增的view视图打开报错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Please provide a valid cache path
-</code></pre></td></tr></table>
+<pre class="chroma">Please provide a valid cache path</pre></td></tr></table>
 </div>
-</div><h2 id="heading-1">问题解决</h2>
+</div>
+<h2 id="问题解决">问题解决</h2>
+
 <p>问题出现的原因是storage文件夹下面没有一系列缓存文件夹，我们新建好以下文件夹即可：
 storage/framework下再新增：sessions，views，cache文件夹。</p>
-<h2 id="heading-2">参考文献</h2>
+
+<h2 id="参考文献">参考文献</h2>
+
 <p><a href="https://stackoverflow.com/questions/38483837/please-provide-a-valid-cache-path">Please provide a valid cache path</a></p>
 
     </div>
@@ -194,11 +205,11 @@ storage/framework下再新增：sessions，views，cache文件夹。</p>
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth;
+      var width = window.innerWidth || document.documentElement.clientWidth; 
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-
+  
   
 
   
@@ -213,12 +224,7 @@ storage/framework下再新增：sessions，views，cache文件夹。</p>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+      备案号（粤ICP备17140117号-1）
   </span>
 
   <div class="busuanzi-footer">
@@ -230,7 +236,7 @@ storage/framework下再新增：sessions，views，cache文件夹。</p>
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -247,10 +253,7 @@ storage/framework下再新增：sessions，views，cache文件夹。</p>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-
-
-
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 

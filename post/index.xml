@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Sanlt,就是加了N多盐的地方</title>
@@ -6,49 +6,13 @@
     <description>Recent content in Posts on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 03 Mar 2021 16:42:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 17:46:14 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>一致性hash算法详解</title>
-      <link>https://www.sanlt.com/post/software/algorithm/consistence_hash/</link>
-      <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/algorithm/consistence_hash/</guid>
-      <description>一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和</description>
-    </item>
-    
-    <item>
-      <title>base64详细教程</title>
-      <link>https://www.sanlt.com/post/software/base64/base64_course/</link>
-      <pubDate>Thu, 25 Feb 2021 16:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/base64/base64_course/</guid>
-      <description>base64编码详解 概述 所谓Base64，就是说选出64个字符&amp;mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&amp;quot;+</description>
-    </item>
-    
-    <item>
-      <title>redis详细教程</title>
-      <link>https://www.sanlt.com/post/software/redis/redis_course/</link>
-      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/software/redis/redis_course/</guid>
-      <description>Redis教程 一、Redis是什么 Redis(Remote Dictionary Server) 是一个使用 C 语言编写的，开源的（BSD许可）高性能非关系型（NoSQL）的键值对数据库。 Redis 可以存储键</description>
-    </item>
-    
-    <item>
-      <title>ImportError No module named问题解决</title>
-      <link>https://www.sanlt.com/post/program/python/no_module_named_solve/</link>
-      <pubDate>Fri, 08 May 2020 17:46:14 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/program/python/no_module_named_solve/</guid>
-      <description>问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方</description>
-    </item>
-    
-    <item>
-      <title>go语言学习笔记之一</title>
+      <title>go语言学习笔记之1</title>
       <link>https://www.sanlt.com/post/program/go/go_study_1/</link>
       <pubDate>Sun, 03 May 2020 17:46:14 +0800</pubDate>
       
@@ -130,11 +94,20 @@
     
     <item>
       <title>Laravel中使用breadcrumbs功能指南</title>
-      <link>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</link>
+      <link>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</link>
       <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</guid>
+      <guid>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</guid>
       <description>开始之前 声明版本：laravel版本为5.8 需要安装的面包屑laravel扩展版本为：5.2.1 需要安装的扩展为davejamesmille</description>
+    </item>
+    
+    <item>
+      <title>PHPStorm配置创建文件时自动添加文件头注释方法</title>
+      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
+      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
+      <description>配置入口 MAC版 PhpStorm -&amp;gt; Preferences&amp;hellip; -&amp;gt; Editor -&amp;gt; File and Code Templates -&amp;gt; includes -&amp;gt; PHP File Header 打开PhpStorm-&amp;gt;首选项-&amp;gt;编辑器-&amp;gt;文件和代码模板-&amp;gt;包括-</description>
     </item>
     
     <item>
@@ -143,15 +116,6 @@
       <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
       
       <guid>https://www.sanlt.com/post/program/php/php_cs_fixer_guide/</guid>
-      <description>简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别</description>
-    </item>
-    
-    <item>
-      <title>代码格式化工具php-cs-fixer安装教程</title>
-      <link>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</link>
-      <pubDate>Fri, 02 Aug 2019 23:10:22 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/post/program/php/phpstorm_docs_guide/</guid>
       <description>简述 php-cs-fixer是比较专业的PHP代码格式化工具，比phpstorm自带的格式化功能更多，可以自定义很多参数，这样能满足我们特别</description>
     </item>
     

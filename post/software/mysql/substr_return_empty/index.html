@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/mysql/substr_return_empty/" />
@@ -34,8 +34,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -47,13 +46,16 @@
 <meta property="article:modified_time" content="2018-10-12T12:03:44+08:00" />
 <meta itemprop="name" content="MySQL Substring return empty value问题研究">
 <meta itemprop="description" content="问题描述 今天发现一个substring函数的问题，当使用下面的SQL： 1 SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，">
+
+
 <meta itemprop="datePublished" content="2018-10-12T12:03:44&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-12T12:03:44&#43;08:00" />
 <meta itemprop="wordCount" content="266">
 
 
 
-<meta itemprop="keywords" content="mysql,substr," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="mysql,substr," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL Substring return empty value问题研究"/>
 <meta name="twitter:description" content="问题描述 今天发现一个substring函数的问题，当使用下面的SQL： 1 SELECT SUBSTRING(FieldName,0,20) FROM Table 执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，"/>
 
@@ -140,51 +142,64 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">问题扩展</a></li>
-    <li><a href="#heading-3">参考文献</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#问题描述">问题描述</a></li>
+<li><a href="#问题解决">问题解决</a></li>
+<li><a href="#问题扩展">问题扩展</a></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      
+
+<h2 id="问题描述">问题描述</h2>
+
 <p>今天发现一个substring函数的问题，当使用下面的SQL：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">FieldName</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">FROM</span> <span class="k">Table</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">FieldName</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">FROM</span> <span class="k">Table</span></code></pre></td></tr></table>
 </div>
-</div><p>执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结果将SQL改为：</p>
+</div>
+<p>执行查询时，怎么都不出数据来，刚开始以为是中文的问题导致的，结果将SQL改为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;</span><span class="s1">thisistesthellowworld</span><span class="s1">&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;thisistesthellowworld&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div><p>还是没有数据输出。</p>
-<h2 id="heading-1">问题解决</h2>
+</div>
+<p>还是没有数据输出。</p>
+
+<h2 id="问题解决">问题解决</h2>
+
 <p>网上查得资料显示，其实这个函数-准确说是mysql整个体系中字符串都是从1开始算起的，如果给0就返回空字符串。就是这个原因导致数据不显示的。 于是，我们将SQL改为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">FieldName</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">FROM</span> <span class="k">Table</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">SUBSTRING</span><span class="p">(</span><span class="n">FieldName</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">FROM</span> <span class="k">Table</span></code></pre></td></tr></table>
 </div>
-</div><p>问题就解决了。</p>
-<h2 id="heading-2">问题扩展</h2>
+</div>
+<p>问题就解决了。</p>
+
+<h2 id="问题扩展">问题扩展</h2>
+
 <p>在MySQL中，substring其实跟substr是同义的，意思就是两个函数是等价的，可互换使用。</p>
-<h2 id="heading-3">参考文献</h2>
+
+<h2 id="参考文献">参考文献</h2>
+
 <p><a href="https://stackoverflow.com/questions/8386630/mysql-substring-return-empty-value">MySQL Substring return empty value</a></p>
+
 <p><a href="https://www.yiibai.com/mysql/substring.html">MySQL substring()函数</a></p>
 
     </div>
@@ -217,11 +232,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth;
+      var width = window.innerWidth || document.documentElement.clientWidth; 
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-
+  
   
 
   
@@ -236,12 +251,7 @@
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+      备案号（粤ICP备17140117号-1）
   </span>
 
   <div class="busuanzi-footer">
@@ -253,7 +263,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -270,10 +280,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-
-
-
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 
