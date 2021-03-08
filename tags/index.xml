@@ -66,6 +66,42 @@
     </item>
     
     <item>
+      <title>缓存击穿</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF/</link>
+      <pubDate>Fri, 05 Mar 2021 18:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存降级</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7/</link>
+      <pubDate>Fri, 05 Mar 2021 18:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存雪崩</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/</link>
+      <pubDate>Fri, 05 Mar 2021 18:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存预热</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD/</link>
+      <pubDate>Fri, 05 Mar 2021 18:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%A2%84%E7%83%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>一致性hash</title>
       <link>https://www.sanlt.com/tags/%E4%B8%80%E8%87%B4%E6%80%A7hash/</link>
       <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>

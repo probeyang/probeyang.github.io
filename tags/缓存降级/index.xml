@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>缓存降级 on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7/</link>
+    <description>Recent content in 缓存降级 on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 05 Mar 2021 18:42:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E9%99%8D%E7%BA%A7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis的缓存穿透、缓存击穿、缓存雪崩、缓存预热、缓存降级详解</title>
+      <link>https://www.sanlt.com/post/software/redis/chuantou_jichuan_crash/</link>
+      <pubDate>Fri, 05 Mar 2021 18:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/redis/chuantou_jichuan_crash/</guid>
+      <description>前言 经常我们在面试等场景下会听到缓存穿透、缓存击穿、缓存雪崩、缓存预热、缓存降级等概念，很容易混淆和记不住，下面我们就依次详细讲解三个概念。</description>
+    </item>
+    
+  </channel>
+</rss>
