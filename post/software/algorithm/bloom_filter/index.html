@@ -178,8 +178,8 @@
 它的优点是<strong>空间效率和查询时间</strong>都远远超过一般的算法，缺点是有一定的误识别率和删除困难。具体原因后面详细解释。
 Redis的bitmap只支持2^32大小，对应到内存也就是512MB，误判率万分之一，可以放下2亿左右的数据，性能高，空间占用率及小，省去了大量无效的数据库连接。因此我们可以通过布隆过滤器，将Redis缓存穿透控制在一个可容范围内。
 如下图所示，我们把布隆过滤器看成一个容器，当向布隆过滤器添加元素a时，通过多个hash函数h1、h2、h3算出一个值，然后将这个值在布隆过滤器集合中的位置置为1。下图中h1（a）=2，则将第三个格子置为1，h2（a）=8，则第九个格子置为1，以此类推。
-当判断元素是否存在的时候，将这个新元素通过上面的h1、h2、h3三个hash函数分别算出3个值，然后找三个值在布隆过滤器集合中三个位置是否都为1，如果都为1，则大概率存在，如果有至少一个为0，则肯定不存在。
-<img src="/img/software/algorithm/bloom_filter/image.png" alt="图例" title="图例"></p>
+当判断元素是否存在的时候，将这个新元素通过上面的h1、h2、h3三个hash函数分别算出3个值，然后找三个值在布隆过滤器集合中三个位置是否都为1，如果都为1，则大概率存在，如果有至少一个为0，则肯定不存在。</p>
+<p><img src="/img/software/algorithm/bloom_filter/image.png" alt="图例" title="图例"></p>
 <h3 id="heading-3">实现步骤</h3>
 <p>具体步骤是：当一个元素加入集合的时候，通过K个hash函数将此元素映射成一个bit集合中的K个点，把他们置为1。这样，查询的时候，只需要查询这些点是不是都为1就知道此元素是否在集合中了（有误判率）。
 简单判别是：如果这K个点都为1，则元素很可能在集合中；如果K个点中至少有一个为0，则此元素肯定不在集合中。
@@ -201,20 +201,20 @@ Redis的bitmap只支持2^32大小，对应到内存也就是512MB，误判率万
 <p>redis常用的有两种实现布隆过滤器的方法，一种是bitmaps，一种是Redisson。</p>
 <h3 id="bitmaps">bitmaps方式</h3>
 <p>计算机是以二进制位作为底层存储的基础单位，一个字节等于8位。
-比如“big”字符串是由三个字符组成的，这三个字符对应的ASCII码分为是98、105、103，对应的二进制存储如下：
-<img src="/img/software/algorithm/bloom_filter/2.png" alt="图例" title="图例">
-在Redis中，Bitmaps 提供了一套命令用来操作类似上面字符串中的每一个位。</p>
+比如“big”字符串是由三个字符组成的，这三个字符对应的ASCII码分为是98、105、103，对应的二进制存储如下：</p>
+<p><img src="/img/software/algorithm/bloom_filter/2.png" alt="图例" title="图例"></p>
+<p>在Redis中，Bitmaps 提供了一套命令用来操作类似上面字符串中的每一个位。</p>
 <h4 id="heading-4">一、设置值</h4>
-<p>setbit key offset value
-<img src="/img/software/algorithm/bloom_filter/3.png" alt="图例" title="图例">
-我们知道&quot;b&quot;的二进制表示为0110 0010，我们将第7位（从0开始）设置为1，那0110 0011 表示的就是字符“c”，所以最后的字符 “big”变成了“cig”。</p>
+<p>setbit key offset value</p>
+<p><img src="/img/software/algorithm/bloom_filter/3.png" alt="图例" title="图例"></p>
+<p>我们知道&quot;b&quot;的二进制表示为0110 0010，我们将第7位（从0开始）设置为1，那0110 0011 表示的就是字符“c”，所以最后的字符 “big”变成了“cig”。</p>
 <h4 id="heading-5">二、获取值</h4>
-<p>getbit key offset
-<img src="/img/software/algorithm/bloom_filter/4.png" alt="图例" title="图例"></p>
+<p>getbit key offset</p>
+<p><img src="/img/software/algorithm/bloom_filter/4.png" alt="图例" title="图例"></p>
 <h4 id="1">三、获取位图指定范围值为1的个数</h4>
 <p>bitcount key [start end]
-如果不指定，那就是获取全部值为1的个数。
-<img src="/img/software/algorithm/bloom_filter/5.png" alt="图例" title="图例"></p>
+如果不指定，那就是获取全部值为1的个数。</p>
+<p><img src="/img/software/algorithm/bloom_filter/5.png" alt="图例" title="图例"></p>
 <blockquote>
 <p>注意：start和end指定的是字节的个数，而不是位数组下标。</p>
 </blockquote>
