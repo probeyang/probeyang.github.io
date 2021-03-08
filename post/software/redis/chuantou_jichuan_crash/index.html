@@ -49,7 +49,7 @@
 <meta itemprop="description" content="前言 经常我们在面试等场景下会听到缓存穿透、缓存击穿、缓存雪崩、缓存预热、缓存降级等概念，很容易混淆和记不住，下面我们就依次详细讲解三个概念。">
 <meta itemprop="datePublished" content="2021-03-05T18:42:10&#43;08:00" />
 <meta itemprop="dateModified" content="2021-03-05T18:42:10&#43;08:00" />
-<meta itemprop="wordCount" content="2967">
+<meta itemprop="wordCount" content="2966">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"> 软件工程 </a>
             </div>
-          <span class="more-meta"> 约 2967 字 </span>
+          <span class="more-meta"> 约 2966 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -210,23 +210,16 @@
 <tbody>
 <tr>
 <td>缓存空对象</td>
-<td></td>
-<td></td>
+<td>数据命中率不高;数据频繁变化，实时性高</td>
+<td>代码维护成本低;需要大量的缓存空间;数据一致性需自行实现</td>
+</tr>
+<tr>
+<td>布隆过滤器</td>
+<td>数据命中率不高;数据变化不大，实时性低</td>
+<td>代码维护复杂;缓存空间占用少</td>
 </tr>
 </tbody>
 </table>
-<ol>
-<li>数据命中率不高</li>
-<li>数据频繁变化，实时性高
-| 代码维护成本低
-需要大量的缓存空间
-数据一致性需自行实现 |
-| 布隆过滤器 |</li>
-<li>数据命中率不高</li>
-<li>数据变化不大，实时性低
-| 代码维护复杂
-缓存空间占用少 |</li>
-</ol>
 <p>布隆过滤器这里不做详细讲解，会单独写文档讲解。</p>
 <h4 id="heading-5">方案选择</h4>
 <p>针对一些恶意攻击，攻击带过来的大量key是随机，那么我们采用第一种方案就会缓存大量不存在key的数据。那么这种方案就不合适了，我们可以先对使用布隆过滤器方案进行过滤掉这些key。所以，针对这种key异常多、请求重复率比较低的数据，优先使用第二种方案直接过滤掉。而对于空数据的key有限的，重复率比较高的，则可优先采用第一种方式进行缓存。</p>
