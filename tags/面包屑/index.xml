@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>面包屑 on Sanlt,就是加了N多盐的地方</title>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Laravel中使用breadcrumbs功能指南</title>
-      <link>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</link>
+      <link>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</link>
       <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
       
-      <guid>https://www.sanlt.com/post/program/php/laravel-breadcrumbs-guide/</guid>
+      <guid>https://www.sanlt.com/post/program/php/laravel_breadcrumbs_guide/</guid>
       <description>开始之前 声明版本：laravel版本为5.8 需要安装的面包屑laravel扩展版本为：5.2.1 需要安装的扩展为davejamesmille</description>
     </item>
     

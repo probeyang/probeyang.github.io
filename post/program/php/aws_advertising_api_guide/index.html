@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/php/aws_advertising_api_guide/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-08-24T01:09:52+08:00" />
 <meta itemprop="name" content="使用亚马逊广告API登录LoginWithAmazon指南">
 <meta itemprop="description" content="环境 PHP 7.2&#43; laravel 5.8&#43; 概述 亚马逊广告api（Amazon Advertising API），可让您以编程方式管理广告运营。在使用前，需要在第三方网站进行授权。这里需要用到Lo">
-
-
 <meta itemprop="datePublished" content="2019-08-24T01:09:52&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-24T01:09:52&#43;08:00" />
-<meta itemprop="wordCount" content="4613">
+<meta itemprop="wordCount" content="4606">
 
 
 
-<meta itemprop="keywords" content="php,laravel,amazon,amazon_adverstsing_api," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="php,laravel,amazon,amazon_adverstsing_api," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用亚马逊广告API登录LoginWithAmazon指南"/>
 <meta name="twitter:description" content="环境 PHP 7.2&#43; laravel 5.8&#43; 概述 亚马逊广告api（Amazon Advertising API），可让您以编程方式管理广告运营。在使用前，需要在第三方网站进行授权。这里需要用到Lo"/>
 
@@ -131,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 4613 字 </span>
+          <span class="more-meta"> 约 4606 字 </span>
           <span class="more-meta"> 预计阅读 10 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,139 +139,101 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#环境">环境</a></li>
-<li><a href="#概述">概述</a></li>
-<li><a href="#使用">使用</a>
-<ul>
-<li><a href="#账户设置">账户设置</a></li>
-<li><a href="#授权">授权</a>
-<ul>
-<li><a href="#第一步-获取授权令牌">第一步，获取授权令牌</a></li>
-<li><a href="#第二步-获取授权码">第二步，获取授权码</a></li>
-<li><a href="#第三步-刷新access-token">第三步，刷新access_token</a></li>
-</ul></li>
-<li><a href="#代码实现">代码实现</a>
-<ul>
-<li><a href="#第一步-制作跳转页面">第一步，制作跳转页面</a></li>
-<li><a href="#第二步编写redirect-uri的内容">第二步编写redirect_uri的内容</a></li>
-<li><a href="#第三步-调用刷新access-token接口">第三步，调用刷新access_token接口</a></li>
-</ul></li>
-<li><a href="#授权后使用">授权后使用</a>
-<ul>
-<li><a href="#获取配置文件接口">获取配置文件接口</a>
-<ul>
-<li><a href="#使用沙箱的代码">使用沙箱的代码：</a></li>
-<li><a href="#正式环境的代码">正式环境的代码</a></li>
-</ul></li>
-<li><a href="#根据配置文件返回数据获取数据">根据配置文件返回数据获取数据</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-<li><a href="#常见问题">常见问题</a>
-<ul>
-<li><a href="#问题1-auth-o2-token-authorization-code-unsupported-grant-type">问题1 auth/o2/token authorization_code unsupported_grant_type</a></li>
-<li><a href="#问题2-请求接口报invalid-request">问题2 请求接口报invalid_request</a></li>
-</ul></li>
-<li><a href="#参考文献">参考文献</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">环境</a></li>
+    <li><a href="#heading-1">概述</a></li>
+    <li><a href="#heading-2">使用</a>
+      <ul>
+        <li><a href="#heading-3">账户设置</a></li>
+        <li><a href="#heading-4">授权</a></li>
+        <li><a href="#heading-7">代码实现</a></li>
+        <li><a href="#heading-9">授权后使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14">总结</a></li>
+    <li><a href="#heading-15">常见问题</a>
+      <ul>
+        <li><a href="#1-autho2token-authorization-code-unsupported-grant-type">问题1 auth/o2/token authorization_code unsupported_grant_type</a></li>
+        <li><a href="#2-invalid-request">问题2 请求接口报invalid_request</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-16">参考文献</a></li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      
-
-<h2 id="环境">环境</h2>
-
+      <h2 id="heading">环境</h2>
 <p>PHP 7.2+
 laravel 5.8+</p>
-
-<h2 id="概述">概述</h2>
-
+<h2 id="heading-1">概述</h2>
 <p>亚马逊广告api（Amazon Advertising API），可让您以编程方式管理广告运营。在使用前，需要在第三方网站进行授权。这里需要用到Login with Amazon这个服务，这个服务是通过Oauth2.0进行授权的，所以按照OAuth2.0的规范进行授权操作即可。</p>
-
-<h2 id="使用">使用</h2>
-
-<h3 id="账户设置">账户设置</h3>
-
-<p>这里不过多讲述，直接参考文档<a href="https://advertising.amazon.com/API/docs/v2/guides/account_setup一步一步进行即可。">https://advertising.amazon.com/API/docs/v2/guides/account_setup一步一步进行即可。</a>
-&gt; 这里只注意一点：</p>
-
-<p><img src="/img/program/php/clipboard30.png" alt="图例" title="图例" /></p>
-
-<p>第一个是JavaScript的地址，第二个是后端PHP的回调地址，两个可选其一进行配置。但都必须是https的域名。如果选择第一个配置，直接填写域名即可，它是一只弹窗式的登录授权。例如：<a href="https://www.baidu.com。如果是选择第二个配置，则填写回调地址，它是一只跳转式的登录授权。例如：https://www.baidu.com/login。">https://www.baidu.com。如果是选择第二个配置，则填写回调地址，它是一只跳转式的登录授权。例如：https://www.baidu.com/login。</a></p>
-
+<h2 id="heading-2">使用</h2>
+<h3 id="heading-3">账户设置</h3>
+<p>这里不过多讲述，直接参考文档https://advertising.amazon.com/API/docs/v2/guides/account_setup一步一步进行即可。</p>
+<blockquote>
+<p>这里只注意一点：</p>
+</blockquote>
+<p><img src="/img/program/php/clipboard30.png" alt="图例" title="图例"></p>
+<p>第一个是JavaScript的地址，第二个是后端PHP的回调地址，两个可选其一进行配置。但都必须是https的域名。如果选择第一个配置，直接填写域名即可，它是一只弹窗式的登录授权。例如：https://www.baidu.com。如果是选择第二个配置，则填写回调地址，它是一只跳转式的登录授权。例如：https://www.baidu.com/login。</p>
 <p><em>这里有必要讲一下：这里的业务是第三方系统登录亚马逊里面的某个服务（广告服务），第三方系统想获取到授权，然后对亚马逊中的服务（广告服务）进行操作。亚马逊对这种业务使用的是Oauth2.0进行的授权。</em></p>
-
-<h3 id="授权">授权</h3>
-
-<p>官方文档地址：<a href="https://advertising.amazon.com/API/docs/v2/guides/authorization">https://advertising.amazon.com/API/docs/v2/guides/authorization</a>
+<h3 id="heading-4">授权</h3>
+<p>官方文档地址：https://advertising.amazon.com/API/docs/v2/guides/authorization
 这里官方文档给的很不友好，而且给的示例也没有进行详细的讲解，导致写代码的时候会出问题。下面我们就详细讲解其中的问题点，一步步完成授权。
-这里我们再次梳理一下当前业务逻辑：
-1. 用户在第三方系统（当前系统）中点击授权按钮，跳转到亚马逊网站
-2. 用户在亚马逊网站登录并点击允许授权，然后亚马逊根据提供的redirect_url跳转到此URL中并带上一些参数，最重要的参数为code。
-3. 根据这个code，再次发请求给亚马逊获取真正授权的access_token和refresh_token，以后就可以通过access_token对亚马逊中的服务进行操作请求。
-4. 因为access_token会60分钟后过期，所以需要定时刷新一下access_token，刷新access_token通过第三步中的refresh_token来获取新生成的access_token。
+这里我们再次梳理一下当前业务逻辑：</p>
+<ol>
+<li>用户在第三方系统（当前系统）中点击授权按钮，跳转到亚马逊网站</li>
+<li>用户在亚马逊网站登录并点击允许授权，然后亚马逊根据提供的redirect_url跳转到此URL中并带上一些参数，最重要的参数为code。</li>
+<li>根据这个code，再次发请求给亚马逊获取真正授权的access_token和refresh_token，以后就可以通过access_token对亚马逊中的服务进行操作请求。</li>
+<li>因为access_token会60分钟后过期，所以需要定时刷新一下access_token，刷新access_token通过第三步中的refresh_token来获取新生成的access_token。
 所以，注意，<em>这里面是第三方系统操作亚马逊中的用户的店铺或者账号中的某些服务（当前是广告服务），所以需要用户从亚马逊提供授权给第三方系统（当前系统）后当前第三方系统才能对亚马逊中用户的特定服务进行操作。</em>
-上面是我们根据官方文档进行在梳理后的操作步骤，下面我们按照亚马逊官方文档进行讲解。</p>
-
-<h4 id="第一步-获取授权令牌">第一步，获取授权令牌</h4>
-
+上面是我们根据官方文档进行在梳理后的操作步骤，下面我们按照亚马逊官方文档进行讲解。</li>
+</ol>
+<h4 id="heading-5">第一步，获取授权令牌</h4>
 <p>首先从Login with Amazon获取授权令牌。
 注意：请确保您在使用Amazon应用程序登录时添加了允许的返回URL：redirect_uri。
 在页面做一个a标签或者其他的能点击跳转的标签，href值为：
 <a href="https://www.amazon.com/ap/oa?client_id=YOUR_LWA_CLIENT_ID">https://www.amazon.com/ap/oa?client_id=YOUR_LWA_CLIENT_ID</a>
-    &amp;scope=cpc_advertising:campaign_management&amp;response_type=code
-    &amp;redirect_uri=YOUR_RETURN_URL
+&amp;scope=cpc_advertising:campaign_management&amp;response_type=code
+&amp;redirect_uri=YOUR_RETURN_URL
 其中， scope如果是广告模块，则就是cpc_advertising:campaign_management，不用改，client_id为你自己的client_id， redirect_uri为后台填入的redirect_uri。
-跳转到亚马逊后，用户登录，并点击允许授权，这时亚马逊会跳转回redirect_uri中，然后带上一些参数，有三个参数：s， code，redirect_uri。其中我们只关心code。其他不用管。*注意，这里的code只有5分钟有效期*。</p>
-
-<h4 id="第二步-获取授权码">第二步，获取授权码</h4>
-
+跳转到亚马逊后，用户登录，并点击允许授权，这时亚马逊会跳转回redirect_uri中，然后带上一些参数，有三个参数：s， code，redirect_uri。其中我们只关心code。其他不用管。<em>注意，这里的code只有5分钟有效期</em>。</p>
+<h4 id="heading-6">第二步，获取授权码</h4>
 <p>通过第一步获取到的code，进行下面的curl的post请求：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">curl  -X POST -H <span class="s2">&#34;Content-Type:application/x-www-form-urlencoded;charset=UTF-8&#34;</span>  --data <span class="s2">&#34;grant_type=authorization_code&amp;code=AUTH_CODE&amp;redirect_uri=YOUR_RETURN_URL&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_SECRET_KEY&#34;</span> https://api.amazon.com/auth/o2/token  </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl  -X POST -H <span class="s2">&#34;Content-Type:application/x-www-form-urlencoded;charset=UTF-8&#34;</span>  --data <span class="s2">&#34;grant_type=authorization_code&amp;code=AUTH_CODE&amp;redirect_uri=YOUR_RETURN_URL&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_SECRET_KEY&#34;</span> https://api.amazon.com/auth/o2/token  
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>使用curl的方式执行命令，修改其中的参数即可请求成功。注意，上面的请求请在命令行中执行。
+</div><p>使用curl的方式执行命令，修改其中的参数即可请求成功。注意，上面的请求请在命令行中执行。
 请求会往redirect_uri中返回授权数据其中包含access_token，refresh_token，expires_in，token_type。我们这里只关注access_token。获取到access_token则说明授权真正成功。之后的业务即可使用此参数调用接口。
 这里第一步第二步都使用了redirect_uri，所以redirect_uri的方法需要做一下特殊处理，我是判断是否回传参数中包含有code进行业务区分。好像有资料说第二步这里回调地址可以是其他地址，没试过，不敢下定论。</p>
-
-<h4 id="第三步-刷新access-token">第三步，刷新access_token</h4>
-
+<h4 id="access-token">第三步，刷新access_token</h4>
 <p>如果需要长时间操作，则需要定期刷新access_token，因为access_token在60分钟后过期。
 官方说明：
 注意：刷新令牌永不过期。访问令牌仅在60分钟内有效，需要使用刷新令牌定期刷新，并使用以下命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">curl -X POST -H <span class="s2">&#34;Content-Type:application/x-www-form-urlencoded;charset=UTF-8&#34;</span> --data <span class="s2">&#34;grant_type=refresh_token&amp;client_id=YOUR_CLIENT_ID&amp;refresh_token=YOUR_REFRESH_TOKEN&amp;client_secret=YOUR_CLIENT_SECRET&#34;</span> https://api.amazon.com/auth/o2/token</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl -X POST -H <span class="s2">&#34;Content-Type:application/x-www-form-urlencoded;charset=UTF-8&#34;</span> --data <span class="s2">&#34;grant_type=refresh_token&amp;client_id=YOUR_CLIENT_ID&amp;refresh_token=YOUR_REFRESH_TOKEN&amp;client_secret=YOUR_CLIENT_SECRET&#34;</span> https://api.amazon.com/auth/o2/token
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>这里面使用refresh_token去刷新access_token。refresh_token来自第二步中的返回数据。</p>
-
+</div><p>这里面使用refresh_token去刷新access_token。refresh_token来自第二步中的返回数据。</p>
 <p>注意到没有，我们整个过程都没有写代码，为什么？因为官方文档这个不能直接转换为代码，这就是官方文档最大的坑。我们需要稍微调整一下。</p>
-
-<h3 id="代码实现">代码实现</h3>
-
+<h3 id="heading-7">代码实现</h3>
 <p>我们使用PHP7.2版本，laravel5.8版本进行操作。</p>
-
-<h4 id="第一步-制作跳转页面">第一步，制作跳转页面</h4>
-
+<h4 id="heading-8">第一步，制作跳转页面</h4>
 <ol>
-<li><p>php中controller代码app/Http/Controllers/Api/OauthController.php：</p>
+<li>php中controller代码app/Http/Controllers/Api/OauthController.php：</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -301,27 +261,28 @@ use Illuminate\Http\Request;
 
 class OauthController extends Controller
 {
-public function landing()
-{
-    $url = &#39;https://www.amazon.com/ap/oa?&#39;;
-    $args = [
-        &#39;client_id=amzn1.application-oa2-client.73f214ad337a443ba7352d20bca89100&#39;,
-        &#39;scope=cpc_advertising:campaign_management&#39;,
-        &#39;response_type=code&#39;,
-        &#39;redirect_uri=https://www.test.com/api/aws/signin&#39;,
-    ];
-    $awsUrl = $url . implode(&#39;<span class="err">&amp;</span>&#39;, $args);
+    public function landing()
+    {
+        $url = &#39;https://www.amazon.com/ap/oa?&#39;;
+        $args = [
+            &#39;client_id=amzn1.application-oa2-client.73f214ad337a443ba7352d20bca89100&#39;,
+            &#39;scope=cpc_advertising:campaign_management&#39;,
+            &#39;response_type=code&#39;,
+            &#39;redirect_uri=https://www.test.com/api/aws/signin&#39;,
+        ];
+        $awsUrl = $url . implode(&#39;<span class="err">&amp;</span>&#39;, $args);
 //        dd($awsUrl);
-    return view(&#39;oauth/landing&#39;, [&#39;url&#39; =&gt; $awsUrl]);
+        return view(&#39;oauth/landing&#39;, [&#39;url&#39; =&gt; $awsUrl]);
+    }
 }
-}</code></pre></td></tr></table>
+</code></pre></td></tr></table>
 </div>
-</div></li>
-
-<li><p>views中的blade代码resources/views/oauth/landing.blade.php：</p>
+</div><ol start="2">
+<li>views中的blade代码resources/views/oauth/landing.blade.php：</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,35 +296,29 @@ public function landing()
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
 
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ $url }}&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;LoginWithAmazon&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">border</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Login with Amazon&#34;</span>
-         <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png&#34;</span>
-         <span class="na">width</span><span class="o">=</span><span class="s">&#34;156&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;32&#34;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ $url }}&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;LoginWithAmazon&#34;</span><span class="p"></span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">border</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Login with Amazon&#34;</span>
+             <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png&#34;</span>
+             <span class="na">width</span><span class="o">=</span><span class="s">&#34;156&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;32&#34;</span> <span class="p">/</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div></li>
-</ol>
-
-<p>这里使用了亚马逊的图标，你甚至可以直接就是一个a标签加个文字就可以。
+</div><p>这里使用了亚马逊的图标，你甚至可以直接就是一个a标签加个文字就可以。
 浏览器访问此页面是下面这样：</p>
-
-<p><img src="/img/program/php/clipboard31.png" alt="图例" title="图例" /></p>
-
+<p><img src="/img/program/php/clipboard31.png" alt="图例" title="图例"></p>
 <p>用户点击此按钮，跳转到亚马逊去登录并点击允许授权，亚马逊会跳回到redirect_uri中。</p>
-
-<h4 id="第二步编写redirect-uri的内容">第二步编写redirect_uri的内容</h4>
-
+<h4 id="redirect-uri">第二步编写redirect_uri的内容</h4>
 <p>redirect_uri填写的是：www.test.com/api/aws/signin。所以，我们到signin中编写代码OauthController.php：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -517,28 +472,24 @@ public function landing()
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
-<p><img src="/img/program/php/clipboard32.png" alt="图例" title="图例" /></p>
-
+</div><p><img src="/img/program/php/clipboard32.png" alt="图例" title="图例"></p>
 <p>当亚马逊回调地址返回参数后，我们直接打印参数，可以看到它返回的内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">{&#34;access_token&#34;:&#34;sdfsdfsdfsdfaHJm1FZnTsPs5tNlrLfxDpbrQLmX0U_HOxd0ZVxgFAoHaRoFmVtiG4pfW5o9Jb41TtB6ouGvfIiQg_Znpf8M9n9kUp3Q0NpBLfg5g7qSI7fWzRWwPT5DYze1GT_5hHOB0OVg6aEni-2FQdsqVLIun23OSRzHTgI3zaXVuRqP48o8W8UhlwEpeg8kQSxkQBa6jVKfGDApYUcTtYf8FRYfSJxKlL_u2n5bqZe8rNTDLIG5yZDqQqvJu-HmUzbKleLpLeFEUqw9ohy0kf70zvU6VvneC7kPrhzhMDX8PZHaKvt3OrzW6nLVXjZ7iceGuvZm0Ja2rEhIFLP&#34;,&#34;refresh_token&#34;:&#34;AtyrtytyutyutyuGRWueh9fMdPX2KRqAmk6_7VqNqCcQppXYoUiw5Z1QyqIK4Zzj7-sdfsdf13jouxlEftYsCIn2lMXaiuLWk2pPyAnsmhnPc7ElyXHfJ1rWksbX_B3FwNPPba30TpCRRYmGl5JDTgIujhMQRbkd7p_PQwPlLynBKqesN5PmGC3p6i10n8xoqahQa90fxw6ErDWLI5--OBCBqcZW1m1QnMaSxG7g47U5fOKopbj8Xy0eNdSM5_wBUzr1XX7Mufhmdpryrr90OkN9bdtWFa8Mmd5Qdruw7HNlPxA8vOfNTFjYFlC1XRwCElSaFaRYyJTAkzZT_pt9ALr7ruW6Iy7w2el0i7c-UXLa0Y5PeoeSWWdQltQoqe_GRn2Nr0RqlBSeESiLqOQ7uV4uUE95ks-Md41fKF9bsXxfP5F_-nehIW44nSg&#34;,&#34;token_type&#34;:&#34;bearer&#34;,&#34;expires_in&#34;:3600}</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{&#34;access_token&#34;:&#34;sdfsdfsdfsdfaHJm1FZnTsPs5tNlrLfxDpbrQLmX0U_HOxd0ZVxgFAoHaRoFmVtiG4pfW5o9Jb41TtB6ouGvfIiQg_Znpf8M9n9kUp3Q0NpBLfg5g7qSI7fWzRWwPT5DYze1GT_5hHOB0OVg6aEni-2FQdsqVLIun23OSRzHTgI3zaXVuRqP48o8W8UhlwEpeg8kQSxkQBa6jVKfGDApYUcTtYf8FRYfSJxKlL_u2n5bqZe8rNTDLIG5yZDqQqvJu-HmUzbKleLpLeFEUqw9ohy0kf70zvU6VvneC7kPrhzhMDX8PZHaKvt3OrzW6nLVXjZ7iceGuvZm0Ja2rEhIFLP&#34;,&#34;refresh_token&#34;:&#34;AtyrtytyutyutyuGRWueh9fMdPX2KRqAmk6_7VqNqCcQppXYoUiw5Z1QyqIK4Zzj7-sdfsdf13jouxlEftYsCIn2lMXaiuLWk2pPyAnsmhnPc7ElyXHfJ1rWksbX_B3FwNPPba30TpCRRYmGl5JDTgIujhMQRbkd7p_PQwPlLynBKqesN5PmGC3p6i10n8xoqahQa90fxw6ErDWLI5--OBCBqcZW1m1QnMaSxG7g47U5fOKopbj8Xy0eNdSM5_wBUzr1XX7Mufhmdpryrr90OkN9bdtWFa8Mmd5Qdruw7HNlPxA8vOfNTFjYFlC1XRwCElSaFaRYyJTAkzZT_pt9ALr7ruW6Iy7w2el0i7c-UXLa0Y5PeoeSWWdQltQoqe_GRn2Nr0RqlBSeESiLqOQ7uV4uUE95ks-Md41fKF9bsXxfP5F_-nehIW44nSg&#34;,&#34;token_type&#34;:&#34;bearer&#34;,&#34;expires_in&#34;:3600}
+</code></pre></td></tr></table>
 </div>
-</div>
-<blockquote>
+</div><blockquote>
 <p>注意到没有：代码里面使用的header是Content-Type: application/json而不是官网中的application/x-www-form-urlencoded。这就是官网文档最大的问题，使用它的文档，用命令行可以，用代码不行，可能懂curl的人会知道调整，但是更多的我相信是不太知道需要修改此处的人。至少它应该有责任明确表示代码需要修改这个参数。</p>
 </blockquote>
-
-<h4 id="第三步-调用刷新access-token接口">第三步，调用刷新access_token接口</h4>
-
+<h4 id="access-token-1">第三步，调用刷新access_token接口</h4>
 <p>代码调整：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -575,9 +526,9 @@ public function landing()
 </span><span class="lnt">35
 </span><span class="lnt">36
 </span><span class="lnt">37
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">public function refresh(){
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public function refresh(){
         //北美数据账号
         $refreshToken = &#34;dfgdfdfdfgdfghjltCoiuECBZ4IQ-c8gfP1hP7LjIiUb6nJ4qSghjWkLqUO-3i8WjpeDhgjghj2rUvF4ILMg1nPAIx57D7tnJ91WoY1B56ejEfc9eSaTaUA8PUDLOacyK3_WUBfghfghwyoomvE1_7qfWHMlO7pSrYK6n6uvrWJev6cdgBghjhgjn57na &#34;;
         $curl = curl_init();
@@ -613,32 +564,29 @@ public function landing()
         } else {
             dd(&#34;返回结果：&#34;, json_decode($response));
         }
-    }</pre></td></tr></table>
+    }
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>返回类似：</p>
+</div><p>返回类似：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">{&#34;access_token&#34;:&#34;sdfasd6asdfasdfghghDyRX5L9oYFCxdC66V-S2-6iEY2KuZCqHHSk22kIXzOFYqlrsQ4diaHhOFAzt6PrTmw0P8M_8eFCcBB9si0RhHEGc_AxF8p9GaVvFm2ZqaIvrUhhHP6r3x3ibDSGZVNEn-hcM8zTXJBjhLGHVKEJPSFE-VGci31tPn1s9pFNIOXv-W-kNAHxYwy2_qPKXJTXqu77yLhYFqZnNTxeg8E7sCKakPzRAEmhetoGdpKU-XOyM1F_errtyrtytyutyuOkastPgsdfgfgh&#34;,
-&#34;expires_in&#34;:3600,&#34;refresh_token&#34;:&#34;errtrtrtHQdfgdfgiCOoYDSyrw_SVVltCoiuECBZ4IQ-c8gfP1hP7LjIiUb6nJ4qSibvO5ndwOchnBS4IftLYEWkLqUO-3i8WjpeD8swougdfgdgsdfg6cJrwfIYK-SIIF4UN7SfKa6wHNKmgyrOKqWFbWKcchG6s97_uH6P0fNGJZoaNC_EWoU3fLqrVqppg--yJPbghjghjghj7na&#34;,&#34;token_type&#34;: &#34;bearer&#34;}</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{&#34;access_token&#34;:&#34;sdfasd6asdfasdfghghDyRX5L9oYFCxdC66V-S2-6iEY2KuZCqHHSk22kIXzOFYqlrsQ4diaHhOFAzt6PrTmw0P8M_8eFCcBB9si0RhHEGc_AxF8p9GaVvFm2ZqaIvrUhhHP6r3x3ibDSGZVNEn-hcM8zTXJBjhLGHVKEJPSFE-VGci31tPn1s9pFNIOXv-W-kNAHxYwy2_qPKXJTXqu77yLhYFqZnNTxeg8E7sCKakPzRAEmhetoGdpKU-XOyM1F_errtyrtytyutyuOkastPgsdfgfgh&#34;,
+&#34;expires_in&#34;:3600,&#34;refresh_token&#34;:&#34;errtrtrtHQdfgdfgiCOoYDSyrw_SVVltCoiuECBZ4IQ-c8gfP1hP7LjIiUb6nJ4qSibvO5ndwOchnBS4IftLYEWkLqUO-3i8WjpeD8swougdfgdgsdfg6cJrwfIYK-SIIF4UN7SfKa6wHNKmgyrOKqWFbWKcchG6s97_uH6P0fNGJZoaNC_EWoU3fLqrVqppg--yJPbghjghjghj7na&#34;,&#34;token_type&#34;: &#34;bearer&#34;}
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="授权后使用">授权后使用</h3>
-
-<h4 id="获取配置文件接口">获取配置文件接口</h4>
-
-<p>curl <br />
-    -H &ldquo;Authorization: Bearer YOUR_ACCESS_TOKEN&rdquo; <br />
-    <a href="https://advertising-api-test.amazon.com/v2/profiles">https://advertising-api-test.amazon.com/v2/profiles</a></p>
-
-<h5 id="使用沙箱的代码">使用沙箱的代码：</h5>
+</div><h3 id="heading-9">授权后使用</h3>
+<h4 id="heading-10">获取配置文件接口</h4>
+<p>curl<br>
+-H &ldquo;Authorization: Bearer YOUR_ACCESS_TOKEN&rdquo;<br>
+<a href="https://advertising-api-test.amazon.com/v2/profiles">https://advertising-api-test.amazon.com/v2/profiles</a></p>
+<h5 id="heading-11">使用沙箱的代码：</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -655,9 +603,9 @@ public function landing()
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">$accessToken = &#34;Asdfasdfasdfdsafg&#34;;
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$accessToken = &#34;Asdfasdfasdfdsafg&#34;;
         $header = [
             &#34;Content-Type: application/json&#34;,
             &#34;Authorization: Bearer &#34; . $accessToken,
@@ -673,16 +621,15 @@ public function landing()
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $output = curl_exec($ch);
         curl_close($ch);
-        dd($output);</pre></td></tr></table>
+        dd($output);
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>返回类似：
+</div><p>返回类似：
 &ldquo;[{&ldquo;profileId&rdquo;:3446778678967856,&ldquo;countryCode&rdquo;:&ldquo;US&rdquo;,&ldquo;currencyCode&rdquo;:&ldquo;USD&rdquo;,&ldquo;dailyBudget&rdquo;:0.0,&ldquo;timezone&rdquo;:&ldquo;America/Los_Angeles&rdquo;,&ldquo;accountInfo&rdquo;:{&ldquo;marketplaceStringId&rdquo;:&ldquo;rtyrtyrtyrty&rdquo;,&ldquo;id&rdquo;:&ldquo;ertertertert&rdquo;,&ldquo;type&rdquo;:&ldquo;seller&rdquo;}}]&rdquo;</p>
-
-<h5 id="正式环境的代码">正式环境的代码</h5>
+<h5 id="heading-12">正式环境的代码</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -699,9 +646,9 @@ public function landing()
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">//欧洲有数据账号 
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">//欧洲有数据账号 
 $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
         $header = [
             &#34;Content-Type: application/json&#34;,
@@ -717,29 +664,27 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $output = curl_exec($ch);
         curl_close($ch);
-        dd($output);</pre></td></tr></table>
+        dd($output);
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>返回数据</p>
+</div><p>返回数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">&#34;[{&#34;profileId&#34;:6666666666666666,&#34;countryCode&#34;:&#34;IT&#34;,&#34;currencyCode&#34;:&#34;EUR&#34;,&#34;dailyBudget&#34;:9.99999999E8,&#34;timezone&#34;:&#34;Europe/Paris&#34;,&#34;accountInfo&#34;:{&#34;marketplaceStringId&#34;:&#34;dfghfghfgh&#34;,&#34;id&#34;:&#34;tyuyuyui&#34;,&#34;type&#34;:&#34;seller&#34;}}] &#34;</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;[{&#34;profileId&#34;:6666666666666666,&#34;countryCode&#34;:&#34;IT&#34;,&#34;currencyCode&#34;:&#34;EUR&#34;,&#34;dailyBudget&#34;:9.99999999E8,&#34;timezone&#34;:&#34;Europe/Paris&#34;,&#34;accountInfo&#34;:{&#34;marketplaceStringId&#34;:&#34;dfghfghfgh&#34;,&#34;id&#34;:&#34;tyuyuyui&#34;,&#34;type&#34;:&#34;seller&#34;}}] &#34;
+</code></pre></td></tr></table>
 </div>
-</div>
-<blockquote>
+</div><blockquote>
 <p>注意这里的profileId，后面要用到它。</p>
 </blockquote>
-
-<h4 id="根据配置文件返回数据获取数据">根据配置文件返回数据获取数据</h4>
-
-<p><strong><em>根据获取配置文件接口返回数据得到Amazon-Advertising-API-Scope的值，值为profileId，这在官方文档中根本没有提及，查找很多资料才大体猜到。</em></strong>
+<h4 id="heading-13">根据配置文件返回数据获取数据</h4>
+<p><em><strong>根据获取配置文件接口返回数据得到Amazon-Advertising-API-Scope的值，值为profileId，这在官方文档中根本没有提及，查找很多资料才大体猜到。</strong></em>
 代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -762,9 +707,9 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">//欧洲有数据账号
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">//欧洲有数据账号
 //$accessToken = &#34;ghfjhgfhjghj&#34;;
         //北美账号
         $accessToken = &#34;dffgghjghjhjkhjk&#34;;
@@ -786,75 +731,55 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $output = curl_exec($ch);
         curl_close($ch);
-        dd($output);</pre></td></tr></table>
+        dd($output);
+</code></pre></td></tr></table>
 </div>
-</div>
-<blockquote>
-<p>注意，这里URL如果是北美是<a href="https://advertising-api.amazon.com，欧洲是https://advertising-api-eu.amazon.com，其他值参考：https://advertising.amazon.com/API/docs/v2/guides/supported_features">https://advertising-api.amazon.com，欧洲是https://advertising-api-eu.amazon.com，其他值参考：https://advertising.amazon.com/API/docs/v2/guides/supported_features</a>
+</div><blockquote>
+<p>注意，这里URL如果是北美是https://advertising-api.amazon.com，欧洲是https://advertising-api-eu.amazon.com，其他值参考：https://advertising.amazon.com/API/docs/v2/guides/supported_features
 北美账号返回结果：</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">&#34;[{&#34;portfolioId&#34;:155555555555555,&#34;name&#34;:&#34;HELOO-HDMI CABLE&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;},{&#34;portfolioId&#34;:245678909876543,&#34;name&#34;:&#34;HELOO-MINI DP&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;}]&#34;</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;[{&#34;portfolioId&#34;:155555555555555,&#34;name&#34;:&#34;HELOO-HDMI CABLE&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;},{&#34;portfolioId&#34;:245678909876543,&#34;name&#34;:&#34;HELOO-MINI DP&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;}]&#34;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>欧洲账号返回数据：</p>
+</div><p>欧洲账号返回数据：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">&#34;[{&#34;portfolioId&#34;:98987654321234,&#34;name&#34;:&#34;Mini DP&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;},{&#34;portfolioId&#34;:31456789098765,&#34;name&#34;:&#34;AUTO&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;}]&#34;</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;[{&#34;portfolioId&#34;:98987654321234,&#34;name&#34;:&#34;Mini DP&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;},{&#34;portfolioId&#34;:31456789098765,&#34;name&#34;:&#34;AUTO&#34;,&#34;inBudget&#34;:true,&#34;state&#34;:&#34;enabled&#34;}]&#34;
+</code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
-<p>至此，接口调用完整一套逻辑调试完毕。</p>
-
-<h2 id="总结">总结</h2>
-
-<p>亚马逊确实做到了它说的只用一个账号（client_id）就可以做到管理所有地区和国家的店铺数据。这就是LoginWithAmazon（lwa）的功效。但是它的操作逻辑是：每个地区都需要用户点击授权，授权完成后并不会影响其他地区的授权数据，例如：用户对他在北美的账号授权，返回的access_token为123，refresh_token为456. 用户又对他在欧洲的账号授权，返回的access_token为789，refresh_token为012. 注意，<strong><em>北美的授权码并没有被欧洲的授权码覆盖，他们是并存的。北美的用北美的授权码和刷新码进行业务操作，欧洲的用欧洲的授权码和刷新码进行业务操作。而且要根据地区修改URL地址进去接口请求。</em></strong>
-<strong><em>刷新码永不过期，access_token则1小时过期。access_token需要使用刷新码进行定期刷新获取新的access_token。如果账号被重新授权，例如北美的账号又点击授权并允许授权成功，则会生成新的刷新码和access_token。这时需要新的刷新码和access_token进行业务操作。不同地区的授权不影响其他地区的授权数据</em></strong></p>
-
-<h2 id="常见问题">常见问题</h2>
-
-<h3 id="问题1-auth-o2-token-authorization-code-unsupported-grant-type">问题1 auth/o2/token authorization_code unsupported_grant_type</h3>
-
+</div><p>至此，接口调用完整一套逻辑调试完毕。</p>
+<h2 id="heading-14">总结</h2>
+<p>亚马逊确实做到了它说的只用一个账号（client_id）就可以做到管理所有地区和国家的店铺数据。这就是LoginWithAmazon（lwa）的功效。但是它的操作逻辑是：每个地区都需要用户点击授权，授权完成后并不会影响其他地区的授权数据，例如：用户对他在北美的账号授权，返回的access_token为123，refresh_token为456. 用户又对他在欧洲的账号授权，返回的access_token为789，refresh_token为012. 注意，<em><strong>北美的授权码并没有被欧洲的授权码覆盖，他们是并存的。北美的用北美的授权码和刷新码进行业务操作，欧洲的用欧洲的授权码和刷新码进行业务操作。而且要根据地区修改URL地址进去接口请求。</strong></em>
+<em><strong>刷新码永不过期，access_token则1小时过期。access_token需要使用刷新码进行定期刷新获取新的access_token。如果账号被重新授权，例如北美的账号又点击授权并允许授权成功，则会生成新的刷新码和access_token。这时需要新的刷新码和access_token进行业务操作。不同地区的授权不影响其他地区的授权数据</strong></em></p>
+<h2 id="heading-15">常见问题</h2>
+<h3 id="1-autho2token-authorization-code-unsupported-grant-type">问题1 auth/o2/token authorization_code unsupported_grant_type</h3>
 <p>最大的问题就是这个，查资料发现其实就是header的问题，按照上面所说改掉header内容即可。代码里面使用的header是Content-Type: application/json而不是官网中的application/x-www-form-urlencoded。
 参考：
 <a href="https://sellercentral.amazon.com/forums/t/unsupported-grant-type-error/286668">https://sellercentral.amazon.com/forums/t/unsupported-grant-type-error/286668</a></p>
-
 <p><a href="https://sellercentral.amazon.com/forums/t/request-an-access-token/227911/3">https://sellercentral.amazon.com/forums/t/request-an-access-token/227911/3</a></p>
-
 <p><a href="https://sellercentral.amazon.com/forums/t/authorization-code-grant-with-aws-lambda-function/116451/6">https://sellercentral.amazon.com/forums/t/authorization-code-grant-with-aws-lambda-function/116451/6</a></p>
-
 <p><a href="https://stackoverflow.com/questions/40606147/getting-the-authorization-grant-type-is-not-supported-by-the-authorization-serv">https://stackoverflow.com/questions/40606147/getting-the-authorization-grant-type-is-not-supported-by-the-authorization-serv</a></p>
-
-<p><img src="/img/program/php/clipboard33.png" alt="图例" title="图例" /></p>
-
-<h3 id="问题2-请求接口报invalid-request">问题2 请求接口报invalid_request</h3>
-
+<p><img src="/img/program/php/clipboard33.png" alt="图例" title="图例"></p>
+<h3 id="2-invalid-request">问题2 请求接口报invalid_request</h3>
 <p>这种是因为参数不够或者参数不对或者参数值不对，如果参数都ok的话，可能是code值过期导致的。我出现此问题就是因为code值过期，新生成code后此问题消失。
 参考：
 <a href="https://sellercentral.amazon.com/forums/t/request-an-access-token/227911">https://sellercentral.amazon.com/forums/t/request-an-access-token/227911</a></p>
-
 <p><a href="https://forums.developer.amazon.com/questions/112810/request-an-access-token-1.html">https://forums.developer.amazon.com/questions/112810/request-an-access-token-1.html</a></p>
-
-<h2 id="参考文献">参考文献</h2>
-
+<h2 id="heading-16">参考文献</h2>
 <p><a href="https://sellercentral.amazon.com/forums/t/unsupported-grant-type-error/286668">https://sellercentral.amazon.com/forums/t/unsupported-grant-type-error/286668</a></p>
-
 <p><a href="https://sellercentral.amazon.com/forums/t/request-an-access-token/227911/3">https://sellercentral.amazon.com/forums/t/request-an-access-token/227911/3</a></p>
-
 <p><a href="https://sellercentral.amazon.com/forums/t/authorization-code-grant-with-aws-lambda-function/116451/6">https://sellercentral.amazon.com/forums/t/authorization-code-grant-with-aws-lambda-function/116451/6</a></p>
-
 <p><a href="https://stackoverflow.com/questions/40606147/getting-the-authorization-grant-type-is-not-supported-by-the-authorization-serv">https://stackoverflow.com/questions/40606147/getting-the-authorization-grant-type-is-not-supported-by-the-authorization-serv</a></p>
-
 <p><a href="https://sellercentral.amazon.com/forums/t/request-an-access-token/227911">https://sellercentral.amazon.com/forums/t/request-an-access-token/227911</a></p>
-
-<p><a href="https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type（从此文档可知aws是标准oauth2.0模式）">https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type（从此文档可知aws是标准oauth2.0模式）</a></p>
-
+<p><a href="https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type">https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type</a>（从此文档可知aws是标准oauth2.0模式）</p>
 <p><a href="https://github.com/jiangbingyang/amazon-advertising-api-csharp/issues/2">https://github.com/jiangbingyang/amazon-advertising-api-csharp/issues/2</a></p>
 
     </div>
@@ -889,11 +814,11 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -908,7 +833,12 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -920,7 +850,7 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2020
+    2021
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -937,7 +867,10 @@ $accessToken = &#34;fghfgdasdfsadfgdsfgsdfg&#34;;
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

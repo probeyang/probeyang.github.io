@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.0 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/pipenv_virtualenv_guide/" />
@@ -34,7 +34,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -46,16 +47,13 @@
 <meta property="article:modified_time" content="2019-08-27T22:01:29+08:00" />
 <meta itemprop="name" content="使用pipenv管理Python虚拟环境">
 <meta itemprop="description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后">
-
-
 <meta itemprop="datePublished" content="2019-08-27T22:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-27T22:01:29&#43;08:00" />
 <meta itemprop="wordCount" content="199">
 
 
 
-<meta itemprop="keywords" content="python,pipenv,virtualenv," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="python,pipenv,virtualenv," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用pipenv管理Python虚拟环境"/>
 <meta name="twitter:description" content="使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。 上面的命令可以看到它会生成虚拟环境的目录，然后"/>
 
@@ -140,18 +138,15 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
       <p>使用pipenv shell 命令启用Python的虚拟环境，注意这个命令要在当前项目的目录下执行才可以。
-<img src="/img/program/python/pipenv_virtual0.png" alt="图例" title="图例" /></p>
-
+<img src="/img/program/python/pipenv_virtual0.png" alt="图例" title="图例"></p>
 <p>上面的命令可以看到它会生成虚拟环境的目录，然后我们在pycharm中找到这个目录进行虚拟环境的关联即可：
-<img src="/img/program/python/pipenv_virtual1.png" alt="图例" title="图例" /></p>
-
-<p><img src="/img/program/python/pipenv_virtual2.png" alt="图例" title="图例" /></p>
-
+<img src="/img/program/python/pipenv_virtual1.png" alt="图例" title="图例"></p>
+<p><img src="/img/program/python/pipenv_virtual2.png" alt="图例" title="图例"></p>
 <p>这样，后面的命令我们使用pipenv install去安装扩展，不要在pycharm中安装（没试过，不知道安装到哪里去了）
 注意：这个项目里面不要有VENV文件夹，否则项目也会去找这个目录下的虚拟环境的。</p>
 
@@ -186,11 +181,11 @@
 
       var appid = 'cysXPzCq7';
       var conf = '92ece88575355e3f7247fb1d1a42246a';
-      var width = window.innerWidth || document.documentElement.clientWidth; 
+      var width = window.innerWidth || document.documentElement.clientWidth;
       if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
     })();
     </script>
-  
+
   
 
   
@@ -205,7 +200,12 @@
 
 <div class="copyright">
   <span class="power-by">
-      备案号（粤ICP备17140117号-1）
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">
@@ -217,7 +217,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2020
+    2021
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -234,7 +234,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
 
 
 

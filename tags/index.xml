@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Sanlt,就是加了N多盐的地方</title>
@@ -6,10 +6,145 @@
     <description>Recent content in Tags on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 May 2020 17:46:14 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 16:42:10 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>bloom filter</title>
+      <link>https://www.sanlt.com/tags/bloom-filter/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/bloom-filter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>布隆过滤器</title>
+      <link>https://www.sanlt.com/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存穿透</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>高并发</title>
+      <link>https://www.sanlt.com/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Mon, 08 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>一致性hash</title>
+      <link>https://www.sanlt.com/tags/%E4%B8%80%E8%87%B4%E6%80%A7hash/</link>
+      <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E4%B8%80%E8%87%B4%E6%80%A7hash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>负载均衡</title>
+      <link>https://www.sanlt.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <pubDate>Wed, 03 Mar 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>base64</title>
+      <link>https://www.sanlt.com/tags/base64/</link>
+      <pubDate>Thu, 25 Feb 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/base64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>协议</title>
+      <link>https://www.sanlt.com/tags/%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Thu, 25 Feb 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E5%8D%8F%E8%AE%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>编码</title>
+      <link>https://www.sanlt.com/tags/%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Thu, 25 Feb 2021 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E7%BC%96%E7%A0%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nosql</title>
+      <link>https://www.sanlt.com/tags/nosql/</link>
+      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/nosql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://www.sanlt.com/tags/redis/</link>
+      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据</title>
+      <link>https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Tue, 15 Dec 2020 20:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.sanlt.com/tags/python/</link>
+      <pubDate>Fri, 08 May 2020 17:46:14 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>go</title>
@@ -26,15 +161,6 @@
       <pubDate>Wed, 11 Sep 2019 22:09:28 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/django/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.sanlt.com/tags/python/</link>
-      <pubDate>Wed, 11 Sep 2019 22:09:28 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/python/</guid>
       <description></description>
     </item>
     
@@ -233,24 +359,6 @@
       <pubDate>Sat, 10 Aug 2019 15:23:53 +0800</pubDate>
       
       <guid>https://www.sanlt.com/tags/%E9%9D%A2%E5%8C%85%E5%B1%91/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>phpstorm</title>
-      <link>https://www.sanlt.com/tags/phpstorm/</link>
-      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/phpstorm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>注释</title>
-      <link>https://www.sanlt.com/tags/%E6%B3%A8%E9%87%8A/</link>
-      <pubDate>Fri, 09 Aug 2019 19:10:50 +0800</pubDate>
-      
-      <guid>https://www.sanlt.com/tags/%E6%B3%A8%E9%87%8A/</guid>
       <description></description>
     </item>
     
