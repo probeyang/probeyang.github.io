@@ -2,35 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.sanlt.com/tags/bloom-filter/</loc>
-    <lastmod>2021-03-08T16:42:10+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/bug/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.sanlt.com/categories/</loc>
-    <lastmod>2021-03-08T16:42:10+08:00</lastmod>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/clickhouse/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.sanlt.com/post/</loc>
-    <lastmod>2021-03-08T16:42:10+08:00</lastmod>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.sanlt.com/</loc>
-    <lastmod>2021-03-08T16:42:10+08:00</lastmod>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.sanlt.com/tags/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%BC%82%E5%B8%B8/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/store/clickhouse_abnormal_fix/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/bloom-filter/</loc>
     <lastmod>2021-03-08T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -66,13 +108,6 @@
   
   <url>
     <loc>https://www.sanlt.com/tags/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2021-03-08T16:42:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
     <lastmod>2021-03-08T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -185,13 +220,6 @@
   
   <url>
     <loc>https://www.sanlt.com/post/software/redis/redis_course/</loc>
-    <lastmod>2020-12-15T20:42:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2020-12-15T20:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -492,14 +520,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/algorithm/</loc>
+    <loc>https://www.sanlt.com/categories/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/algorithm/</loc>
+    <loc>https://www.sanlt.com/tags/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -604,14 +632,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/life/</loc>
+    <loc>https://www.sanlt.com/tags/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/life/</loc>
+    <loc>https://www.sanlt.com/categories/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
