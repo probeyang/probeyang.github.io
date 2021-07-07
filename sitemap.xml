@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.sanlt.com/tags/bug/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/categories/</loc>
     <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,8 +9,15 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/clickhouse/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <loc>https://www.sanlt.com/tags/go/</loc>
+    <lastmod>2021-07-07T20:49:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/program/go/go_omitempty_usage/</loc>
+    <lastmod>2021-07-07T20:49:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -38,6 +38,27 @@
   
   <url>
     <loc>https://www.sanlt.com/tags/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
+    <lastmod>2021-07-07T20:49:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/bug/</loc>
+    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/clickhouse/</loc>
     <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -235,20 +256,6 @@
   <url>
     <loc>https://www.sanlt.com/tags/python/</loc>
     <lastmod>2020-05-08T17:46:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2020-05-08T17:46:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/go/</loc>
-    <lastmod>2020-05-03T17:46:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -597,14 +604,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/mysql/</loc>
+    <loc>https://www.sanlt.com/tags/mysql/</loc>
     <lastmod>2018-10-12T12:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/mysql/</loc>
+    <loc>https://www.sanlt.com/categories/mysql/</loc>
     <lastmod>2018-10-12T12:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

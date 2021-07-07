@@ -6,10 +6,19 @@
     <description>Recent content in 编程语言 on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 08 May 2020 17:46:14 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jul 2021 20:40:35 +0800</lastBuildDate>
     
 	<atom:link href="https://www.sanlt.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go语言中omitempty使用说明</title>
+      <link>https://www.sanlt.com/post/program/go/go_omitempty_usage/</link>
+      <pubDate>Wed, 07 Jul 2021 20:40:35 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/program/go/go_omitempty_usage/</guid>
+      <description>问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段</description>
+    </item>
     
     <item>
       <title>ImportError No module named问题解决</title>

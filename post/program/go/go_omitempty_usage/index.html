@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>归档 - Sanlt,就是加了N多盐的地方</title>
+  <title>go语言中omitempty使用说明 - Sanlt,就是加了N多盐的地方</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="probeyang" /><meta name="description" content="Sanlt,就是加了N多盐的地方." /><meta name="keywords" content="python, php, mysql, 数据库, go, 软件开发, 架构, 设计模式" />
+<meta name="author" content="probeyang" /><meta name="description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段" /><meta name="keywords" content="go" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.62.1 with theme even" />
 
 
-<link rel="canonical" href="https://www.sanlt.com/post/" />
-  <link href="https://www.sanlt.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Sanlt,就是加了N多盐的地方" />
-  <link href="https://www.sanlt.com/post/index.xml" rel="feed" type="application/rss+xml" title="Sanlt,就是加了N多盐的地方" />
+<link rel="canonical" href="https://www.sanlt.com/post/program/go/go_omitempty_usage/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,15 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="Sanlt,就是加了N多盐的地方." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.sanlt.com/post/" />
-<meta property="og:updated_time" content="2021-07-07T20:40:35+08:00" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="Sanlt,就是加了N多盐的地方."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Sanlt,就是加了N多盐的地方."/>
+<meta property="og:title" content="go语言中omitempty使用说明" />
+<meta property="og:description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/go/go_omitempty_usage/" />
+<meta property="article:published_time" content="2021-07-07T20:40:35+08:00" />
+<meta property="article:modified_time" content="2021-07-07T20:49:35+08:00" />
+<meta itemprop="name" content="go语言中omitempty使用说明">
+<meta itemprop="description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段">
+<meta itemprop="datePublished" content="2021-07-07T20:40:35&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-07T20:49:35&#43;08:00" />
+<meta itemprop="wordCount" content="163">
+
+
+
+<meta itemprop="keywords" content="go," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="go语言中omitempty使用说明"/>
+<meta name="twitter:description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -113,137 +119,77 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          
-<section id="archive" class="archive">
-      <div class="collection-title">
-        <h2 class="archive-year">2021</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">go语言中omitempty使用说明</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-07-07 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
+            </div>
+          <span class="more-meta"> 约 163 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-    <div class="archive-post">
-      <span class="archive-post-time">
-        07-07
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/go/go_omitempty_usage/" class="archive-post-link">
-          go语言中omitempty使用说明
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        07-05
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/store/clickhouse_abnormal_fix/" class="archive-post-link">
-          记一次clickhouse异常排查
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        03-08
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/algorithm/bloom_filter/" class="archive-post-link">
-          布隆过滤器详解
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        03-05
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/redis/chuantou_jichuan_crash/" class="archive-post-link">
-          Redis的缓存穿透、缓存击穿、缓存雪崩、缓存预热、缓存降级详解
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        03-03
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/algorithm/consistence_hash/" class="archive-post-link">
-          一致性hash算法详解
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        02-25
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/base64/base64_course/" class="archive-post-link">
-          base64详细教程
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2020</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        12-15
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/software/redis/redis_course/" class="archive-post-link">
-          redis详细教程
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        05-08
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/python/no_module_named_solve/" class="archive-post-link">
-          ImportError No module named问题解决
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        05-03
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/go/go_study_1/" class="archive-post-link">
-          go语言学习笔记之一
-        </a>
-      </span>
-    </div>
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
-      </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        09-11
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/program/python/django_set_timezone_solve/" class="archive-post-link">
-          Django设置时区教程
-        </a>
-      </span>
-    </div></section>
-
-<nav class="pagination">
-  
-  <a class="next" href="/post/page/2/">
-      <span class="next-text">下一页</span>
-      <i class="iconfont icon-right"></i>
-    </a>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">问题描述</a></li>
+    <li><a href="#heading-1">问题解决</a></li>
+    <li><a href="#heading-2">参考文献</a></li>
+  </ul>
 </nav>
-        </div>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="heading">问题描述</h2>
+<p>在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段。这就奇怪了，明明写了字段却不返回，只有为true的时候才返回。</p>
+<p><img src="/img/program/go/image1.png" alt="展示效果" title="展示效果"></p>
+<h2 id="heading-1">问题解决</h2>
+<p>最后查资料才发现，原来是omitempty字段捣的鬼。去除此内容后就好了：</p>
+<p><img src="/img/program/go/image2.png" alt="展示效果" title="展示效果"></p>
+<h2 id="heading-2">参考文献</h2>
+<p><a href="https://blog.csdn.net/stpeace/article/details/82744364">omitempty在go中的使用</a></p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/go/">go</a>
+          </div>
+      <nav class="post-nav">
         
+        <a class="next" href="/post/store/clickhouse_abnormal_fix/">
+            <span class="next-text nav-default">记一次clickhouse异常排查</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="SOHUCS" sid="/post/program/go/go_omitempty_usage/"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+
+  
+
+  
 
       </div>
     </main>
