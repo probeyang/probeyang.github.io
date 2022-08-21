@@ -6,11 +6,7 @@
     <description>Recent content in yii on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 22 Sep 2018 20:27:32 +0800</lastBuildDate>
-    
-	<atom:link href="https://www.sanlt.com/tags/yii/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 22 Sep 2018 20:27:32 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/tags/yii/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>YII2.0中POST请求时返回Bad Request (#400)的解决方法</title>
       <link>https://www.sanlt.com/post/program/php/yii_post_400/</link>

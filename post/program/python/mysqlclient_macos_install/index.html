@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/mysqlclient_macos_install/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="macos上安装mysqlclient详解" />
 <meta property="og:description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/python/mysqlclient_macos_install/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/mysqlclient_macos_install/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-08-17T11:17:42+08:00" />
 <meta property="article:modified_time" content="2018-08-17T11:17:42+08:00" />
+
 <meta itemprop="name" content="macos上安装mysqlclient详解">
-<meta itemprop="description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程">
-<meta itemprop="datePublished" content="2018-08-17T11:17:42&#43;08:00" />
-<meta itemprop="dateModified" content="2018-08-17T11:17:42&#43;08:00" />
-<meta itemprop="wordCount" content="382">
-
-
-
+<meta itemprop="description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程"><meta itemprop="datePublished" content="2018-08-17T11:17:42+08:00" />
+<meta itemprop="dateModified" content="2018-08-17T11:17:42+08:00" />
+<meta itemprop="wordCount" content="383">
 <meta itemprop="keywords" content="mysql,python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="macos上安装mysqlclient详解"/>
 <meta name="twitter:description" content="安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程"/>
@@ -129,7 +126,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 382 字 </span>
+          <span class="more-meta"> 约 383 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -140,9 +137,9 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">安装</a>
+    <li><a href="#安装">安装</a>
       <ul>
-        <li><a href="#-mysql">第一步: 修改mysql配置文件</a></li>
+        <li><a href="#第一步-修改mysql配置文件">第一步: 修改mysql配置文件</a></li>
       </ul>
     </li>
   </ul>
@@ -150,86 +147,86 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading-1">第二步：添加环境变量</a></li>
-        <li><a href="#mysqlclient">第三步：安装mysqlclient</a></li>
+        <li><a href="#第二步添加环境变量">第二步：添加环境变量</a></li>
+        <li><a href="#第三步安装mysqlclient">第三步：安装mysqlclient</a></li>
       </ul>
     </li>
-    <li><a href="#heading-2">参考文献：</a></li>
+    <li><a href="#参考文献">参考文献：</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <p>安装过mysqlclient的人都知道这个东西相当难安装成功，特别是在windows和mac上面，现在我来详细讲解一下在mac上面的安装过程。</p>
-<h2 id="heading">安装</h2>
-<h3 id="-mysql">第一步: 修改mysql配置文件</h3>
+<h2 id="安装">安装</h2>
+<h3 id="第一步-修改mysql配置文件">第一步: 修改mysql配置文件</h3>
 <p>第一步就玩的很大，但是别担心，按着下面说的做不会出问题： 文件地址：/usr/local/bin/mysql_config 原来为：</p>
 <h1 id="create-options">Create options</h1>
-<p>libs=&rdquo;-L$pkglibdir&rdquo; 
+<p>libs=&quot;-L$pkglibdir&quot; 
 libs=&quot;$libs -l &quot;
 修改为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Create options</span>
-<span class="nv">libs</span><span class="o">=</span><span class="s2">&#34;</span><span class="s2">-L</span><span class="nv">$pkglibdir</span><span class="s2">&#34;</span> 
-<span class="nv">libs</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$libs</span><span class="s2"> -lmysqlclient -lssl -lcrypto</span><span class="s2">&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Create options</span>
+</span></span><span class="line"><span class="cl"><span class="nv">libs</span><span class="o">=</span><span class="s2">&#34;-L</span><span class="nv">$pkglibdir</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">libs</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$libs</span><span class="s2"> -lmysqlclient -lssl -lcrypto&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改完保存退出即可.</p>
-<h3 id="heading-1">第二步：添加环境变量</h3>
+<h3 id="第二步添加环境变量">第二步：添加环境变量</h3>
 <p>如果下面的变量地址不一致，可以使用brew info openssl查看OpenSSL安装地址。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">export LDFLAGS=&#34;-L/usr/local/opt/openssl/lib&#34;
-export CPPFLAGS=&#34;-I/usr/local/opt/openssl/include&#34;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export LDFLAGS=&#34;-L/usr/local/opt/openssl/lib&#34;
+</span></span><span class="line"><span class="cl">export CPPFLAGS=&#34;-I/usr/local/opt/openssl/include&#34;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>示例：</p>
 <p><img src="/img/program/python/26B94E516174AFDCA00AB143A0708751.jpg" alt="展示效果" title="展示效果"></p>
-<h3 id="mysqlclient">第三步：安装mysqlclient</h3>
+<h3 id="第三步安装mysqlclient">第三步：安装mysqlclient</h3>
 <p>如果看到下面的错误：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ld: library not found for -lssl
-    clang: error: linker command failed with exit code 1 (use -v to see invocation)
-    error: command &#39;/usr/bin/clang&#39; failed with exit status 1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ld: library not found for -lssl
+</span></span><span class="line"><span class="cl">    clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</span></span><span class="line"><span class="cl">    error: command &#39;/usr/bin/clang&#39; failed with exit status 1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>直接使用命令安装PyMySQL, 没错，没有看错也没有写错，安装它是为了解决错误：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">pip3 install PyMySQL
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pip3 install PyMySQL
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>之后再安装mysqlclient：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">pip3 install mysqlclient
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pip3 install mysqlclient
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>即可。</p>
 <p><img src="/img/program/python/1566012226955.jpg" alt="展示效果" title="展示效果"></p>
-<h2 id="heading-2">参考文献：</h2>
+<h2 id="参考文献">参考文献：</h2>
 <p><a href="https://github.com/PyMySQL/mysqlclient-python/issues/169," title="pip3 install mysqlclient fails on macOS #169">pip3 install mysqlclient fails on macOS #169</a></p>
 
     </div>
@@ -294,7 +291,7 @@ export CPPFLAGS=&#34;-I/usr/local/opt/openssl/include&#34;
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

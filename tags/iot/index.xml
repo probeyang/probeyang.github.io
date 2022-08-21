@@ -6,11 +6,7 @@
     <description>Recent content in iot on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Sep 2019 22:07:09 +0800</lastBuildDate>
-    
-	<atom:link href="https://www.sanlt.com/tags/iot/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 01 Sep 2019 22:07:09 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>flask&#43;gunicorn&#43;NGINX的方式部署flask项目教程</title>
       <link>https://www.sanlt.com/post/program/python/flask_iot_cvm_guide/</link>

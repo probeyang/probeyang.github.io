@@ -3,7 +3,70 @@
   
   <url>
     <loc>https://www.sanlt.com/categories/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/elasticsearch/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/mysql/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/post/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2022-08-15T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -18,27 +81,6 @@
   <url>
     <loc>https://www.sanlt.com/post/program/go/go_omitempty_usage/</loc>
     <lastmod>2021-07-07T20:49:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/post/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -72,13 +114,6 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E5%BC%82%E5%B8%B8/</loc>
-    <lastmod>2021-07-25T20:32:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/post/store/clickhouse_abnormal_fix/</loc>
     <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -86,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>https://www.sanlt.com/tags/%E5%BC%82%E5%B8%B8/</loc>
     <lastmod>2021-07-25T20:32:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -114,7 +149,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.sanlt.com/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2021-03-08T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -135,7 +170,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
+    <loc>https://www.sanlt.com/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-03-08T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -177,6 +212,13 @@
   </url>
   
   <url>
+    <loc>https://www.sanlt.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
+    <lastmod>2021-03-03T16:42:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.sanlt.com/tags/%E4%B8%80%E8%87%B4%E6%80%A7hash/</loc>
     <lastmod>2021-03-03T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -185,13 +227,6 @@
   
   <url>
     <loc>https://www.sanlt.com/post/software/algorithm/consistence_hash/</loc>
-    <lastmod>2021-03-03T16:42:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
     <lastmod>2021-03-03T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -212,14 +247,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E5%8D%8F%E8%AE%AE/</loc>
+    <loc>https://www.sanlt.com/tags/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2021-02-25T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E7%BC%96%E7%A0%81/</loc>
+    <loc>https://www.sanlt.com/tags/%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2021-02-25T16:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -527,13 +562,6 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/algorithm/</loc>
-    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/tags/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -541,14 +569,7 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.sanlt.com/tags/%E5%89%8D%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <loc>https://www.sanlt.com/categories/algorithm/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -556,6 +577,13 @@
   
   <url>
     <loc>https://www.sanlt.com/tags/%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E5%89%8D%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -570,6 +598,13 @@
   
   <url>
     <loc>https://www.sanlt.com/post/software/algorithm/qianzhui_houzhui_zhongzhui/</loc>
+    <lastmod>2018-10-23T11:29:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.sanlt.com/tags/%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2018-10-23T11:29:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -604,13 +639,6 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/mysql/</loc>
-    <lastmod>2018-10-12T12:03:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.sanlt.com/categories/mysql/</loc>
     <lastmod>2018-10-12T12:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -639,14 +667,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/categories/life/</loc>
+    <loc>https://www.sanlt.com/tags/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/life/</loc>
+    <loc>https://www.sanlt.com/categories/life/</loc>
     <lastmod>2018-10-10T12:08:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -709,14 +737,14 @@
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/post/software/architect/simple_factory/</loc>
+    <loc>https://www.sanlt.com/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2018-09-10T20:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.sanlt.com/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://www.sanlt.com/post/software/architect/simple_factory/</loc>
     <lastmod>2018-09-10T20:42:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/json_loads_error/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="Python解析json之ValueError Expecting property name enclosed in double quotes解决" />
 <meta property="og:description" content="问题描述 python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在 1 filter_config_data = json.loads(filter_config) 出了错误， 问题解" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/python/json_loads_error/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/json_loads_error/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-10-16T11:49:27+08:00" />
 <meta property="article:modified_time" content="2019-10-17T11:49:27+08:00" />
+
 <meta itemprop="name" content="Python解析json之ValueError Expecting property name enclosed in double quotes解决">
-<meta itemprop="description" content="问题描述 python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在 1 filter_config_data = json.loads(filter_config) 出了错误， 问题解">
-<meta itemprop="datePublished" content="2018-10-16T11:49:27&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-17T11:49:27&#43;08:00" />
+<meta itemprop="description" content="问题描述 python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在 1 filter_config_data = json.loads(filter_config) 出了错误， 问题解"><meta itemprop="datePublished" content="2018-10-16T11:49:27+08:00" />
+<meta itemprop="dateModified" content="2019-10-17T11:49:27+08:00" />
 <meta itemprop="wordCount" content="228">
-
-
-
 <meta itemprop="keywords" content="json,python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python解析json之ValueError Expecting property name enclosed in double quotes解决"/>
 <meta name="twitter:description" content="问题描述 python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在 1 filter_config_data = json.loads(filter_config) 出了错误， 问题解"/>
@@ -140,28 +137,28 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#问题解决">问题解决</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      <h2 id="问题描述">问题描述</h2>
 <p>python在解析json数据的时候报错：ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1) 检查代码发现就是在</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">filter_config_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">filter_config</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">filter_config_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">filter_config</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>出了错误，</p>
-<h2 id="heading-1">问题解决</h2>
+<h2 id="问题解决">问题解决</h2>
 <p>很容易知道，是因为filter_config不是正确json数据结构导致了解析报错。 检查数据库中数据发现确实有一些数据是用单引号括起来的，json是必须用双引号的，所以错误就在这里。 将json数据修改为正确json格式后，错误消失。</p>
-<h2 id="heading-2">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="https://blog.csdn.net/blueheart20/article/details/69704518">Python解析json之ValueError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)</a></p>
 
     </div>
@@ -230,7 +227,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

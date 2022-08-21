@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/php/yii_post_400/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="YII2.0中POST请求时返回Bad Request (#400)的解决方法" />
 <meta property="og:description" content="问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： 1 Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/php/yii_post_400/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/php/yii_post_400/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-09-22T20:27:32+08:00" />
 <meta property="article:modified_time" content="2018-09-22T20:27:32+08:00" />
+
 <meta itemprop="name" content="YII2.0中POST请求时返回Bad Request (#400)的解决方法">
-<meta itemprop="description" content="问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： 1 Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正">
-<meta itemprop="datePublished" content="2018-09-22T20:27:32&#43;08:00" />
-<meta itemprop="dateModified" content="2018-09-22T20:27:32&#43;08:00" />
+<meta itemprop="description" content="问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： 1 Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正"><meta itemprop="datePublished" content="2018-09-22T20:27:32+08:00" />
+<meta itemprop="dateModified" content="2018-09-22T20:27:32+08:00" />
 <meta itemprop="wordCount" content="276">
-
-
-
 <meta itemprop="keywords" content="php,yii2,yii,csrf," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="YII2.0中POST请求时返回Bad Request (#400)的解决方法"/>
 <meta name="twitter:description" content="问题描述 在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回： 1 Bad Request (#400): Unable to verify your data submission. 而同一个接口使用GET请求时又都能正"/>
@@ -140,31 +137,31 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">解决方法</a></li>
-    <li><a href="#heading-2">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#解决方法">解决方法</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      <h2 id="问题描述">问题描述</h2>
 <p>在yii中，使用接口访问时出现一个问题：使用POST请求无论怎么调试都返回：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Bad Request (#400): Unable to verify your data submission.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Bad Request (#400): Unable to verify your data submission.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>而同一个接口使用GET请求时又都能正常请求成功。是什么原因呢？</p>
-<h2 id="heading-1">解决方法</h2>
+<h2 id="解决方法">解决方法</h2>
 <p>查了下网络上的资料，发现其实是yii的CSRF防范策略导致的问题。意思就是说，有两种解决办法：</p>
 <ol>
 <li>
 <p>如果你不想使用CSRF，那么可以在配置文件中添加一行配置关闭CSRF：
-&lsquo;enableCsrfValidation&rsquo; =&gt; false,
+&rsquo;enableCsrfValidation&rsquo; =&gt; false,
 <img src="/img/program/php/CE492F03129D07C56CBCE108D228B3DC.jpg" alt="图例" title="图例"></p>
 </li>
 <li>
@@ -173,15 +170,15 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;_csrf&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;_csrf&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;?= Yii::$app-&gt;request-&gt;csrfToken ?&gt;&#34;</span><span class="p"></span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;_csrf&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;_csrf&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;?= Yii::$app-&gt;request-&gt;csrfToken ?&gt;&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>进一步深入
 <img src="/img/program/php/ACCE9AD10965C90B923C67D01C47E841.jpg" alt="图例" title="图例"></p>
-<h2 id="heading-2">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="http://blog.fengxiaotx.com/archives/103">YII2.0中POST请求时返回Bad Request (#400): Unable to verify your data submission.的解决方法</a></p>
 <p><a href="https://blog.csdn.net/ucmir183/article/details/68940816">yii2 ajax的post提交出现的400错误</a></p>
 
@@ -253,7 +250,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

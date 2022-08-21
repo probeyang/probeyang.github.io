@@ -6,10 +6,15 @@
     <description>Recent content in mysql on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate>
-    
-	<atom:link href="https://www.sanlt.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 15 Aug 2022 16:42:10 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL实时同步数据到ElasticSearch</title>
+      <link>https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/</link>
+      <pubDate>Mon, 15 Aug 2022 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/</guid>
+      <description>背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd</description>
+    </item>
     
     <item>
       <title>MySQL Substring return empty value问题研究</title>

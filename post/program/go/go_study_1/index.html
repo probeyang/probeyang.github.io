@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/go/go_study_1/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="go语言学习笔记之一" />
 <meta property="og:description" content="go语言学习笔记 1 基础知识 1.0 hello world 代码 1 2 3 4 5 6 7 package main import &#34;fmt&#34;//实现格式化的I/O /* Print something */ func main() { fmt.Printf(&#34;Hello, world ; or  ϵ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/go/go_study_1/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/go/go_study_1/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-05-03T17:46:14+08:00" />
 <meta property="article:modified_time" content="2020-05-03T17:46:14+08:00" />
+
 <meta itemprop="name" content="go语言学习笔记之一">
-<meta itemprop="description" content="go语言学习笔记 1 基础知识 1.0 hello world 代码 1 2 3 4 5 6 7 package main import &#34;fmt&#34;//实现格式化的I/O /* Print something */ func main() { fmt.Printf(&#34;Hello, world ; or  ϵ">
-<meta itemprop="datePublished" content="2020-05-03T17:46:14&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-03T17:46:14&#43;08:00" />
-<meta itemprop="wordCount" content="6818">
-
-
-
+<meta itemprop="description" content="go语言学习笔记 1 基础知识 1.0 hello world 代码 1 2 3 4 5 6 7 package main import &#34;fmt&#34;//实现格式化的I/O /* Print something */ func main() { fmt.Printf(&#34;Hello, world ; or  ϵ"><meta itemprop="datePublished" content="2020-05-03T17:46:14+08:00" />
+<meta itemprop="dateModified" content="2020-05-03T17:46:14+08:00" />
+<meta itemprop="wordCount" content="6822">
 <meta itemprop="keywords" content="go," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="go语言学习笔记之一"/>
 <meta name="twitter:description" content="go语言学习笔记 1 基础知识 1.0 hello world 代码 1 2 3 4 5 6 7 package main import &#34;fmt&#34;//实现格式化的I/O /* Print something */ func main() { fmt.Printf(&#34;Hello, world ; or  ϵ"/>
@@ -129,7 +126,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 6818 字 </span>
+          <span class="more-meta"> 约 6822 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,43 +139,43 @@
   <ul>
     <li><a href="#10-hello-world">1.0 hello world</a>
       <ul>
-        <li><a href="#heading">代码</a></li>
-        <li><a href="#heading-1">编译和运行代码</a></li>
+        <li><a href="#代码">代码</a></li>
+        <li><a href="#编译和运行代码">编译和运行代码</a></li>
       </ul>
     </li>
-    <li><a href="#heading-2">变量、类型和关键字</a></li>
-    <li><a href="#11-">1.1 函数</a></li>
-    <li><a href="#heading-3">类型</a></li>
-    <li><a href="#12-">1.2 常量</a></li>
-    <li><a href="#13-">1.3 枚举</a></li>
-    <li><a href="#14-">1.4 错误处理</a>
+    <li><a href="#变量类型和关键字">变量、类型和关键字</a></li>
+    <li><a href="#11-函数">1.1 函数</a></li>
+    <li><a href="#类型">类型</a></li>
+    <li><a href="#12-常量">1.2 常量</a></li>
+    <li><a href="#13-枚举">1.3 枚举</a></li>
+    <li><a href="#14-错误处理">1.4 错误处理</a>
       <ul>
-        <li><a href="#141-">1.4.1 一般错误处理</a></li>
-        <li><a href="#142-">1.4.2 自定义错误处理</a></li>
+        <li><a href="#141-一般错误处理">1.4.1 一般错误处理</a></li>
+        <li><a href="#142-自定义错误处理">1.4.2 自定义错误处理</a></li>
       </ul>
     </li>
-    <li><a href="#15-">1.5 数组</a>
+    <li><a href="#15-数组">1.5 数组</a>
       <ul>
-        <li><a href="#151-">1.5.1 数组的定义</a></li>
-        <li><a href="#152-">1.5.2 数组在内存布局(重要)</a></li>
-        <li><a href="#153-">1.5.3 数组的使用</a></li>
+        <li><a href="#151-数组的定义">1.5.1 数组的定义</a></li>
+        <li><a href="#152-数组在内存布局重要">1.5.2 数组在内存布局(重要)</a></li>
+        <li><a href="#153-数组的使用">1.5.3 数组的使用</a></li>
       </ul>
     </li>
-    <li><a href="#16-">1.6 切片</a>
+    <li><a href="#16-切片">1.6 切片</a>
       <ul>
-        <li><a href="#161-">1.6.1 切片的基本介绍</a></li>
-        <li><a href="#162-">1.6.2 切片的使用</a></li>
-        <li><a href="#163-">1.6.3 切片在内存中的形式</a></li>
-        <li><a href="#164-">1.6.4 切片的注意事项</a></li>
+        <li><a href="#161-切片的基本介绍">1.6.1 切片的基本介绍</a></li>
+        <li><a href="#162-切片的使用">1.6.2 切片的使用</a></li>
+        <li><a href="#163-切片在内存中的形式">1.6.3 切片在内存中的形式</a></li>
+        <li><a href="#164-切片的注意事项">1.6.4 切片的注意事项</a></li>
       </ul>
     </li>
     <li><a href="#17-map">1.7 map</a>
       <ul>
-        <li><a href="#171-map">1.7.1 map的基本介绍</a></li>
-        <li><a href="#172-map">1.7.2 map的声明</a></li>
-        <li><a href="#173-map">1.7.3 map的使用方式</a></li>
-        <li><a href="#174-">1.7.4 使用案例</a></li>
-        <li><a href="#175-map">1.7.5 map的增删改查操作</a></li>
+        <li><a href="#171-map的基本介绍">1.7.1 map的基本介绍</a></li>
+        <li><a href="#172-map的声明">1.7.2 map的声明</a></li>
+        <li><a href="#173-map的使用方式">1.7.3 map的使用方式</a></li>
+        <li><a href="#174-使用案例">1.7.4 使用案例</a></li>
+        <li><a href="#175-map的增删改查操作">1.7.5 map的增删改查操作</a></li>
       </ul>
     </li>
   </ul>
@@ -186,13 +183,13 @@
   </div>
 </div>
     <div class="post-content">
-      <h1 id="go">go语言学习笔记</h1>
-<h1 id="1-">1 基础知识</h1>
+      <h1 id="go语言学习笔记">go语言学习笔记</h1>
+<h1 id="1-基础知识">1 基础知识</h1>
 <h2 id="10-hello-world">1.0 hello world</h2>
-<h3 id="heading">代码</h3>
+<h3 id="代码">代码</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -201,14 +198,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span><span class="c1">//实现格式化的I/O
-</span><span class="c1"></span> <span class="cm">/* Print something */</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Hello, world ; or ϵ óϵ ; orこんにちは世界&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span><span class="c1">//实现格式化的I/O
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="cm">/* Print something */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Hello, world ; or ϵ óϵ ; orこんにちは世界&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>下面逐行介绍：</p>
 <ul>
@@ -220,72 +217,72 @@
 <li>package main 必须首先出现，紧跟着是import。在Go 中，package 总是首先出现，
 然后是import，然后是其他所有内容。当Go 程序在执行的时候，首先调用的函数
 是main.main()，这是从C 中继承而来。这里定义了这个函数；</li>
-<li>第8 行调用了来自于fmt 包的函数打印字符串到屏幕。字符串由&rdquo; 包裹，并且可以包
+<li>第8 行调用了来自于fmt 包的函数打印字符串到屏幕。字符串由&quot; 包裹，并且可以包
 含非ASCII 的字符。这里使用了希腊文和日文。</li>
 </ul>
-<h3 id="heading-1">编译和运行代码</h3>
+<h3 id="编译和运行代码">编译和运行代码</h3>
 <p>构建Go 程序的最佳途径是使用go 工具。
 构建helloworld 只需要：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">% go build helloworld.go
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">% go build helloworld.go
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>结果是叫做helloworld 的可执行文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">% ./helloworld
-Hello, world<span class="p">;</span> or ϵ óϵ<span class="p">;</span> or こんにちは世界
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">% ./helloworld
+</span></span><span class="line"><span class="cl">Hello, world<span class="p">;</span> or ϵ óϵ<span class="p">;</span> or こんにちは世界
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-2">变量、类型和关键字</h2>
+</div><h2 id="变量类型和关键字">变量、类型和关键字</h2>
 <p>在接下来的章节中，我们将会了解这个新语言的变量、基本类型、关键字和控制流。
 Go 在语法上有着类C 的感觉。如果你希望将两个（或更多）语句放在一行书写，它们必须用分号(’;’) 分隔。一般情况下，你不需要分号。
 Go 同其他语言不同的地方在于变量的类型在变量名的后面。不是：int a，而是a int。
 当定义了一个变量，它默认赋值为其类型的null 值。这意味着，在var a int后，a 的
-值为0。而var s string，意味着s 被赋值为零长度字符串，也就是&rdquo;&quot;。
+值为0。而var s string，意味着s 被赋值为零长度字符串，也就是&quot;&quot;。
 在Go 中，声明和赋值是两过程，但是可以连在一起。比较下面作用相同的代码片段。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">a</span> <span class="nx">i</span> <span class="nx">n</span> <span class="nx">t</span>
-<span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span>
-<span class="nx">a</span> <span class="p">=</span> <span class="mi">15</span>
-<span class="nx">b</span> <span class="p">=</span> <span class="kc">false</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="nx">i</span> <span class="nx">n</span> <span class="nx">t</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">b</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span> <span class="p">=</span> <span class="mi">15</span>
+</span></span><span class="line"><span class="cl"><span class="nx">b</span> <span class="p">=</span> <span class="kc">false</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
-<span class="nx">b</span> <span class="o">:=</span> <span class="kc">false</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">a</span> <span class="o">:=</span> <span class="mi">15</span>
+</span></span><span class="line"><span class="cl"><span class="nx">b</span> <span class="o">:=</span> <span class="kc">false</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="11-">1.1 函数</h2>
+</div><h2 id="11-函数">1.1 函数</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">mytype</span> <span class="kt">int</span>  <span class="c1">//新的类型，参阅第4 章
-</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">mytype</span><span class="p">)</span> <span class="nf">funcname</span><span class="p">(</span><span class="nx">q</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="nx">s</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">mytype</span> <span class="kt">int</span>  <span class="c1">//新的类型，参阅第4 章
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">mytype</span><span class="p">)</span> <span class="nf">funcname</span><span class="p">(</span><span class="nx">q</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="nx">s</span> <span class="kt">int</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>0 关键字func 用于定义一个函数；</li>
@@ -305,38 +302,38 @@ go get github.com/go-sql-driver/mysql
 这种从远程获取的相当于install了。
 本地的代码需要执行类似下面的语句：
 go install mysoft.com/dmp_screen/models</p>
-<h2 id="heading-3">类型</h2>
+<h2 id="类型">类型</h2>
 <p>Go 是静态类型语言，不能在运行期改变变量类型。
 使用关键字 var 定义变量，自动初始化为零值。如果提供初始化值，可省略变量类型，由编译器自动推断。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">x</span> <span class="kt">int</span>
-<span class="kd">var</span> <span class="nx">f</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">1.6</span>
-<span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&#34;abc&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">x</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">f</span> <span class="kt">float32</span> <span class="p">=</span> <span class="mf">1.6</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&#34;abc&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在函数内部，可用更简略的 &ldquo;:=&rdquo;  式定义变量。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="o">:=</span> <span class="mi">123</span> <span class="c1">// 注意检查，是定义新局部变量，还是修改全局变量。该 式容易造成错误。
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">x</span> <span class="o">:=</span> <span class="mi">123</span> <span class="c1">// 注意检查，是定义新局部变量，还是修改全局变量。该 式容易造成错误。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可一次定义多个变量。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -347,32 +344,32 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span> <span class="kt">int</span>
-<span class="kd">var</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">n</span> <span class="p">=</span> <span class="s">&#34;abc&#34;</span><span class="p">,</span> <span class="mi">123</span>
-<span class="kd">var</span> <span class="p">(</span>
-<span class="nx">a</span> <span class="kt">int</span>
-<span class="nx">b</span> <span class="kt">float32</span> <span class="p">)</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">n</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="mh">0x1234</span><span class="p">,</span> <span class="s">&#34;Hello, World!&#34;</span>
-    <span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">n</span> <span class="p">=</span> <span class="s">&#34;abc&#34;</span><span class="p">,</span> <span class="mi">123</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="nx">b</span> <span class="kt">float32</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">n</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="mh">0x1234</span><span class="p">,</span> <span class="s">&#34;Hello, World!&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>多变量赋值时，先计算所有相关值，然后再从左到右依次赋值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">data</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span><span class="p">,</span> <span class="mi">0</span>
-<span class="nx">i</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span>                <span class="c1">// (i = 0) -&gt; (i = 2), (data[0] = 100)
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">data</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nx">i</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span>                <span class="c1">// (i = 0) -&gt; (i = 2), (data[0] = 100)
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>特殊只写变量 &ldquo;_&quot;， 于忽略值占位。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -380,21 +377,21 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="nf">test</span><span class="p">(</span><span class="p">)</span>
-<span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="nf">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>编译器会将未使 的局部变量当做错误。
 注意重新赋值与定义新同名变量的区别。</p>
-<h2 id="12-">1.2 常量</h2>
+<h2 id="12-常量">1.2 常量</h2>
 <p>常量值必须是编译期可确定的数字、字符串、布尔值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -408,28 +405,28 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
-<span class="kd">const</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&#34;Hello, World!&#34;</span>
-<span class="c1">// 多常量初始化 // 类型推断
-</span><span class="c1"></span><span class="c1">// 常量组
-</span><span class="c1"></span><span class="kd">const</span> <span class="p">(</span> 
-<span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span>
-<span class="nx">c</span>   <span class="kt">bool</span> <span class="p">=</span> <span class="kc">false</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-<span class="kd">const</span> <span class="nx">x</span> <span class="p">=</span> <span class="s">&#34;xxx&#34;</span> <span class="c1">// 未使 局部常量不会引发编译错误。
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&#34;Hello, World!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 多常量初始化 // 类型推断
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 常量组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">const</span> <span class="p">(</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="nx">c</span>   <span class="kt">bool</span> <span class="p">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">x</span> <span class="p">=</span> <span class="s">&#34;xxx&#34;</span> <span class="c1">// 未使 局部常量不会引发编译错误。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不支持1UL、2LL 这样的类型后缀。 在常量组中，如不提供类型和初始化值，那么视作与上一常量相同。
 常量值还可以是 len、cap、unsafe.Sizeof 等编译期可确定结果的函数返回值。
 如果常量类型 以存储初始化值，那么不会引发溢出错误。</p>
-<h2 id="13-">1.3 枚举</h2>
+<h2 id="13-枚举">1.3 枚举</h2>
 <p>关键字 iota 定义常量组中从 0 开始按 计数的 增枚举值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -446,31 +443,31 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="p">(</span>
-    <span class="nx">Sunday</span> <span class="p">=</span> <span class="kc">iota</span>
-    <span class="nx">Monday</span>
-    <span class="nx">Tuesday</span>
-    <span class="nx">Wednesday</span>
-    <span class="nx">Thursday</span>
-    <span class="nx">Friday</span>
-    <span class="nx">Saturday</span>
-<span class="c1">// 0
-</span><span class="c1"></span><span class="c1">// 1，通常省略后续 表达式。 //2
-</span><span class="c1"></span><span class="c1">//3
-</span><span class="c1"></span><span class="c1">//4
-</span><span class="c1"></span><span class="c1">//5
-</span><span class="c1"></span><span class="c1">//6
-</span><span class="c1"></span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Sunday</span> <span class="p">=</span> <span class="kc">iota</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Monday</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Tuesday</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Wednesday</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Thursday</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Friday</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Saturday</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 0
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 1，通常省略后续 表达式。 //2
+</span></span></span><span class="line"><span class="cl"><span class="c1">//3
+</span></span></span><span class="line"><span class="cl"><span class="c1">//4
+</span></span></span><span class="line"><span class="cl"><span class="c1">//5
+</span></span></span><span class="line"><span class="cl"><span class="c1">//6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在同一常量组中，可以提供多个 iota，它们各自增长 。
 如果 iota 自增被打断，须显式恢复。</p>
-<h2 id="14-">1.4 错误处理</h2>
-<h3 id="141-">1.4.1 一般错误处理</h3>
+<h2 id="14-错误处理">1.4 错误处理</h2>
+<h3 id="141-一般错误处理">1.4.1 一般错误处理</h3>
 <p>go使用defer+recover来捕获处理异常。以下是示例代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -500,42 +497,42 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-	<span class="s">&#34;fmt&#34;</span>
-	<span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 使用defer + recover 来捕获和处理异常
-</span><span class="c1"></span>	<span class="k">defer</span> <span class="kd">func</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-		<span class="kt">error</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">(</span><span class="p">)</span> <span class="c1">//recover()是内置函数，可以捕获异常
-</span><span class="c1"></span>		<span class="k">if</span> <span class="kt">error</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>  <span class="c1">// error不为nil说明捕获到异常
-</span><span class="c1"></span>			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error=&#34;</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span><span class="p">(</span><span class="p">)</span>
-	<span class="nx">num1</span> <span class="o">:=</span> <span class="mi">10</span>
-	<span class="nx">num2</span> <span class="o">:=</span> <span class="mi">0</span>
-	<span class="nx">res</span> <span class="o">:=</span> <span class="nx">num1</span> <span class="o">/</span> <span class="nx">num2</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;res=&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nf">test</span><span class="p">(</span><span class="p">)</span>
-	<span class="k">for</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;main()里面的代码&#34;</span><span class="p">)</span>
-		<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 使用defer + recover 来捕获和处理异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">error</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">()</span> <span class="c1">//recover()是内置函数，可以捕获异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="kt">error</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>  <span class="c1">// error不为nil说明捕获到异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;error=&#34;</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">num1</span> <span class="o">:=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">num2</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span> <span class="o">:=</span> <span class="nx">num1</span> <span class="o">/</span> <span class="nx">num2</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;res=&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;main()里面的代码&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="142-">1.4.2 自定义错误处理</h3>
+</div><h3 id="142-自定义错误处理">1.4.2 自定义错误处理</h3>
 <p>使用errors.New()生成自定义错误，使用panic抛错误。
 示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -558,60 +555,60 @@ go install mysoft.com/dmp_screen/models</p>
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">readConf</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;config.ini&#34;</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">nil</span>
-	<span class="p">}</span>
-	<span class="c1">// 抛自定义错误
-</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;读取文件错误&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">test1</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">err</span> <span class="o">:=</span> <span class="nf">readConf</span><span class="p">(</span><span class="s">&#34;config2.ini&#34;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;test1继续执行&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// test()
-</span><span class="c1"></span>	<span class="nf">test1</span><span class="p">(</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;main()里面的代码&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">readConf</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;config.ini&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 抛自定义错误
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;读取文件错误&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test1</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="o">:=</span> <span class="nf">readConf</span><span class="p">(</span><span class="s">&#34;config2.ini&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;test1继续执行&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// test()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">test1</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;main()里面的代码&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="15-">1.5 数组</h2>
+</div><h2 id="15-数组">1.5 数组</h2>
 <p>数组可以存放多个同一类型数据。数组也是一种数据类型，在 Go 中，数组是值类型。</p>
-<h3 id="151-">1.5.1 数组的定义</h3>
+<h3 id="151-数组的定义">1.5.1 数组的定义</h3>
 <p>var	数组名 [数组大小]数据类型var a [5]int
 赋初值 a[0] = 1 a[1] = 30 &hellip;.</p>
-<h3 id="152-">1.5.2 数组在内存布局(重要)</h3>
+<h3 id="152-数组在内存布局重要">1.5.2 数组在内存布局(重要)</h3>
 <p>示例代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">intArr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr</span><span class="p">)</span>
-
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;intArr的地址: %p, intArr[0]的地址: %p intArr[1]的地址: %p \r\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">intArr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;intArr的地址: %p, intArr[0]的地址: %p intArr[1]的地址: %p \r\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">&amp;</span><span class="nx">intArr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[0 0 0]
-intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地址: 0xc0000b8008
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[0 0 0]
+</span></span><span class="line"><span class="cl">intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地址: 0xc0000b8008
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对示例的总结:</p>
 <ol>
@@ -619,13 +616,13 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 <li>数组的第一个元素的地址，就是数组的首地址</li>
 <li>数组的各个元素的地址间隔是依据数组的类型决定，比如 int64 -&gt; 8	int32-&gt;4&hellip;</li>
 </ol>
-<h3 id="153-">1.5.3 数组的使用</h3>
-<h4 id="1531-">1.5.3.1 访问数组元素</h4>
+<h3 id="153-数组的使用">1.5.3 数组的使用</h3>
+<h4 id="1531-访问数组元素">1.5.3.1 访问数组元素</h4>
 <p>数组名[下标] 比如：你要使用 a 数组的第三个元素	a[2]
 示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -638,24 +635,24 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">score</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">float64</span>
-
-<span class="c1">//从终端循环输入3个成绩，保存到数组中。
-</span><span class="c1"></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;请输入第%d个元素的值:\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;score[%d]=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">score</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">float64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//从终端循环输入3个成绩，保存到数组中。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;请输入第%d个元素的值:\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;score[%d]=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="1532-">1.5.3.2 四种初始化数组的方式</h4>
+</div><h4 id="1532-四种初始化数组的方式">1.5.3.2 四种初始化数组的方式</h4>
 <p>示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -672,39 +669,39 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//第一种方式
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr=&#34;</span><span class="p">,</span> <span class="nx">numArr</span><span class="p">)</span>
-
-<span class="c1">//第二种方式
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr1=&#34;</span><span class="p">,</span> <span class="nx">numArr1</span><span class="p">)</span>
-
-<span class="c1">//第三种方式
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr2</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr2=&#34;</span><span class="p">,</span> <span class="nx">numArr2</span><span class="p">)</span>
-
-<span class="c1">//第四种方式
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr3</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr3=&#34;</span><span class="p">,</span> <span class="nx">numArr3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">//第一种方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr=&#34;</span><span class="p">,</span> <span class="nx">numArr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第二种方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr1=&#34;</span><span class="p">,</span> <span class="nx">numArr1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第三种方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr2</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr2=&#34;</span><span class="p">,</span> <span class="nx">numArr2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第四种方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">numArr3</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;numArr3=&#34;</span><span class="p">,</span> <span class="nx">numArr3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="1533-">1.5.3.3 数组的遍历</h4>
-<h5 id="heading-4">常规遍历</h5>
+</div><h4 id="1533-数组的遍历">1.5.3.3 数组的遍历</h4>
+<h5 id="常规遍历">常规遍历</h5>
 <p>demo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;score[%d]=%v:\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">score</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;score[%d]=%v:\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">score</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="for-range">for-range结构遍历</h5>
+</div><h5 id="for-range结构遍历">for-range结构遍历</h5>
 <p>for index, value := range array01 {
 &hellip;
 }
@@ -719,7 +716,7 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 <p>demo：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -729,20 +726,20 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">heroes</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;亚瑟&#34;</span><span class="p">,</span> <span class="s">&#34;孙斌&#34;</span><span class="p">,</span> <span class="s">&#34;安其拉&#34;</span><span class="p">}</span>
-
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heroes</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;第%d位英雄：%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heroes</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;英雄：%v\n&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">heroes</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;亚瑟&#34;</span><span class="p">,</span> <span class="s">&#34;孙斌&#34;</span><span class="p">,</span> <span class="s">&#34;安其拉&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heroes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;第%d位英雄：%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heroes</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;英雄：%v\n&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -752,23 +749,23 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">第0位英雄：李白
-第1位英雄：亚瑟
-第2位英雄：孙斌
-第3位英雄：安其拉
-英雄：李白
-英雄：亚瑟
-英雄：孙斌
-英雄：安其拉
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">第0位英雄：李白
+</span></span><span class="line"><span class="cl">第1位英雄：亚瑟
+</span></span><span class="line"><span class="cl">第2位英雄：孙斌
+</span></span><span class="line"><span class="cl">第3位英雄：安其拉
+</span></span><span class="line"><span class="cl">英雄：李白
+</span></span><span class="line"><span class="cl">英雄：亚瑟
+</span></span><span class="line"><span class="cl">英雄：孙斌
+</span></span><span class="line"><span class="cl">英雄：安其拉
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="1534-">1.5.3.4 数组使用案例</h5>
+</div><h5 id="1534-数组使用案例">1.5.3.4 数组使用案例</h5>
 <ol>
-<li>建一个 byte 类型的 26 个元素的数组，分别 放置'A&rsquo;-&lsquo;Z‘。使用 for 循环访问所有元素并打印出来。提示：字符数据运算 &lsquo;A'+1 -&gt; &lsquo;B&rsquo;</li>
+<li>建一个 byte 类型的 26 个元素的数组，分别 放置&rsquo;A&rsquo;-&lsquo;Z‘。使用 for 循环访问所有元素并打印出来。提示：字符数据运算 &lsquo;A&rsquo;+1 -&gt; &lsquo;B&rsquo;</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -778,22 +775,22 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">chars</span> <span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="kt">byte</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="nx">chars</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span> <span class="o">+</span> <span class="nb">byte</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">chars</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;字符是：%c\n&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">chars</span> <span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">26</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">chars</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span> <span class="o">+</span> <span class="nb">byte</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">chars</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;字符是：%c\n&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>随机生成5个数字，并将其反转打印出来</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -810,24 +807,24 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">intArr3</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
-<span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">intArr3</span> <span class="p">{</span>
-	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;\n\r&#34;</span><span class="p">)</span>
-<span class="nx">temp</span> <span class="o">:=</span> <span class="mi">0</span>
-<span class="nx">length</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="nx">temp</span> <span class="p">=</span> <span class="nx">intArr3</span><span class="p">[</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">]</span>
-	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">temp</span>
-<span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">intArr3</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">intArr3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;\n\r&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">temp</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="nx">length</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">temp</span> <span class="p">=</span> <span class="nx">intArr3</span><span class="p">[</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">intArr3</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">temp</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">intArr3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="154-">1.5.4 数组使用的注意事项和细节</h4>
+</div><h4 id="154-数组使用的注意事项和细节">1.5.4 数组使用的注意事项和细节</h4>
 <ol>
 <li>数组是多个相同类型数据的组合,一个数组一旦声明/定义了,其长度是固定的, 不能动态变化</li>
 <li>var arr []int 这时 arr 就是一个 slice 切片.</li>
@@ -840,7 +837,7 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -850,22 +847,22 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">arr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">88</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
-	<span class="nf">test</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">arr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">88</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">test</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="9">
 <li>如想在其它函数中，去修改原来的数组，可以使用引用传递(指针方式)。demo:</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -876,22 +873,22 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">arr</span> <span class="o">*</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;arr是指针类型，它的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">arr</span><span class="p">)</span>
-	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">88</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
-	<span class="nf">test</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">arr</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">(</span><span class="nx">arr</span> <span class="o">*</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;arr是指针类型，它的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">88</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">test</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="10">
 <li>长度是数组类型的一部分，在传递函数参数时 需要考虑数组的长度。</li>
 </ol>
-<h2 id="16-">1.6 切片</h2>
-<h3 id="161-">1.6.1 切片的基本介绍</h3>
+<h2 id="16-切片">1.6 切片</h2>
+<h3 id="161-切片的基本介绍">1.6.1 切片的基本介绍</h3>
 <ol>
 <li>切片的英文是 slice</li>
 <li>切片是数组的一个引用，因此切片是引用类型，在进行传递时，遵守引用传递的机制。</li>
@@ -899,43 +896,43 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 <li>切片的长度是可以变化的，因此切片是一个可以动态变化数组。</li>
 <li>切片定义的基本语法: var 切片名 []类型 比如：var a [] int</li>
 </ol>
-<h3 id="162-">1.6.2 切片的使用</h3>
-<h4 id="1621-">1.6.2.1 切片的声明</h4>
+<h3 id="162-切片的使用">1.6.2 切片的使用</h3>
+<h4 id="1621-切片的声明">1.6.2.1 切片的声明</h4>
 <p>切片使用有三种方式</p>
-<h5 id="slice">第一种slice声明方式：</h5>
+<h5 id="第一种slice声明方式">第一种slice声明方式：</h5>
 <p>定义一个数组，然后让切片去引用一个已经创建好的数组，比如前面的案例就是这样的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">arr</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
-<span class="kd">var</span> <span class="nx">slice3</span> <span class="p">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice3</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">arr</span> <span class="p">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice3</span> <span class="p">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="slice-1">第二种slice声明方式：</h5>
+</div><h5 id="第二种slice声明方式">第二种slice声明方式：</h5>
 <p>通过 make 来创建切片.
 基本语法：var 切片名 []type = make([]type, len, [cap])</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">slice1</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="c1">//60非必须
-</span><span class="c1"></span><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice1</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="c1">//60非必须
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>参数说明: type:  就是数据类型	len : 大小	cap ：指定切片容量，可选， 如果你分配了 cap,则要求 cap&gt;=len.
 对上面代码的小结:</p>
@@ -944,26 +941,26 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 <li>如果没有给切片的各个元素赋值，那么就会使用默认值[int , float=&gt; 0	string =&gt;””	bool =&gt; false]</li>
 <li>通过 make 方式创建的切片对应的数组是由 make 底层维护，对外不可见，即只能通过 slice 去访问各个元素.</li>
 </ol>
-<h5 id="slice-2">第三种slice声明方式：</h5>
+<h5 id="第三种slice声明方式">第三种slice声明方式：</h5>
 <p>定义一个切片，直接就指定具体数组，使用原理类似 make 的方式.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">slice2</span> <span class="p">=</span> <span class="p">[</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;杜甫&#34;</span><span class="p">,</span> <span class="s">&#34;孟浩然&#34;</span><span class="p">,</span> <span class="s">&#34;王维&#34;</span><span class="p">}</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice2</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice2</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;杜甫&#34;</span><span class="p">,</span> <span class="s">&#34;孟浩然&#34;</span><span class="p">,</span> <span class="s">&#34;王维&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>demo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -971,27 +968,27 @@ intArr的地址: 0xc0000b8000, intArr[0]的地址: 0xc0000b8000 intArr[1]的地�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="p">[</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-5">方式一和方式二的区别</h5>
+</div><h5 id="方式一和方式二的区别">方式一和方式二的区别</h5>
 <p>方式一是直接引用数组，这个数组是事先存在的，程序员可见。
 方式二是通过make创建切片，make也会创建一个数组，是由切片在底层维护的，程序员不可见。</p>
-<h4 id="1622-">1.6.2.2 切片的遍历</h4>
+<h4 id="1622-切片的遍历">1.6.2.2 切片的遍历</h4>
 <p>切片的遍历有两种形式</p>
-<h5 id="for">for循环</h5>
+<h5 id="for循环">for循环</h5>
 <p>上面的demo中均有示例，不再赘述。</p>
-<h5 id="for-range-1">for-range循环</h5>
+<h5 id="for-range循环">for-range循环</h5>
 <p>上面的demo中均有示例，不再赘述。</p>
-<h3 id="163-">1.6.3 切片在内存中的形式</h3>
-<h4 id="heading-6">基本的介绍：</h4>
+<h3 id="163-切片在内存中的形式">1.6.3 切片在内存中的形式</h3>
+<h4 id="基本的介绍">基本的介绍：</h4>
 <p>为了让大家更加深入的理解切片，我们画图分析一下切片在内存中是如何布局的，这个是一个非常重要的知识点：(以前面的案例来分析)</p>
-<h4 id="heading-7">切片的内存布局</h4>
+<h4 id="切片的内存布局">切片的内存布局</h4>
 <ol>
 <li>slice 的确是一个引用类型</li>
 <li>slice 从底层来说，其实就是一个数据结构(struct 结构体) type slice struct {
@@ -1002,7 +999,7 @@ cap	int
 内存中slice分三部分，一部分存入的是数组的起始内存地址的引用（注意不需要结束内存地址）；一部分是存len，一部分是存cap。</li>
 <li>slice实际就是一个结构体。</li>
 </ol>
-<h3 id="164-">1.6.4 切片的注意事项</h3>
+<h3 id="164-切片的注意事项">1.6.4 切片的注意事项</h3>
 <ol>
 <li>
 <p>切片初始化时 var slice = arr[startIndex:endIndex]
@@ -1027,39 +1024,39 @@ demo:</p>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">slice1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">slice1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>demo2:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">slice1</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="nx">slice1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span> <span class="nx">slice1</span><span class="o">...</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice1</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">slice1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice1</span><span class="p">,</span> <span class="nx">slice1</span><span class="o">...</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%d, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>切片是引用类型，所以在传递时，遵守引用传递机制。</li>
 </ol>
-<h4 id="165--append-">1.6.5 <strong>切片 append 操作的底层原理分析</strong>:</h4>
+<h4 id="165-切片-append-操作的底层原理分析">1.6.5 <strong>切片 append 操作的底层原理分析</strong>:</h4>
 <p>切片 append 操作的本质就是对数组扩容</p>
 <p>go 底层会创建一下新的数组 newArr(安装扩容后大小)
 将 slice 原来包含的元素拷贝到新的数组 newArr slice 重新引用到 newArr</p>
@@ -1067,11 +1064,11 @@ demo:</p>
 <p>注意：newArr 是在底层来维护的，程序员不可见.</p>
 </blockquote>
 <p>![image-20200328172643783](/Users/yangzhengyuan/Library/Application Support/typora-user-images/image-20200328172643783.png)</p>
-<h4 id="166-copy">1.6.6 切片copy操作</h4>
-<h5 id="1661-copy">1.6.6.1 copy操作示例</h5>
+<h4 id="166-切片copy操作">1.6.6 切片copy操作</h4>
+<h5 id="1661-copy操作示例">1.6.6.1 copy操作示例</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1079,42 +1076,42 @@ demo:</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">slice2</span> <span class="p">=</span> <span class="p">[</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;杜甫&#34;</span><span class="p">,</span> <span class="s">&#34;孟浩然&#34;</span><span class="p">,</span> <span class="s">&#34;王维&#34;</span><span class="p">}</span>
-<span class="kd">var</span> <span class="nx">slice3</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="c1">//注意不要写反了
-</span><span class="c1"></span><span class="nb">copy</span><span class="p">(</span><span class="nx">slice3</span><span class="p">,</span> <span class="nx">slice2</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;slice2=&#34;</span><span class="p">,</span> <span class="nx">slice2</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;slice3=&#34;</span><span class="p">,</span> <span class="nx">slice3</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice2</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;李白&#34;</span><span class="p">,</span> <span class="s">&#34;杜甫&#34;</span><span class="p">,</span> <span class="s">&#34;孟浩然&#34;</span><span class="p">,</span> <span class="s">&#34;王维&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">slice3</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//注意不要写反了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">copy</span><span class="p">(</span><span class="nx">slice3</span><span class="p">,</span> <span class="nx">slice2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;slice2=&#34;</span><span class="p">,</span> <span class="nx">slice2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;slice3=&#34;</span><span class="p">,</span> <span class="nx">slice3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="1662-copy">1.6.6.2 Copy注意事项</h5>
+</div><h5 id="1662-copy注意事项">1.6.6.2 Copy注意事项</h5>
 <ol>
 <li>copy(para1, para2) 参数的数据类型是切片</li>
 <li>按照上面的代码来看, slice4 和 slice5 的数据空间是独立，相互不影响，也就是说 slice4[0]= 999, slice5[0] 仍然是 1</li>
 </ol>
-<h4 id="167-string--slice">1.6.7 string 和 slice</h4>
+<h4 id="167-string-和-slice">1.6.7 string 和 slice</h4>
 <ol>
 <li>string 底层是一个 byte 数组，因此 string 也可以进行切片处理。</li>
 <li>string 和切片在内存的形式，以 &ldquo;abcd&rdquo; 画出内存示意图。</li>
 </ol>
-<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <ol start="3">
 <li>string 是不可变的，也就说不能通过 str[0] = &lsquo;z&rsquo; 方式来修改字符串。</li>
 <li>如果需要修改字符串，可以先将 string -&gt; []byte / 或者 []rune -&gt; 修改 -&gt; 重写转成 string</li>
 </ol>
-<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h2 id="17-map">1.7 map</h2>
-<h3 id="171-map">1.7.1 map的基本介绍</h3>
+<h3 id="171-map的基本介绍">1.7.1 map的基本介绍</h3>
 <p>map 是 key-value 数据结构，又称为字段或者关联数组。类似其它编程语言的集合， 在编程中是经常使用到。</p>
-<h3 id="172-map">1.7.2 map的声明</h3>
-<h4 id="1721-map">1.7.2.1 map的基本语法</h4>
+<h3 id="172-map的声明">1.7.2 map的声明</h3>
+<h4 id="1721-map的基本语法">1.7.2.1 map的基本语法</h4>
 <p>var map 变量名 map[keytype]valuetype</p>
-<h5 id="key-">key 可以是什么类型</h5>
+<h5 id="key-可以是什么类型">key 可以是什么类型</h5>
 <p>golang 中的 map，的 key 可以是很多种类型，比如 bool, 数字，string, 指针, channel , 还可以是只包含前面几个类型的 接口, 结构体, 数组，<strong>通常 key 为 int 、string</strong>。</p>
 <p>注意: slice， map 还有 function 不可以，因为这几个没法用 == 来判断</p>
-<h5 id="valuetype-">valuetype 可以是什么类型</h5>
+<h5 id="valuetype-可以是什么类型">valuetype 可以是什么类型</h5>
 <p>valuetype 的类型和 key 基本一样，通常为: 数字(整数,浮点数),string,map,struct</p>
-<h4 id="1722-map">1.7.2.2 map的声明举例</h4>
+<h4 id="1722-map的声明举例">1.7.2.2 map的声明举例</h4>
 <p>map 声明的举例：</p>
 <ol>
 <li>
@@ -1134,7 +1131,7 @@ demo:</p>
 <p>Demo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1149,20 +1146,20 @@ demo:</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">heros</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span>
-	<span class="c1">//在使用map前，需要先make，make的作用就是给map分配内存数据空间
-</span><span class="c1"></span>	<span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;白龙马&#34;</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;heros=&#34;</span><span class="p">,</span> <span class="nx">heros</span><span class="p">)</span>
-	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">heros</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//在使用map前，需要先make，make的作用就是给map分配内存数据空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;白龙马&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;heros=&#34;</span><span class="p">,</span> <span class="nx">heros</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对上面代码的说明</p>
 <ol>
@@ -1172,11 +1169,11 @@ demo:</p>
 <li>map 的 key-value 是无序的</li>
 <li>make 内置函数数目</li>
 </ol>
-<h3 id="173-map">1.7.3 map的使用方式</h3>
-<h4 id="heading-8">第一种使用方式</h4>
+<h3 id="173-map的使用方式">1.7.3 map的使用方式</h3>
+<h4 id="第一种使用方式">第一种使用方式</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1191,25 +1188,25 @@ demo:</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">heros</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span>
-	<span class="c1">//在使用map前，需要先make，make的作用就是给map分配内存数据空间
-</span><span class="c1"></span>	<span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
-	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;白龙马&#34;</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;heros=&#34;</span><span class="p">,</span> <span class="nx">heros</span><span class="p">)</span>
-	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">heros</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//在使用map前，需要先make，make的作用就是给map分配内存数据空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;白龙马&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;heros=&#34;</span><span class="p">,</span> <span class="nx">heros</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-9">第二种使用方式</h4>
+</div><h4 id="第二种使用方式">第二种使用方式</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1218,19 +1215,19 @@ demo:</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
-<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
-<span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">heros</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no1&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;孙悟空&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no2&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;猪八戒&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">heros</span><span class="p">[</span><span class="s">&#34;no3&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;沙和尚&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-10">第三种使用方式</h4>
+</div><h4 id="第三种使用方式">第三种使用方式</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1241,21 +1238,21 @@ demo:</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">heros</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-  <span class="s">&#34;no1&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
-  <span class="s">&#34;no2&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
-  <span class="s">&#34;no3&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
-  <span class="s">&#34;no4&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">heros</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;no1&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;no2&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;no3&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;no4&#34;</span><span class="p">:</span> <span class="s">&#34;孙悟空&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">heros</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="174-">1.7.4 使用案例</h3>
+</div><h3 id="174-使用案例">1.7.4 使用案例</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1273,33 +1270,33 @@ demo:</p>
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">students</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;tom&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;20&#34;</span>
-
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;jack&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;23&#34;</span>
-
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;\n\r&#34;</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">students</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;tom&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;20&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;jack&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;23&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;\n\r&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;name&#34;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="175-map">1.7.5 map的增删改查操作</h3>
-<h5 id="1751-map-">1.7.5.1 map 增加和更新：</h5>
+</div><h3 id="175-map的增删改查操作">1.7.5 map的增删改查操作</h3>
+<h5 id="1751-map-增加和更新">1.7.5.1 map 增加和更新：</h5>
 <p>map[&ldquo;key&rdquo;] = value //如果 key 还没有，就是增加，如果 key 存在就是修改。</p>
-<h5 id="1752-">1.7.5.2 删除</h5>
+<h5 id="1752-删除">1.7.5.2 删除</h5>
 <p>map 删除： <strong>说明</strong>：
 delete(map，&ldquo;key&rdquo;) ，delete 是一个内置函数，如果 key 存在，就删除该 key-value,如果 key 不存在， 不操作，但是也不会报错。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1323,37 +1320,37 @@ delete(map，&ldquo;key&rdquo;) ，delete 是一个内置函数，如果 key 存
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">students</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;tom&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;20&#34;</span>
-
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;jack&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
-<span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span><span class="p">[</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;23&#34;</span>
-
-<span class="c1">// fmt.Println(students)
-</span><span class="c1"></span><span class="c1">// fmt.Println(&#34;\n\r&#34;)
-</span><span class="c1"></span><span class="c1">// fmt.Println(students[&#34;student02&#34;])
-</span><span class="c1"></span><span class="c1">// fmt.Println(students[&#34;student02&#34;][&#34;name&#34;])
-</span><span class="c1"></span>
-<span class="c1">//删除操作
-</span><span class="c1"></span><span class="nb">delete</span><span class="p">(</span><span class="nx">students</span><span class="p">,</span> <span class="s">&#34;student02&#34;</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">students</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">students</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;tom&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student01&#34;</span><span class="p">][</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;20&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;name&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;jack&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;sex&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;男&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">][</span><span class="s">&#34;age&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;23&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// fmt.Println(students)
+</span></span></span><span class="line"><span class="cl"><span class="c1">// fmt.Println(&#34;\n\r&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="c1">// fmt.Println(students[&#34;student02&#34;])
+</span></span></span><span class="line"><span class="cl"><span class="c1">// fmt.Println(students[&#34;student02&#34;][&#34;name&#34;])
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//删除操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">delete</span><span class="p">(</span><span class="nx">students</span><span class="p">,</span> <span class="s">&#34;student02&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">students</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;i=%v, v=%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>注意：如果我们要删除 map 的所有 key ,没有一个专门的方法一次删除，可以遍历一下 key, 逐个删除或者 map = make(&hellip;)，make 一个新的，让原来的成为垃圾，被 gc 回收。</p>
 </blockquote>
-<h4 id="1753-">1.7.5.3 查找</h4>
+<h4 id="1753-查找">1.7.5.3 查找</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1362,14 +1359,14 @@ delete(map，&ldquo;key&rdquo;) ，delete 是一个内置函数，如果 key 存
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//map的查找功能
-</span><span class="c1"></span><span class="nx">value</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span>
-<span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;没有student02&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">//map的查找功能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">value</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">students</span><span class="p">[</span><span class="s">&#34;student02&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;没有student02&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -1437,7 +1434,7 @@ delete(map，&ldquo;key&rdquo;) ，delete 是一个内置函数，如果 key 存
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

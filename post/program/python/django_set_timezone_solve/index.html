@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/django_set_timezone_solve/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="Django设置时区教程" />
 <meta property="og:description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/python/django_set_timezone_solve/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/django_set_timezone_solve/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-09-11T22:09:28+08:00" />
 <meta property="article:modified_time" content="2019-09-11T22:09:28+08:00" />
+
 <meta itemprop="name" content="Django设置时区教程">
-<meta itemprop="description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，">
-<meta itemprop="datePublished" content="2019-09-11T22:09:28&#43;08:00" />
-<meta itemprop="dateModified" content="2019-09-11T22:09:28&#43;08:00" />
-<meta itemprop="wordCount" content="558">
-
-
-
+<meta itemprop="description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，"><meta itemprop="datePublished" content="2019-09-11T22:09:28+08:00" />
+<meta itemprop="dateModified" content="2019-09-11T22:09:28+08:00" />
+<meta itemprop="wordCount" content="566">
 <meta itemprop="keywords" content="python,django,timezone," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django设置时区教程"/>
 <meta name="twitter:description" content="问题描述 用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，"/>
@@ -129,7 +126,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"> 编程语言 </a>
             </div>
-          <span class="more-meta"> 约 558 字 </span>
+          <span class="more-meta"> 约 566 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -140,63 +137,63 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">问题延伸</a></li>
-    <li><a href="#heading-3">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#问题解决">问题解决</a></li>
+    <li><a href="#问题延伸">问题延伸</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
-<p>用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，django的配置文件在settings里面，找到它，搜索，确实有一个TIME_ZONE 配置，而且也确实是TIME_ZONE ='UTC&rsquo;，那么就简单了，修改之：</p>
+      <h2 id="问题描述">问题描述</h2>
+<p>用django存入数据库数据的时候发现时间比当前少了整整8个小时。按照开发经验，马上反应过来是因为时区问题。时区问题一般在配置文件，django的配置文件在settings里面，找到它，搜索，确实有一个TIME_ZONE 配置，而且也确实是TIME_ZONE =&lsquo;UTC&rsquo;，那么就简单了，修改之：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">Asia/Shanghai</span><span class="s1">&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后再次执行，发现数据库中数据记录还是少了8小时。怎么回事？
 重启python虚拟环境，再次执行，还是一样少了8小时。</p>
-<h2 id="heading-1">问题解决</h2>
+<h2 id="问题解决">问题解决</h2>
 <p>查了资料，再加上看了一点django的代码，发现源代码中有一句：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-            <span class="sa"></span><span class="s2">&#34;</span><span class="s2">ALTER SESSION SET NLS_DATE_FORMAT = </span><span class="s2">&#39;</span><span class="s2">YYYY-MM-DD HH24:MI:SS</span><span class="s2">&#39;</span><span class="s2">&#34;</span>
-            <span class="sa"></span><span class="s2">&#34;</span><span class="s2"> NLS_TIMESTAMP_FORMAT = </span><span class="s2">&#39;</span><span class="s2">YYYY-MM-DD HH24:MI:SS.FF</span><span class="s2">&#39;</span><span class="s2">&#34;</span> <span class="o">+</span>
-            <span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2"> TIME_ZONE = </span><span class="s2">&#39;</span><span class="s2">UTC</span><span class="s2">&#39;</span><span class="s2">&#34;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">USE_TZ</span> <span class="k">else</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;ALTER SESSION SET NLS_DATE_FORMAT = &#39;YYYY-MM-DD HH24:MI:SS&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34; NLS_TIMESTAMP_FORMAT = &#39;YYYY-MM-DD HH24:MI:SS.FF&#39;&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="s2">&#34; TIME_ZONE = &#39;UTC&#39;&#34;</span> <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">USE_TZ</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/img/program/python/django_set_timezone.png" alt="图例" title="图例"></p>
 <p>它对一个配置做了判断：TIME_ZONE，What the F&hellip;。我想问这个框架作者一个时区需要两个配置一起修改才生效不觉得自己脑子有问题么？</p>
 <p>知道问题了，那么我们修改它：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">Asia/Shanghai</span><span class="s1">&#39;</span>
-<span class="c1"># USE_TZ = True</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># USE_TZ = True</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>再次执行，时间OK了。</p>
-<h2 id="heading-2">问题延伸</h2>
+<h2 id="问题延伸">问题延伸</h2>
 <p>django框架虽然名气很大，但是坑也还是很多，例如我目前遇到的最大的坑就是log日志模块的配置，折腾了快一天才配置好，真的是想问候框架作者的家人。
 另外，从框架的设计思想看，跟laravel这种成熟的框架差别还是很大的，虽然django比laravel出来的早，但是更让我觉得认同的还是laravel的框架整体架构和思想。</p>
-<h2 id="heading-3">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="https://blog.csdn.net/weixin_37773766/article/details/80604932">https://blog.csdn.net/weixin_37773766/article/details/80604932</a></p>
 
     </div>
@@ -266,7 +263,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

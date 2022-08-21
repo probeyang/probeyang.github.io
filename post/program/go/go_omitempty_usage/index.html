@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/go/go_omitempty_usage/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="go语言中omitempty使用说明" />
 <meta property="og:description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/go/go_omitempty_usage/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/go/go_omitempty_usage/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-07-07T20:40:35+08:00" />
 <meta property="article:modified_time" content="2021-07-07T20:49:35+08:00" />
+
 <meta itemprop="name" content="go语言中omitempty使用说明">
-<meta itemprop="description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段">
-<meta itemprop="datePublished" content="2021-07-07T20:40:35&#43;08:00" />
-<meta itemprop="dateModified" content="2021-07-07T20:49:35&#43;08:00" />
+<meta itemprop="description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段"><meta itemprop="datePublished" content="2021-07-07T20:40:35+08:00" />
+<meta itemprop="dateModified" content="2021-07-07T20:49:35+08:00" />
 <meta itemprop="wordCount" content="163">
-
-
-
 <meta itemprop="keywords" content="go," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="go语言中omitempty使用说明"/>
 <meta name="twitter:description" content="问题描述 在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段"/>
@@ -140,21 +137,21 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#问题解决">问题解决</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      <h2 id="问题描述">问题描述</h2>
 <p>在代码中，使用了这个关键字，最后输出的内容里面，发现，当with_header为false的时候却没有输出with_header字段。这就奇怪了，明明写了字段却不返回，只有为true的时候才返回。</p>
 <p><img src="/img/program/go/image1.png" alt="展示效果" title="展示效果"></p>
-<h2 id="heading-1">问题解决</h2>
+<h2 id="问题解决">问题解决</h2>
 <p>最后查资料才发现，原来是omitempty字段捣的鬼。去除此内容后就好了：</p>
 <p><img src="/img/program/go/image2.png" alt="展示效果" title="展示效果"></p>
-<h2 id="heading-2">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="https://blog.csdn.net/stpeace/article/details/82744364">omitempty在go中的使用</a></p>
 
     </div>
@@ -165,7 +162,11 @@
           <a href="/tags/go/">go</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/software/elasticsearch/mysql_to_es/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MySQL实时同步数据到ElasticSearch</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/store/clickhouse_abnormal_fix/">
             <span class="next-text nav-default">记一次clickhouse异常排查</span>
             <span class="next-text nav-mobile">下一篇</span>
@@ -218,7 +219,7 @@
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

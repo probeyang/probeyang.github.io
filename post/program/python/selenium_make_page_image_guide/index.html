@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="使用selenium自动化工具截取页面为图片" />
 <meta property="og:description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/selenium_make_page_image_guide/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-08-26T00:34:49+08:00" />
 <meta property="article:modified_time" content="2019-08-26T00:34:49+08:00" />
+
 <meta itemprop="name" content="使用selenium自动化工具截取页面为图片">
-<meta itemprop="description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium">
-<meta itemprop="datePublished" content="2019-08-26T00:34:49&#43;08:00" />
-<meta itemprop="dateModified" content="2019-08-26T00:34:49&#43;08:00" />
+<meta itemprop="description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium"><meta itemprop="datePublished" content="2019-08-26T00:34:49+08:00" />
+<meta itemprop="dateModified" content="2019-08-26T00:34:49+08:00" />
 <meta itemprop="wordCount" content="895">
-
-
-
 <meta itemprop="keywords" content="python,selenium,chrome," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用selenium自动化工具截取页面为图片"/>
 <meta name="twitter:description" content="简介 此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。 使用 首先，下载selenium"/>
@@ -140,29 +137,29 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">简介</a></li>
-    <li><a href="#heading-1">使用</a>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#使用">使用</a>
       <ul>
-        <li><a href="#selenium">首先，下载selenium：</a></li>
-        <li><a href="#test-selepy">再次，写代码test_sele.py：</a></li>
-        <li><a href="#python3-test-selepy">然后执行：python3 test_sele.py</a></li>
+        <li><a href="#首先下载selenium">首先，下载selenium：</a></li>
+        <li><a href="#再次写代码test_selepy">再次，写代码test_sele.py：</a></li>
+        <li><a href="#然后执行python3-test_selepy">然后执行：python3 test_sele.py</a></li>
       </ul>
     </li>
-    <li><a href="#heading-2">参考文献：</a></li>
+    <li><a href="#参考文献">参考文献：</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">简介</h2>
+      <h2 id="简介">简介</h2>
 <p>此工具模拟浏览器（实际上是直接调用浏览器driver）截取页面，所以存在各个浏览器不同的driver情况。</p>
-<h2 id="heading-1">使用</h2>
-<h3 id="selenium">首先，下载selenium：</h3>
+<h2 id="使用">使用</h2>
+<h3 id="首先下载selenium">首先，下载selenium：</h3>
 <p>pip  install selenium</p>
-<h3 id="test-selepy">再次，写代码test_sele.py：</h3>
+<h3 id="再次写代码test_selepy">再次，写代码test_sele.py：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -173,22 +170,22 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="python3-test-selepy">然后执行：python3 test_sele.py</h3>
+</div><h3 id="然后执行python3-test_selepy">然后执行：python3 test_sele.py</h3>
 <p>运行结果会报错，一般为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -210,27 +207,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>pb@MacBook-Pro <span class="nb">test</span> <span class="o">]</span>$ python3 test_selenium.py
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 76, in start
-    <span class="nv">stdin</span><span class="o">=</span>PIPE<span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 947, in __init__
-    restore_signals, start_new_session<span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 1551, in _execute_child
-    raise child_exception_type<span class="o">(</span>errno_num, err_msg<span class="o">)</span>
-FileNotFoundError: <span class="o">[</span>Errno 2<span class="o">]</span> No such file or directory: <span class="s1">&#39;geckodriver&#39;</span>
-
-During handling of the above exception, another exception occurred:
-
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&#34;test_selenium.py&#34;</span>, line 10, in &lt;module&gt;
-    <span class="nv">brower</span> <span class="o">=</span> webdriver.Firefox<span class="o">(</span><span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py&#34;</span>, line 152, in __init__
-    self.service.start<span class="o">(</span><span class="o">)</span>
-  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 83, in start
-    os.path.basename<span class="o">(</span>self.path<span class="o">)</span>, self.start_error_message<span class="o">)</span>
-selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;geckodriver&#39;</span> executable needs to be in PATH.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>pb@MacBook-Pro <span class="nb">test</span> <span class="o">]</span>$ python3 test_selenium.py
+</span></span><span class="line"><span class="cl">Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 76, in start
+</span></span><span class="line"><span class="cl">    <span class="nv">stdin</span><span class="o">=</span>PIPE<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 947, in __init__
+</span></span><span class="line"><span class="cl">    restore_signals, start_new_session<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py&#34;</span>, line 1551, in _execute_child
+</span></span><span class="line"><span class="cl">    raise child_exception_type<span class="o">(</span>errno_num, err_msg<span class="o">)</span>
+</span></span><span class="line"><span class="cl">FileNotFoundError: <span class="o">[</span>Errno 2<span class="o">]</span> No such file or directory: <span class="s1">&#39;geckodriver&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">During handling of the above exception, another exception occurred:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;test_selenium.py&#34;</span>, line 10, in &lt;module&gt;
+</span></span><span class="line"><span class="cl">    <span class="nv">brower</span> <span class="o">=</span> webdriver.Firefox<span class="o">()</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py&#34;</span>, line 152, in __init__
+</span></span><span class="line"><span class="cl">    self.service.start<span class="o">()</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/common/service.py&#34;</span>, line 83, in start
+</span></span><span class="line"><span class="cl">    os.path.basename<span class="o">(</span>self.path<span class="o">)</span>, self.start_error_message<span class="o">)</span>
+</span></span><span class="line"><span class="cl">selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;geckodriver&#39;</span> executable needs to be in PATH.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个错误是因为没有geckodriver程序，需要下载并解压后放到/usr/bin或者/usr/local/bin目录下面。下载地址：https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst
 或者：
@@ -240,7 +237,7 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 先给出chrome浏览器的代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -252,17 +249,17 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-
-<span class="c1"># brower = webdriver.Firefox()</span>
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">/Users/yang/study/python/test/driver/chromedriver</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># brower = webdriver.Firefox()</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="s1">&#39;/Users/yang/study/python/test/driver/chromedriver&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意，这里Chrome()里面一定要放能使用的chromedriver，这个不是chrome程序，而是需要单独下载的driver程序。
 下载地址在：https://sites.google.com/a/chromium.org/chromedriver/home或者直接在：
@@ -271,7 +268,7 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 <p>下面给出Firefox的代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -282,19 +279,19 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-
-<span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">http://www.baidu.com</span><span class="s2">&#34;</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">baidu.png</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">brower</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.baidu.com&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="s1">&#39;baidu.png&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">brower</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此，讲解完毕。</p>
-<h2 id="heading-2">参考文献：</h2>
+<h2 id="参考文献">参考文献：</h2>
 <p><a href="https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac">https://stackoverflow.com/questions/39428042/use-selenium-with-chromedriver-on-mac</a></p>
 <p><a href="https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst">https://github.com/SeleniumHQ/selenium/blob/master/py/docs/source/index.rst</a></p>
 <p><a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></p>
@@ -369,7 +366,7 @@ selenium.common.exceptions.WebDriverException: Message: <span class="s1">&#39;ge
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

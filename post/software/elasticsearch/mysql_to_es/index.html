@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MySQL实时同步数据到ElasticSearch - Sanlt,就是加了N多盐的地方</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="probeyang" /><meta name="description" content="背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd" /><meta name="keywords" content="ElasticSearch, 实时同步, MySQL, 数据" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
+
+
+<link rel="canonical" href="https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.fce678a23da9bc8674187e699d2657dfa3b0032cb9001b70f2ec79b8452ffac2.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="MySQL实时同步数据到ElasticSearch" />
+<meta property="og:description" content="背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-15T16:42:10+08:00" />
+<meta property="article:modified_time" content="2022-08-15T16:42:10+08:00" />
+
+<meta itemprop="name" content="MySQL实时同步数据到ElasticSearch">
+<meta itemprop="description" content="背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd"><meta itemprop="datePublished" content="2022-08-15T16:42:10+08:00" />
+<meta itemprop="dateModified" content="2022-08-15T16:42:10+08:00" />
+<meta itemprop="wordCount" content="3178">
+<meta itemprop="keywords" content="ElasticSearch,实时同步,MySQL,数据," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL实时同步数据到ElasticSearch"/>
+<meta name="twitter:description" content="背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Sanlt</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Sanlt</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MySQL实时同步数据到ElasticSearch</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-08-15 </span>
+        <div class="post-category">
+            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"> 软件工程 </a>
+            </div>
+          <span class="more-meta"> 约 3178 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#mysql-实时同步数据到-elasticsearch-配置">MySQL 实时同步数据到 ElasticSearch 配置</a>
+      <ul>
+        <li><a href="#一准备工作">一、准备工作</a></li>
+        <li><a href="#二安装go-mysql-elasticsearch">二、安装go-mysql-elasticsearch</a></li>
+        <li><a href="#三启动go-mysql-elasticsearch">三、启动go-mysql-elasticsearch</a></li>
+        <li><a href="#四go-mysql-elasticsearch缺陷">四、go-mysql-elasticsearch缺陷</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="背景">背景</h2>
+<p>ElasticSearch安装参考：<a href="https://www.yuque.com/docs/share/3287139b-aa8b-4bd6-8c96-76f58ee0f9b6?#">https://www.yuque.com/docs/share/3287139b-aa8b-4bd6-8c96-76f58ee0f9b6?#</a> 《ElasticSearch安装》密码：nxys
+数据实时同步工具采用的是使用go开发的一个开源插件：<a href="https://github.com/go-mysql-org/go-mysql-elasticsearch">https://github.com/go-mysql-org/go-mysql-elasticsearch</a>
+需要配置mysql的配置文件，server-id，log-bin，binlog-do-db，binlog_format等配置，做好主从配置的主库配置，如图
+<img src="/img/software/es/1.png" alt="image.png">
+此工具需要先在ElasticSearch中创建索引，因为mysqldump出来的SQL文件中没有创建数据库的语句，所以必须手动创建索引。
+go-mysql-elasticsearch工具，顾名思义肯定是要安装go语言的环境的。推荐安装go最新版即可。</p>
+<h2 id="mysql-实时同步数据到-elasticsearch-配置">MySQL 实时同步数据到 ElasticSearch 配置</h2>
+<h3 id="一准备工作">一、准备工作</h3>
+<h4 id="11-修改mysql配置文件">1.1 修改MySQL配置文件</h4>
+<p><img src="/img/software/es/2.png" alt="image.png"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim /etc/my.cnf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加或修改如下内容：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">datadir</span><span class="o">=</span>/var/lib/mysql
+</span></span><span class="line"><span class="cl"><span class="nv">socket</span><span class="o">=</span>/var/lib/mysql/mysql.sock
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">log-error<span class="o">=</span>/var/log/mysqld.log
+</span></span><span class="line"><span class="cl">pid-file<span class="o">=</span>/var/run/mysqld/mysqld.pid
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#[必须]主服务器唯一ID </span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#【必须】启用二进制日志 </span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>mysql-bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#设置需要复制的数据库，注意这里设置的是要同步的数据库，根据实际情况进行调整</span>
+</span></span><span class="line"><span class="cl">binlog-do-db<span class="o">=</span>goto
+</span></span><span class="line"><span class="cl"><span class="c1">#设置logbin格式</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#binlog_format=STATEMENT</span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_format</span><span class="o">=</span>ROW
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">auto-increment-increment<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">auto-increment-offset<span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存后，退出，重启MySQL：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart mysqld
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看mysql状态</span>
+</span></span><span class="line"><span class="cl">systemctl status mysqld
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如图，说明启动成功：
+<img src="/img/software/es/3.png" alt="image.png"></p>
+<h4 id="12-在mysql创建账号">1.2 在mysql创建账号</h4>
+<p>创建需要同步数据的账号：elastic，密码：Elastic_123
+<img src="/img/software/es/4.png" alt="image.png"></p>
+<h4 id="13-安装go环境">1.3 安装go环境</h4>
+<p>参考：<a href="https://studygolang.com/articles/26443">https://studygolang.com/articles/26443</a></p>
+<ol>
+<li>下载最新版的SDK压缩包，传送门：<a href="https://golang.org/dl/">https://golang.org/dl/</a>。命令：wget <a href="https://go.dev/dl/go1.18.4.linux-amd64.tar.gz">https://go.dev/dl/go1.18.4.linux-amd64.tar.gz</a></li>
+<li>使用WinScp软件将安装包上传到/opt/目录下，使用解压命令解压刚上传的压缩文件到/usr/loacl/下：tar -zxvf go1.18.4.linux-amd64.tar.gz -C /usr/local/（安装目录到了/usr/local)，解压完之后进去该目录即可看到一个目录：go。</li>
+<li>指定Go项目的存放路径，在/usr/loacl/下，键入命令：mkdir gocode即可。</li>
+</ol>
+<p><img src="/img/software/es/5.png" alt="image.png"></p>
+<ol start="4">
+<li>配置环境变量。修改配置文件，键入命令：vim /etc/profile，在正常模式下，键入大写字母G，立刻返回到文件尾，键入小写i进入编辑模式，在末尾追加如下代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span>/usr/local/go
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span>/usr/local/gocode
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$GOPATH</span>/bin:<span class="nv">$GOROOT</span>/bin:<span class="nv">$PATH</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>键入命令：source /etc/profile使配置文件立即生效，继而输入go version（查看版本号）和go env（查看go环境的配置信息），如下则表示配置成功！</li>
+</ol>
+<p><img src="/img/software/es/6.png" alt="image.png"></p>
+<h3 id="二安装go-mysql-elasticsearch">二、安装go-mysql-elasticsearch</h3>
+<h4 id="21-下载go-mysql-elasticsearch">2.1 下载go-mysql-elasticsearch</h4>
+<p>执行命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ go mod download github.com/siddontang/go-mysql-elasticsearch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注：参考资料中是go get，新版本已经去除了go get，改为了go install，但当我使用go install发现连接不了github，切换国内代理也不行，所以使用go mod。</p>
+<h4 id="22-编译go-mysql-elasticsearch">2.2 编译go-mysql-elasticsearch</h4>
+<p>执行命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 路径后面的版本好可能不一样</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nv">$GOPATH</span>/pkg/mod/github.com/siddontang/go-mysql-elasticsearch@v0.0.0-20200822025838-fe261969558b
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行命令</span>
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/img/software/es/7.png" alt="image.png">
+执行make命令可能会有错误，根据错误提示一步步执行即可（这里会提示你go get &hellip;, go install &hellip;，按它错误提示的解决方案操作即可，直至最后make不报错为止）。
+make执行完成并且成功后，会产生一个bin文件夹（/usr/local/gocode/pkg/mod/github.com/siddontang/go-mysql-elasticsearch@v0.0.0-20200822025838-fe261969558b/bin），下面有个可执行文件：</p>
+<p><img src="/img/software/es/8.png" alt="image.png"></p>
+<p>这就是我们需要的插件服务可执行文件。但别急，还需要改配置文件。</p>
+<h4 id="23-修改go-mysql-elasticsearch配置文件">2.3 修改go-mysql-elasticsearch配置文件</h4>
+<p>执行命令 vim etc/river.toml（/usr/local/gocode/pkg/mod/github.com/siddontang/go-mysql-elasticsearch@v0.0.0-20200822025838-fe261969558b/etc） 修改配置文件，同步192.168.10.168上的MySQL 中的 goto数据库中的表到 ES 集群 192.168.10.169:9200。
+<img src="/img/software/es/9.png" alt="image.png"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># MySQL address, user and password</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># user must have replication privilege in MySQL.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#my_addr = &#34;127.0.0.1:3306&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#my_user = &#34;root&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#my_pass = &#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#my_charset = &#34;utf8&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">my_addr</span> <span class="o">=</span> <span class="s2">&#34;192.168.10.168:3306&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">my_user</span> <span class="o">=</span> <span class="s2">&#34;elastic&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">my_pass</span> <span class="o">=</span> <span class="s2">&#34;Elastic_123&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">my_charset</span> <span class="o">=</span> <span class="s2">&#34;utf8mb4&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set true when elasticsearch use https</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#es_https = false</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Elasticsearch address</span>
+</span></span><span class="line"><span class="cl"><span class="nv">es_addr</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1:9200&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Elasticsearch user and password, maybe set by shield, nginx, or x-pack</span>
+</span></span><span class="line"><span class="cl"><span class="nv">es_user</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">es_pass</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Path to store data, like master.info, if not set or empty,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># we must use this to support breakpoint resume syncing. </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TODO: support other storage, like etcd. </span>
+</span></span><span class="line"><span class="cl"><span class="nv">data_dir</span> <span class="o">=</span> <span class="s2">&#34;./var&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Inner Http status address</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stat_addr</span> <span class="o">=</span> <span class="s2">&#34;127.0.0.1:12800&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stat_path</span> <span class="o">=</span> <span class="s2">&#34;/metrics&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># pseudo server id like a slave </span>
+</span></span><span class="line"><span class="cl"><span class="nv">server_id</span> <span class="o">=</span> <span class="m">1001</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># mysql or mariadb</span>
+</span></span><span class="line"><span class="cl"><span class="nv">flavor</span> <span class="o">=</span> <span class="s2">&#34;mysql&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># mysqldump execution path</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># if not set or empty, ignore mysqldump.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mysqldump</span> <span class="o">=</span> <span class="s2">&#34;mysqldump&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if we have no privilege to use mysqldump with --master-data,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># we must skip it.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#skip_master_data = false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># minimal items to be inserted in one bulk</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#bulk_size = 128</span>
+</span></span><span class="line"><span class="cl"><span class="nv">bulk_size</span> <span class="o">=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># force flush the pending requests if we don&#39;t have enough items &gt;= bulk_size</span>
+</span></span><span class="line"><span class="cl"><span class="nv">flush_bulk_time</span> <span class="o">=</span> <span class="s2">&#34;200ms&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Ignore table without primary key</span>
+</span></span><span class="line"><span class="cl"><span class="nv">skip_no_pk_table</span> <span class="o">=</span> <span class="nb">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># MySQL data source</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>source<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#schema = &#34;test&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">schema</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Only below tables will be synced into Elasticsearch.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># &#34;t_[0-9]{4}&#34; is a wildcard table format, you can use it if you have many sub tables, like table_0000 - table_1023</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># I don&#39;t think it is necessary to sync all tables in a database.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#tables = [&#34;t&#34;, &#34;t_[0-9]{4}&#34;, &#34;tfield&#34;, &#34;tfilter&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">tables</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;wms_material_property&#34;</span>, <span class="s2">&#34;test&#34;</span>, <span class="s2">&#34;hello&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Below is for special rule mapping</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Very simple example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># desc t;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +-------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | Field | Type         | Null | Key | Default | Extra |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +-------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | id    | int(11)      | NO   | PRI | NULL    |       |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | name  | varchar(256) | YES  |     | NULL    |       |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +-------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The table `t` will be synced to ES index `test` and type `t`.</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>rule<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">schema</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">table</span> <span class="o">=</span> <span class="s2">&#34;wms_material_property&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">index</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> <span class="o">=</span> <span class="s2">&#34;wms_material_property&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Wildcard table rule, the wildcard table must be in source tables </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># All tables which match the wildcard format will be synced to ES index `test` and type `t`.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># In this example, all tables must have same schema with above table `t`;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>rule<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">schema</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">table</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">index</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Simple field rule </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># desc tfield;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +----------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | Field    | Type         | Null | Key | Default | Extra |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +----------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | id       | int(11)      | NO   | PRI | NULL    |       |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | tags     | varchar(256) | YES  |     | NULL    |       |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># | keywords | varchar(256) | YES  |     | NULL    |       |</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># +----------+--------------+------+-----+---------+-------+</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>rule<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">schema</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">table</span> <span class="o">=</span> <span class="s2">&#34;hello&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">index</span> <span class="o">=</span> <span class="s2">&#34;goto&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> <span class="o">=</span> <span class="s2">&#34;hello&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解释一下配置文件：
+my_addr = &ldquo;192.168.10.168:3306&rdquo;
+my_user = &ldquo;elastic&rdquo;
+my_pass = &ldquo;Elastic_123&rdquo;
+my_charset = &ldquo;utf8mb4&rdquo;
+这四个配置是MySQL的配置信息。因为我168上安装的是MySQL8.0，所以charset使用的是utf8mb4，默认utf8即可。
+es_addr = &ldquo;127.0.0.1:9200&rdquo;
+是ES的配置信息
+bulk_size = 1
+原本此值为128，我改为了1，可以调整回去。
+schema = &ldquo;goto&rdquo;
+表示要同步的数据库名称。注意这里要跟192.168.10.168上的my.cnf文件中的同步数据库名称一致。
+tables = [&ldquo;wms_material_property&rdquo;, &ldquo;test&rdquo;, &ldquo;hello&rdquo;]
+表示同步goto里面的上面三张表
+[[rule]]
+schema = &ldquo;goto&rdquo;
+table = &ldquo;wms_material_property&rdquo;
+index = &ldquo;goto&rdquo;
+type = &ldquo;wms_material_property&rdquo;
+这个配置是对每一张表的mysql和ES的映射配置。
+更详细的配置文件说明请参考 <a href="https://github.com/go-mysql-org/go-mysql-elasticsearch/blob/master/etc/river.toml">https://github.com/go-mysql-org/go-mysql-elasticsearch/blob/master/etc/river.toml</a></p>
+<h3 id="三启动go-mysql-elasticsearch">三、启动go-mysql-elasticsearch</h3>
+<p>再次确认：</p>
+<ol>
+<li>192.168.10.168上的MySQL服务启动成功，并且my.cnf配置修改过了；</li>
+<li>192.168.10.169上的ES服务启动成功，ES-head服务也启动成功（非必须）；</li>
+<li>192.168.10.169上的go环境配置好了。</li>
+</ol>
+<p>进入目录：
+/usr/local/gocode/pkg/mod/github.com/siddontang/go-mysql-elasticsearch@v0.0.0-20200822025838-fe261969558b
+然后执行命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./bin/go-mysql-elasticsearch -config<span class="o">=</span>./etc/river.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动go-mysql-elasticsearch服务：
+<img src="/img/software/es/10.png" alt="image.png">
+第一次启动的时候，会做一次全量同步，dump要同步的表，可以看到日志22万左右的数据执行了78秒左右。
+可以在ES-head页面上实时刷新页面查看数据同步情况。
+再次启动：
+<img src="/img/software/es/11.png" alt="image.png">
+就不会再全量同步，只会做增量同步。</p>
+<h4 id="31-测试新增数据同步情况">3.1 测试新增数据同步情况</h4>
+<p>可以在mysql表中新增数据，然后在head页面实时刷新页面，查看数据同步情况。</p>
+<h3 id="四go-mysql-elasticsearch缺陷">四、go-mysql-elasticsearch缺陷</h3>
+<p>有一点注意，它对数据结构的支持比较少。当然我们日常用的完全足够了。
+最大的问题是，它不支持数据库表结构的修改，如果要修改需要同步的表结构，则可能要重新做同步配置。</p>
+<p>至此，go-mysql-elasticsearch服务的安装配置说明完毕。</p>
+<h2 id="参考文献">参考文献</h2>
+<p><a href="%5Bhttps://cloud.tencent.com/document/product/845/35562%5D(https://cloud.tencent.com/document/product/845/35562)">使用 go-elasticsearch 实时同步 MySQL 数据到 ES</a></p>
+<p><a href="%5Bhttps://studygolang.com/articles/26443%5D(https://studygolang.com/articles/26443)">Centos7 安装Go环境</a></p>
+<p><a href="%5Bhttps://www.infoq.cn/article/1afyz3b6hnhprrg12833%5D(https://www.infoq.cn/article/1afyz3b6hnhprrg12833)">MySQL 数据实时同步到 Elasticsearch 的技术方案选型和思考</a></p>
+<p><a href="%5Bhttps://blog.csdn.net/xyh930929/article/details/101197733%5D(https://blog.csdn.net/xyh930929/article/details/101197733)">logstash实现mysql数据库表实时同步</a></p>
+<p><a href="%5Bhttps://blog.csdn.net/weixin_43846997/article/details/95940565%5D(https://blog.csdn.net/weixin_43846997/article/details/95940565)">基于 MySQL Binlog 的 Elasticsearch 数据同步实践</a></p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/elasticsearch/">ElasticSearch</a>
+          <a href="/tags/%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/">实时同步</a>
+          <a href="/tags/mysql/">MySQL</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE/">数据</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/program/go/go_omitempty_usage/">
+            <span class="next-text nav-default">go语言中omitempty使用说明</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="SOHUCS" sid="/post/software/elasticsearch/mysql_to_es/"></div>
+    <script type="text/javascript">
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cysXPzCq7';
+      var conf = '92ece88575355e3f7247fb1d1a42246a';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://www.sanlt.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2022
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">probeyang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

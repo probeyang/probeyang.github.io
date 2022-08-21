@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/program/python/no_module_named_solve/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="ImportError No module named问题解决" />
 <meta property="og:description" content="问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/program/python/no_module_named_solve/" />
+<meta property="og:url" content="https://www.sanlt.com/post/program/python/no_module_named_solve/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-05-08T17:46:14+08:00" />
 <meta property="article:modified_time" content="2020-05-08T17:46:14+08:00" />
+
 <meta itemprop="name" content="ImportError No module named问题解决">
-<meta itemprop="description" content="问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方">
-<meta itemprop="datePublished" content="2020-05-08T17:46:14&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-08T17:46:14&#43;08:00" />
+<meta itemprop="description" content="问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方"><meta itemprop="datePublished" content="2020-05-08T17:46:14+08:00" />
+<meta itemprop="dateModified" content="2020-05-08T17:46:14+08:00" />
 <meta itemprop="wordCount" content="366">
-
-
-
 <meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ImportError No module named问题解决"/>
 <meta name="twitter:description" content="问题描述 如下所示的代码： 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错： 问题解决 查了资料，其实这个问题只有两个方"/>
@@ -140,21 +137,21 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">问题延伸</a></li>
-    <li><a href="#heading-3">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#问题解决">问题解决</a></li>
+    <li><a href="#问题延伸">问题延伸</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      <h2 id="问题描述">问题描述</h2>
 <p>如下所示的代码：
 <img src="/img/program/python/clipboard.png" alt="展示效果" title="展示效果">
 可以看到，通过pycharm可以直接运行成功。但是，通过命令行运行就会报错：
 <img src="/img/program/python/clipboard1.png" alt="展示效果" title="展示效果"></p>
-<h2 id="heading-1">问题解决</h2>
+<h2 id="问题解决">问题解决</h2>
 <p>查了资料，其实这个问题只有两个方向：1. 文件夹下少了__init__.py文件， 2. 环境不对。
 <img src="/img/program/python/clipboard2.png" alt="展示效果" title="展示效果">
 看文件夹可以看到，少init的问题肯定没有的，所以只会是环境问题，也符合现象：pycharm里面可以命令行不可以。最好，发现其实是因为命令行需要指定PYTHONPATH导致的。当我们设置好了PYTHONPATH后，即可正常显示了。
@@ -162,9 +159,9 @@ PYTHONPATH的设置，windows在环境变量里面，一般设置到系统变量
 <img src="/img/program/python/clipboard3.png" alt="展示效果" title="展示效果">
 环境变量配置好后，重新开启一个命令行窗口进行代码运行。这是重新运行结果：
 <img src="/img/program/python/clipboard4.png" alt="展示效果" title="展示效果"></p>
-<h2 id="heading-2">问题延伸</h2>
+<h2 id="问题延伸">问题延伸</h2>
 <p>cmd模式下是需要pythonpath这个环境变量的。不然，python会到它的安装目录去找项目代码。</p>
-<h2 id="heading-3">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="https://stackoverflow.com/questions/23417941/import-error-no-module-named-does-exist">import error: &lsquo;No module named&rsquo; <em>does</em> exist</a></p>
 <p><a href="https://stackoverflow.com/questions/2325923/how-to-fix-importerror-no-module-named-error-in-python">https://stackoverflow.com/questions/2325923/how-to-fix-importerror-no-module-named-error-in-python</a></p>
 <p><a href="https://stackoverflow.com/questions/338768/python-error-importerror-no-module-named">https://stackoverflow.com/questions/338768/python-error-importerror-no-module-named</a></p>
@@ -234,7 +231,7 @@ PYTHONPATH的设置，windows在环境变量里面，一般设置到系统变量
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

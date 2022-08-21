@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/base64/base64_course/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="base64详细教程" />
 <meta property="og:description" content="base64编码详解 概述 所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;&#43;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/software/base64/base64_course/" />
+<meta property="og:url" content="https://www.sanlt.com/post/software/base64/base64_course/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-02-25T16:42:10+08:00" />
 <meta property="article:modified_time" content="2021-02-25T16:42:10+08:00" />
+
 <meta itemprop="name" content="base64详细教程">
-<meta itemprop="description" content="base64编码详解 概述 所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;&#43;">
-<meta itemprop="datePublished" content="2021-02-25T16:42:10&#43;08:00" />
-<meta itemprop="dateModified" content="2021-02-25T16:42:10&#43;08:00" />
-<meta itemprop="wordCount" content="2170">
-
-
-
+<meta itemprop="description" content="base64编码详解 概述 所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;&#43;"><meta itemprop="datePublished" content="2021-02-25T16:42:10+08:00" />
+<meta itemprop="dateModified" content="2021-02-25T16:42:10+08:00" />
+<meta itemprop="wordCount" content="2178">
 <meta itemprop="keywords" content="base64,算法,协议,编码," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="base64详细教程"/>
 <meta name="twitter:description" content="base64编码详解 概述 所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;&#43;"/>
@@ -129,7 +126,7 @@
         <div class="post-category">
             <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"> 软件工程 </a>
             </div>
-          <span class="more-meta"> 约 2170 字 </span>
+          <span class="more-meta"> 约 2178 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -140,23 +137,23 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">概述</a></li>
-    <li><a href="#heading-1">英文示例</a>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#英文示例">英文示例</a>
       <ul>
-        <li><a href="#heading-2">特殊情况</a></li>
+        <li><a href="#特殊情况">特殊情况</a></li>
       </ul>
     </li>
-    <li><a href="#heading-3">中文示例</a></li>
-    <li><a href="#heading-4">代码示例</a></li>
-    <li><a href="#heading-5">参考文献</a></li>
+    <li><a href="#中文示例">中文示例</a></li>
+    <li><a href="#代码示例">代码示例</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h1 id="base64">base64编码详解</h1>
-<h2 id="heading">概述</h2>
-<p>所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;+&rdquo;、&quot;/&quot;（再加上作为垫字的&quot;=&rdquo;，实际上是65个字符）&mdash;-作为一个基本字符集。然后，其他所有符号都转换成这个字符集中的字符。
+      <h1 id="base64编码详解">base64编码详解</h1>
+<h2 id="概述">概述</h2>
+<p>所谓Base64，就是说选出64个字符&mdash;-小写字母a-z、大写字母A-Z、数字0-9、符号&quot;+&quot;、&quot;/&quot;（再加上作为垫字的&quot;=&quot;，实际上是65个字符）&mdash;-作为一个基本字符集。然后，其他所有符号都转换成这个字符集中的字符。
 具体来说，转换方式可以分为四步：
 . 第一步，将每三个字节作为一组，一共是24个二进制位。
 . 第二步，将这24个二进制位分为四组，每个组有6个二进制位。
@@ -165,7 +162,7 @@
 以下表格是64个字符的具体索引对应情况：
 <img src="/img/software/base64/image1.png" alt="图例" title="图例">
 因Base64将三个字节转化成四个字节，因此Base64编码后的文本，会比原文本大出三分之一左右。</p>
-<h2 id="heading-1">英文示例</h2>
+<h2 id="英文示例">英文示例</h2>
 <p>举一个具体的实例，演示英语单词Man如何转成Base64编码。
 第一步，&ldquo;M&rdquo;、&ldquo;a&rdquo;、&ldquo;n&quot;的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。
 第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。
@@ -173,22 +170,22 @@
 第四步，根据上表，得到每个值对应Base64编码，即T、W、F、u。
 因此，Man的Base64编码就是TWFu。
 <img src="/img/software/base64/image.png" alt="图例" title="图例"></p>
-<h3 id="heading-2">特殊情况</h3>
+<h3 id="特殊情况">特殊情况</h3>
 <p>如果字节数不足三，则这样处理：
-a）二个字节的情况：将这二个字节的一共16个二进制位，按照上面的规则，转成三组，最后一组除了前面加两个0以外，后面也要加两个0。这样得到一个三位的Base64编码，再在末尾补上一个&quot;=&quot;号。
-比如，&ldquo;Ma&quot;这个字符串是两个字节，可以转化成三组00010011、00010110、00010000以后，对应Base64值分别为T、W、E，再补上一个&quot;=&quot;号，因此&quot;Ma&quot;的Base64编码就是TWE=。
-b）一个字节的情况：将这一个字节的8个二进制位，按照上面的规则转成二组，最后一组除了前面加二个0以外，后面再加4个0。这样得到一个二位的Base64编码，再在末尾补上两个&quot;=&quot;号。
-比如，&ldquo;M&quot;这个字母是一个字节，可以转化为二组00010011、00010000，对应的Base64值分别为T、Q，再补上二个&quot;=&quot;号，因此&quot;M&quot;的Base64编码就是TQ==。</p>
-<h2 id="heading-3">中文示例</h2>
+a）二个字节的情况：将这二个字节的一共16个二进制位，按照上面的规则，转成三组，最后一组除了前面加两个0以外，后面也要加两个0。这样得到一个三位的Base64编码，再在末尾补上一个&rdquo;=&ldquo;号。
+比如，&ldquo;Ma&quot;这个字符串是两个字节，可以转化成三组00010011、00010110、00010000以后，对应Base64值分别为T、W、E，再补上一个&rdquo;=&ldquo;号，因此&quot;Ma&quot;的Base64编码就是TWE=。
+b）一个字节的情况：将这一个字节的8个二进制位，按照上面的规则转成二组，最后一组除了前面加二个0以外，后面再加4个0。这样得到一个二位的Base64编码，再在末尾补上两个&rdquo;=&ldquo;号。
+比如，&ldquo;M&quot;这个字母是一个字节，可以转化为二组00010011、00010000，对应的Base64值分别为T、Q，再补上二个&rdquo;=&ldquo;号，因此&quot;M&quot;的Base64编码就是TQ==。</p>
+<h2 id="中文示例">中文示例</h2>
 <p>再举一个中文的例子，汉字&quot;严&quot;如何转化成Base64编码？
 这里需要注意，汉字本身可以有多种编码，比如gb2312、utf-8、gbk等等，每一种编码的Base64对应值都不一样。下面的例子以utf-8为例。
 首先，&ldquo;严&quot;的utf-8编码为E4B8A5，写成二进制就是三字节的&quot;11100100 10111000 10100101&rdquo;。将这个24位的二进制字符串，按照第3节中的规则，转换成四组一共32位的二进制值&quot;00111001 00001011 00100010 00100101&rdquo;，相应的十进制数为57、11、34、37，它们对应的Base64值就为5、L、i、l。
 所以，汉字&quot;严&rdquo;（utf-8编码）的Base64值就是5Lil。</p>
-<h2 id="heading-4">代码示例</h2>
+<h2 id="代码示例">代码示例</h2>
 <p>以下是使用python3.0+版本写的代码，兼容中英文情况：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -237,56 +234,56 @@ b）一个字节的情况：将这一个字节的8个二进制位，按照上面
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/local/bin python3</span>
-<span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="sa"></span><span class="s2">&#34;&#34;&#34;</span><span class="s2">
-</span><span class="s2"></span><span class="s2">    created by iprobeyang@gmail.com 2021/2/25</span><span class="s2">
-</span><span class="s2"></span><span class="s2">&#34;&#34;&#34;</span>
-
-<span class="kn">import</span> <span class="nn">base64</span>
-<span class="kn">import</span> <span class="nn">string</span>
-
-<span class="c1"># base 字符集</span>
-<span class="n">base64_charset</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">+/</span><span class="s1">&#39;</span>
-
-<span class="k">def</span> <span class="nf">base64_encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="p">)</span><span class="p">:</span>
-    <span class="c1"># 将每一个字节（byte）转换为二进制字符串，缺的位在前面补0</span>
-    <span class="n">base64_byte_arr</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">{:0&gt;8}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">0b</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">need_base64_str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">]</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">base64_byte_arr</span><span class="p">)</span>
-    <span class="n">remain_num</span> <span class="o">=</span> <span class="n">length</span> <span class="o">%</span> <span class="mi">3</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span>
-    <span class="k">for</span> <span class="n">need_base64_3_arr</span> <span class="ow">in</span> <span class="p">[</span><span class="n">base64_byte_arr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="p">]</span><span class="p">:</span>
-        <span class="n">three_arr_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">need_base64_3_arr</span><span class="p">)</span>
-        <span class="n">unit_3_str</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">need_base64_3_arr</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">three_arr_length</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="c1"># 将这3个字节3*8=24个bit的字符转换成4个6bit（4*6也为24bit）长的字符，并将这四个数据转换成base64字符集中的内容</span>
-            <span class="n">byte_4_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">unit_3_str</span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span><span class="p">:</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">tmp_byte_str</span> <span class="ow">in</span> <span class="n">byte_4_arr</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">+</span><span class="o">=</span> <span class="n">base64_charset</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp_byte_str</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># 这里不等于3的就是小于3个字节的数据，补齐三个字节，每个字节补充一组00000000（8位为一个字节）</span>
-            <span class="n">unit_3_str</span> <span class="o">+</span><span class="o">=</span> <span class="n">remain_num</span> <span class="o">*</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">0</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="mi">8</span>
-            <span class="n">byte_4_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">unit_3_str</span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span><span class="p">:</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="p">]</span><span class="p">[</span><span class="p">:</span><span class="n">remain_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">tmp_byte_str</span> <span class="ow">in</span> <span class="n">byte_4_arr</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">+</span><span class="o">=</span> <span class="n">base64_charset</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp_byte_str</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="p">]</span>
-
-            <span class="n">result</span> <span class="o">+</span><span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">=</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="n">remain_num</span>
-
-    <span class="k">return</span> <span class="n">result</span>
-
-<span class="c1"># need_base64_str = &#39;Manddd&#39;</span>
-<span class="c1"># need_base64_str = &#39;Mansdaksdfk&#39; # TWFuc2Rha3NkZms=</span>
-<span class="c1"># need_base64_str = &#39;fk&#39; # TWFuc2Rha3NkZms=</span>
-<span class="c1"># need_base64_str = &#39;从缓存穿透聊到布隆过滤器&#39;  # 5LuO57yT5a2Y56m/6YCP6IGK5Yiw5biD6ZqG6L+H5ruk5Zmo</span>
-<span class="n">need_base64_str</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">周e杰qw伦we周杰棍何**74洛asde洛都是343#$#</span><span class="s1">%</span><span class="s1">^</span><span class="s1">%</span><span class="s1">^@$#@$</span><span class="si">%#%</span><span class="s1">发放电饭锅se</span><span class="s1">&#39;</span>  <span class="c1"># 5LuO57yT5a2Y56m/6YCP6IGK5Yiw5biD6ZqG6L+H5ruk5Zmo</span>
-<span class="c1"># res = base64_encode(need_base64_str)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">使用本地base64加密：</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">base64_encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="p">)</span><span class="p">)</span>
-<span class="n">b_base64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">使用系统base64加密：</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">b_base64</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/local/bin python3</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    created by iprobeyang@gmail.com 2021/2/25
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># base 字符集</span>
+</span></span><span class="line"><span class="cl"><span class="n">base64_charset</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="s1">&#39;+/&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">base64_encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 将每一个字节（byte）转换为二进制字符串，缺的位在前面补0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base64_byte_arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{:0&gt;8}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;0b&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">need_base64_str</span><span class="o">.</span><span class="n">encode</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">base64_byte_arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">remain_num</span> <span class="o">=</span> <span class="n">length</span> <span class="o">%</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">need_base64_3_arr</span> <span class="ow">in</span> <span class="p">[</span><span class="n">base64_byte_arr</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">three_arr_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">need_base64_3_arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unit_3_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">need_base64_3_arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">three_arr_length</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 将这3个字节3*8=24个bit的字符转换成4个6bit（4*6也为24bit）长的字符，并将这四个数据转换成base64字符集中的内容</span>
+</span></span><span class="line"><span class="cl">            <span class="n">byte_4_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">unit_3_str</span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span><span class="p">:</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">tmp_byte_str</span> <span class="ow">in</span> <span class="n">byte_4_arr</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">+=</span> <span class="n">base64_charset</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp_byte_str</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 这里不等于3的就是小于3个字节的数据，补齐三个字节，每个字节补充一组00000000（8位为一个字节）</span>
+</span></span><span class="line"><span class="cl">            <span class="n">unit_3_str</span> <span class="o">+=</span> <span class="n">remain_num</span> <span class="o">*</span> <span class="s1">&#39;0&#39;</span> <span class="o">*</span> <span class="mi">8</span>
+</span></span><span class="line"><span class="cl">            <span class="n">byte_4_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">unit_3_str</span><span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span><span class="p">:</span><span class="n">n</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)][:</span><span class="n">remain_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">tmp_byte_str</span> <span class="ow">in</span> <span class="n">byte_4_arr</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">+=</span> <span class="n">base64_charset</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp_byte_str</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="n">remain_num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># need_base64_str = &#39;Manddd&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># need_base64_str = &#39;Mansdaksdfk&#39; # TWFuc2Rha3NkZms=</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># need_base64_str = &#39;fk&#39; # TWFuc2Rha3NkZms=</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># need_base64_str = &#39;从缓存穿透聊到布隆过滤器&#39;  # 5LuO57yT5a2Y56m/6YCP6IGK5Yiw5biD6ZqG6L+H5ruk5Zmo</span>
+</span></span><span class="line"><span class="cl"><span class="n">need_base64_str</span> <span class="o">=</span> <span class="s1">&#39;周e杰qw伦we周杰棍何**74洛asde洛都是343#$#%^%^@$#@$</span><span class="si">%#%</span><span class="s1">发放电饭锅se&#39;</span>  <span class="c1"># 5LuO57yT5a2Y56m/6YCP6IGK5Yiw5biD6ZqG6L+H5ruk5Zmo</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># res = base64_encode(need_base64_str)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;使用本地base64加密：&#39;</span><span class="p">,</span> <span class="n">base64_encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">b_base64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">need_base64_str</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;使用系统base64加密：&#39;</span><span class="p">,</span> <span class="n">b_base64</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-5">参考文献</h2>
+</div><h2 id="参考文献">参考文献</h2>
 <p><a href="http://www.ruanyifeng.com/blog/2008/06/base64.html">Base64笔记</a></p>
 <p><a href="https://blog.csdn.net/weixin_41633902/article/details/107812970">Python实现Base64编码（自己手工写）</a></p>
 
@@ -358,7 +355,7 @@ b）一个字节的情况：将这一个字节的8个二进制位，按照上面
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

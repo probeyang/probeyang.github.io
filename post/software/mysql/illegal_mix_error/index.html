@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/mysql/illegal_mix_error/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="MySQL报错：Illegal mix of collations for operation解决" />
 <meta property="og:description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/software/mysql/illegal_mix_error/" />
+<meta property="og:url" content="https://www.sanlt.com/post/software/mysql/illegal_mix_error/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-10-10T12:08:22+08:00" />
 <meta property="article:modified_time" content="2018-10-10T12:08:22+08:00" />
+
 <meta itemprop="name" content="MySQL报错：Illegal mix of collations for operation解决">
-<meta itemprop="description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio">
-<meta itemprop="datePublished" content="2018-10-10T12:08:22&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-10T12:08:22&#43;08:00" />
+<meta itemprop="description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio"><meta itemprop="datePublished" content="2018-10-10T12:08:22+08:00" />
+<meta itemprop="dateModified" content="2018-10-10T12:08:22+08:00" />
 <meta itemprop="wordCount" content="442">
-
-
-
 <meta itemprop="keywords" content="mysql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL报错：Illegal mix of collations for operation解决"/>
 <meta name="twitter:description" content="问题描述 今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operatio"/>
@@ -141,20 +138,20 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">问题描述</a></li>
-    <li><a href="#heading-1">问题解决</a></li>
-    <li><a href="#heading-2">问题总结</a></li>
-    <li><a href="#heading-3">参考文献</a></li>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#问题解决">问题解决</a></li>
+    <li><a href="#问题总结">问题总结</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">问题描述</h2>
+      <h2 id="问题描述">问题描述</h2>
 <p>今天发现一个比较奇怪的SQL问题：当使用中文跟日期类型字段进行‘=’比较的时候MySQL报错：Illegal mix of collations for operation，而使用英文的时候却没有问题。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -166,22 +163,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
-	<span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span> <span class="p">,</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">month_col2</span><span class="o">`</span>
-<span class="k">FROM</span>
-	<span class="n">dataset_94f37d70ce87c691</span>
-<span class="k">WHERE</span>
-        <span class="n">col2</span> <span class="o">=</span>  <span class="s1">&#39;</span><span class="s1">盘龙</span><span class="s1">&#39;</span>
-<span class="k">GROUP</span> <span class="k">BY</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">LIMIT</span> <span class="mi">20</span> <span class="k">OFFSET</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">month_col2</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">dataset_94f37d70ce87c691</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s1">&#39;盘龙&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>以上SQL会报错，而下面的SQL却能正常运行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -193,23 +190,23 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
-	<span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span> <span class="p">,</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">month_col2</span><span class="o">`</span>
-<span class="k">FROM</span>
-	<span class="n">dataset_94f37d70ce87c691</span>
-<span class="k">WHERE</span>
-        <span class="n">col2</span> <span class="o">=</span>  <span class="s1">&#39;</span><span class="s1">hello</span><span class="s1">&#39;</span>
-<span class="k">GROUP</span> <span class="k">BY</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">LIMIT</span> <span class="mi">20</span> <span class="k">OFFSET</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">month_col2</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">dataset_94f37d70ce87c691</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s1">&#39;hello&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-1">问题解决</h2>
+</div><h2 id="问题解决">问题解决</h2>
 <p>查询资料发现，原来是MySQL版本的问题： 在 MySQL 5.5 以上, 若字段类型是time,date,datetime其中一种，则在查询时如果使用 = ‘汉字中文’ 会出现 Illegal mix of collations for operation ‘=’。解决办法是需要在5.5版本之后的SQL语句中添加binary关键字。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -221,22 +218,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
-	<span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span> <span class="p">,</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">month_col2</span><span class="o">`</span>
-<span class="k">FROM</span>
-	<span class="n">dataset_94f37d70ce87c691</span>
-<span class="k">WHERE</span>
-        <span class="n">col2</span> <span class="o">=</span> <span class="nb">binary</span> <span class="s1">&#39;</span><span class="s1">盘龙</span><span class="s1">&#39;</span>
-<span class="k">GROUP</span> <span class="k">BY</span>
-	<span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="s1">%Y-%m</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">LIMIT</span> <span class="mi">20</span> <span class="k">OFFSET</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">sum</span><span class="p">(</span><span class="o">`</span><span class="n">col6</span><span class="o">`</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">sum_col6</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">`</span><span class="n">month_col2</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">dataset_94f37d70ce87c691</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">binary</span><span class="w"> </span><span class="s1">&#39;盘龙&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">date_format</span><span class="p">(</span><span class="o">`</span><span class="n">col2</span><span class="o">`</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-2">问题总结</h2>
+</div><h2 id="问题总结">问题总结</h2>
 <p>MYSQL5.5以前旧版没有问题。
 MySQL 5.5 以上, 必需改成 = binary ‘%中文%’ 即可避免出现错误.</p>
-<h2 id="heading-3">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p><a href="https://blog.csdn.net/qq_26245325/article/details/79157918">MySQL报错：MySQL Illegal mix of collations for operation ‘like’</a></p>
 
     </div>
@@ -304,7 +301,7 @@ MySQL 5.5 以上, 必需改成 = binary ‘%中文%’ 即可避免出现错误.
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

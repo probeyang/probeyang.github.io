@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ElasticSearch on Sanlt,就是加了N多盐的地方</title>
+    <link>https://www.sanlt.com/tags/elasticsearch/</link>
+    <description>Recent content in ElasticSearch on Sanlt,就是加了N多盐的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 15 Aug 2022 16:42:10 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL实时同步数据到ElasticSearch</title>
+      <link>https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/</link>
+      <pubDate>Mon, 15 Aug 2022 16:42:10 +0800</pubDate>
+      
+      <guid>https://www.sanlt.com/post/software/elasticsearch/mysql_to_es/</guid>
+      <description>背景 ElasticSearch安装参考：https://www.yuque.com/docs/share/3287139b-aa8b-4bd</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,11 +6,7 @@
     <description>Recent content in mysql on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate>
-    
-	<atom:link href="https://www.sanlt.com/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 12 Oct 2018 12:03:44 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL Substring return empty value问题研究</title>
       <link>https://www.sanlt.com/post/software/mysql/substr_return_empty/</link>

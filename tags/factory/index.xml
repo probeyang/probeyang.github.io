@@ -6,11 +6,7 @@
     <description>Recent content in factory on Sanlt,就是加了N多盐的地方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Sep 2018 20:42:10 +0800</lastBuildDate>
-    
-	<atom:link href="https://www.sanlt.com/tags/factory/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 10 Sep 2018 20:42:10 +0800</lastBuildDate><atom:link href="https://www.sanlt.com/tags/factory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>三种工厂模式详解</title>
       <link>https://www.sanlt.com/post/software/architect/simple_factory/</link>

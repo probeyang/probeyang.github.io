@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/algorithm/bloom_filter/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="布隆过滤器详解" />
 <meta property="og:description" content="前言 相信很多有高并发经验的人都听过布隆过滤器，它在解决缓存穿透场景中非常有用。 它可以用于：推荐去重、垃圾邮件过滤、爬虫URL过滤、防止缓存穿" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/software/algorithm/bloom_filter/" />
+<meta property="og:url" content="https://www.sanlt.com/post/software/algorithm/bloom_filter/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-03-08T16:42:10+08:00" />
 <meta property="article:modified_time" content="2021-03-08T16:42:10+08:00" />
+
 <meta itemprop="name" content="布隆过滤器详解">
-<meta itemprop="description" content="前言 相信很多有高并发经验的人都听过布隆过滤器，它在解决缓存穿透场景中非常有用。 它可以用于：推荐去重、垃圾邮件过滤、爬虫URL过滤、防止缓存穿">
-<meta itemprop="datePublished" content="2021-03-08T16:42:10&#43;08:00" />
-<meta itemprop="dateModified" content="2021-03-08T16:42:10&#43;08:00" />
+<meta itemprop="description" content="前言 相信很多有高并发经验的人都听过布隆过滤器，它在解决缓存穿透场景中非常有用。 它可以用于：推荐去重、垃圾邮件过滤、爬虫URL过滤、防止缓存穿"><meta itemprop="datePublished" content="2021-03-08T16:42:10+08:00" />
+<meta itemprop="dateModified" content="2021-03-08T16:42:10+08:00" />
 <meta itemprop="wordCount" content="4533">
-
-
-
 <meta itemprop="keywords" content="布隆过滤器,算法,缓存穿透,高并发,缓存,bloom filter," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="布隆过滤器详解"/>
 <meta name="twitter:description" content="前言 相信很多有高并发经验的人都听过布隆过滤器，它在解决缓存穿透场景中非常有用。 它可以用于：推荐去重、垃圾邮件过滤、爬虫URL过滤、防止缓存穿"/>
@@ -140,28 +137,28 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">前言</a></li>
-    <li><a href="#heading-1">实现细节</a>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#实现细节">实现细节</a>
       <ul>
-        <li><a href="#heading-2">实现原理</a></li>
-        <li><a href="#heading-3">实现步骤</a></li>
+        <li><a href="#实现原理">实现原理</a></li>
+        <li><a href="#实现步骤">实现步骤</a></li>
       </ul>
     </li>
-    <li><a href="#redis">Redis实现布隆过滤器</a>
+    <li><a href="#redis实现布隆过滤器">Redis实现布隆过滤器</a>
       <ul>
-        <li><a href="#bitmaps">bitmaps方式</a></li>
-        <li><a href="#redisson">Redisson方式</a></li>
+        <li><a href="#bitmaps方式">bitmaps方式</a></li>
+        <li><a href="#redisson方式">Redisson方式</a></li>
       </ul>
     </li>
-    <li><a href="#heading-6">代码实现</a></li>
-    <li><a href="#heading-7">延伸</a></li>
-    <li><a href="#heading-8">参考文献</a></li>
+    <li><a href="#代码实现">代码实现</a></li>
+    <li><a href="#延伸">延伸</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="heading">前言</h2>
+      <h2 id="前言">前言</h2>
 <p>相信很多有高并发经验的人都听过布隆过滤器，它在解决缓存穿透场景中非常有用。</p>
 <p>它可以用于：<strong>推荐去重、垃圾邮件过滤、爬虫URL过滤、防止缓存穿透</strong>等场景。</p>
 <p>试想一下，假如有100亿订单数据，现在有1万个订单需要判断是否在这100亿订单中，如果有就不存入，如果没有就存入数据库，应该怎么做？</p>
@@ -172,15 +169,15 @@
 <p>再有，一个爬虫系统，之前爬取了100万URL，现在有一个新的URL要判断是否在这100万个url中，有就不再重复爬取，没有就爬取，该怎么做？
 还有，邮箱垃圾邮件过滤也是同理。
 又想准确率OK，又想效率高，还不占用内存，那么就引出了布隆过滤器了。</p>
-<h2 id="heading-1">实现细节</h2>
-<h3 id="heading-2">实现原理</h3>
+<h2 id="实现细节">实现细节</h2>
+<h3 id="实现原理">实现原理</h3>
 <p>布隆过滤器（Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制向量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。
 它的优点是<strong>空间效率和查询时间</strong>都远远超过一般的算法，缺点是有一定的误识别率和删除困难。具体原因后面详细解释。
 Redis的bitmap只支持2^32大小，对应到内存也就是512MB，误判率万分之一，可以放下2亿左右的数据，性能高，空间占用率及小，省去了大量无效的数据库连接。因此我们可以通过布隆过滤器，将Redis缓存穿透控制在一个可容范围内。
 如下图所示，我们把布隆过滤器看成一个容器，当向布隆过滤器添加元素a时，通过多个hash函数h1、h2、h3算出一个值，然后将这个值在布隆过滤器集合中的位置置为1。下图中h1（a）=2，则将第三个格子置为1，h2（a）=8，则第九个格子置为1，以此类推。
 当判断元素是否存在的时候，将这个新元素通过上面的h1、h2、h3三个hash函数分别算出3个值，然后找三个值在布隆过滤器集合中三个位置是否都为1，如果都为1，则大概率存在，如果有至少一个为0，则肯定不存在。</p>
 <p><img src="/img/software/algorithm/bloom_filter/image.png" alt="图例" title="图例"></p>
-<h3 id="heading-3">实现步骤</h3>
+<h3 id="实现步骤">实现步骤</h3>
 <p>具体步骤是：当一个元素加入集合的时候，通过K个hash函数将此元素映射成一个bit集合中的K个点，把他们置为1。这样，查询的时候，只需要查询这些点是不是都为1就知道此元素是否在集合中了（有误判率）。
 简单判别是：如果这K个点都为1，则元素很可能在集合中；如果K个点中至少有一个为0，则此元素肯定不在集合中。
 <strong><em>以上就是布隆过滤器的基本原理。上面的内容绝大部分网文都能看到，但这里面有个核心的东西所有网文都没讲到：为什么需要多个hash函数映射？为什么不能使用一个hash函数映射就好？为什么多个hash函数映射后还有误判率？为什么说删除困难？</em></strong>
@@ -197,34 +194,34 @@ Redis的bitmap只支持2^32大小，对应到内存也就是512MB，误判率万
 <a href="https://juejin.cn/post/6844903982209449991">https://juejin.cn/post/6844903982209449991</a>，</p>
 <p><a href="http://pages.cs.wisc.edu/~cao/papers/summary-cache/node8.html">http://pages.cs.wisc.edu/~cao/papers/summary-cache/node8.html</a></p>
 <p><img src="/img/software/algorithm/bloom_filter/1.png" alt="图例" title="图例"></p>
-<h2 id="redis">Redis实现布隆过滤器</h2>
+<h2 id="redis实现布隆过滤器">Redis实现布隆过滤器</h2>
 <p>redis常用的有两种实现布隆过滤器的方法，一种是bitmaps，一种是Redisson。</p>
-<h3 id="bitmaps">bitmaps方式</h3>
+<h3 id="bitmaps方式">bitmaps方式</h3>
 <p>计算机是以二进制位作为底层存储的基础单位，一个字节等于8位。
 比如“big”字符串是由三个字符组成的，这三个字符对应的ASCII码分为是98、105、103，对应的二进制存储如下：</p>
 <p><img src="/img/software/algorithm/bloom_filter/2.png" alt="图例" title="图例"></p>
 <p>在Redis中，Bitmaps 提供了一套命令用来操作类似上面字符串中的每一个位。</p>
-<h4 id="heading-4">一、设置值</h4>
+<h4 id="一设置值">一、设置值</h4>
 <p>setbit key offset value</p>
 <p><img src="/img/software/algorithm/bloom_filter/3.png" alt="图例" title="图例"></p>
 <p>我们知道&quot;b&quot;的二进制表示为0110 0010，我们将第7位（从0开始）设置为1，那0110 0011 表示的就是字符“c”，所以最后的字符 “big”变成了“cig”。</p>
-<h4 id="heading-5">二、获取值</h4>
+<h4 id="二获取值">二、获取值</h4>
 <p>getbit key offset</p>
 <p><img src="/img/software/algorithm/bloom_filter/4.png" alt="图例" title="图例"></p>
-<h4 id="1">三、获取位图指定范围值为1的个数</h4>
+<h4 id="三获取位图指定范围值为1的个数">三、获取位图指定范围值为1的个数</h4>
 <p>bitcount key [start end]
 如果不指定，那就是获取全部值为1的个数。</p>
 <p><img src="/img/software/algorithm/bloom_filter/5.png" alt="图例" title="图例"></p>
 <blockquote>
 <p>注意：start和end指定的是字节的个数，而不是位数组下标。</p>
 </blockquote>
-<h3 id="redisson">Redisson方式</h3>
+<h3 id="redisson方式">Redisson方式</h3>
 <p>Redis 实现布隆过滤器的底层就是通过 bitmap 这种数据结构，至于如何实现，这里就不重复造轮子了，介绍业界比较好用的一个客户端工具——Redisson。
 Redisson 是用于在 Java 程序中操作 Redis 的库，利用Redisson 我们可以在程序中轻松地使用 Redis。
 下面我们就通过 Redisson 来构造布隆过滤器。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -253,41 +250,41 @@ Redisson 是用于在 Java 程序中操作 Redis 的库，利用Redisson 我们�
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.ys.rediscluster.bloomfilter.redisson</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.redisson.Redisson</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.redisson.api.RBloomFilter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.redisson.api.RedissonClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.redisson.config.Config</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedissonBloomFilter</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-        <span class="n">config</span><span class="o">.</span><span class="na">useSingleServer</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="s">&#34;redis://192.168.14.104:6379&#34;</span><span class="o">)</span><span class="o">;</span>
-        <span class="n">config</span><span class="o">.</span><span class="na">useSingleServer</span><span class="o">(</span><span class="o">)</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">)</span><span class="o">;</span>
-        <span class="c1">//构造Redisson
-</span><span class="c1"></span>        <span class="n">RedissonClient</span> <span class="n">redisson</span> <span class="o">=</span> <span class="n">Redisson</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">config</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="n">RBloomFilter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bloomFilter</span> <span class="o">=</span> <span class="n">redisson</span><span class="o">.</span><span class="na">getBloomFilter</span><span class="o">(</span><span class="s">&#34;phoneList&#34;</span><span class="o">)</span><span class="o">;</span>
-        <span class="c1">//初始化布隆过滤器：预计元素为100000000L,误差率为3%
-</span><span class="c1"></span>        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">tryInit</span><span class="o">(</span><span class="n">100000000L</span><span class="o">,</span><span class="n">0</span><span class="o">.</span><span class="na">03</span><span class="o">)</span><span class="o">;</span>
-        <span class="c1">//将号码10086插入到布隆过滤器中
-</span><span class="c1"></span>        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="c1">//判断下面号码是否在布隆过滤器中
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;123456&#34;</span><span class="o">)</span><span class="o">)</span><span class="o">;</span><span class="c1">//false
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">)</span><span class="o">)</span><span class="o">;</span><span class="c1">//true
-</span><span class="c1"></span>    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.ys.rediscluster.bloomfilter.redisson</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.redisson.Redisson</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.redisson.api.RBloomFilter</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.redisson.api.RedissonClient</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.redisson.config.Config</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedissonBloomFilter</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">config</span><span class="o">.</span><span class="na">useSingleServer</span><span class="o">().</span><span class="na">setAddress</span><span class="o">(</span><span class="s">&#34;redis://192.168.14.104:6379&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">config</span><span class="o">.</span><span class="na">useSingleServer</span><span class="o">().</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造Redisson
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">RedissonClient</span> <span class="n">redisson</span> <span class="o">=</span> <span class="n">Redisson</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">RBloomFilter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bloomFilter</span> <span class="o">=</span> <span class="n">redisson</span><span class="o">.</span><span class="na">getBloomFilter</span><span class="o">(</span><span class="s">&#34;phoneList&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//初始化布隆过滤器：预计元素为100000000L,误差率为3%
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">tryInit</span><span class="o">(</span><span class="n">100000000L</span><span class="o">,</span><span class="n">0</span><span class="o">.</span><span class="na">03</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//将号码10086插入到布隆过滤器中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断下面号码是否在布隆过滤器中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;123456&#34;</span><span class="o">));</span><span class="c1">//false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">));</span><span class="c1">//true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这是单节点的Redis实现方式，如果数据量比较大，期望的误差率又很低，那单节点所提供的内存是无法满足的，这时候可以使用分布式布隆过滤器，同样也可以用 Redisson 来实现</p>
-<h2 id="heading-6">代码实现</h2>
+<h2 id="代码实现">代码实现</h2>
 <p>PHP代码实现可参考:<a href="https://zhuanlan.zhihu.com/p/66485901">https://zhuanlan.zhihu.com/p/66485901</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -508,226 +505,226 @@ Redisson 是用于在 Java 程序中操作 Redis 的库，利用Redisson 我们�
 </span><span class="lnt">219
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-<span class="sd">/**
-</span><span class="sd"> * Author: sai
-</span><span class="sd"> * Date: 2019/5/17
-</span><span class="sd"> * Time: 14:10
-</span><span class="sd"> * 代码来自网络，有改动
-</span><span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">BloomFilterHash</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">     * 由Justin Sobel编写的按位散列函数
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">JSHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">1315423911</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">^=</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">));</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 该哈希算法基于AT＆T贝尔实验室的Peter J. Weinberger的工作。
-</span><span class="sd">     * Aho Sethi和Ulman编写的“编译器（原理，技术和工具）”一书建议使用采用此特定算法中的散列方法的散列函数。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">PJWHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$bitsInUnsignedInt</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//（unsigned int）（sizeof（unsigned int）* 8）;
-</span><span class="c1"></span>        <span class="nv">$threeQuarters</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$bitsInUnsignedInt</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
-        <span class="nv">$oneEighth</span> <span class="o">=</span> <span class="nv">$bitsInUnsignedInt</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
-        <span class="nv">$highBits</span> <span class="o">=</span> <span class="mh">0xFFFFFFFF</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$bitsInUnsignedInt</span> <span class="o">-</span> <span class="nv">$oneEighth</span><span class="p">);</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$test</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$oneEighth</span><span class="p">))</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span> <span class="p">}</span> <span class="nv">$test</span> <span class="o">=</span> <span class="nv">$hash</span> <span class="o">&amp;</span> <span class="nv">$highBits</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$test</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$hash</span> <span class="o">=</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">^</span> <span class="p">(</span><span class="nv">$test</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)(</span><span class="nv">$threeQuarters</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="nv">$highBits</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="c1">//    var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 类似于PJW Hash功能，但针对32位处理器进行了调整。它是基于UNIX的系统上的widley使用哈希函数。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">ELFHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span> <span class="nv">$x</span> <span class="o">=</span> <span class="nv">$hash</span> <span class="o">&amp;</span> <span class="mh">0xF0000000</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$hash</span> <span class="o">^=</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="nv">$hash</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="nv">$x</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 这个哈希函数来自Brian Kernighan和Dennis Ritchie的书“The C Programming Language”。
-</span><span class="sd">     * 它是一个简单的哈希函数，使用一组奇怪的可能种子，它们都构成了31 .... 31 ... 31等模式，它似乎与DJB哈希函数非常相似。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">BKDRHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$seed</span> <span class="o">=</span> <span class="mi">131</span><span class="p">;</span>  <span class="c1"># 31 131 1313 13131 131313 etc..
-</span><span class="c1"></span>        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">*</span> <span class="nv">$seed</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]));</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 这是在开源SDBM项目中使用的首选算法。
-</span><span class="sd">     * 哈希函数似乎对许多不同的数据集具有良好的总体分布。它似乎适用于数据集中元素的MSB存在高差异的情况。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">SDBMHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$hash</span><span class="p">);</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 由Daniel J. Bernstein教授制作的算法，首先在usenet新闻组comp.lang.c上向世界展示。
-</span><span class="sd">     * 它是有史以来发布的最有效的哈希函数之一。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">DJBHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">5381</span><span class="p">;</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nv">$hash</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
-        <span class="p">}</span>
-        <span class="nx">var_dump</span><span class="p">((</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">);</span><span class="k">die</span><span class="p">;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * Donald E. Knuth在“计算机编程艺术第3卷”中提出的算法，主题是排序和搜索第6.4章。
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">DEKHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$len</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&gt;&gt;</span> <span class="mi">27</span><span class="p">))</span> <span class="o">^</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump((int)($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 参考 http://www.isthe.com/chongo/tech/comp/fnv/
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">FNVHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$prime</span> <span class="o">=</span> <span class="mi">16777619</span><span class="p">;</span> <span class="c1">//32位的prime 2^24 + 2^8 + 0x93 = 16777619
-</span><span class="c1"></span>        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">2166136261</span><span class="p">;</span> <span class="c1">//32位的offset
-</span><span class="c1"></span>        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">*</span> <span class="nv">$prime</span><span class="p">)</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-            <span class="nv">$hash</span> <span class="o">^=</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
-        <span class="p">}</span>
-<span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-
-<span class="sd">/**
-</span><span class="sd"> * 使用redis实现的布隆过滤器
-</span><span class="sd"> */</span>
-<span class="k">abstract</span> <span class="k">class</span> <span class="nc">BloomFilterRedis</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">     * 需要使用一个方法来定义bucket的名字
-</span><span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$bucket</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="nv">$hashFunction</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&#34;需要定义bucket和hashFunction&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BloomFilterHash</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getRedis</span><span class="p">();</span> <span class="c1">//假设这里你已经连接好了
-</span><span class="c1"></span>    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getRedis</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Redis</span><span class="p">();</span>
-        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
-<span class="c1">//        $redis-&gt;auth(&#39;13sai666.&#39;);
-</span><span class="c1">//        var_dump($redis-&gt;info(&#39;SERVER&#39;));die;
-</span><span class="c1"></span>        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nv">$redis</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 添加到集合中
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span> <span class="k">as</span> <span class="nv">$function</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span><span class="o">-&gt;</span><span class="nv">$function</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span><span class="o">-&gt;</span><span class="na">setBit</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span><span class="p">,</span> <span class="nv">$hash</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 查询是否存在, 存在的有一定几率会误判（hash冲突）, 不存在的肯定不存在
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$pipe</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span><span class="o">-&gt;</span><span class="na">multi</span><span class="p">();</span>
-        <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span> <span class="k">as</span> <span class="nv">$function</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span><span class="o">-&gt;</span><span class="nv">$function</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span><span class="p">);</span>
-            <span class="nv">$pipe</span> <span class="o">=</span> <span class="nv">$pipe</span><span class="o">-&gt;</span><span class="na">getBit</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span><span class="p">,</span> <span class="nv">$hash</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$pipe</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">();</span>
-<span class="c1">//        var_dump($res);
-</span><span class="c1"></span>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$res</span> <span class="k">as</span> <span class="nv">$bit</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$bit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="sd">/**
-</span><span class="sd"> * 重复内容过滤器
-</span><span class="sd"> * 该布隆过滤器总位数为2^32位, 判断条数为2^30条. hash函数最优为3个.(能够容忍最多的hash函数个数)
-</span><span class="sd"> *
-</span><span class="sd"> * 注意, 在存储的数据量到2^30条时候, 误判率会急剧增加, 因此需要定时判断过滤器中的位为1的的数量是否超过50%, 超过则需要清空.
-</span><span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">FilteRepeatedComments</span> <span class="k">extends</span> <span class="nx">BloomFilterRedis</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">     * 表示判断重复内容的过滤器
-</span><span class="sd">     * @var string
-</span><span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$bucket</span> <span class="o">=</span> <span class="s1">&#39;bulong&#39;</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="nv">$hashFunction</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FNVHash&#39;</span><span class="p">,</span> <span class="s1">&#39;JSHash&#39;</span><span class="p">,</span> <span class="s1">&#39;ELFHash&#39;</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Author: sai
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Date: 2019/5/17
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Time: 14:10
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 代码来自网络，有改动
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BloomFilterHash</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 由Justin Sobel编写的按位散列函数
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">JSHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">1315423911</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">^=</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 该哈希算法基于AT＆T贝尔实验室的Peter J. Weinberger的工作。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Aho Sethi和Ulman编写的“编译器（原理，技术和工具）”一书建议使用采用此特定算法中的散列方法的散列函数。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">PJWHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$bitsInUnsignedInt</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//（unsigned int）（sizeof（unsigned int）* 8）;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$threeQuarters</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$bitsInUnsignedInt</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$oneEighth</span> <span class="o">=</span> <span class="nv">$bitsInUnsignedInt</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$highBits</span> <span class="o">=</span> <span class="mh">0xFFFFFFFF</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$bitsInUnsignedInt</span> <span class="o">-</span> <span class="nv">$oneEighth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$test</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$oneEighth</span><span class="p">))</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span> <span class="p">}</span> <span class="nv">$test</span> <span class="o">=</span> <span class="nv">$hash</span> <span class="o">&amp;</span> <span class="nv">$highBits</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$test</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$hash</span> <span class="o">=</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">^</span> <span class="p">(</span><span class="nv">$test</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="nx">int</span><span class="p">)(</span><span class="nv">$threeQuarters</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="nv">$highBits</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//    var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 类似于PJW Hash功能，但针对32位处理器进行了调整。它是基于UNIX的系统上的widley使用哈希函数。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">ELFHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span> <span class="nv">$x</span> <span class="o">=</span> <span class="nv">$hash</span> <span class="o">&amp;</span> <span class="mh">0xF0000000</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$hash</span> <span class="o">^=</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="nv">$x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 这个哈希函数来自Brian Kernighan和Dennis Ritchie的书“The C Programming Language”。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 它是一个简单的哈希函数，使用一组奇怪的可能种子，它们都构成了31 .... 31 ... 31等模式，它似乎与DJB哈希函数非常相似。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">BKDRHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$seed</span> <span class="o">=</span> <span class="mi">131</span><span class="p">;</span>  <span class="c1"># 31 131 1313 13131 131313 etc..
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">*</span> <span class="nv">$seed</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 这是在开源SDBM项目中使用的首选算法。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 哈希函数似乎对许多不同的数据集具有良好的总体分布。它似乎适用于数据集中元素的MSB存在高差异的情况。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">SDBMHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$hash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 由Daniel J. Bernstein教授制作的算法，首先在usenet新闻组comp.lang.c上向世界展示。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 它是有史以来发布的最有效的哈希函数之一。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">DJBHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">5381</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="nv">$hash</span><span class="p">)</span> <span class="o">+</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">var_dump</span><span class="p">((</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">);</span><span class="k">die</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Donald E. Knuth在“计算机编程艺术第3卷”中提出的算法，主题是排序和搜索第6.4章。
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">DEKHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$len</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">((</span><span class="nv">$hash</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">&gt;&gt;</span> <span class="mi">27</span><span class="p">))</span> <span class="o">^</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump((int)($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 参考 http://www.isthe.com/chongo/tech/comp/fnv/
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">FNVHash</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$prime</span> <span class="o">=</span> <span class="mi">16777619</span><span class="p">;</span> <span class="c1">//32位的prime 2^24 + 2^8 + 0x93 = 16777619
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$hash</span> <span class="o">=</span> <span class="mi">2166136261</span><span class="p">;</span> <span class="c1">//32位的offset
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$len</span> <span class="o">||</span> <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="nv">$len</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">*</span> <span class="nv">$prime</span><span class="p">)</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">^=</span> <span class="nx">ord</span><span class="p">(</span><span class="nv">$string</span><span class="p">[</span><span class="nv">$i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump(($hash % 0xFFFFFFFF) &amp; 0xFFFFFFFF);die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="nv">$hash</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFFFFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 使用redis实现的布隆过滤器
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">BloomFilterRedis</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 需要使用一个方法来定义bucket的名字
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$bucket</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$hashFunction</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&#34;需要定义bucket和hashFunction&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BloomFilterHash</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getRedis</span><span class="p">();</span> <span class="c1">//假设这里你已经连接好了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getRedis</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Redis</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        $redis-&gt;auth(&#39;13sai666.&#39;);
+</span></span></span><span class="line"><span class="cl"><span class="c1">//        var_dump($redis-&gt;info(&#39;SERVER&#39;));die;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$redis</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 添加到集合中
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span> <span class="k">as</span> <span class="nv">$function</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span><span class="o">-&gt;</span><span class="nv">$function</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span><span class="o">-&gt;</span><span class="na">setBit</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span><span class="p">,</span> <span class="nv">$hash</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 查询是否存在, 存在的有一定几率会误判（hash冲突）, 不存在的肯定不存在
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$pipe</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Redis</span><span class="o">-&gt;</span><span class="na">multi</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$len</span> <span class="o">=</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hashFunction</span> <span class="k">as</span> <span class="nv">$function</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$hash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Hash</span><span class="o">-&gt;</span><span class="nv">$function</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nv">$len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$pipe</span> <span class="o">=</span> <span class="nv">$pipe</span><span class="o">-&gt;</span><span class="na">getBit</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bucket</span><span class="p">,</span> <span class="nv">$hash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$pipe</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        var_dump($res);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$res</span> <span class="k">as</span> <span class="nv">$bit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nv">$bit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 重复内容过滤器
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 该布隆过滤器总位数为2^32位, 判断条数为2^30条. hash函数最优为3个.(能够容忍最多的hash函数个数)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 注意, 在存储的数据量到2^30条时候, 误判率会急剧增加, 因此需要定时判断过滤器中的位为1的的数量是否超过50%, 超过则需要清空.
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FilteRepeatedComments</span> <span class="k">extends</span> <span class="nx">BloomFilterRedis</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 表示判断重复内容的过滤器
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @var string
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$bucket</span> <span class="o">=</span> <span class="s1">&#39;bulong&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$hashFunction</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FNVHash&#39;</span><span class="p">,</span> <span class="s1">&#39;JSHash&#39;</span><span class="p">,</span> <span class="s1">&#39;ELFHash&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>结果测试：
 var_dump((new FilteRepeatedComments())-&gt;add(&lsquo;abc&rsquo;)); //true
@@ -735,11 +732,11 @@ var_dump((new FilteRepeatedComments())-&gt;add(&lsquo;bcd&rsquo;));//true
 var_dump((new FilteRepeatedComments())-&gt;add(&lsquo;dfg&rsquo;));//true
 var_dump((new FilteRepeatedComments())-&gt;exists(&lsquo;dfg&rsquo;));//true
 var_dump((new FilteRepeatedComments())-&gt;exists(&lsquo;dgg&rsquo;));//false</p>
-<h2 id="heading-7">延伸</h2>
+<h2 id="延伸">延伸</h2>
 <p>Java中有比较不错的guava扩展包实现了布隆过滤器，是谷歌开发的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -758,26 +755,26 @@ var_dump((new FilteRepeatedComments())-&gt;exists(&lsquo;dgg&rsquo;));//false</p
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.ys.rediscluster.bloomfilter</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.google.common.base.Charsets</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.common.hash.BloomFilter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.common.hash.Funnel</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.common.hash.Funnels</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuavaBloomFilter</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">BloomFilter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bloomFilter</span> <span class="o">=</span> <span class="n">BloomFilter</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">Funnels</span><span class="o">.</span><span class="na">stringFunnel</span><span class="o">(</span><span class="n">Charsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">)</span><span class="o">,</span><span class="n">100000</span><span class="o">,</span><span class="n">0</span><span class="o">.</span><span class="na">01</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">mightContain</span><span class="o">(</span><span class="s">&#34;123456&#34;</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">mightContain</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.ys.rediscluster.bloomfilter</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.google.common.base.Charsets</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.google.common.hash.BloomFilter</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.google.common.hash.Funnel</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.google.common.hash.Funnels</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuavaBloomFilter</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BloomFilter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bloomFilter</span> <span class="o">=</span> <span class="n">BloomFilter</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">Funnels</span><span class="o">.</span><span class="na">stringFunnel</span><span class="o">(</span><span class="n">Charsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">),</span><span class="n">100000</span><span class="o">,</span><span class="n">0</span><span class="o">.</span><span class="na">01</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">bloomFilter</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">mightContain</span><span class="o">(</span><span class="s">&#34;123456&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bloomFilter</span><span class="o">.</span><span class="na">mightContain</span><span class="o">(</span><span class="s">&#34;10086&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-8">参考文献</h2>
+</div><h2 id="参考文献">参考文献</h2>
 <p><a href="https://www.cnblogs.com/ysocean/p/12594982.html">Redis详解（十三）&mdash;&mdash; Redis布隆过滤器</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/66485901">从缓存穿透聊到布隆过滤器</a></p>
 <p><a href="https://blog.csdn.net/wx1528159409/article/details/88357728">Redis的缓存穿透及解决方法——布隆过滤器BloomFilter</a></p>
@@ -852,7 +849,7 @@ var_dump((new FilteRepeatedComments())-&gt;exists(&lsquo;dgg&rsquo;));//false</p
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

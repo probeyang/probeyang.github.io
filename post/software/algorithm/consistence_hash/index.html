@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://www.sanlt.com/post/software/algorithm/consistence_hash/" />
@@ -42,17 +42,14 @@
 <meta property="og:title" content="一致性hash算法详解" />
 <meta property="og:description" content="一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.sanlt.com/post/software/algorithm/consistence_hash/" />
+<meta property="og:url" content="https://www.sanlt.com/post/software/algorithm/consistence_hash/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-03-03T16:42:10+08:00" />
 <meta property="article:modified_time" content="2021-03-03T16:42:10+08:00" />
+
 <meta itemprop="name" content="一致性hash算法详解">
-<meta itemprop="description" content="一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和">
-<meta itemprop="datePublished" content="2021-03-03T16:42:10&#43;08:00" />
-<meta itemprop="dateModified" content="2021-03-03T16:42:10&#43;08:00" />
+<meta itemprop="description" content="一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和"><meta itemprop="datePublished" content="2021-03-03T16:42:10+08:00" />
+<meta itemprop="dateModified" content="2021-03-03T16:42:10+08:00" />
 <meta itemprop="wordCount" content="3878">
-
-
-
 <meta itemprop="keywords" content="一致性hash,算法,负载均衡,高并发,缓存," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="一致性hash算法详解"/>
 <meta name="twitter:description" content="一致性hash算法详解 前言 一致性Hash是一种特殊的Hash算法，由于其均衡性、持久性的映射特点，被广泛的应用于负载均衡领域，如nginx和"/>
@@ -140,41 +137,41 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">前言</a></li>
+    <li><a href="#前言">前言</a></li>
   </ul>
 
   <ul>
     <li>
       <ul>
-        <li><a href="#hash-1">hash算法介绍</a></li>
+        <li><a href="#hash算法介绍">hash算法介绍</a></li>
       </ul>
     </li>
-    <li><a href="#hash-2">简单hash负载均衡算法</a>
+    <li><a href="#简单hash负载均衡算法">简单hash负载均衡算法</a>
       <ul>
-        <li><a href="#heading-2">缺陷</a></li>
+        <li><a href="#缺陷">缺陷</a></li>
       </ul>
     </li>
-    <li><a href="#hash-3">一致性hash算法</a>
+    <li><a href="#一致性hash算法">一致性hash算法</a>
       <ul>
-        <li><a href="#heading-3">删除集群（节点）情况分析</a></li>
-        <li><a href="#heading-4">新增集群（节点）情况分析</a></li>
-        <li><a href="#heading-5">缺陷</a></li>
-        <li><a href="#heading-8">解决方案</a></li>
+        <li><a href="#删除集群节点情况分析">删除集群（节点）情况分析</a></li>
+        <li><a href="#新增集群节点情况分析">新增集群（节点）情况分析</a></li>
+        <li><a href="#缺陷-1">缺陷</a></li>
+        <li><a href="#解决方案">解决方案</a></li>
       </ul>
     </li>
-    <li><a href="#heading-9">代码测试</a></li>
-    <li><a href="#heading-10">参考资料</a></li>
+    <li><a href="#代码测试">代码测试</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h1 id="hash">一致性hash算法详解</h1>
-<h2 id="heading">前言</h2>
+      <h1 id="一致性hash算法详解">一致性hash算法详解</h1>
+<h2 id="前言">前言</h2>
 <p>一致性Hash是一种特殊的Hash算法，由于其<strong>均衡性</strong>、<strong>持久性</strong>的映射特点，被广泛的应用于负载均衡领域，如nginx和memcached都采用了一致性Hash来作为集群负载均衡的方案。</p>
 <p>本文将介绍一致性Hash的基本思路，并讨论其在分布式缓存集群负载均衡中的应用。同时也会进行相应的代码测试来验证其算法特性，并给出和其他负载均衡方案的一些对比。</p>
-<h1 id="heading-1">简介</h1>
-<h3 id="hash-1">hash算法介绍</h3>
+<h1 id="简介">简介</h1>
+<h3 id="hash算法介绍">hash算法介绍</h3>
 <p>hash,一般的hash函数有两个作用：</p>
 <ol>
 <li>将相似或不相似的数据打散成<strong>随机的、均匀分布</strong>的数据。</li>
@@ -187,48 +184,48 @@
 <blockquote>
 <p>注意：hash算法不是一直加密或解密算法，它不是为了解决加解密问题的。</p>
 </blockquote>
-<h2 id="hash-2">简单hash负载均衡算法</h2>
+<h2 id="简单hash负载均衡算法">简单hash负载均衡算法</h2>
 <p>我们使用示例讲解，假如我们每个请求是一个data，我们为其生成一个key，然后使用hash算法：集群值=key%N（其中key是一个请求hash后的值，N为负载均衡中集群的个数或者说单个服务器的个数）来实现请求的负载均衡：
 <img src="/img/software/algorithm/consistence_hash/1.png" alt="图例" title="图例">
 我们这里设Key作为缓存的Key，对应的Group储存该Key的Value，就可以实现一个分布式的缓存系统，举例说明：
 假设请求内容“阿斯顿发斯蒂芬”，hash后key为123，group有三个，group0，group1，group2，分别对应三台服务器，则N为3，得：group值=123 % 3 = 0，则group就为group0了，也就是找到缓存服务器为group0这台机器。</p>
-<h3 id="heading-2">缺陷</h3>
+<h3 id="缺陷">缺陷</h3>
 <p>以上这种方法非常简单，但有个致命的缺陷，那就是如果集群数量N发生变化，之前的所有Hash映射就会全部失效。如果集群中的每个机器提供的服务没有差别，倒不会产生什么影响，但对于分布式缓存这样的系统而言，映射全部失效就意味着之前的缓存全部失效，其后果将是<strong>缓存雪崩</strong>这样的灾难性事故。</p>
-<h2 id="hash-3">一致性hash算法</h2>
+<h2 id="一致性hash算法">一致性hash算法</h2>
 <p>由上可知，简单hash这种负载均衡的方式是不可取的，小集群小项目可以使用，在并发高可用性要求高的大项目这是肯定不可用的，所以就引入了一致性hash算法解决此问题。
 简单说，一致性hash算法就是将之前的线性hash映射转变成环状hash映射。
 <img src="/img/software/algorithm/consistence_hash/2.png" alt="图例" title="图例">
 整个Hash空间被构建成一个首尾相接的环，使用一致性Hash时需要进行两次映射。
 第一次，给每个节点（集群）计算Hash，然后记录它们的Hash值，这就是它们在环上的位置。
 第二次，给每个Key计算Hash，然后沿着顺时针的方向找到环上的第一个节点，就是该Key储存对应的集群。</p>
-<h3 id="heading-3">删除集群（节点）情况分析</h3>
+<h3 id="删除集群节点情况分析">删除集群（节点）情况分析</h3>
 <p>下面来看一下删除集群后是什么情况，如图：
 <img src="/img/software/algorithm/consistence_hash/3.png" alt="图例" title="图例">
 当节点被删除时，其余节点在环上的映射不会发生改变，只是原来打在对应节点上的Key现在会转移到顺时针方向的下一个节点上去。</p>
-<h3 id="heading-4">新增集群（节点）情况分析</h3>
+<h3 id="新增集群节点情况分析">新增集群（节点）情况分析</h3>
 <p><img src="/img/software/algorithm/consistence_hash/4.png" alt="图例" title="图例">
 增加一个节点也是同样的，最终都只有少部分的Key发生了失效。</p>
-<h3 id="heading-5">缺陷</h3>
+<h3 id="缺陷-1">缺陷</h3>
 <p>这种模式也算是一种基本的一致性hash算法，用于负载均衡还存在一些问题，比较大的问题有：</p>
 <ol>
 <li>数据倾斜</li>
 <li>缓存雪崩</li>
 </ol>
 <p>下面依次讲解两个问题点。</p>
-<h4 id="heading-6">数据倾斜</h4>
+<h4 id="数据倾斜">数据倾斜</h4>
 <p>如果节点的数量很少，而hash环空间很大（一般是 0 ~ 2^32），直接进行一致性hash上去，大部分情况下节点在环上的位置会很不均匀，挤在某个很小的区域。最终对分布式缓存造成的影响就是，集群的每个实例上储存的缓存数据量不一致，会发生严重的数据倾斜。如图所示：
 <img src="/img/software/algorithm/consistence_hash/5.png" alt="图例" title="图例"></p>
-<h4 id="heading-7">缓存雪崩</h4>
+<h4 id="缓存雪崩">缓存雪崩</h4>
 <p>若每个节点在环上只有一个节点，且节点又很少，例如只有3个，则当某一集群从环中移除时，它原本所负责的任务将全部交由顺时针方向的下一个集群处理。例如，当group0退出时，它原本所负责的缓存将全部交给group1处理。这就意味着group1的访问压力会瞬间增大。设想一下，如果group1因为压力过大而崩溃，那么更大的压力又会向group2压过去，最终服务压力就像滚雪球一样越滚越大，最终导致雪崩。缓存雪崩在当前的这种模式下一般会因数据倾斜的发生而发生。</p>
-<h3 id="heading-8">解决方案</h3>
+<h3 id="解决方案">解决方案</h3>
 <p>解决数据倾斜和缓存雪崩的方案就是使用<strong>虚拟节点</strong>。既然节点少且不均匀，那么我们就使用实际节点映射成更多的虚拟节点，并均匀分布，即可解决这两个缺陷。
 具体怎么实现虚拟节点，这是很多初学者最头疼和最关心的地方，将会在代码示例中实现，请参考代码即可知道。</p>
-<h2 id="heading-9">代码测试</h2>
+<h2 id="代码测试">代码测试</h2>
 <p>现在我们尝试编写一些测试代码，来看看一致性hash的实际效果是否符合我们预期。
 首先我们需要一个能够对输入进行均匀散列的Hash算法，可供选择的有很多，memcached官方使用了基于md5的KETAMA算法，但这里处于计算效率的考虑，使用了FNV1_32_HASH算法，如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -254,31 +251,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashUtil</span> <span class="o">{</span>
-    <span class="cm">/**
-</span><span class="cm">     * 计算Hash值, 使用FNV1_32_HASH算法
-</span><span class="cm">     * @param str
-</span><span class="cm">     * @return
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getHash</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">final</span> <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">16777619</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">2166136261L</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">(</span><span class="o">)</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">hash</span> <span class="o">=</span><span class="o">(</span> <span class="n">hash</span> <span class="o">^</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">hash</span> <span class="o">+</span><span class="o">=</span> <span class="n">hash</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">13</span><span class="o">;</span>
-        <span class="n">hash</span> <span class="o">^</span><span class="o">=</span> <span class="n">hash</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">7</span><span class="o">;</span>
-        <span class="n">hash</span> <span class="o">+</span><span class="o">=</span> <span class="n">hash</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">3</span><span class="o">;</span>
-        <span class="n">hash</span> <span class="o">^</span><span class="o">=</span> <span class="n">hash</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">17</span><span class="o">;</span>
-        <span class="n">hash</span> <span class="o">+</span><span class="o">=</span> <span class="n">hash</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">5</span><span class="o">;</span>
-
-        <span class="k">if</span> <span class="o">(</span><span class="n">hash</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">hash</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">hash</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashUtil</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 计算Hash值, 使用FNV1_32_HASH算法
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param str
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getHash</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">16777619</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">2166136261L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hash</span> <span class="o">=(</span> <span class="n">hash</span> <span class="o">^</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hash</span> <span class="o">+=</span> <span class="n">hash</span> <span class="o">&lt;&lt;</span> <span class="n">13</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hash</span> <span class="o">^=</span> <span class="n">hash</span> <span class="o">&gt;&gt;</span> <span class="n">7</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hash</span> <span class="o">+=</span> <span class="n">hash</span> <span class="o">&lt;&lt;</span> <span class="n">3</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hash</span> <span class="o">^=</span> <span class="n">hash</span> <span class="o">&gt;&gt;</span> <span class="n">17</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hash</span> <span class="o">+=</span> <span class="n">hash</span> <span class="o">&lt;&lt;</span> <span class="n">5</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">hash</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hash</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hash</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>实际使用时可以根据需求调整。</p>
 <p>接着需要使用一种数据结构来保存hash环，可以采用的方案有很多种，最简单的是采用数组或链表。但这样查找的时候需要进行排序，如果节点数量多，速度就可能变得很慢。</p>
@@ -286,7 +283,7 @@
 <p>先编写一个最简单的，无虚拟节点的Hash环测试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -353,77 +350,77 @@
 </span><span class="lnt">65
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsistentHashingWithoutVirtualNode</span> <span class="o">{</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 集群地址列表
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">groups</span> <span class="o">=</span> <span class="o">{</span>
-        <span class="s">&#34;192.168.0.0:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.1:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.2:111&#34;</span><span class="o">,</span>
-        <span class="s">&#34;192.168.0.3:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.4:111&#34;</span>
-    <span class="o">}</span><span class="o">;</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 用于保存Hash环上的节点
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">sortedMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 初始化，将所有的服务器加入Hash环中
-</span><span class="cm">     */</span>
-    <span class="kd">static</span> <span class="o">{</span>
-        <span class="c1">// 使用红黑树实现，插入效率比较差，但是查找效率极高
-</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">group</span> <span class="o">:</span> <span class="n">groups</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">group</span><span class="o">)</span><span class="o">;</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">group</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-            <span class="n">sortedMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">group</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 计算对应的widget加载在哪个group上
-</span><span class="cm">     *
-</span><span class="cm">     * @param widgetKey
-</span><span class="cm">     * @return
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getServer</span><span class="o">(</span><span class="n">String</span> <span class="n">widgetKey</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">widgetKey</span><span class="o">)</span><span class="o">;</span>
-        <span class="c1">// 只取出所有大于该hash值的部分而不必遍历整个Tree
-</span><span class="c1"></span>        <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">subMap</span> <span class="o">=</span> <span class="n">sortedMap</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">subMap</span> <span class="o">=</span><span class="o">=</span> <span class="kc">null</span> <span class="o">|</span><span class="o">|</span> <span class="n">subMap</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
-            <span class="c1">// hash值在最尾部，应该映射到第一个group上
-</span><span class="c1"></span>            <span class="k">return</span> <span class="n">sortedMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">sortedMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">subMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">subMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 生成随机数进行测试
-</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">resMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">Integer</span> <span class="n">widgetId</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">(</span><span class="o">)</span> <span class="o">*</span> <span class="n">10000</span><span class="o">)</span><span class="o">;</span>
-            <span class="n">String</span> <span class="n">server</span> <span class="o">=</span> <span class="n">getServer</span><span class="o">(</span><span class="n">widgetId</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">resMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">server</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="n">resMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">server</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="n">resMap</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
-            <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;group &#34;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s">&#34;: &#34;</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s">&#34;(&#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">/</span><span class="n">1000</span><span class="o">.</span><span class="na">0D</span> <span class="o">+</span><span class="s">&#34;%)&#34;</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsistentHashingWithoutVirtualNode</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 集群地址列表
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="n">groups</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;192.168.0.0:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.1:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.2:111&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;192.168.0.3:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.4:111&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 用于保存Hash环上的节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">sortedMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 初始化，将所有的服务器加入Hash环中
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 使用红黑树实现，插入效率比较差，但是查找效率极高
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">group</span> <span class="o">:</span> <span class="n">groups</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">group</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">group</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sortedMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">group</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 计算对应的widget加载在哪个group上
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param widgetKey
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getServer</span><span class="o">(</span><span class="n">String</span> <span class="n">widgetKey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">widgetKey</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 只取出所有大于该hash值的部分而不必遍历整个Tree
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">subMap</span> <span class="o">=</span> <span class="n">sortedMap</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">subMap</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">subMap</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// hash值在最尾部，应该映射到第一个group上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="n">sortedMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">sortedMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">subMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">subMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 生成随机数进行测试
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">resMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Integer</span> <span class="n">widgetId</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">10000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">server</span> <span class="o">=</span> <span class="n">getServer</span><span class="o">(</span><span class="n">widgetId</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">resMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">server</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="n">resMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">server</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">resMap</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">            <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;group &#34;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s">&#34;: &#34;</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s">&#34;(&#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">/</span><span class="n">1000</span><span class="o">.</span><span class="na">0D</span> <span class="o">+</span><span class="s">&#34;%)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>生成10000个随机数字进行测试，最终得到的压力分布情况如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -434,21 +431,21 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>192.168.0.1:111<span class="o">]</span> launched @ <span class="m">8518713</span>
-<span class="o">[</span>192.168.0.2:111<span class="o">]</span> launched @ <span class="m">1361847097</span>
-<span class="o">[</span>192.168.0.3:111<span class="o">]</span> launched @ <span class="m">1171828661</span>
-<span class="o">[</span>192.168.0.4:111<span class="o">]</span> launched @ <span class="m">1764547046</span>
-group 192.168.0.2:111: 8572<span class="o">(</span>8.572%<span class="o">)</span>
-group 192.168.0.1:111: 18693<span class="o">(</span>18.693%<span class="o">)</span>
-group 192.168.0.4:111: 17764<span class="o">(</span>17.764%<span class="o">)</span>
-group 192.168.0.3:111: 27870<span class="o">(</span>27.87%<span class="o">)</span>
-group 192.168.0.0:111: 27101<span class="o">(</span>27.101%<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111<span class="o">]</span> launched @ <span class="m">8518713</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.2:111<span class="o">]</span> launched @ <span class="m">1361847097</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.3:111<span class="o">]</span> launched @ <span class="m">1171828661</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.4:111<span class="o">]</span> launched @ <span class="m">1764547046</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.2:111: 8572<span class="o">(</span>8.572%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 18693<span class="o">(</span>18.693%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 17764<span class="o">(</span>17.764%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.3:111: 27870<span class="o">(</span>27.87%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 27101<span class="o">(</span>27.101%<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到压力还是比较不平均的，所以我们继续，引入虚拟节点：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -529,108 +526,108 @@ group 192.168.0.0:111: 27101<span class="o">(</span>27.101%<span class="o">)</sp
 </span><span class="lnt">79
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsistentHashingWithVirtualNode</span> <span class="o">{</span>
-    <span class="cm">/**
-</span><span class="cm">     * 集群地址列表
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">groups</span> <span class="o">=</span> <span class="o">{</span>
-        <span class="s">&#34;192.168.0.0:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.1:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.2:111&#34;</span><span class="o">,</span>
-        <span class="s">&#34;192.168.0.3:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.4:111&#34;</span>
-    <span class="o">}</span><span class="o">;</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 真实集群列表
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">realGroups</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 虚拟节点映射关系
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">virtualNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">VIRTUAL_NODE_NUM</span> <span class="o">=</span> <span class="n">1000</span><span class="o">;</span>
-
-    <span class="kd">static</span> <span class="o">{</span>
-        <span class="c1">// 先添加真实节点列表
-</span><span class="c1"></span>        <span class="n">realGroups</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">groups</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="c1">// 将虚拟节点映射到Hash环上
-</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">realGroup</span><span class="o">:</span> <span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">VIRTUAL_NODE_NUM</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">String</span> <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">getVirtualNodeName</span><span class="o">(</span><span class="n">realGroup</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span><span class="o">;</span>
-                <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">)</span><span class="o">;</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">virtualNodeName</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-                <span class="n">virtualNodes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">virtualNodeName</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getVirtualNodeName</span><span class="o">(</span><span class="n">String</span> <span class="n">realName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">realName</span> <span class="o">+</span> <span class="s">&#34;&amp;&amp;VN&#34;</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">num</span><span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getRealNodeName</span><span class="o">(</span><span class="n">String</span> <span class="n">virtualName</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">virtualName</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;&amp;&amp;&#34;</span><span class="o">)</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getServer</span><span class="o">(</span><span class="n">String</span> <span class="n">widgetKey</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">widgetKey</span><span class="o">)</span><span class="o">;</span>
-        <span class="c1">// 只取出所有大于该hash值的部分而不必遍历整个Tree
-</span><span class="c1"></span>        <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">subMap</span> <span class="o">=</span> <span class="n">virtualNodes</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-        <span class="n">String</span> <span class="n">virtualNodeName</span><span class="o">;</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">subMap</span> <span class="o">=</span><span class="o">=</span> <span class="kc">null</span> <span class="o">|</span><span class="o">|</span> <span class="n">subMap</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
-            <span class="c1">// hash值在最尾部，应该映射到第一个group上
-</span><span class="c1"></span>            <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">virtualNodes</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">virtualNodes</span><span class="o">.</span><span class="na">firstKey</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
-            <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">subMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">subMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">getRealNodeName</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="o">]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 生成随机数进行测试
-</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">resMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">Integer</span> <span class="n">widgetId</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
-            <span class="n">String</span> <span class="n">group</span> <span class="o">=</span> <span class="n">getServer</span><span class="o">(</span><span class="n">widgetId</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">resMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">group</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">resMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">group</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="n">resMap</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
-            <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;group &#34;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s">&#34;: &#34;</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s">&#34;(&#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">/</span><span class="n">100000</span><span class="o">.</span><span class="na">0D</span> <span class="o">+</span><span class="s">&#34;%)&#34;</span><span class="o">)</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">)</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConsistentHashingWithVirtualNode</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 集群地址列表
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="n">groups</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;192.168.0.0:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.1:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.2:111&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;192.168.0.3:111&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.0.4:111&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 真实集群列表
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">realGroups</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 虚拟节点映射关系
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">virtualNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">VIRTUAL_NODE_NUM</span> <span class="o">=</span> <span class="n">1000</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 先添加真实节点列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">realGroups</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">groups</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 将虚拟节点映射到Hash环上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">realGroup</span><span class="o">:</span> <span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">VIRTUAL_NODE_NUM</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span> <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">getVirtualNodeName</span><span class="o">(</span><span class="n">realGroup</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">virtualNodeName</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">virtualNodes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">virtualNodeName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getVirtualNodeName</span><span class="o">(</span><span class="n">String</span> <span class="n">realName</span><span class="o">,</span> <span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">realName</span> <span class="o">+</span> <span class="s">&#34;&amp;&amp;VN&#34;</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getRealNodeName</span><span class="o">(</span><span class="n">String</span> <span class="n">virtualName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">virtualName</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;&amp;&amp;&#34;</span><span class="o">)[</span><span class="n">0</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getServer</span><span class="o">(</span><span class="n">String</span> <span class="n">widgetKey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">widgetKey</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 只取出所有大于该hash值的部分而不必遍历整个Tree
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">subMap</span> <span class="o">=</span> <span class="n">virtualNodes</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">virtualNodeName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">subMap</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">subMap</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// hash值在最尾部，应该映射到第一个group上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">virtualNodes</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">virtualNodes</span><span class="o">.</span><span class="na">firstKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">subMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">subMap</span><span class="o">.</span><span class="na">firstKey</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">getRealNodeName</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 生成随机数进行测试
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">resMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Integer</span> <span class="n">widgetId</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">group</span> <span class="o">=</span> <span class="n">getServer</span><span class="o">(</span><span class="n">widgetId</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">resMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">group</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">resMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">group</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">resMap</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">            <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;group &#34;</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="s">&#34;: &#34;</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s">&#34;(&#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">/</span><span class="n">100000</span><span class="o">.</span><span class="na">0D</span> <span class="o">+</span><span class="s">&#34;%)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里真实节点和虚拟节点的映射采用了字符串拼接的方式，这种方式虽然简单但很有效，memcached官方也是这么实现的。将虚拟节点的数量设置为1000，重新测试压力分布情况，结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">group 192.168.0.2:111: 18354<span class="o">(</span>18.354%<span class="o">)</span>
-group 192.168.0.1:111: 20062<span class="o">(</span>20.062%<span class="o">)</span>
-group 192.168.0.4:111: 20749<span class="o">(</span>20.749%<span class="o">)</span>
-group 192.168.0.3:111: 20116<span class="o">(</span>20.116%<span class="o">)</span>
-group 192.168.0.0:111: 20719<span class="o">(</span>20.719%<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">group 192.168.0.2:111: 18354<span class="o">(</span>18.354%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 20062<span class="o">(</span>20.062%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 20749<span class="o">(</span>20.749%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.3:111: 20116<span class="o">(</span>20.116%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 20719<span class="o">(</span>20.719%<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到基本已经达到平均分布了，接着继续测试删除和增加节点给整个服务带来的影响，相关测试代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -659,39 +656,39 @@ group 192.168.0.0:111: 20719<span class="o">(</span>20.719%<span class="o">)</sp
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">refreshHashCircle</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// 当集群变动时，刷新hash环，其余的集群在hash环上的位置不会发生变动
-</span><span class="c1"></span>    <span class="n">virtualNodes</span><span class="o">.</span><span class="na">clear</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">realGroup</span><span class="o">:</span> <span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">VIRTUAL_NODE_NUM</span><span class="o">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">)</span> <span class="o">{</span>
-               <span class="n">String</span> <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">getVirtualNodeName</span><span class="o">(</span><span class="n">realGroup</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span><span class="o">;</span>
-            <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">)</span><span class="o">;</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">virtualNodeName</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">)</span><span class="o">;</span>
-            <span class="n">virtualNodes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">virtualNodeName</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addGroup</span><span class="o">(</span><span class="n">String</span> <span class="n">identifier</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">realGroups</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span><span class="o">;</span>
-    <span class="n">refreshHashCircle</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">removeGroup</span><span class="o">(</span><span class="n">String</span> <span class="n">identifier</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">group</span><span class="o">:</span><span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">group</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">identifier</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">realGroups</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">)</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="n">refreshHashCircle</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">refreshHashCircle</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 当集群变动时，刷新hash环，其余的集群在hash环上的位置不会发生变动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">virtualNodes</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">realGroup</span><span class="o">:</span> <span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">VIRTUAL_NODE_NUM</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">               <span class="n">String</span> <span class="n">virtualNodeName</span> <span class="o">=</span> <span class="n">getVirtualNodeName</span><span class="o">(</span><span class="n">realGroup</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">HashUtil</span><span class="o">.</span><span class="na">getHash</span><span class="o">(</span><span class="n">virtualNodeName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;[&#34;</span> <span class="o">+</span> <span class="n">virtualNodeName</span> <span class="o">+</span> <span class="s">&#34;] launched @ &#34;</span> <span class="o">+</span> <span class="n">hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">virtualNodes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">virtualNodeName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addGroup</span><span class="o">(</span><span class="n">String</span> <span class="n">identifier</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">realGroups</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">identifier</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">refreshHashCircle</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">removeGroup</span><span class="o">(</span><span class="n">String</span> <span class="n">identifier</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">group</span><span class="o">:</span><span class="n">realGroups</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">group</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">identifier</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">realGroups</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">refreshHashCircle</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试删除一个集群前后的压力分布如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -704,39 +701,39 @@ group 192.168.0.0:111: 20719<span class="o">(</span>20.719%<span class="o">)</sp
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">running the normal test.
-group 192.168.0.2:111: 19144<span class="o">(</span>19.144%<span class="o">)</span>
-group 192.168.0.1:111: 20244<span class="o">(</span>20.244%<span class="o">)</span>
-group 192.168.0.4:111: 20923<span class="o">(</span>20.923%<span class="o">)</span>
-group 192.168.0.3:111: 19811<span class="o">(</span>19.811%<span class="o">)</span>
-group 192.168.0.0:111: 19878<span class="o">(</span>19.878%<span class="o">)</span>
-removed a group, run <span class="nb">test</span> again.
-group 192.168.0.2:111: 23409<span class="o">(</span>23.409%<span class="o">)</span>
-group 192.168.0.1:111: 25628<span class="o">(</span>25.628%<span class="o">)</span>
-group 192.168.0.4:111: 25583<span class="o">(</span>25.583%<span class="o">)</span>
-group 192.168.0.0:111: 25380<span class="o">(</span>25.38%<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">running the normal test.
+</span></span><span class="line"><span class="cl">group 192.168.0.2:111: 19144<span class="o">(</span>19.144%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 20244<span class="o">(</span>20.244%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 20923<span class="o">(</span>20.923%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.3:111: 19811<span class="o">(</span>19.811%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 19878<span class="o">(</span>19.878%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">removed a group, run <span class="nb">test</span> again.
+</span></span><span class="line"><span class="cl">group 192.168.0.2:111: 23409<span class="o">(</span>23.409%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 25628<span class="o">(</span>25.628%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 25583<span class="o">(</span>25.583%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 25380<span class="o">(</span>25.38%<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时计算一下消失的集群上的Key最终如何转移到其他集群上：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>192.168.0.1:111-192.168.0.4:111<span class="o">]</span> :5255
-<span class="o">[</span>192.168.0.1:111-192.168.0.3:111<span class="o">]</span> :5090
-<span class="o">[</span>192.168.0.1:111-192.168.0.2:111<span class="o">]</span> :5069
-<span class="o">[</span>192.168.0.1:111-192.168.0.0:111<span class="o">]</span> :4938
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111-192.168.0.4:111<span class="o">]</span> :5255
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111-192.168.0.3:111<span class="o">]</span> :5090
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111-192.168.0.2:111<span class="o">]</span> :5069
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111-192.168.0.0:111<span class="o">]</span> :4938
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可见，删除集群后，该集群上的压力均匀地分散给了其他集群，最终整个集群仍处于负载均衡状态，符合我们的预期，最后看一下添加集群的情况。
 压力分布：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -751,40 +748,40 @@ group 192.168.0.0:111: 25380<span class="o">(</span>25.38%<span class="o">)</spa
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">running the normal test.
-group 192.168.0.2:111: 18890<span class="o">(</span>18.89%<span class="o">)</span>
-group 192.168.0.1:111: 20293<span class="o">(</span>20.293%<span class="o">)</span>
-group 192.168.0.4:111: 21000<span class="o">(</span>21.0%<span class="o">)</span>
-group 192.168.0.3:111: 19816<span class="o">(</span>19.816%<span class="o">)</span>
-group 192.168.0.0:111: 20001<span class="o">(</span>20.001%<span class="o">)</span>
-add a group, run <span class="nb">test</span> again.
-group 192.168.0.2:111: 15524<span class="o">(</span>15.524%<span class="o">)</span>
-group 192.168.0.7:111: 16928<span class="o">(</span>16.928%<span class="o">)</span>
-group 192.168.0.1:111: 16888<span class="o">(</span>16.888%<span class="o">)</span>
-group 192.168.0.4:111: 16965<span class="o">(</span>16.965%<span class="o">)</span>
-group 192.168.0.3:111: 16768<span class="o">(</span>16.768%<span class="o">)</span>
-group 192.168.0.0:111: 16927<span class="o">(</span>16.927%<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">running the normal test.
+</span></span><span class="line"><span class="cl">group 192.168.0.2:111: 18890<span class="o">(</span>18.89%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 20293<span class="o">(</span>20.293%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 21000<span class="o">(</span>21.0%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.3:111: 19816<span class="o">(</span>19.816%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 20001<span class="o">(</span>20.001%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">add a group, run <span class="nb">test</span> again.
+</span></span><span class="line"><span class="cl">group 192.168.0.2:111: 15524<span class="o">(</span>15.524%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.7:111: 16928<span class="o">(</span>16.928%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.1:111: 16888<span class="o">(</span>16.888%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.4:111: 16965<span class="o">(</span>16.965%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.3:111: 16768<span class="o">(</span>16.768%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">group 192.168.0.0:111: 16927<span class="o">(</span>16.927%<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>压力转移：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>192.168.0.0:111-192.168.0.7:111<span class="o">]</span> :3102
-<span class="o">[</span>192.168.0.4:111-192.168.0.7:111<span class="o">]</span> :4060
-<span class="o">[</span>192.168.0.2:111-192.168.0.7:111<span class="o">]</span> :3313
-<span class="o">[</span>192.168.0.1:111-192.168.0.7:111<span class="o">]</span> :3292
-<span class="o">[</span>192.168.0.3:111-192.168.0.7:111<span class="o">]</span> :3261
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>192.168.0.0:111-192.168.0.7:111<span class="o">]</span> :3102
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.4:111-192.168.0.7:111<span class="o">]</span> :4060
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.2:111-192.168.0.7:111<span class="o">]</span> :3313
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.1:111-192.168.0.7:111<span class="o">]</span> :3292
+</span></span><span class="line"><span class="cl"><span class="o">[</span>192.168.0.3:111-192.168.0.7:111<span class="o">]</span> :3261
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>综上可以得出结论，在引入足够多的虚拟节点后，一致性hash还是能够比较完美地满足负载均衡需要的。</p>
-<h2 id="heading-10">参考资料</h2>
+<h2 id="参考资料">参考资料</h2>
 <p><a href="https://blog.csdn.net/monokai/article/details/106626945">负载均衡中的一致性Hash算法详解</a></p>
 
     </div>
@@ -856,7 +853,7 @@ group 192.168.0.0:111: 16927<span class="o">(</span>16.927%<span class="o">)</sp
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
